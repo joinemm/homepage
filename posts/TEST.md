@@ -2,6 +2,9 @@
 title: Test document for markdown syntax
 tags: [test]
 image: /assets/content/sea.png
+date: '1977-1-1'
+author: Joinemm
+excerpt: Verifies that all markdown elements render properly
 ---
 
 # Markdown: Syntax
