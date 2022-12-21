@@ -2,9 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../styles/header.module.css';
 import MobileMenu from './mobile-menu';
-import { useMediaQuery } from 'react-responsive';
-import { Context as ResponsiveContext } from 'react-responsive';
-import { Media, MediaContextProvider } from '../lib/media';
+import { Media } from '../lib/media';
+import NavMenu from './nav-menu';
 
 const Header = () => {
   return (
@@ -21,29 +20,13 @@ const Header = () => {
                 className={styles.avatar}
               />
             </Link>
-            <span className={styles.headerTitle}>Joinemm.dev</span>
+            <span className={styles.headerTitle}>Joinemm</span>
           </div>
           <Media at="xs">
             <MobileMenu />
           </Media>
           <Media at="sm">
-            <ul className={styles.nav}>
-              <li>
-                <Link href="/about">home</Link>
-              </li>
-              <li>
-                <Link href="/about">about</Link>
-              </li>
-              <li>
-                <Link href="/blog">blog</Link>
-              </li>
-              <li>
-                <Link href="/portfolio">github</Link>
-              </li>
-              <li>
-                <Link href="/cv">cv</Link>
-              </li>
-            </ul>
+            <NavMenu />
           </Media>
         </header>
       </Media>
@@ -59,34 +42,8 @@ const Header = () => {
             />
           </Link>
 
-          <p>Hi welcome to Joinemm blog where we discuss only topics of utmost importance</p>
-          <ul className={styles.nav}>
-            <li>
-              <Link href="/about" aria-label="About me">
-                home
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" aria-label="About me">
-                about
-              </Link>
-            </li>
-            <li>
-              <Link href="/blog" aria-label="About me">
-                blog
-              </Link>
-            </li>
-            <li>
-              <Link href="/portfolio" aria-label="About me">
-                github
-              </Link>
-            </li>
-            <li>
-              <Link href="/cv" aria-label="About me">
-                cv
-              </Link>
-            </li>
-          </ul>
+          <p>Hi welcome to Joinemm blog, where we discuss only topics of the utmost importance.</p>
+          <NavMenu />
         </header>
       </Media>
     </>

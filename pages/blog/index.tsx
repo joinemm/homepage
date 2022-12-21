@@ -5,8 +5,9 @@ import type PostType from '../../interfaces/post';
 import style from '../../styles/blog.module.css';
 import poststyle from '../../styles/blogpost.module.css';
 import PostPreview from '../../components/post-preview';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MobileMenu from '../../components/mobile-menu';
+import { useRouter } from 'next/router';
 
 type Props = {
   allPosts: [PostType];
@@ -14,6 +15,18 @@ type Props = {
 
 export default function Blog({ allPosts }: Props) {
   const [activeTags, setActiveTags] = useState<string[]>([]);
+
+  const router = useRouter();
+  useEffect(() => {
+    const query_tag = router.query.tag?.toString();
+
+    if (query_tag !== undefined && activeTags.toString() !== [query_tag].toString()) {
+      setActiveTags([query_tag]);
+    }
+    // have to disable this error because if I do as it wants this doesn't work
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router]);
+
   return (
     <>
       <Header />

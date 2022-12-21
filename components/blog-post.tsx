@@ -20,7 +20,7 @@ const BlogPost = ({ post }: Props) => {
         {post.tags
           ? post.tags.map((tag) => (
               <li key={tag}>
-                <Link href={`/blog/tag/${tag}`}>#{tag}</Link>
+                <Link href={`/blog?tag=${tag}`}>#{tag}</Link>
               </li>
             ))
           : null}

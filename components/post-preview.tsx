@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import style from '../styles/blogpost.module.css';
 import PostType from '../interfaces/post';
 import Link from 'next/link';

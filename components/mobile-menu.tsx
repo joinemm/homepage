@@ -1,6 +1,7 @@
-import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import styles from '../styles/mobile-menu.module.css';
+import { MdMenu, MdClose } from 'react-icons/md';
+import NavMenu from './nav-menu';
 
 export default function MobileMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,40 +28,14 @@ export default function MobileMenu() {
   return (
     <>
       <button className={styles.burger} type="button" onClick={openMenu}>
-        <MenuIcon />
+        <MdMenu size={30} />
       </button>
       {isMenuOpen && (
         <div className={styles.menu}>
           <button className={styles.burger} type="button" onClick={closeMenu}>
-            <CrossIcon />
+            <MdClose size={30} />
           </button>
-          <ul className={styles.nav}>
-            <li>
-              <Link href="/" aria-label="About me">
-                home
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" aria-label="About me">
-                about
-              </Link>
-            </li>
-            <li>
-              <Link href="/blog" aria-label="About me">
-                blog
-              </Link>
-            </li>
-            <li>
-              <Link href="/portfolio" aria-label="About me">
-                portfolio
-              </Link>
-            </li>
-            <li>
-              <Link href="/cv" aria-label="About me">
-                cv
-              </Link>
-            </li>
-          </ul>
+          <NavMenu />
         </div>
       )}
     </>
