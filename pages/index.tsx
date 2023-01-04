@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MediaContextProvider disableDynamicMediaQueries>
-        <main className={`${styles.main} ${font.className}`}>
+        <main className={`${styles.main}`}>
           <h1>
             <Link href="/blog">go to blog</Link>
           </h1>

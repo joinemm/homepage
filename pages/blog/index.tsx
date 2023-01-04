@@ -1,16 +1,16 @@
 import Header from '../../components/header';
 import { getAllPosts } from '../../lib/api';
 import Head from 'next/head';
-import type PostType from '../../interfaces/post';
 import style from '../../styles/blog.module.css';
 import poststyle from '../../styles/blogpost.module.css';
 import PostPreview from '../../components/post-preview';
 import { useEffect, useState } from 'react';
 import MobileMenu from '../../components/mobile-menu';
 import { useRouter } from 'next/router';
+import PostData from '../../interfaces/post-data';
 
 type Props = {
-  allPosts: [PostType];
+  allPosts: [PostData];
 };
 
 export default function Blog({ allPosts }: Props) {
@@ -71,9 +71,9 @@ export default function Blog({ allPosts }: Props) {
 }
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts(['title', 'date', 'slug', 'excerpt', 'tags']);
+  const allPosts = getAllPosts();
 
   return {
-    props: { allPosts },
+    props: { allPosts: allPosts.map((post) => post.metadata) },
   };
 };
