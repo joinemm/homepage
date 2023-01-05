@@ -1,8 +1,7 @@
 import Header from '../../components/header';
-import { getAllPosts } from '../../lib/api';
+import { getAllPosts } from '../../api/post-helpers';
 import Head from 'next/head';
 import style from '../../styles/blog.module.css';
-import poststyle from '../../styles/blogpost.module.css';
 import PostPreview from '../../components/post-preview';
 import { useEffect, useState } from 'react';
 import MobileMenu from '../../components/mobile-menu';
@@ -35,16 +34,14 @@ export default function Blog({ allPosts }: Props) {
       </Head>
       <article className={style.main}>
         <h1 className={style.maintitle}>Blog.</h1>
-        <ul className={poststyle.tags}>
+        <ul className={style.tags}>
           {allPosts
             .map((post) => post.tags)
             .flat(1)
             .map((tag) => (
               <li key={tag}>
                 <a
-                  className={`${poststyle.tagButton} ${
-                    activeTags.includes(tag) ? poststyle.active : ''
-                  }`}
+                  className={`${style.tagButton} ${activeTags.includes(tag) ? style.active : ''}`}
                   onClick={() => {
                     if (activeTags.includes(tag)) {
                       setActiveTags(activeTags.filter((t) => t != tag));

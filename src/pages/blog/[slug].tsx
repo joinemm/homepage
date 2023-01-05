@@ -1,17 +1,18 @@
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Header from '../../components/header';
-import { getPostBySlug, getAllPosts } from '../../lib/api';
+import { getPostBySlug, getAllPosts } from '../../api/post-helpers';
 import Head from 'next/head';
 import style from '../../styles/blog.module.css';
-import BlogPost from '../../components/blog-post';
-import Link from 'next/link';
 import DateFormatter from '../../components/date-formatter';
 import { ImArrowLeft2 } from 'react-icons/im';
 import { MdDateRange } from 'react-icons/md';
 import { serialize } from 'next-mdx-remote/serialize';
 import PostData from '../../interfaces/post-data';
-import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+
+import Image from 'next/image';
+import Link from 'next/link';
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 type Props = {
   metadata: PostData;
@@ -24,31 +25,43 @@ export default function Post({ metadata, mdxSource }: Props) {
     return <ErrorPage statusCode={404} />;
   }
 
-  return (
+  return router.isFallback ? (
+    <h1>Loading…</h1>
+  ) : (
     <>
+      <Head>
+        <title>{`${metadata.title} | joinemm.dev`}</title>
+        <meta property="og:image" content={metadata.image} />
+      </Head>
       <Header />
-      {router.isFallback ? (
-        <h1>Loading…</h1>
-      ) : (
-        <>
-          <Head>
-            <title>{`${metadata.title} | joinemm.dev`}</title>
-            <meta property="og:image" content={metadata.image} />
-          </Head>
-          <Header />
-          <article className={style.main}>
-            <div className={style.postHeader}>
-              <Link href="/blog">
-                <ImArrowLeft2 size={20} /> All posts
-              </Link>
-              <div>
-                <DateFormatter dateString={metadata.date}></DateFormatter> <MdDateRange size={20} />
-              </div>
+      <article className={style.main}>
+        <div className={style.postHeader}>
+          <Link href="/blog">
+            <ImArrowLeft2 size={20} /> All posts
+          </Link>
+          <div>
+            <DateFormatter dateString={metadata.date}></DateFormatter> <MdDateRange size={20} />
+          </div>
+        </div>
+        <div>
+          {metadata.image ? (
+            <div className={style.coverImage}>
+              <Image src={metadata.image} alt="cover image" fill={true}></Image>
             </div>
-            <BlogPost metadata={metadata} mdxSource={mdxSource}></BlogPost>
-          </article>
-        </>
-      )}
+          ) : null}
+          <h1 className={style.title}>{metadata.title}</h1>
+          <ul className={style.tags}>
+            {metadata.tags
+              ? metadata.tags.map((tag) => (
+                  <li key={tag}>
+                    <Link href={`/blog?tag=${tag}`}>#{tag}</Link>
+                  </li>
+                ))
+              : null}
+          </ul>
+          <MDXRemote {...mdxSource} />
+        </div>
+      </article>
     </>
   );
 }

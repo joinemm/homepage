@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../styles/header.module.css';
 import MobileMenu from './mobile-menu';
-import { Media } from '../lib/media';
+import { Media } from '../api/media-context';
 import NavMenu from './nav-menu';
 
 const Header = () => {

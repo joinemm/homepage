@@ -1,4 +1,4 @@
-import style from '../styles/blogpost.module.css';
+import style from '../styles/blog.module.css';
 import PostType from '../interfaces/post-data';
 import Link from 'next/link';
 import DateFormatter from './date-formatter';

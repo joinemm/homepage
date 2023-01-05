@@ -1,18 +1,18 @@
 :root {
   --background: #fff;
   --background-highlight: #eee;
-  --foreground: #000;
+  --foreground: #121212;
   --accent-color: #f6c177;
   --accent-color-secondary: #31748f;
-  --code-background: #191724;
-  --code-foreground: #e0def4;
+  --code-background: #202020;
+  --code-foreground: #fff;
   --code-highlight: #2a2738;
   --muted: #6e6a86;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #000;
+    --background: #121212;
     --background-highlight: #111;
     --foreground: #fff;
   }
@@ -26,11 +26,13 @@
 
 html,
 body {
+  font-size: 18px;
   max-width: 100vw;
   overflow-x: hidden;
 }
 
 body {
+  font-family: var(--sans-font);
   color: var(--foreground);
   background: var(--background);
 }
@@ -60,13 +62,21 @@ hr {
   }
 }
 
-p,
+p {
+  margin-bottom: 1rem;
+}
+
 h1,
 h2,
 h3,
 h4 {
-  margin-top: 1rem;
   margin-bottom: 1rem;
+  font-family: var(--header-font);
+}
+
+h2,
+h3 {
+  margin-top: 3rem;
 }
 
 ul {
@@ -79,9 +89,12 @@ ol {
 
 pre {
   background-color: var(--code-background);
-  border-radius: 1rem;
-  padding: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
   overflow: scroll;
+  margin-left: -1rem;
+  margin-right: -1rem;
 }
 
 pre > code {
@@ -94,6 +107,12 @@ code {
   background-color: var(--code-background);
   border-radius: 0.25rem;
   padding: 0.2rem;
+
+  border-radius: 3px;
+  font-family: var(--mono-font);
+  font-size: 0.85em;
+  padding: 0.2rem 0.3rem;
+  word-break: break-word;
 }
 
 .line.highlighted {
