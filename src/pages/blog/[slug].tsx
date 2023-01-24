@@ -9,10 +9,33 @@ import { ImArrowLeft2 } from 'react-icons/im';
 import { MdDateRange } from 'react-icons/md';
 import { serialize } from 'next-mdx-remote/serialize';
 import PostData from '../../interfaces/post-data';
+import rehypePrettyCode from 'rehype-pretty-code';
 
 import Image from 'next/image';
 import Link from 'next/link';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import CodeBlock from '../../components/codeblock';
+import options from '../../api/pretty-code-options';
+
+const preToCodeBlock = (preProps) => {
+  return;
+};
+
+const components = {
+  pre: (preProps: any) => {
+    console.log(preProps);
+    // const props = preToCodeBlock(preProps);
+    if (preProps.children?.type === 'code') {
+      const props = {
+        language: preProps['data-language'],
+        prettyCode: preProps.children,
+      };
+      return <CodeBlock {...props} />;
+    } else {
+      return <pre {...preProps} />;
+    }
+  },
+};
 
 type Props = {
   metadata: PostData;
@@ -59,7 +82,7 @@ export default function Post({ metadata, mdxSource }: Props) {
                 ))
               : null}
           </ul>
-          <MDXRemote {...mdxSource} />
+          <MDXRemote {...mdxSource} components={components} />
         </div>
       </article>
     </>
@@ -75,7 +98,7 @@ type Params = {
 export async function getStaticProps({ params }: Params) {
   const post = getPostBySlug(params.slug);
   const mdxSource = await serialize(post.content, {
-    mdxOptions: { development: false },
+    mdxOptions: { development: false, rehypePlugins: [[rehypePrettyCode, options]] },
   });
   return { props: { metadata: post.metadata, mdxSource } };
 }

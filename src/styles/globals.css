@@ -4,9 +4,9 @@
   --foreground: #121212;
   --accent-color: #f6c177;
   --accent-color-secondary: #31748f;
-  --code-background: #202020;
+  --code-background: #282a36;
   --code-foreground: #fff;
-  --code-highlight: #2a2738;
+  --code-highlight: #252525;
   --muted: #6e6a86;
 }
 
@@ -14,7 +14,7 @@
   :root {
     --background: #121212;
     --background-highlight: #111;
-    --foreground: #fff;
+    --foreground: #eee;
   }
 }
 
@@ -26,7 +26,6 @@
 
 html,
 body {
-  font-size: 18px;
   max-width: 100vw;
   overflow-x: hidden;
 }
@@ -87,21 +86,12 @@ ol {
   padding-left: 2rem;
 }
 
-pre {
-  background-color: var(--code-background);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  overflow: scroll;
-  margin-left: -1rem;
-  margin-right: -1rem;
-}
-
 pre > code {
   display: grid;
 }
 
-code {
+code,
+.prism-code {
   color: var(--code-foreground);
   counter-reset: line;
   background-color: var(--code-background);
@@ -127,6 +117,57 @@ pre > code[data-line-numbers] > .line::before {
   margin-right: 0.5em;
   text-align: right;
   color: gray;
+}
+
+.codeblock {
+  background-color: var(--code-background);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  position: relative;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.codeblock > pre {
+  overflow: scroll;
+}
+
+.code-language {
+  background-color: var(--code-background);
+  position: absolute;
+  top: 0px;
+  right: 14px;
+  transform: translateY(-100%);
+  font-size: 1rem;
+  padding: 2px 12px 0px;
+  border-radius: 0.25rem 0.25rem 0px 0px;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.code-copy-button {
+  color: #aaa;
+  visibility: hidden;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border-color: currentColor;
+  transition: 80ms ease-out;
+  padding: 0.25rem;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid;
+  opacity: 0;
+  border-radius: 0.3rem;
+}
+
+.codeblock:hover > .code-copy-button {
+  visibility: visible;
+  opacity: 1;
+  transition: 80ms ease-in;
 }
 
 @media (max-width: 1279px) {
