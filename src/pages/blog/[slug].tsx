@@ -9,6 +9,7 @@ import { MdDateRange } from 'react-icons/md';
 import { serialize } from 'next-mdx-remote/serialize';
 import PostData from '../../interfaces/post-data';
 import rehypePrettyCode from 'rehype-pretty-code';
+import rehypeImgSize from 'rehype-img-size';
 
 import Image from 'next/image';
 import Link from 'next/link';
