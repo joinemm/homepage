@@ -1,12 +1,10 @@
 import Header from '../../components/header';
 import { getAllPosts } from '../../api/post-helpers';
 import Head from 'next/head';
-import style from '../../styles/blog.module.css';
-import PostPreview from '../../components/post-preview';
 import { useEffect, useState } from 'react';
-import MobileMenu from '../../components/mobile-menu';
 import { useRouter } from 'next/router';
 import PostData from '../../interfaces/post-data';
+import PostPreview from '../../components/post-preview';
 
 type Props = {
   allPosts: [PostData];
@@ -22,7 +20,7 @@ export default function Blog({ allPosts }: Props) {
     if (query_tag !== undefined && activeTags.toString() !== [query_tag].toString()) {
       setActiveTags([query_tag]);
     }
-    // have to disable this error because if I do as it wants this doesn't work
+    // have to disable this error because if I do as eslint wants this doesn't work
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
@@ -32,16 +30,21 @@ export default function Blog({ allPosts }: Props) {
       <Head>
         <title>Blog | joinemm.dev</title>
       </Head>
-      <article className={style.main}>
-        <h1 className={style.maintitle}>Blog.</h1>
-        <ul className={style.tags}>
+      <article className="max-w-3xl m-auto mt-8 px-4">
+        <h1 className="text-2xl font-bold pb-4">Blog.</h1>
+        <ul className="flex gap-3">
           {allPosts
             .map((post) => post.tags)
             .flat(1)
             .map((tag) => (
               <li key={tag}>
                 <a
-                  className={`${style.tagButton} ${activeTags.includes(tag) ? style.active : ''}`}
+                  className={
+                    'cursor-pointer ' +
+                    (activeTags.includes(tag)
+                      ? 'border-b-2'
+                      : 'text-[var(--accent-color)] hover:text-white')
+                  }
                   onClick={() => {
                     if (activeTags.includes(tag)) {
                       setActiveTags(activeTags.filter((t) => t != tag));

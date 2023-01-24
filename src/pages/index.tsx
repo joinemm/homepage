@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
 import { MediaContextProvider } from '../api/media-context';
 import Link from 'next/link';
 
@@ -13,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MediaContextProvider disableDynamicMediaQueries>
-        <main className={`${styles.main}`}>
+        <main className="prose dark:prose-invert m-auto text-center pt-16">
           <h1>
             <Link href="/blog">go to blog</Link>
           </h1>

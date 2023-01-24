@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --background: #fff;
   --background-highlight: #eee;
@@ -14,7 +18,7 @@
   :root {
     --background: #121212;
     --background-highlight: #111;
-    --foreground: #eee;
+    --foreground: #fff;
   }
 }
 
@@ -36,7 +40,15 @@ body {
   background: var(--background);
 }
 
-a {
+.accent-border {
+  border-color: var(--accent-color);
+}
+
+.accent-border-two {
+  border-color: var(--accent-color-secondary);
+}
+
+/* a {
   color: var(--accent-color-secondary);
   user-select: none;
 }
@@ -253,4 +265,4 @@ h4 .headingLink:hover::after {
 }
 h5 .headingLink:hover::after {
   content: '#####';
-}
+} */
