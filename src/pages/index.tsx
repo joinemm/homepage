@@ -12,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MediaContextProvider disableDynamicMediaQueries>
-        <main className="prose dark:prose-invert m-auto text-center pt-16">
+        <main className="prose m-auto pt-16 text-center dark:prose-invert">
           <h1>
             <Link href="/blog">go to blog</Link>
           </h1>

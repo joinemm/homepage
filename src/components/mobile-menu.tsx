@@ -33,9 +33,9 @@ export default function MobileMenu() {
         <MdMenu size={30} />
       </button>
       {isMenuOpen && (
-        <div className="absolute flex top-0 left-0 w-screen h-screen z-40 bg-[var(--background)] justify-center items-center">
+        <div className="absolute top-0 left-0 z-40 flex h-screen w-screen items-center justify-center bg-[var(--background)]">
           <button
-            className="absolute z-50 h-10 top-0 right-0 m-4"
+            className="absolute top-0 right-0 z-50 m-4 h-10"
             type="button"
             onClick={closeMenu}
           >

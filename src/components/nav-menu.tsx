@@ -9,7 +9,7 @@ const NavMenu = () => {
     { label: 'cv', href: '/cv' },
   ];
   return (
-    <ul className="md:flex xl:block gap-8 items-center">
+    <ul className="items-center gap-8 md:flex xl:block">
       {links.map((link) => (
         <li key={link.label} className="py-2">
           <Link href={link.href}>{link.label}</Link>

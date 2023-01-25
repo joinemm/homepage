@@ -15,12 +15,12 @@ const CodeBlock = ({ language, prettyCode }) => {
   };
 
   return (
-    <pre className="bg-[var(--code-background)] rounded-lg p-4 my-4 relative group">
-      <div className="bg-inherit absolute top-0 right-4 -translate-y-full lowercase rounded-t-md px-1">
+    <pre className="group relative my-4 rounded-lg bg-[var(--code-background)] p-4">
+      <div className="absolute top-0 right-4 -translate-y-full rounded-t-md bg-inherit px-1 lowercase">
         .{language}
       </div>
       <button
-        className="right-4 absolute transition-opacity opacity-0 group-hover:opacity-70 hover:!opacity-100"
+        className="absolute right-4 opacity-0 transition-opacity hover:!opacity-100 group-hover:opacity-70"
         onClick={copyCode}
       >
         <MdContentCopy size={20} />

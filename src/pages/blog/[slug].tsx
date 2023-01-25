@@ -49,7 +49,7 @@ export default function Post({ metadata, mdxSource }: Props) {
         <meta property="og:image" content={metadata.image} />
       </Head>
       <Header />
-      <article className="max-w-3xl m-auto pt-8 px-4">
+      <article className="m-auto max-w-3xl px-4 pt-8">
         <div className="flex justify-between">
           <Link href="/blog" className="flex items-center gap-2">
             <ImArrowLeft2 size={20} className="inline-block" />
@@ -65,20 +65,20 @@ export default function Post({ metadata, mdxSource }: Props) {
             <div className="">
               <Image
                 // a little hack to make the nextjs Image height variable
-                className="object-contain rounded-lg !relative !w-full !h-[unset]"
+                className="!relative !h-[unset] !w-full rounded-lg object-contain"
                 src={metadata.image}
                 alt="cover image"
                 fill={true}
               ></Image>
             </div>
           ) : null}
-          <h1 className="text-4xl font-bold border-b-2 mt-4 pb-4">{metadata.title}</h1>
-          <ul className="flex gap-3 mt-1 mb-8">
+          <h1 className="mt-4 border-b-2 pb-4 text-4xl font-bold">{metadata.title}</h1>
+          <ul className="mt-1 mb-8 flex gap-3">
             {metadata.tags
               ? metadata.tags.map((tag) => (
                   <li key={tag}>
                     <Link
-                      className="text-[var(--accent-color)] hover:text-white cursor-pointer"
+                      className="cursor-pointer text-[var(--accent-color)] hover:text-white"
                       href={`/blog?tag=${tag}`}
                     >
                       #{tag}
@@ -92,7 +92,7 @@ export default function Post({ metadata, mdxSource }: Props) {
           </div>
         </div>
       </article>
-      <footer className="text-center py-32">
+      <footer className="py-32 text-center">
         <p className="italic text-[var(--muted)]">fin</p>
       </footer>
     </>

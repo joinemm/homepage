@@ -6,7 +6,7 @@ type Props = {
 };
 
 const MdxImage = ({ src, alt }: Props) => {
-  return <img alt={alt} src={src} className="rounded-lg w-full m-0" />;
+  return <img alt={alt} src={src} className="m-0 w-full rounded-lg" />;
 };
 
 export default MdxImage;

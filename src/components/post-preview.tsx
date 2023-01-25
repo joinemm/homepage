@@ -8,7 +8,7 @@ type Props = {
 
 const PostPreview = ({ post }: Props) => {
   return (
-    <article className="pl-4 accent-border-two my-6 border-l-4">
+    <article className="accent-border-two my-6 border-l-4 pl-4">
       <Link href={`/blog/${post.slug}`} className="text-xl tracking-wide hover:underline">
         {post.title}
       </Link>

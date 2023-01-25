@@ -7,8 +7,8 @@ const Header = () => {
   return (
     <>
       <Media lessThan="md">
-        <header className="flex max-w-3xl text-center m-auto justify-between p-4 border-b-4 accent-border">
-          <div className="flex gap-4 items-center">
+        <header className="accent-border m-auto flex max-w-3xl justify-between border-b-4 p-4 text-center">
+          <div className="flex items-center gap-4">
             <Image
               src="/assets/avatar.png"
               alt="Me"
@@ -28,13 +28,13 @@ const Header = () => {
       </Media>
       <Media greaterThanOrEqual="md">
         {/* calc is equal to 50% + half of main content width */}
-        <header className="fixed w-80 text-right p-4 accent-border border-r-4 right-[calc(50%+384px)] top-8">
+        <header className="accent-border fixed right-[calc(50%+384px)] top-8 w-80 border-r-4 p-4 text-right">
           <Image
             src="/assets/avatar.png"
             alt="Me"
             width={100}
             height={100}
-            className="rounded-full inline-block"
+            className="inline-block rounded-full"
           />
 
           <p className="py-4">

@@ -30,8 +30,8 @@ export default function Blog({ allPosts }: Props) {
       <Head>
         <title>Blog | joinemm.dev</title>
       </Head>
-      <article className="max-w-3xl m-auto mt-8 px-4">
-        <h1 className="text-2xl font-bold pb-4">Blog.</h1>
+      <article className="m-auto mt-8 max-w-3xl px-4">
+        <h1 className="pb-4 text-2xl font-bold">Blog.</h1>
         <ul className="flex gap-3">
           {allPosts
             .map((post) => post.tags)
