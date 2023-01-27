@@ -1,6 +1,7 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import localFont from '@next/font/local';
+import Head from 'next/head';
 
 const input_font = localFont({
   src: [
@@ -31,10 +32,8 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <style jsx global>{`
-        :root {
-          --sans-font: ${input_font.style.fontFamily};
-          --mono-font: ${input_font.style.fontFamily};
-          --header-font: ${input_font.style.fontFamily};
+        body {
+          font-family: ${input_font.style.fontFamily};
         }
       `}</style>
       <Head>

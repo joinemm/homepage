@@ -1,6 +1,7 @@
 import PostType from '../interfaces/post-data';
 import Link from 'next/link';
 import DateFormatter from './date-formatter';
+import LikeButton from './like-button';
 
 type Props = {
   post: PostType;
@@ -8,21 +9,28 @@ type Props = {
 
 const PostPreview = ({ post }: Props) => {
   return (
-    <article className="accent-border-two my-6 border-l-4 pl-4">
-      <Link href={`/blog/${post.slug}`} className="text-xl tracking-wide hover:underline">
-        {post.title}
-      </Link>
+    <article className="relative my-6 flex items-baseline border-cyan-500 max-xl:border-x-4 max-xl:px-4">
+      <div className="flex-grow">
+        <Link href={`/blog/${post.slug}`} className="text-xl tracking-wide hover:underline">
+          {post.title}
+        </Link>
 
-      <ul className="flex gap-2">
-        <DateFormatter className="text-sm text-[var(--muted)]" dateString={post.date} />
-        {post.tags
-          ? post.tags.map((tag) => (
-              <li className="text-sm" key={tag}>
-                #{tag}
-              </li>
-            ))
-          : null}
-      </ul>
+        <div className="flex flex-wrap gap-x-4">
+          <DateFormatter className="fg-secondary text-sm" dateString={post.date} />
+          <ul className="flex flex-wrap gap-x-2">
+            {post.tags
+              ? post.tags.map((tag) => (
+                  <li className="text-sm" key={tag}>
+                    #{tag}
+                  </li>
+                ))
+              : null}
+          </ul>
+        </div>
+      </div>
+      <div className="max-md:hidden">
+        <LikeButton storageKey={`liked-blog-post-${post.slug}`} />
+      </div>
     </article>
   );
 };

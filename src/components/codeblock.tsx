@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-key */
-import React from 'react';
 import { MdContentCopy } from 'react-icons/md';
 import type { ReactElement } from 'react';
 import { useRef, cloneElement } from 'react';
@@ -15,8 +14,8 @@ const CodeBlock = ({ language, prettyCode }) => {
   };
 
   return (
-    <pre className="group relative my-4 rounded-lg bg-[var(--code-background)] p-4">
-      <div className="absolute top-0 right-4 -translate-y-full rounded-t-md bg-inherit px-1 lowercase">
+    <pre className="group relative my-4 overflow-visible rounded-lg py-4 dark:border dark:border-gray-300">
+      <div className="absolute top-0 right-4 z-20 -translate-y-full rounded-t-md bg-[var(--tw-prose-pre-bg)] px-1 lowercase text-white dark:border-x dark:border-t dark:bg-[#090909]">
         .{language}
       </div>
       <button
@@ -25,7 +24,9 @@ const CodeBlock = ({ language, prettyCode }) => {
       >
         <MdContentCopy size={20} />
       </button>
-      {cloneElement(prettyCode as ReactElement, { ref: codeRef })}
+      <div className="overflow-scroll">
+        {cloneElement(prettyCode as ReactElement, { ref: codeRef })}
+      </div>
     </pre>
   );
 };

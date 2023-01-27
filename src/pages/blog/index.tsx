@@ -5,13 +5,17 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PostData from '../../interfaces/post-data';
 import PostPreview from '../../components/post-preview';
+import TagFilter from '../../components/tag-filter';
 
 type Props = {
-  allPosts: [PostData];
+  posts: [PostData];
+  tags: [string];
 };
 
-export default function Blog({ allPosts }: Props) {
+export default function Blog({ posts, tags }: Props) {
   const [activeTags, setActiveTags] = useState<string[]>([]);
+
+  const shrug = '¯\\_(ツ)_/¯';
 
   const router = useRouter();
   useEffect(() => {
@@ -24,6 +28,17 @@ export default function Blog({ allPosts }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
+  const filterPosts = (posts: [PostData]) => {
+    const results = posts.filter(
+      (post) => activeTags.length == 0 || activeTags.every((t) => post.tags.includes(t)),
+    );
+    return results.length > 0 ? (
+      results.map((post) => <PostPreview post={post} key={post.slug} />)
+    ) : (
+      <p className="pt-16 text-center">{shrug}</p>
+    );
+  };
+
   return (
     <>
       <Header />
@@ -32,39 +47,8 @@ export default function Blog({ allPosts }: Props) {
       </Head>
       <article className="m-auto mt-8 max-w-3xl px-4">
         <h1 className="pb-4 text-2xl font-bold">Blog.</h1>
-        <ul className="flex gap-3">
-          {allPosts
-            .map((post) => post.tags)
-            .flat(1)
-            .map((tag) => (
-              <li key={tag}>
-                <a
-                  className={
-                    'cursor-pointer ' +
-                    (activeTags.includes(tag)
-                      ? 'border-b-2'
-                      : 'text-[var(--accent-color)] hover:text-white')
-                  }
-                  onClick={() => {
-                    if (activeTags.includes(tag)) {
-                      setActiveTags(activeTags.filter((t) => t != tag));
-                    } else {
-                      setActiveTags(activeTags.concat(tag));
-                    }
-                  }}
-                >
-                  #{tag}
-                </a>
-              </li>
-            ))}
-        </ul>
-        {allPosts
-          .filter(
-            (post) => activeTags.length == 0 || activeTags.every((t) => post.tags.includes(t)),
-          )
-          .map((post) => (
-            <PostPreview post={post} key={post.slug} />
-          ))}
+        <TagFilter tags={tags} activeTags={activeTags} tagSetter={setActiveTags} />
+        {filterPosts(posts)}
       </article>
     </>
   );
@@ -74,6 +58,9 @@ export const getStaticProps = async () => {
   const allPosts = getAllPosts();
 
   return {
-    props: { allPosts: allPosts.map((post) => post.metadata) },
+    props: {
+      posts: allPosts.map((post) => post.metadata),
+      tags: allPosts.map((post) => post.metadata.tags).flat(1),
+    },
   };
 };

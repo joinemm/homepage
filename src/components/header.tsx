@@ -28,7 +28,7 @@ const Header = () => {
       </Media>
       <Media greaterThanOrEqual="md">
         {/* calc is equal to 50% + half of main content width */}
-        <header className="accent-border fixed right-[calc(50%+384px)] top-8 w-80 border-r-4 p-4 text-right">
+        <header className="accent-border fixed right-[calc(50%+384px)] top-8 max-w-xs border-r-4 p-4 text-right">
           <Image
             src="/assets/avatar.png"
             alt="Me"
@@ -37,9 +37,7 @@ const Header = () => {
             className="inline-block rounded-full"
           />
 
-          <p className="py-4">
-            Hi welcome to Joinemm blog, where we discuss only topics of the utmost importance.
-          </p>
+          <p className="py-4 text-3xl">Joinemm</p>
           <NavMenu />
         </header>
       </Media>

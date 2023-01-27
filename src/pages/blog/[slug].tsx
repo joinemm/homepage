@@ -5,6 +5,7 @@ import { getPostBySlug, getAllPosts } from '../../api/post-helpers';
 import Head from 'next/head';
 import DateFormatter from '../../components/date-formatter';
 import { ImArrowLeft2 } from 'react-icons/im';
+import { HiOutlineArrowNarrowUp } from 'react-icons/hi';
 import { MdDateRange } from 'react-icons/md';
 import { serialize } from 'next-mdx-remote/serialize';
 import PostData from '../../interfaces/post-data';
@@ -17,6 +18,12 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import CodeBlock from '../../components/codeblock';
 import options from '../../api/pretty-code-options';
 import MdxImage from '../../components/mdx-image';
+import Aside from '../../components/aside';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import Note from '../../components/note';
+import LikeButton from '../../components/like-button';
 
 const components = {
   pre: (props) => {
@@ -26,7 +33,16 @@ const components = {
       return <pre {...props} />;
     }
   },
-  img: MdxImage,
+  // extract images out of the p tags into their own component
+  p: (props) => {
+    if (props.children?.type === 'img') {
+      return <MdxImage {...props.children.props} />;
+    } else {
+      return <p {...props} />;
+    }
+  },
+  Aside: Aside,
+  Note: Note,
 };
 
 type Props = {
@@ -62,7 +78,7 @@ export default function Post({ metadata, mdxSource }: Props) {
       <Header />
       <article className="m-auto max-w-3xl px-4 pt-8">
         <div className="flex justify-between">
-          <Link href="/blog" className="flex items-center gap-2">
+          <Link href="/blog" className="flex items-center gap-2 underline-offset-4 hover:underline">
             <ImArrowLeft2 size={20} className="inline-block" />
             <p>All posts</p>
           </Link>
@@ -84,27 +100,40 @@ export default function Post({ metadata, mdxSource }: Props) {
             </div>
           ) : null}
           <h1 className="mt-4 border-b-2 pb-4 text-4xl font-bold">{metadata.title}</h1>
-          <ul className="mt-1 mb-8 flex gap-3">
-            {metadata.tags
-              ? metadata.tags.map((tag) => (
-                  <li key={tag}>
-                    <Link
-                      className="cursor-pointer text-[var(--accent-color)] hover:text-white"
-                      href={`/blog?tag=${tag}`}
-                    >
-                      #{tag}
-                    </Link>
-                  </li>
-                ))
-              : null}
-          </ul>
+          <div className="flex justify-between">
+            <ul className="mt-1 mb-8 flex gap-3">
+              {metadata.tags
+                ? metadata.tags.map((tag) => (
+                    <li key={tag}>
+                      <Link
+                        className="accent cursor-pointer hover:text-white"
+                        href={`/blog?tag=${tag}`}
+                      >
+                        #{tag}
+                      </Link>
+                    </li>
+                  ))
+                : null}
+            </ul>
+            <LikeButton storageKey={`liked-blog-post-${metadata.slug}`} />
+          </div>
           <div className="prose dark:prose-invert">
             <MDXRemote {...mdxSource} components={components} />
           </div>
         </div>
       </article>
       <footer className="py-32 text-center">
-        <p className="italic text-[var(--muted)]">fin</p>
+        <button
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            });
+          }}
+        >
+          <HiOutlineArrowNarrowUp className="m-auto" size={30} />
+          <p className="fg-secondary pt-4 italic">go to top</p>
+        </button>
       </footer>
     </>
   );
@@ -121,11 +150,13 @@ export async function getStaticProps({ params }: Params) {
   const mdxSource = await serialize(post.content, {
     mdxOptions: {
       development: false,
-      remarkPlugins: [],
+      remarkPlugins: [remarkGfm, remarkMath],
       rehypePlugins: [
         [rehypePrettyCode, options],
+        // idk why but ts likes to complain that this aint right even though it is
         // @ts-ignore
         [rehypeImgSize, { dir: 'public' }],
+        rehypeKatex,
       ],
     },
   });
