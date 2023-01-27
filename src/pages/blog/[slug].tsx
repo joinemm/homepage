@@ -46,7 +46,18 @@ export default function Post({ metadata, mdxSource }: Props) {
     <>
       <Head>
         <title>{`${metadata.title} | joinemm.dev`}</title>
-        <meta property="og:image" content={metadata.image} />
+        <meta name="description" content={metadata.excerpt} />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content={metadata.excerpt} key="twcard" />
+        <meta name="twitter:creator" content="Joinemm" key="twhandle" />
+
+        {/* Open Graph */}
+        <meta property="og:url" content={`https://joinemm.dev${router.asPath}`} key="ogurl" />
+        <meta property="og:image" content={`https://joinemm.dev${metadata.image}`} key="ogimage" />
+        <meta property="og:site_name" content="joinemm.dev" key="ogsitename" />
+        <meta property="og:title" content={metadata.title} key="ogtitle" />
+        <meta property="og:description" content={metadata.excerpt} key="ogdesc" />
       </Head>
       <Header />
       <article className="m-auto max-w-3xl px-4 pt-8">

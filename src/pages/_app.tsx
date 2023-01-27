@@ -37,6 +37,10 @@ export default function App({ Component, pageProps }: AppProps) {
           --header-font: ${input_font.style.fontFamily};
         }
       `}</style>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" key="viewport" />
+        <link rel="icon" href="/favicon.ico" key="favicon" />
+      </Head>
       <Component {...pageProps} />
     </>
   );
