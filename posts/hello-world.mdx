@@ -1,5 +1,5 @@
 ---
-title: 'Why you should let bayonetta step on you'
+title: 'Why bayonetta is pretty cool'
 excerpt: 'An extensive analysis.'
 image: '/assets/content/bayonetta.jpg'
 date: '2022-12-20'
@@ -22,36 +22,27 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Here is some code:
 
-```js {10} showLineNumbers
-export default function Post({ post }: Props) {
-  const router = useRouter();
-  if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />;
-  }
-  return (
-    <>
-      <Header />
-      {router.isFallback ? (
-        <h1>Loading…</h1> // notice how this line is highlighted!!!
-      ) : (
-        <>
-          <Head>
-            <title>{post.title} | joinemm.dev</title>
-            <meta property="og:image" content={post.image} />
-          </Head>
-          <article className={style.main}>
-            <div className={style.postHeader}>
-              <Link href="/blog">&lt;= All posts</Link>
-              <DateFormatter dateString={post.date}></DateFormatter>
-            </div>
-            <BlogPost post={post}></BlogPost>
-          </article>
-        </>
-      )}
-    </>
-  );
+```ts {5} showLineNumbers
+export async function getStaticProps({ params }: Params) {
+  const post = getPostBySlug(params.slug);
+  const mdxSource = await serialize(post.content, {
+    mdxOptions: {
+      development: false, // notice how this line is highlighted!
+      remarkPlugins: [remarkGfm, remarkMath],
+      rehypePlugins: [
+        [rehypePrettyCode, options],
+        // idk why but ts likes to complain that this aint right even though it is
+        // @ts-ignore
+        [rehypeImgSize, { dir: 'public' }],
+        rehypeKatex,
+      ],
+    },
+  });
+  return { props: { metadata: post.metadata, mdxSource } };
 }
 ```
+
+Here is a table:
 
 | name | value | how cool isit  |
 | ---- | ----- | -------------- |
@@ -59,21 +50,38 @@ export default function Post({ post }: Props) {
 | sis  | 2     | not that great |
 | man  | 3     | too formal     |
 
-How the line numbers work tho?
+Look at my awesome like button (you can find it next to the tags)
 
-```css
-pre > code[data-line-numbers] > .line::before {
-  counter-increment: line;
-  content: counter(line);
-  display: inline-block;
-  width: 2rem;
-  margin-right: 0.5em;
-  text-align: right;
-  color: gray;
-}
+```ts
+const LikeButton = ({ storageKey }: Props) => {
+  const [liked, setLiked] = useLocalStorage(storageKey, false);
+
+  const toggleLikeStatus = () => {
+    setLiked(!liked);
+  };
+
+  return (
+    <div>
+      {/* <p className="mr-2 inline-block text-sm">1</p> */}
+      <button onClick={toggleLikeStatus}>
+        {liked ? (
+          <HiHeart size={20} className="inline-block text-red-600" />
+        ) : (
+          <HiOutlineHeart size={20} className="inline-block" />
+        )}
+      </button>
+    </div>
+  );
+};
 ```
 
-Venenatis cras sed felis eget velit. Consectetur libero id faucibus nisl tincidunt. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Volutpat consequat mauris nunc congue nisi vitae. Id aliquet risus feugiat in ante metus dictum at tempor. Sed blandit libero volutpat sed cras. Sed odio morbi quis commodo odio aenean sed adipiscing. Velit euismod in pellentesque massa placerat. Mi bibendum neque egestas congue quisque egestas diam in arcu. Nisi lacus sed viverra tellus in. Nibh cras pulvinar mattis nunc sed. Luctus accumsan tortor posuere ac ut consequat semper viverra. Fringilla ut morbi tincidunt augue interdum velit euismod.
+List of things:
+
+- yes
+- cool
+- awesome
+
+> Venenatis cras sed felis eget velit. Consectetur libero id faucibus nisl tincidunt. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Volutpat consequat mauris nunc congue nisi vitae. Id aliquet risus feugiat in ante metus dictum at tempor. Sed blandit libero volutpat sed cras. Sed odio morbi quis commodo odio aenean sed adipiscing. Velit euismod in pellentesque massa placerat. Mi bibendum neque egestas congue quisque egestas diam in arcu. Nisi lacus sed viverra tellus in. Nibh cras pulvinar mattis nunc sed. Luctus accumsan tortor posuere ac ut consequat semper viverra. Fringilla ut morbi tincidunt augue interdum velit euismod.
 
 ## Lorem Ipsum
 
