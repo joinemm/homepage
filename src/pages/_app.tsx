@@ -2,6 +2,8 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import localFont from '@next/font/local';
 import Head from 'next/head';
+import { DefaultSeo } from 'next-seo';
+import config from '../../next-seo.config';
 
 const input_font = localFont({
   src: [
@@ -38,8 +40,8 @@ export default function App({ Component, pageProps }: AppProps) {
       `}</style>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" key="viewport" />
-        <link rel="icon" href="/favicon.ico" key="favicon" />
       </Head>
+      <DefaultSeo {...config} />
       <Component {...pageProps} />
     </>
   );

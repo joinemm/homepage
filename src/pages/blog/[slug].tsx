@@ -3,19 +3,18 @@ import ErrorPage from 'next/error';
 import Header from '../../components/header';
 import { getPostBySlug, getAllPosts } from '../../util/post-helpers';
 import { mdxSerialize } from '../../util/mdx';
-import Head from 'next/head';
 import DateFormatter from '../../components/date-formatter';
 import { ImArrowLeft2 } from 'react-icons/im';
-import { HiOutlineArrowNarrowUp } from 'react-icons/hi';
 import { MdDateRange } from 'react-icons/md';
 import PostData from '../../interfaces/post-data';
 import Image from 'next/image';
 import Link from 'next/link';
 import LikeButton from '../../components/like-button';
-import { getBaseurl } from '../../util/constants';
+import { DOMAIN } from '../../util/constants';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import MdxRenderer from '../../components/mdx-renderer';
 import ScrollUpButton from '../../components/scroll-up-button';
+import { ArticleJsonLd, NextSeo } from 'next-seo';
 
 type Props = {
   metadata: PostData;
@@ -32,21 +31,36 @@ export default function Post({ metadata, mdxSerialized }: Props) {
     <h1>Loading…</h1>
   ) : (
     <>
-      <Head>
-        <title>{`${metadata.title} | joinemm.dev`}</title>
-        <meta name="description" content={metadata.excerpt} />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content={metadata.excerpt} key="twcard" />
-        <meta name="twitter:creator" content="Joinemm" key="twhandle" />
-
-        {/* Open Graph */}
-        <meta property="og:url" content={`${getBaseurl()}${router.asPath}`} key="ogurl" />
-        <meta property="og:image" content={`${getBaseurl()}${metadata.image}`} key="ogimage" />
-        <meta property="og:site_name" content="joinemm.dev" key="ogsitename" />
-        <meta property="og:title" content={metadata.title} key="ogtitle" />
-        <meta property="og:description" content={metadata.excerpt} key="ogdesc" />
-      </Head>
+      <ArticleJsonLd
+        type="BlogPosting"
+        url={`${DOMAIN}/blog/${metadata.slug}`}
+        title="Joinemm's Blog"
+        images={[DOMAIN + metadata.image]}
+        datePublished={metadata.date}
+        authorName="Joinemm"
+        description="Welcome to my blog where I dump things from my brain."
+      />
+      <NextSeo
+        title={`${metadata.title} | Joinemm.dev`}
+        description={metadata.excerpt}
+        canonical={DOMAIN + router.asPath}
+        openGraph={{
+          title: metadata.title,
+          description: metadata.excerpt,
+          url: DOMAIN + router.asPath,
+          type: 'article',
+          article: {
+            publishedTime: metadata.date,
+            tags: metadata.tags,
+          },
+          images: [
+            {
+              url: `${DOMAIN}/${metadata.image}`,
+              alt: metadata.title,
+            },
+          ],
+        }}
+      />
       <Header />
       <article className="m-auto max-w-3xl px-4 pt-8">
         <div className="flex justify-between">
