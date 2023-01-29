@@ -60,6 +60,9 @@ export default function Post({ metadata, mdxSerialized }: Props) {
             },
           ],
         }}
+        twitter={{
+          cardType: 'summary_large_image',
+        }}
       />
       <Header />
       <article className="m-auto max-w-3xl px-4 pt-8">
