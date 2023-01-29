@@ -1,5 +1,5 @@
 import Header from '../../components/header';
-import { getAllPosts } from '../../api/post-helpers';
+import { getAllPosts } from '../../util/post-helpers';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';

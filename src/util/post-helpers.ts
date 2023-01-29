@@ -2,13 +2,18 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import { join } from 'path';
 import PostData from '../interfaces/post-data';
+const postsDirectory = join(process.cwd(), 'mdx/blog');
 
-const postsDirectory = join(process.cwd(), 'posts');
-
+/**
+ * Gets all blog post slugs
+ */
 export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
+/**
+ * Gets a blog post by slug
+ */
 export function getPostBySlug(slug: string) {
   const realSlug = slug.replace(/\.mdx$/, '');
   const fullPath = join(postsDirectory, `${realSlug}.mdx`);
@@ -21,19 +26,20 @@ export function getPostBySlug(slug: string) {
     title: data['title'] || 'No Title Specified',
     date: data['date'] || '',
     image: data['image'] || '',
-    author: data['author'] || 'No author specified',
     excerpt: data['excerpt'] || '...',
     tags: data['tags'] || [],
   };
 
   return { metadata, content };
 }
-
+/**
+ * Gets all blog posts sorted by date
+ */
 export function getAllPosts() {
   const slugs = getPostSlugs();
   const posts = slugs
     .map((slug) => getPostBySlug(slug))
-    .sort((post1, post2) => (post1.metadata.date > post2.metadata.date ? -1 : 1));
+    .sort((a, b) => (a.metadata.date > b.metadata.date ? -1 : 1));
 
   return posts;
 }

@@ -5,7 +5,7 @@ const NavMenu = () => {
     { label: 'home', href: '/' },
     { label: 'about', href: '/about' },
     { label: 'blog', href: '/blog' },
-    { label: 'github', href: '/github' },
+    { label: 'github', href: 'https://github.com/joinemm' },
     { label: 'cv', href: '/cv' },
   ];
   return (

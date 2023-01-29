@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import MobileMenu from './mobile-menu';
-import { Media } from '../api/media-context';
+import { Media } from '../util/media-context';
 import NavMenu from './nav-menu';
 
 const Header = () => {
@@ -10,7 +10,7 @@ const Header = () => {
         <header className="accent-border m-auto flex max-w-3xl justify-between border-b-4 p-4 text-center">
           <div className="flex items-center gap-4">
             <Image
-              src="/assets/avatar.png"
+              src="/assets/avatar.jpg"
               alt="Me"
               width={40}
               height={40}
@@ -30,7 +30,7 @@ const Header = () => {
         {/* calc is equal to 50% + half of main content width */}
         <header className="accent-border fixed right-[calc(50%+384px)] top-8 max-w-xs border-r-4 p-4 text-right">
           <Image
-            src="/assets/avatar.png"
+            src="/assets/avatar.jpg"
             alt="Me"
             width={100}
             height={100}

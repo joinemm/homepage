@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document';
-import { mediaStyles } from '../api/media-context';
+import { mediaStyles } from '../util/media-context';
 
 export default function Document() {
   return (

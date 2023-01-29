@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { MediaContextProvider } from '../api/media-context';
+import { MediaContextProvider } from '../util/media-context';
 import Link from 'next/link';
 
 export default function Home() {
