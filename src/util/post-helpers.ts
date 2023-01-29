@@ -23,10 +23,10 @@ export function getPostBySlug(slug: string) {
 
   const metadata: PostData = {
     slug: realSlug,
-    title: data['title'] || 'No Title Specified',
+    title: data['title'] || realSlug,
     date: data['date'] || '',
     image: data['image'] || '',
-    excerpt: data['excerpt'] || '...',
+    excerpt: data['excerpt'] || '',
     tags: data['tags'] || [],
   };
 
