@@ -15,6 +15,7 @@ import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import MdxRenderer from '../../components/mdx-renderer';
 import ScrollUpButton from '../../components/scroll-up-button';
 import { ArticleJsonLd, NextSeo } from 'next-seo';
+import Head from 'next/head';
 
 type Props = {
   metadata: PostData;
@@ -31,6 +32,12 @@ export default function Post({ metadata, mdxSerialized }: Props) {
     <h1>Loading…</h1>
   ) : (
     <>
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+        />
+      </Head>
       <ArticleJsonLd
         type="BlogPosting"
         url={`${DOMAIN}/blog/${metadata.slug}`}

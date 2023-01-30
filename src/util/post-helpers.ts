@@ -2,7 +2,7 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import { join } from 'path';
 import PostData from '../interfaces/post-data';
-const postsDirectory = join(process.cwd(), 'mdx/blog');
+const postsDirectory = join(process.cwd(), 'content/blog');
 
 /**
  * Gets all blog post slugs

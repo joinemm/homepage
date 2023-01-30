@@ -47,6 +47,7 @@ export default function Blog({ posts, tags }: Props) {
       </Head>
       <article className="m-auto mt-8 max-w-3xl px-4">
         <h1 className="pb-4 text-2xl font-bold">Blog.</h1>
+        <p>This is my blog where I write about random stuff.</p>
         <TagFilter tags={tags} activeTags={activeTags} tagSetter={setActiveTags} />
         {filterPosts(posts)}
       </article>

@@ -2,11 +2,11 @@ import Link from 'next/link';
 
 const NavMenu = () => {
   const links = [
-    { label: 'home', href: '/' },
     { label: 'about', href: '/about' },
     { label: 'blog', href: '/blog' },
+    { label: 'movies', href: '/movies' },
+    { label: 'gallery', href: '/gallery' },
     { label: 'github', href: 'https://github.com/joinemm' },
-    { label: 'cv', href: '/cv' },
   ];
   return (
     <ul className="items-center gap-8 md:flex xl:block">

@@ -26,6 +26,10 @@
   .accent-border {
     @apply border-[#f6c177];
   }
+
+  .invert-colors {
+    @apply bg-[#121212] text-white dark:bg-white dark:text-black;
+  }
 }
 
 /* make math bigger */
