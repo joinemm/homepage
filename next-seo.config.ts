@@ -20,7 +20,7 @@ const config: DefaultSeoProps = {
   },
   twitter: {
     handle: '@joinemm',
-    cardType: 'summary',
+    cardType: 'summary_large_image',
   },
 };
 
