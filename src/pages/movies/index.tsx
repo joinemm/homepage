@@ -28,50 +28,6 @@ interface ExtendedReview extends Review {
   imdbURL: string;
 }
 
-async function imdbApiMovieDetails(review: Review, isRetry = false) {
-  return await fetch(`https://imdb-api.tprojects.workers.dev/title/${review.imdbID}`)
-    .then(async (res) => {
-      return await res.json();
-    })
-    .then(async (data) => {
-      return {
-        ...review,
-        title: data.title,
-        type: data.contentType,
-        image: data.image,
-        year: data.year,
-        imdbURL: data.imdb,
-        genres: data.genre,
-      } as ExtendedReview;
-    })
-    .catch(async (err) => {
-      if (isRetry) {
-        console.log(err);
-        throw err;
-      }
-      return await imdbApiMovieDetails(review, true);
-    });
-}
-
-async function omdbMovieDetails(review: Review) {
-  const res = await fetch(
-    `https://www.omdbapi.com/?apikey=6be019fc&tomatoes=true&i=${review.imdbID}`,
-  );
-  const data = await res.json();
-  return {
-    ...review,
-    title: data.Title,
-    type: data.Type,
-    image: data.Poster,
-    year: data.Year,
-    imdbURL: `https://www.imdb.com/title/${review.imdbID}`,
-    tomatoURL: data.tomatoURL,
-    genres: data.Genre.split(',').map(function (item) {
-      return item.trim();
-    }),
-  } as ExtendedReview;
-}
-
 type SortingMethod = 'watched' | 'year' | 'rating' | 'title';
 
 const sortingMethods = [
@@ -93,6 +49,10 @@ const sortingMethods = [
   },
 ] as { key: SortingMethod; label: string }[];
 
+const TITLE = 'Movie Reviews | Joinemm.dev';
+const DESCRIPTION =
+  "I'm not a professional movie critic but here are my personal thoughts about some movies.";
+
 type Props = {
   reviews: ExtendedReview[];
 };
@@ -111,18 +71,17 @@ export default function Movies({ reviews }: Props) {
     <>
       <Header />
       <NextSeo
-        title="Movie Reviews | Joinemm.dev"
-        description="I'm not a professional movie critic but here are my personal thoughts about some movies."
+        title={TITLE}
+        description={DESCRIPTION}
         canonical={DOMAIN + '/movies'}
         openGraph={{
-          title: 'Movie Reviews | Joinemm.dev',
-          description:
-            "I'm not a professional movie critic but here are my personal thoughts about some movies.",
+          title: TITLE,
+          description: DESCRIPTION,
           url: DOMAIN + '/movies',
           images: [
             {
               url: `${DOMAIN}/assets/content/lego-movie.jpg`,
-              alt: 'Movie Reviews | Joinemm.dev',
+              alt: TITLE,
             },
           ],
         }}
@@ -133,10 +92,7 @@ export default function Movies({ reviews }: Props) {
       <div className="m-auto mt-8 max-w-3xl px-4">
         <h1 className="pb-4 text-2xl font-bold">Movie reviews.</h1>
 
-        <p className="mb-4">
-          I&apos;m not a professional movie critic but here are my personal thoughts about some
-          movies.
-        </p>
+        <p className="mb-4">{DESCRIPTION}</p>
         <div className="flex items-center gap-4 overflow-scroll pb-4">
           <button onClick={() => setAscending(!ascending)}>
             {ascending ? <TiArrowSortedUp size={26} /> : <TiArrowSortedDown size={26} />}
@@ -228,11 +184,8 @@ export default function Movies({ reviews }: Props) {
 }
 
 export const getStaticProps = async () => {
-  // delay to prevent the api dying
-  const delay = async (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const extendedReviews = await Promise.all(
-    rawReviews.map(async (review, index) => {
-      await delay(100 * index);
+    rawReviews.map(async (review) => {
       return await imdbApiMovieDetails(review);
     }),
   );
@@ -243,3 +196,21 @@ export const getStaticProps = async () => {
     },
   };
 };
+
+async function imdbApiMovieDetails(review: Review) {
+  return await fetch(`https://imdb-api.joinemm.workers.dev/title/${review.imdbID}`)
+    .then(async (res) => {
+      return await res.json();
+    })
+    .then(async (data) => {
+      return {
+        ...review,
+        title: data.title,
+        type: data.contentType,
+        image: data.image,
+        year: data.year,
+        imdbURL: data.imdb,
+        genres: data.genre,
+      } as ExtendedReview;
+    });
+}
