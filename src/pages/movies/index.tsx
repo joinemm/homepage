@@ -1,7 +1,6 @@
 import Header from '../../components/header';
-import Head from 'next/head';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ImStarEmpty, ImStarHalf, ImStarFull } from 'react-icons/im';
 import DateFormatter from '../../components/date-formatter';
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
@@ -61,11 +60,13 @@ export default function Movies({ reviews }: Props) {
   const [ascending, setAscending] = useState(false);
   const [sortingMethod, setSortingMethod] = useState<SortingMethod>('watched');
 
-  reviews.sort((a, b) =>
-    (ascending ? a[sortingMethod] < b[sortingMethod] : a[sortingMethod] > b[sortingMethod])
-      ? -1
-      : 1,
-  );
+  useEffect(() => {
+    reviews.sort((a, b) =>
+      (ascending ? a[sortingMethod] < b[sortingMethod] : a[sortingMethod] > b[sortingMethod])
+        ? -1
+        : 1,
+    );
+  }, [ascending, sortingMethod, reviews]);
 
   return (
     <>
@@ -198,19 +199,16 @@ export const getStaticProps = async () => {
 };
 
 async function imdbApiMovieDetails(review: Review) {
-  return await fetch(`https://imdb-api.joinemm.workers.dev/title/${review.imdbID}`)
-    .then(async (res) => {
-      return await res.json();
-    })
-    .then(async (data) => {
-      return {
-        ...review,
-        title: data.title,
-        type: data.contentType,
-        image: data.image,
-        year: data.year,
-        imdbURL: data.imdb,
-        genres: data.genre,
-      } as ExtendedReview;
-    });
+  const res = await fetch(`https://imdb-api.joinemm.workers.dev/title/${review.imdbID}`);
+  const data = await res.json();
+
+  return {
+    ...review,
+    title: data.title,
+    type: data.contentType,
+    image: data.image,
+    year: data.year,
+    imdbURL: data.imdb,
+    genres: data.genre,
+  } as ExtendedReview;
 }
