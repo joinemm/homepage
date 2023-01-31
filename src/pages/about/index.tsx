@@ -3,6 +3,7 @@ import Head from 'next/head';
 import MdxRenderer from '../../components/mdx-renderer';
 import { getMdxContent } from '../../util/mdx';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import Email from '../../components/encoded-email';
 
 type Props = {
   mdxAbout: MDXRemoteSerializeResult;
@@ -19,6 +20,9 @@ export default function About({ mdxAbout }: Props) {
         <h1 className="pb-4 text-2xl font-bold">About.</h1>
         <div className="prose dark:prose-invert">
           <MdxRenderer source={mdxAbout} />
+          <p className="pt-8">
+            Contact me: <Email encoded={'am9pbmVtbUBwbS5tZQ=='} />
+          </p>
         </div>
       </article>
     </>
