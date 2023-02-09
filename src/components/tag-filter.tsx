@@ -6,7 +6,7 @@ type Props = {
 
 const TagFilter = ({ tags, activeTags, tagSetter }: Props) => {
   return (
-    <div className="accent-border top-8 xl:fixed xl:left-[calc(50%+384px)] xl:max-w-xs xl:border-l-4 xl:p-4">
+    <div className="accent-border top-8 xl:fixed xl:left-[calc(50%+384px)] xl:mx-4 xl:max-w-xs xl:border-l-4 xl:px-6">
       <p className="xl:pb-4">Filter by tags:</p>
       <ul className="fg-secondary flex flex-wrap gap-x-2 xl:flex-col">
         {tags.map((tag) => (

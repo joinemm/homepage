@@ -56,7 +56,7 @@ export default function Blog({ posts, tags }: Props) {
 }
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts();
+  const allPosts = getAllPosts().filter((post) => !post.metadata.draft);
 
   return {
     props: {

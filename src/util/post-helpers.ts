@@ -28,6 +28,7 @@ export function getPostBySlug(slug: string) {
     image: data['image'] || '',
     excerpt: data['excerpt'] || '',
     tags: data['tags'] || [],
+    draft: data['draft'] || false,
   };
 
   return { metadata, content };

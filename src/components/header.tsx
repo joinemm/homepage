@@ -25,7 +25,7 @@ const Header = () => {
       </Media>
       <Media greaterThanOrEqual="md">
         {/* calc is equal to 50% + half of main content width */}
-        <header className="accent-border fixed right-[calc(50%+384px)] top-8 max-w-xs border-r-4 p-4 text-right">
+        <header className="accent-border fixed right-[calc(50%+384px)] top-8 mx-4 max-w-xs border-r-4 px-8 text-right">
           <Link href="/" className="text-3xl">
             <Image
               src={avatar}

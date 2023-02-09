@@ -5,6 +5,7 @@ type PostData = {
   image: string;
   date: string;
   tags: [string];
+  draft: boolean;
 };
 
 export default PostData;

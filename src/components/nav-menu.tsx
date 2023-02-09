@@ -4,9 +4,9 @@ const NavMenu = () => {
   const links = [
     { label: 'about', href: '/about' },
     { label: 'blog', href: '/blog' },
-    { label: 'movies', href: '/movies' },
-    { label: 'gallery', href: '/gallery' },
-    { label: 'github', href: 'https://github.com/joinemm' },
+    { label: 'reviews', href: '/reviews' },
+    // { label: 'gallery', href: '/gallery' },
+    { label: 'github', href: 'https://git.joinemm.dev' },
   ];
   return (
     <ul className="items-center gap-8 md:flex xl:block">
