@@ -8,6 +8,7 @@ import { Media } from '../../util/media-context';
 import rawReviews from '../../../content/reviews.json';
 import { NextSeo } from 'next-seo';
 import { DOMAIN } from '../../util/constants';
+import MainContainer from '../../components/main-container';
 
 type Review = {
   title?: string;
@@ -70,7 +71,6 @@ export default function Movies({ reviews }: Props) {
 
   return (
     <>
-      <Header />
       <NextSeo
         title={TITLE}
         description={DESCRIPTION}
@@ -90,21 +90,20 @@ export default function Movies({ reviews }: Props) {
           cardType: 'summary_large_image',
         }}
       />
-      <div className="m-auto mt-8 max-w-3xl px-4">
-        <h1 className="pb-4 text-2xl font-bold">Movie reviews.</h1>
-
+      <MainContainer>
+        <h1 className="pb-4 text-3xl font-bold">Movie reviews.</h1>
         <p className="mb-4">{DESCRIPTION}</p>
         <div className="flex items-center gap-4 overflow-scroll pb-4">
           <button onClick={() => setAscending(!ascending)}>
             {ascending ? <TiArrowSortedUp size={26} /> : <TiArrowSortedDown size={26} />}
           </button>
-          <div className="fg-secondary flex gap-3">
+          <div className="flex gap-6">
             {sortingMethods.map(({ key, label }) => {
               return (
                 <button
                   key={key}
-                  className={`rounded-full border px-3 pb-1 text-sm ${
-                    sortingMethod === key ? 'invert-colors' : ''
+                  className={`hover:fg-bright underline underline-offset-4 ${
+                    sortingMethod === key ? 'accent' : ''
                   }`}
                   onClick={() => setSortingMethod(key)}
                 >
@@ -118,68 +117,39 @@ export default function Movies({ reviews }: Props) {
           </Media>
         </div>
         {reviews.map((review) => (
-          <article key={review.imdbID} className="mb-4 flex">
-            <div className="relative mr-4 h-36 w-24 flex-shrink-0 overflow-hidden rounded-sm">
+          <article key={review.imdbID} className="mb-6 flex">
+            <div className="relative mr-4 mt-1 h-36 w-24 flex-shrink-0 overflow-hidden rounded-md">
               <Image src={review.image} alt={review.title} fill={true} sizes="96px" />
             </div>
             <div className="flex-grow">
               <div className="flex flex-wrap items-center gap-x-2">
-                <h3 className="text-xl font-bold">{review.title}</h3>
+                <h3 className="fg-bright text-xl font-bold">{review.title}</h3>
                 <span className="fg-secondary text-sm font-normal">({review.year})</span>
                 <Media greaterThanOrEqual="sm" className="ml-auto">
-                  <DateFormatter
-                    className="fg-secondary ml-auto text-sm"
-                    dateString={review.watched}
-                  />
+                  <div className="flex gap-1 text-yellow">
+                    {[0, 2, 4, 6, 8].map((n) => {
+                      return review.rating - n >= 2 ? (
+                        <ImStarFull key={n} />
+                      ) : review.rating - n >= 1 ? (
+                        <ImStarHalf key={n} />
+                      ) : (
+                        <ImStarEmpty key={n} />
+                      );
+                    })}
+                  </div>
                 </Media>
               </div>
-
-              <div className="my-1 flex flex-row flex-wrap items-center gap-x-2">
-                <div className="flex gap-1 text-yellow-400">
-                  {[0, 2, 4, 6, 8].map((n) => {
-                    return review.rating - n >= 2 ? (
-                      <ImStarFull key={n} />
-                    ) : review.rating - n >= 1 ? (
-                      <ImStarHalf key={n} />
-                    ) : (
-                      <ImStarEmpty key={n} />
-                    );
-                  })}
-                </div>
-
-                <span className="text-sm">{review.rating}</span>
-
-                {review.genres && (
-                  <Media greaterThanOrEqual="sm" className="flex gap-2 text-blue-300 md:ml-2">
-                    {review.genres.map((genre) => (
-                      <span key={genre}>#{genre}</span>
-                    ))}
-                  </Media>
-                )}
-                <Media greaterThanOrEqual="sm" className="ml-auto flex gap-2">
-                  {review.imdbURL && (
-                    <a
-                      href={review.imdbURL}
-                      className="rounded-md border border-yellow-400 px-1 text-sm"
-                    >
-                      IMDb
-                    </a>
-                  )}
-                  {review.tomatoURL && (
-                    <a
-                      href={review.tomatoURL}
-                      className="rounded-md border border-green-600 px-1 text-sm"
-                    >
-                      RT
-                    </a>
-                  )}
-                </Media>
-              </div>
-              <p className="fg-secondary italic">{review.summary}</p>
+              <p className="leading-5">
+                {review.summary}{' '}
+                <span className="fg-muted">
+                  -{' '}
+                  <DateFormatter className="fg-muted ml-auto text-sm" dateString={review.watched} />
+                </span>
+              </p>
             </div>
           </article>
         ))}
-      </div>
+      </MainContainer>
     </>
   );
 }

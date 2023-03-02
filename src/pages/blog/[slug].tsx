@@ -16,6 +16,7 @@ import MdxRenderer from '../../components/mdx-renderer';
 import ScrollUpButton from '../../components/scroll-up-button';
 import { ArticleJsonLd, NextSeo } from 'next-seo';
 import Head from 'next/head';
+import MainContainer from '../../components/main-container';
 
 type Props = {
   metadata: PostData;
@@ -71,19 +72,8 @@ export default function Post({ metadata, mdxSerialized }: Props) {
           cardType: 'summary_large_image',
         }}
       />
-      <Header />
-      <article className="m-auto max-w-3xl px-4 pt-8">
-        <div className="flex justify-between">
-          <Link href="/blog" className="flex items-center gap-2 underline-offset-4 hover:underline">
-            <ImArrowLeft2 size={20} className="inline-block" />
-            <p>All posts</p>
-          </Link>
-          <div className="flex items-center gap-2">
-            <DateFormatter dateString={metadata.date}></DateFormatter>{' '}
-            <MdDateRange size={20} className="inline-block" />
-          </div>
-        </div>
-        <div className="pt-4">
+      <MainContainer>
+        <div className="pb-8">
           {metadata.image ? (
             <div className="">
               <Image
@@ -95,9 +85,8 @@ export default function Post({ metadata, mdxSerialized }: Props) {
               ></Image>
             </div>
           ) : null}
-          <h1 className="mt-4 border-b-2 pb-4 text-4xl font-bold">{metadata.title}</h1>
           <div className="flex justify-between">
-            <ul className="mt-1 mb-8 flex gap-3">
+            <ul className="mt-1 flex gap-3">
               {metadata.tags
                 ? metadata.tags.map((tag) => (
                     <li key={tag}>
@@ -113,9 +102,13 @@ export default function Post({ metadata, mdxSerialized }: Props) {
             </ul>
             <LikeButton storageKey={`liked-blog-post-${metadata.slug}`} />
           </div>
-          <MdxRenderer source={mdxSerialized} />
+          <h1 className="fg-bright text-[2.5rem] font-bold leading-10 tracking-tight">
+            {metadata.title}
+          </h1>
+          <DateFormatter className="fg-muted" dateString={metadata.date}></DateFormatter>{' '}
         </div>
-      </article>
+        <MdxRenderer source={mdxSerialized} />
+      </MainContainer>
       <footer className="py-32 text-center">
         <ScrollUpButton />
       </footer>

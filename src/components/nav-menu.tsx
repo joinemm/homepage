@@ -1,6 +1,10 @@
 import Link from 'next/link';
 
-const NavMenu = () => {
+type Props = {
+  className?: string;
+};
+
+const NavMenu = ({ className = '' }: Props) => {
   const links = [
     { label: 'about', href: '/about' },
     { label: 'blog', href: '/blog' },
@@ -9,10 +13,10 @@ const NavMenu = () => {
     { label: 'github', href: 'https://git.joinemm.dev' },
   ];
   return (
-    <ul className="items-center gap-8 md:flex xl:block">
+    <ul className={'flex items-center gap-4 ' + className}>
       {links.map((link) => (
-        <li key={link.label} className="py-2 ">
-          <Link className="underline-offset-4 hover:underline" href={link.href}>
+        <li key={link.label} className="">
+          <Link className="hover:fg-bright underline underline-offset-4" href={link.href}>
             {link.label}
           </Link>
         </li>

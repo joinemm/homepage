@@ -18,7 +18,7 @@ const LikeButton = ({ storageKey }: Props) => {
       {/* <p className="mr-2 inline-block text-sm">1</p> */}
       <button onClick={toggleLikeStatus}>
         {liked ? (
-          <HiHeart size={20} className="inline-block text-red-600" />
+          <HiHeart size={20} className="inline-block text-red" />
         ) : (
           <HiOutlineHeart size={20} className="inline-block" />
         )}

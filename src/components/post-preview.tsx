@@ -9,14 +9,16 @@ type Props = {
 
 const PostPreview = ({ post }: Props) => {
   return (
-    <article className="relative my-6 flex items-baseline border-cyan-500 max-xl:border-x-4 max-xl:px-4">
+    <article className="relative my-2 flex items-baseline border-cyan-500 max-xl:border-x-4 max-xl:px-4">
+      <div className="flex-shrink-0 flex-grow-0 basis-28">
+        <DateFormatter className="fg-secondary text-sm" dateString={post.date} formatter="LLL dd" />
+      </div>
       <div className="flex-grow">
-        <Link href={`/blog/${post.slug}`} className="text-xl tracking-wide hover:underline">
+        <Link href={`/blog/${post.slug}`} className="hover:fg-bright underline underline-offset-4">
           {post.title}
         </Link>
 
-        <div className="flex flex-wrap gap-x-4">
-          <DateFormatter className="fg-secondary text-sm" dateString={post.date} />
+        {/* <div className="flex flex-wrap gap-x-4">
           <ul className="flex flex-wrap gap-x-2">
             {post.tags
               ? post.tags.map((tag) => (
@@ -26,10 +28,7 @@ const PostPreview = ({ post }: Props) => {
                 ))
               : null}
           </ul>
-        </div>
-      </div>
-      <div className="max-md:hidden">
-        <LikeButton storageKey={`liked-blog-post-${post.slug}`} />
+        </div> */}
       </div>
     </article>
   );

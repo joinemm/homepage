@@ -3,7 +3,7 @@ import { mediaStyles } from '../util/media-context';
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="en" className="text-[16px]">
       <Head>
         <style type="text/css" dangerouslySetInnerHTML={{ __html: mediaStyles }} />
       </Head>

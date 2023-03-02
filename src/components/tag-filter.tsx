@@ -6,30 +6,30 @@ type Props = {
 
 const TagFilter = ({ tags, activeTags, tagSetter }: Props) => {
   return (
-    <div className="accent-border top-8 xl:fixed xl:left-[calc(50%+384px)] xl:mx-4 xl:max-w-xs xl:border-l-4 xl:px-6">
-      <p className="xl:pb-4">Filter by tags:</p>
-      <ul className="fg-secondary flex flex-wrap gap-x-2 xl:flex-col">
-        {tags.map((tag) => (
-          <li key={tag}>
-            <a
-              className={
-                'cursor-pointer select-none ' +
-                (activeTags.includes(tag) ? 'accent underline underline-offset-4' : 'hover:accent')
+    <ul className="flex flex-wrap gap-x-2 pt-4">
+      <p className="">Tags:</p>
+      {tags.map((tag) => (
+        <li key={tag}>
+          <a
+            className={
+              'cursor-pointer select-none ' +
+              (activeTags.includes(tag)
+                ? 'accent underline underline-offset-4'
+                : 'hover:accent fg-muted ')
+            }
+            onClick={() => {
+              if (activeTags.includes(tag)) {
+                tagSetter(activeTags.filter((t) => t != tag));
+              } else {
+                tagSetter(activeTags.concat(tag));
               }
-              onClick={() => {
-                if (activeTags.includes(tag)) {
-                  tagSetter(activeTags.filter((t) => t != tag));
-                } else {
-                  tagSetter(activeTags.concat(tag));
-                }
-              }}
-            >
-              #{tag}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+            }}
+          >
+            #{tag}
+          </a>
+        </li>
+      ))}
+    </ul>
   );
 };
 

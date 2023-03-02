@@ -6,6 +6,8 @@ import { useRouter } from 'next/router';
 import PostData from '../../interfaces/post-data';
 import PostPreview from '../../components/post-preview';
 import TagFilter from '../../components/tag-filter';
+import MainContainer from '../../components/main-container';
+import { parseISO } from 'date-fns';
 
 type Props = {
   posts: [PostData];
@@ -28,29 +30,50 @@ export default function Blog({ posts, tags }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
-  const filterPosts = (posts: [PostData]) => {
+  const filterPosts = (posts: PostData[]) => {
     const results = posts.filter(
       (post) => activeTags.length == 0 || activeTags.every((t) => post.tags.includes(t)),
     );
-    return results.length > 0 ? (
-      results.map((post) => <PostPreview post={post} key={post.slug} />)
-    ) : (
-      <p className="pt-16 text-center">{shrug}</p>
-    );
+    return results;
+  };
+
+  const groupByYear = (posts: PostData[]) => {
+    const years = posts.reduce((group, post) => {
+      const year = parseISO(post.date).getFullYear().toString();
+      group[year] = group[year] ?? [];
+      group[year].push(post);
+      return group;
+    }, {});
+
+    return Object.keys(years)
+      .map((year) => {
+        return {
+          year: year,
+          posts: years[year] as PostData[],
+        };
+      })
+      .reverse();
   };
 
   return (
     <>
-      <Header />
       <Head>
         <title>Blog | joinemm.dev</title>
       </Head>
-      <article className="m-auto mt-8 max-w-3xl px-4">
-        <h1 className="pb-4 text-2xl font-bold">Blog.</h1>
-        <p>This is my blog where I write about random stuff.</p>
+      <MainContainer>
+        <h1 className="text-3xl font-bold">Blog.</h1>
         <TagFilter tags={tags} activeTags={activeTags} tagSetter={setActiveTags} />
-        {filterPosts(posts)}
-      </article>
+        {groupByYear(filterPosts(posts)).map(({ year, posts }) => {
+          return (
+            <div key={year} className="py-4">
+              <p className="fg-bright text-sm font-bold">{year}</p>
+              {posts.map((post) => (
+                <PostPreview post={post} key={post.slug} />
+              ))}
+            </div>
+          );
+        })}
+      </MainContainer>
     </>
   );
 }

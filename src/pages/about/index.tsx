@@ -4,6 +4,7 @@ import MdxRenderer from '../../components/mdx-renderer';
 import { getMdxContent } from '../../util/mdx';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import Email from '../../components/encoded-email';
+import MainContainer from '../../components/main-container';
 
 type Props = {
   mdxAbout: MDXRemoteSerializeResult;
@@ -12,19 +13,18 @@ type Props = {
 export default function About({ mdxAbout }: Props) {
   return (
     <>
-      <Header />
       <Head>
         <title>About | joinemm.dev</title>
       </Head>
-      <article className="m-auto mt-8 max-w-3xl px-4">
-        <h1 className="pb-4 text-2xl font-bold">About.</h1>
+      <MainContainer>
+        <h1 className="pb-4 text-3xl font-bold">About.</h1>
         <div className="prose dark:prose-invert">
           <MdxRenderer source={mdxAbout} />
           <p className="pt-8">
             Contact me: <Email encoded={'am9pbmVtbUBwbS5tZQ=='} />
           </p>
         </div>
-      </article>
+      </MainContainer>
     </>
   );
 }
