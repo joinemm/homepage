@@ -1,3 +1,5 @@
+import { FaTags } from 'react-icons/fa';
+
 type Props = {
   tags: string[];
   activeTags: string[];
@@ -7,7 +9,9 @@ type Props = {
 const TagFilter = ({ tags, activeTags, tagSetter }: Props) => {
   return (
     <ul className="flex flex-wrap gap-x-2 pt-4">
-      <p className="">Tags:</p>
+      <div className="my-auto">
+        <FaTags />
+      </div>
       {tags.map((tag) => (
         <li key={tag}>
           <a

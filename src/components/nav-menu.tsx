@@ -6,9 +6,9 @@ type Props = {
 
 const NavMenu = ({ className = '' }: Props) => {
   const links = [
-    { label: 'about', href: '/about' },
     { label: 'blog', href: '/blog' },
     { label: 'reviews', href: '/reviews' },
+    { label: 'about', href: '/about' },
     // { label: 'gallery', href: '/gallery' },
     { label: 'github', href: 'https://git.joinemm.dev' },
   ];

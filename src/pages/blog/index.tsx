@@ -66,7 +66,7 @@ export default function Blog({ posts, tags }: Props) {
         {groupByYear(filterPosts(posts)).map(({ year, posts }) => {
           return (
             <div key={year} className="py-4">
-              <p className="fg-bright text-sm font-bold">{year}</p>
+              <p className="fg-muted text-sm font-bold">{year}</p>
               {posts.map((post) => (
                 <PostPreview post={post} key={post.slug} />
               ))}

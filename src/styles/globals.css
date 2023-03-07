@@ -12,7 +12,7 @@
   }
 
   .fg-bright {
-    @apply text-black dark:text-[#e5e5f8];
+    @apply text-[#374151] dark:text-[#e5e5f8];
   }
 
   .fg-primary {
@@ -20,23 +20,15 @@
   }
 
   .fg-muted {
-    @apply text-[#414868] dark:text-[#414868];
+    @apply text-[#a9b1d6] dark:text-[#51597e];
   }
 
   .accent {
     @apply text-[#e0af68];
   }
 
-  .accent-border {
-    @apply border-[#e0af68];
-  }
-
   .muted-border {
     @apply border-[#414868] dark:border-[#414868];
-  }
-
-  .invert-colors {
-    @apply bg-[#121212] text-white dark:bg-white dark:text-black;
   }
 }
 
@@ -45,15 +37,25 @@
   font-size: 1.75em;
 }
 
-/* this fixes codeblock formatting */
-/*
-pre .line {
-  padding-left: 1.4rem;
-}
-*/
-
 .line.highlighted {
   background-color: rgba(175, 175, 255, 0.15);
   width: 100%;
   display: inline-block;
+}
+
+/* Works on Firefox */
+pre {
+  scrollbar-width: auto;
+  scrollbar-color: #c0caf5 var(--tw-prose-pre-bg);
+}
+
+/* Works on Chrome, Edge, and Safari */
+pre::-webkit-scrollbar-track {
+  background: orange;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background-color: blue;
+  border-radius: 20px;
+  border: 3px solid orange;
 }

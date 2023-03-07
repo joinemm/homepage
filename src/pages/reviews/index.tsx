@@ -53,6 +53,18 @@ const TITLE = 'Movie Reviews | Joinemm.dev';
 const DESCRIPTION =
   "I'm not a professional movie critic but here are my personal thoughts about some movies.";
 
+const sortReviews = (
+  reviews: ExtendedReview[],
+  ascending: boolean,
+  sortingMethod: SortingMethod,
+) => {
+  reviews.sort((a, b) =>
+    (ascending ? a[sortingMethod] < b[sortingMethod] : a[sortingMethod] > b[sortingMethod])
+      ? -1
+      : 1,
+  );
+};
+
 type Props = {
   reviews: ExtendedReview[];
 };
@@ -62,11 +74,7 @@ export default function Movies({ reviews }: Props) {
   const [sortingMethod, setSortingMethod] = useState<SortingMethod>('watched');
 
   useEffect(() => {
-    reviews.sort((a, b) =>
-      (ascending ? a[sortingMethod] < b[sortingMethod] : a[sortingMethod] > b[sortingMethod])
-        ? -1
-        : 1,
-    );
+    sortReviews(reviews, ascending, sortingMethod);
   }, [ascending, sortingMethod, reviews]);
 
   return (
@@ -119,25 +127,25 @@ export default function Movies({ reviews }: Props) {
         {reviews.map((review) => (
           <article key={review.imdbID} className="mb-6 flex">
             <div className="relative mr-4 mt-1 h-36 w-24 flex-shrink-0 overflow-hidden rounded-md">
-              <Image src={review.image} alt={review.title} fill={true} sizes="96px" />
+              <Image src={review.image} alt="x" fill={true} sizes="96px" />
             </div>
             <div className="flex-grow">
               <div className="flex flex-wrap items-center gap-x-2">
-                <h3 className="fg-bright text-xl font-bold">{review.title}</h3>
-                <span className="fg-secondary text-sm font-normal">({review.year})</span>
-                <Media greaterThanOrEqual="sm" className="ml-auto">
-                  <div className="flex gap-1 text-yellow">
-                    {[0, 2, 4, 6, 8].map((n) => {
-                      return review.rating - n >= 2 ? (
-                        <ImStarFull key={n} />
-                      ) : review.rating - n >= 1 ? (
-                        <ImStarHalf key={n} />
-                      ) : (
-                        <ImStarEmpty key={n} />
-                      );
-                    })}
-                  </div>
-                </Media>
+                <h3 className="fg-bright text-xl font-bold leading-5">
+                  {review.title}{' '}
+                  <span className="fg-muted h-full text-[0.9rem]">({review.year})</span>
+                </h3>
+                <div className=" flex w-full gap-1 text-yellow md:ml-auto md:w-auto">
+                  {[0, 2, 4, 6, 8].map((n) => {
+                    return review.rating - n >= 2 ? (
+                      <ImStarFull key={n} />
+                    ) : review.rating - n >= 1 ? (
+                      <ImStarHalf key={n} />
+                    ) : (
+                      <ImStarEmpty key={n} />
+                    );
+                  })}
+                </div>
               </div>
               <p className="leading-5">
                 {review.summary}{' '}
@@ -161,6 +169,9 @@ export const getStaticProps = async () => {
     }),
   );
 
+  // sort reviews for initial page load
+  sortReviews(extendedReviews, false, 'watched');
+
   return {
     props: {
       reviews: extendedReviews,
@@ -169,16 +180,27 @@ export const getStaticProps = async () => {
 };
 
 async function imdbApiMovieDetails(review: Review) {
-  const res = await fetch(`https://imdb-api.joinemm.workers.dev/title/${review.imdbID}`);
-  const data = await res.json();
-
-  return {
-    ...review,
-    title: data.title,
-    type: data.contentType,
-    image: data.image,
-    year: data.year,
-    imdbURL: data.imdb,
-    genres: data.genre,
-  } as ExtendedReview;
+  //   const api_url = 'https://imdb-api.joinemm.workers.dev';
+  const api_url = 'https://imdb-api.projects.thetuhin.com';
+  return await fetch(`${api_url}/title/${review.imdbID}`)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return {
+        ...review,
+        title: data.title,
+        type: data.contentType,
+        image: data.image,
+        year: data.year,
+        imdbURL: data.imdb,
+        genres: data.genre,
+      } as ExtendedReview;
+    })
+    .catch((error) => {
+      console.log(error);
+      return {
+        ...review,
+      } as ExtendedReview;
+    });
 }

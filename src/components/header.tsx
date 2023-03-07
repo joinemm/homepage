@@ -8,7 +8,7 @@ const avatar = '/assets/avatar.jpg';
 
 const Header = () => {
   return (
-    <header className="muted-border m-auto mb-4 flex max-w-3xl justify-between border-b-2 py-4 text-center">
+    <header className="muted-border m-auto mb-4 flex max-w-3xl justify-between border-b-2 pb-4 text-center">
       <Link href="/" className="flex items-center gap-4">
         {/* <Image src={avatar} alt="Me" width={50} height={50} className="rounded-full" /> */}
         <div className="text-left">
