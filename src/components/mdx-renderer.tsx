@@ -4,6 +4,7 @@ import CodeBlock from './codeblock';
 import Aside from './aside';
 import Note from './note';
 import Email from './encoded-email';
+import QuoteAuthor from './quote-author';
 
 type Props = {
   source: MDXRemoteSerializeResult;
@@ -28,6 +29,7 @@ const components = {
   Aside: Aside,
   Note: Note,
   Email: Email,
+  QuoteAuthor: QuoteAuthor,
 };
 
 const MdxRenderer = ({ source }: Props) => {

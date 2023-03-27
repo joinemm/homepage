@@ -102,7 +102,7 @@ export default function Post({ metadata, mdxSerialized }: Props) {
             </ul>
             <LikeButton storageKey={`liked-blog-post-${metadata.slug}`} />
           </div>
-          <h1 className="fg-bright text-[2.5rem] font-bold leading-10 tracking-tight">
+          <h1 className="fg-bright my-2 text-[2.5rem] font-bold leading-10 tracking-tight">
             {metadata.title}
           </h1>
           <DateFormatter className="fg-muted" dateString={metadata.date}></DateFormatter>{' '}

@@ -4,7 +4,7 @@
 
 @layer utilities {
   .bg-primary {
-    @apply bg-white dark:bg-[#1a1b26];
+    @apply bg-[#ffffff] dark:bg-[#1a1b26];
   }
 
   .bg-secondary {

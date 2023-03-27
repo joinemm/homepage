@@ -17,6 +17,7 @@ module.exports = {
       red: '#f7768e',
       darkgrey: '#414868',
       white: '#e5e5f8',
+      lightgrey: '#636c95',
     },
     extend: {
       typography: (theme) => ({
@@ -31,7 +32,7 @@ module.exports = {
             '--tw-prose-counters': theme('colors.light_text'),
             '--tw-prose-bullets': theme('colors.light_text'),
             '--tw-prose-hr': theme('colors.light_text'),
-            '--tw-prose-quotes': theme('colors.darkgrey'),
+            '--tw-prose-quotes': theme('colors.lightgrey'),
             '--tw-prose-quote-borders': theme('colors.transparent'),
             '--tw-prose-captions': theme('colors.light_text'),
             '--tw-prose-code': theme('colors.white'),
@@ -47,7 +48,7 @@ module.exports = {
             '--tw-prose-invert-counters': theme('colors.dark_text'),
             '--tw-prose-invert-bullets': theme('colors.dark_text'),
             '--tw-prose-invert-hr': theme('colors.darkgrey'),
-            '--tw-prose-invert-quotes': theme('colors.blue'),
+            '--tw-prose-invert-quotes': theme('colors.lightgrey'),
             '--tw-prose-invert-quote-borders': theme('colors.transparent'),
             '--tw-prose-invert-captions': theme('colors.dark_text'),
             '--tw-prose-invert-code': theme('colors.white'),

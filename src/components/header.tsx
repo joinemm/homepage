@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import MobileMenu from './mobile-menu';
 import { Media } from '../util/media-context';
 import NavMenu from './nav-menu';
