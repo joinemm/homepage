@@ -1,21 +1,21 @@
-import Header from '../../components/header';
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ImStarEmpty, ImStarHalf, ImStarFull } from 'react-icons/im';
 import DateFormatter from '../../components/date-formatter';
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
 import { Media } from '../../util/media-context';
-import rawReviews from '../../../content/reviews.json';
 import { NextSeo } from 'next-seo';
 import { DOMAIN } from '../../util/constants';
 import MainContainer from '../../components/main-container';
+import { strapiFetchAll } from '../../util/strapi';
 
 type Review = {
+  id: number;
   title?: string;
   rating: number;
   summary?: string;
   imdbID: string;
-  watched: string;
+  date: string;
 };
 
 interface ExtendedReview extends Review {
@@ -28,11 +28,11 @@ interface ExtendedReview extends Review {
   imdbURL: string;
 }
 
-type SortingMethod = 'watched' | 'year' | 'rating' | 'title';
+type SortingMethod = 'date' | 'year' | 'rating' | 'title';
 
 const sortingMethods = [
   {
-    key: 'watched',
+    key: 'dare',
     label: 'Recent',
   },
   {
@@ -73,7 +73,7 @@ type Props = {
 export default function Movies({ reviews }: Props) {
   const [reviewSorted, setReviewSorted] = useState(reviews);
   const [ascending, setAscending] = useState(false);
-  const [sortingMethod, setSortingMethod] = useState<SortingMethod>('watched');
+  const [sortingMethod, setSortingMethod] = useState<SortingMethod>('date');
 
   useEffect(() => {
     console.log('sorting');
@@ -128,9 +128,9 @@ export default function Movies({ reviews }: Props) {
           </Media>
         </div>
         {reviewSorted.map((review) => (
-          <article key={review.imdbID} className="mb-6 flex">
+          <article key={review.id} className="mb-6 flex">
             <div className="relative mr-4 mt-1 h-36 w-24 flex-shrink-0 overflow-hidden rounded-md">
-              <Image src={review.image} alt="x" fill={true} sizes="96px" />
+              <Image src={review.image} alt={review.title} fill={true} sizes="96px" />
             </div>
             <div className="flex-grow">
               <div className="flex flex-wrap items-center gap-x-2">
@@ -153,8 +153,7 @@ export default function Movies({ reviews }: Props) {
               <p className="leading-5">
                 {review.summary}{' '}
                 <span className="fg-muted">
-                  -{' '}
-                  <DateFormatter className="fg-muted ml-auto text-sm" dateString={review.watched} />
+                  - <DateFormatter className="fg-muted ml-auto text-sm" dateString={review.date} />
                 </span>
               </p>
             </div>
@@ -166,6 +165,8 @@ export default function Movies({ reviews }: Props) {
 }
 
 export const getStaticProps = async () => {
+  const rawReviews = await strapiFetchAll('movie-reviews');
+
   const extendedReviews = await Promise.all(
     rawReviews.map(async (review) => {
       return await imdbApiMovieDetails(review);
@@ -174,13 +175,12 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      reviews: sortReviews(extendedReviews, false, 'watched'),
+      reviews: extendedReviews,
     },
   };
 };
 
 async function imdbApiMovieDetails(review: Review) {
-  //   const api_url = 'https://imdb-api.joinemm.workers.dev';
   const api_url = 'https://imdb-api.projects.thetuhin.com';
   return await fetch(`${api_url}/title/${review.imdbID}`)
     .then((response) => {
