@@ -1,6 +1,6 @@
 import Header from '../../components/header';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ImStarEmpty, ImStarHalf, ImStarFull } from 'react-icons/im';
 import DateFormatter from '../../components/date-formatter';
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
@@ -58,11 +58,12 @@ const sortReviews = (
   ascending: boolean,
   sortingMethod: SortingMethod,
 ) => {
-  reviews.sort((a, b) =>
+  const sorted = [...reviews].sort((a, b) =>
     (ascending ? a[sortingMethod] < b[sortingMethod] : a[sortingMethod] > b[sortingMethod])
       ? -1
       : 1,
   );
+  return sorted;
 };
 
 type Props = {
@@ -70,11 +71,13 @@ type Props = {
 };
 
 export default function Movies({ reviews }: Props) {
+  const [reviewSorted, setReviewSorted] = useState(reviews);
   const [ascending, setAscending] = useState(false);
   const [sortingMethod, setSortingMethod] = useState<SortingMethod>('watched');
 
   useEffect(() => {
-    sortReviews(reviews, ascending, sortingMethod);
+    console.log('sorting');
+    setReviewSorted(sortReviews(reviews, ascending, sortingMethod));
   }, [ascending, sortingMethod, reviews]);
 
   return (
@@ -121,10 +124,10 @@ export default function Movies({ reviews }: Props) {
             })}
           </div>
           <Media greaterThanOrEqual="sm" className="ml-auto">
-            <p>({reviews.length})</p>
+            <p>({reviewSorted.length})</p>
           </Media>
         </div>
-        {reviews.map((review) => (
+        {reviewSorted.map((review) => (
           <article key={review.imdbID} className="mb-6 flex">
             <div className="relative mr-4 mt-1 h-36 w-24 flex-shrink-0 overflow-hidden rounded-md">
               <Image src={review.image} alt="x" fill={true} sizes="96px" />
@@ -169,12 +172,9 @@ export const getStaticProps = async () => {
     }),
   );
 
-  // sort reviews for initial page load
-  sortReviews(extendedReviews, false, 'watched');
-
   return {
     props: {
-      reviews: extendedReviews,
+      reviews: sortReviews(extendedReviews, false, 'watched'),
     },
   };
 };

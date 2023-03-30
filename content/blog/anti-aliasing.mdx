@@ -19,7 +19,9 @@ A very simple way of visualizing it is like trying to make a smooth 45° line wi
 
 #### = Supersampling Anti-Aliasing
 
-This method essentially renders the frame at a higher resolution internally in order to gather more data for the pixels, which it then uses to smooth these out. More specifically, it samples these pixels multiple times to calculate an average for said pixel, which is what it will then use for the actual rendered frame. SSAA is essentially a more intensive but also more extensive method than MSAA, although both operate using the same principle, just with differing implementation. You can imagine this as watching a 4K video on a 1080p screen, the original 4K frame is downscaled to your 1080p viewport, however since the 4K frame has far more pixels, it has far more data to work with when trying to smooth out aliasing. In that sense, SSAA is both the simplest and the most intensive form of anti-aliasing.
+This method essentially renders the frame at a higher resolution internally in order to gather more data for the pixels, which it then uses to smooth these out. More specifically, it samples these pixels multiple times to calculate an average for said pixel, which is what it will then use for the actual rendered frame. SSAA is essentially a more intensive but also more extensive method than MSAA, although both operate using the same principle, just with differing implementation.
+
+You can imagine this as watching a 4K video on a 1080p screen, the original 4K frame is downscaled to your 1080p viewport, however since the 4K frame has far more pixels, it has far more data to work with when trying to smooth out aliasing. In that sense, SSAA is both the simplest and the most intensive form of anti-aliasing.
 
 ## MSAA
 

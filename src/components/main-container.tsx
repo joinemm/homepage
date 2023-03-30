@@ -2,7 +2,7 @@ import Header from './header';
 
 const MainContainer = (props) => {
   return (
-    <article className="m-auto max-w-2xl p-4 md:mt-12">
+    <article className="m-auto max-w-3xl p-4 md:mt-4">
       <Header />
       {props.children}
     </article>
