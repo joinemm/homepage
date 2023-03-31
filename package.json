@@ -1,6 +1,9 @@
 {
-  "name": "joinemmdev",
-  "version": "0.1.0",
+  "name": "homepage",
+  "author": {
+    "name": "Joinemm"
+  },
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
