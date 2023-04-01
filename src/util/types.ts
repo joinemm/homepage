@@ -1,4 +1,4 @@
-type PostData = {
+export type PostData = {
   slug: string;
   title: string;
   excerpt: string;
@@ -7,5 +7,3 @@ type PostData = {
   tags: [string];
   draft: boolean;
 };
-
-export default PostData;

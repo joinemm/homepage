@@ -3,7 +3,7 @@ import { getAllPosts } from '../../util/post-helpers';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import PostData from '../../interfaces/post-data';
+import { PostData } from '../../util/types';
 import PostPreview from '../../components/post-preview';
 import TagFilter from '../../components/tag-filter';
 import MainContainer from '../../components/main-container';

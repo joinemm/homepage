@@ -1,12 +1,9 @@
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
-import Header from '../../components/header';
 import { getPostBySlug, getAllPosts } from '../../util/post-helpers';
 import { mdxSerialize } from '../../util/mdx';
 import DateFormatter from '../../components/date-formatter';
-import { ImArrowLeft2 } from 'react-icons/im';
-import { MdDateRange } from 'react-icons/md';
-import PostData from '../../interfaces/post-data';
+import { PostData } from '../../util/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import LikeButton from '../../components/like-button';
