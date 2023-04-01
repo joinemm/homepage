@@ -2,9 +2,10 @@ import { createMedia } from '@artsy/fresnel';
 
 const ExampleAppMedia = createMedia({
   breakpoints: {
-    xs: 0,
-    sm: 768,
-    md: 1280,
+    zero: 0,
+    mobile: 600,
+    fullwidth: 768,
+    gallerymax: 900,
   },
 });
 

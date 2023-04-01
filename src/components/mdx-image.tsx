@@ -23,7 +23,7 @@ const MdxImage = ({ src, alt, height, width, title }: Props) => {
       ) : (
         <img className="m-0" alt={alt ?? ''} src={src ?? ''} />
       )}
-      <p className="m-0 italic">{title ?? alt}</p>
+      <p className="fg-muted m-0 italic">{title ?? alt}</p>
     </div>
   );
 };

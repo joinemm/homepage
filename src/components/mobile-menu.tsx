@@ -29,16 +29,12 @@ export default function MobileMenu() {
 
   return (
     <>
-      <button className="h-12" type="button" onClick={openMenu}>
+      <button className="mt-1" type="button" onClick={openMenu}>
         <MdMenu size={35} />
       </button>
       {isMenuOpen && (
         <div className="bg-primary absolute top-0 left-0 z-40 flex h-screen w-screen items-center justify-center">
-          <button
-            className="absolute top-0 right-0 z-50 m-4 h-12"
-            type="button"
-            onClick={closeMenu}
-          >
+          <button className="absolute top-4 right-4 z-50 mt-1" type="button" onClick={closeMenu}>
             <MdClose size={35} />
           </button>
           <NavMenu className="flex-col" />

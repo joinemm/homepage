@@ -7,19 +7,21 @@ module.exports = {
   },
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    colors: {
-      ...colors,
-      light_text: '#374151',
-      dark_text: '#c0caf5',
-      blue: '#7aa2f7',
-      yellow: '#e0af68',
-      green: '#9ece6a',
-      red: '#f7768e',
-      darkgrey: '#414868',
-      white: '#e5e5f8',
-      lightgrey: '#636c95',
-    },
     extend: {
+      screens: {
+        fullgallery: '900px',
+      },
+      colors: {
+        light_text: '#374151',
+        dark_text: '#c0caf5',
+        blue: '#7aa2f7',
+        yellow: '#e0af68',
+        green: '#9ece6a',
+        red: '#f7768e',
+        darkgrey: '#414868',
+        white: '#e5e5f8',
+        lightgrey: '#636c95',
+      },
       typography: (theme) => ({
         quoteless: {
           css: {
@@ -68,6 +70,9 @@ module.exports = {
             '--tw-prose-invert-td-borders': theme('colors.white'),
             pre: {
               padding: 0,
+            },
+            p: {
+              lineHeight: 1.5,
             },
             code: {
               color: '#fff',

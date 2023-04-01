@@ -7,10 +7,10 @@ type Props = {
 const NavMenu = ({ className = '' }: Props) => {
   const links = [
     { label: 'blog', href: '/blog' },
+    // { label: 'projects', href: '/projects' },
+    { label: 'gallery', href: '/gallery' },
     { label: 'reviews', href: '/reviews' },
     { label: 'about', href: '/about' },
-    // { label: 'gallery', href: '/gallery' },
-    { label: 'github', href: 'https://git.joinemm.dev' },
   ];
   return (
     <ul className={'flex items-center gap-4 ' + className}>

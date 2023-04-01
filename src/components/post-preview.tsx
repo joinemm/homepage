@@ -1,10 +1,9 @@
-import PostType from '../interfaces/post-data';
+import { PostData } from '../util/types';
 import Link from 'next/link';
 import DateFormatter from './date-formatter';
-import LikeButton from './like-button';
 
 type Props = {
-  post: PostType;
+  post: PostData;
 };
 
 const PostPreview = ({ post }: Props) => {

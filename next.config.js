@@ -3,7 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['m.media-amazon.com'],
+    loader: 'default',
+    domains: ['m.media-amazon.com', 'res.cloudinary.com'],
   },
 };
 

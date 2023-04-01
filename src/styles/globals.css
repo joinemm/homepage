@@ -32,6 +32,10 @@
   }
 }
 
+* {
+  box-sizing: content-box;
+}
+
 /* make math bigger */
 .katex {
   font-size: 1.75em;

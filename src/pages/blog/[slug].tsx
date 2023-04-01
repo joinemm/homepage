@@ -78,11 +78,11 @@ export default function Post({ metadata, mdxSerialized }: Props) {
                 className="!relative !h-[unset] !w-full rounded-lg object-contain"
                 src={metadata.image}
                 alt="cover image"
-                fill={true}
+                fill
               ></Image>
             </div>
           ) : null}
-          <h1 className="my-2 text-4xl font-bold">{metadata.title}</h1>
+          <h1 className="my-2 text-5xl font-bold">{metadata.title}</h1>
           <div className="flex gap-4">
             <DateFormatter className="fg-muted" dateString={metadata.date}></DateFormatter>{' '}
             <ul className="flex gap-2">

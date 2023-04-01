@@ -2,9 +2,11 @@ export async function strapiFetchAll(
   contentType: string,
   params: Record<string, string> | null = null,
 ) {
-  return await fetch(
-    `https://strapi.joinemm.dev/api/${contentType}` + (params ? new URLSearchParams(params) : ''),
-  )
+  const url =
+    `https://strapi.joinemm.dev/api/${contentType}` +
+    (params ? '?' + new URLSearchParams(params) : '');
+  console.log(url);
+  return await fetch(url)
     .then((response) => {
       return response.json();
     })
