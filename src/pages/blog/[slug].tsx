@@ -85,12 +85,10 @@ export default function Post({ metadata, mdxSerialized }: Props) {
               ></Image>
             </div>
           ) : null}
-          <h1 className="fg-bright my-2 text-4xl font-bold leading-10 tracking-tight">
-            {metadata.title}
-          </h1>
-          <DateFormatter className="fg-muted" dateString={metadata.date}></DateFormatter>{' '}
-          <div className="flex justify-between">
-            <ul className="mt-1 flex gap-3">
+          <h1 className="my-2 text-4xl font-bold">{metadata.title}</h1>
+          <div className="flex gap-4">
+            <DateFormatter className="fg-muted" dateString={metadata.date}></DateFormatter>{' '}
+            <ul className="flex gap-2">
               {metadata.tags
                 ? metadata.tags.map((tag) => (
                     <li key={tag}>
@@ -104,7 +102,9 @@ export default function Post({ metadata, mdxSerialized }: Props) {
                   ))
                 : null}
             </ul>
-            <LikeButton storageKey={`liked-blog-post-${metadata.slug}`} />
+            <div className=" smr-0 ml-auto">
+              <LikeButton storageKey={`liked-blog-post-${metadata.slug}`} />
+            </div>
           </div>
         </div>
         <MdxRenderer source={mdxSerialized} />

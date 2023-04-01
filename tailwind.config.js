@@ -21,6 +21,16 @@ module.exports = {
     },
     extend: {
       typography: (theme) => ({
+        quoteless: {
+          css: {
+            'blockquote p:first-of-type::before': {
+              content: 'none',
+            },
+            'blockquote p:first-of-type::after': {
+              content: 'none',
+            },
+          },
+        },
         DEFAULT: {
           css: {
             //** TODO: light mode */
@@ -41,10 +51,10 @@ module.exports = {
             '--tw-prose-th-borders': theme('colors.light_text'),
             '--tw-prose-td-borders': theme('colors.light_text'),
             '--tw-prose-invert-body': theme('colors.dark_text'),
-            '--tw-prose-invert-headings': theme('colors.white'),
-            '--tw-prose-invert-lead': theme('colors.white'),
+            '--tw-prose-invert-headings': theme('colors.dark_text'),
+            '--tw-prose-invert-lead': theme('colors.dark_text'),
             '--tw-prose-invert-links': theme('colors.yellow'),
-            '--tw-prose-invert-bold': theme('colors.white'),
+            '--tw-prose-invert-bold': theme('colors.dark_text'),
             '--tw-prose-invert-counters': theme('colors.dark_text'),
             '--tw-prose-invert-bullets': theme('colors.dark_text'),
             '--tw-prose-invert-hr': theme('colors.darkgrey'),

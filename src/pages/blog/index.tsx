@@ -8,6 +8,8 @@ import PostPreview from '../../components/post-preview';
 import TagFilter from '../../components/tag-filter';
 import MainContainer from '../../components/main-container';
 import { parseISO } from 'date-fns';
+import { NextSeo } from 'next-seo';
+import { DOMAIN } from '../../util/constants';
 
 type Props = {
   posts: [PostData];
@@ -57,9 +59,11 @@ export default function Blog({ posts, tags }: Props) {
 
   return (
     <>
-      <Head>
-        <title>Blog | joinemm.dev</title>
-      </Head>
+      <NextSeo
+        title={`Blog | Joinemm.dev`}
+        description="List of my blog posts"
+        canonical={DOMAIN + router.asPath}
+      />
       <MainContainer>
         <h1 className="text-3xl font-bold">Blog.</h1>
         <TagFilter tags={tags} activeTags={activeTags} tagSetter={setActiveTags} />
