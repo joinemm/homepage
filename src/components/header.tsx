@@ -7,13 +7,9 @@ const avatar = '/assets/avatar.jpg';
 
 const Header = () => {
   return (
-    <header className="muted-border m-auto mb-4 flex max-w-3xl justify-between border-b-2 pb-4 text-center">
+    <header className="muted-border m-auto mb-4 flex max-w-3xl justify-between border-b-2 pb-2 text-center">
       <Link href="/" className="flex items-center gap-4">
-        {/* <Image src={avatar} alt="Me" width={50} height={50} className="rounded-full" /> */}
-        <div className="text-left">
-          <p className="text-3xl tracking-widest">joinemm.</p>
-          <p className="text-xs">keep it simple stupid</p>
-        </div>
+        <p className="-mb-[2px] text-xl tracking-widest">Joinemm.</p>
       </Link>
       <Media at="xs" className="my-auto">
         <MobileMenu />

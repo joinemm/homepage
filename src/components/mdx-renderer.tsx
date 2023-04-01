@@ -5,6 +5,7 @@ import Aside from './aside';
 import Note from './note';
 import Email from './encoded-email';
 import QuoteAuthor from './quote-author';
+import Quote from './quote';
 
 type Props = {
   source: MDXRemoteSerializeResult;
@@ -26,6 +27,9 @@ const components = {
       return <p {...props} />;
     }
   },
+  blockquote: (props) => {
+    return <Quote {...props} />;
+  },
   Aside: Aside,
   Note: Note,
   Email: Email,
@@ -34,7 +38,7 @@ const components = {
 
 const MdxRenderer = ({ source }: Props) => {
   return (
-    <div className="prose max-w-none dark:prose-invert">
+    <div className="prose prose-quoteless max-w-none dark:prose-invert">
       <MDXRemote {...source} components={components} />
     </div>
   );
