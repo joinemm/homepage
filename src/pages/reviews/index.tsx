@@ -123,7 +123,7 @@ export default function Movies({ reviews }: Props) {
               );
             })}
           </div>
-          <Media greaterThanOrEqual="sm" className="ml-auto">
+          <Media greaterThanOrEqual="mobile" className="ml-auto">
             <p>({reviewSorted.length})</p>
           </Media>
         </div>
