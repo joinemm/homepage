@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <style jsx global>{`
         body {
-          font-family: ${roboto.style.fontFamily};
+          font-family: ${roboto.style.fontFamily}, monospace;
         }
       `}</style>
       <Head>

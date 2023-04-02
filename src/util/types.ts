@@ -15,6 +15,7 @@ export type Media = {
   width: number;
   height: number;
   formats: Record<string, any>;
+  placeholder: string;
 };
 
 export type Artwork = {

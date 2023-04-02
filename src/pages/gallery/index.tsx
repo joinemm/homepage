@@ -25,15 +25,19 @@ type Props = {
   artworks: Artwork[];
 };
 
+const CLOUDINARY_BASE_URL = 'https://res.cloudinary.com/dlccpcflb/image/upload/';
+
 const MediaImage = (media) => {
   const width = 300;
-  const url = `https://res.cloudinary.com/dlccpcflb/image/upload/w_300,c_scale/${media.provider_metadata.public_id}`;
+  const url = `${CLOUDINARY_BASE_URL}w_300,c_scale/${media.provider_metadata.public_id}`;
   return (
     <Image
       src={url}
       alt={media.alternativeText}
       width={width}
       height={Math.floor((width / media.width) * media.height)}
+      placeholder={media.placeholder ? 'blur' : undefined}
+      blurDataURL={media.placeholder}
     />
   );
 };
@@ -61,7 +65,7 @@ export default function Movies({ artworks }: Props) {
               onClick={() => select(artwork)}
               className="cursor-pointer overflow-hidden border-[3px] border-transparent transition-all hover:border-white"
             >
-              <div>{MediaImage(artwork.media[0])}</div>
+              <div className="bg-black">{MediaImage(artwork.media[0])}</div>
             </figure>
           ) : null,
         )}
@@ -93,7 +97,7 @@ export default function Movies({ artworks }: Props) {
       {selected && (
         <div className="fixed top-0 left-0 z-40 h-full w-screen  overflow-y-scroll bg-black bg-opacity-80">
           <button
-            className="fixed top-4 right-4 z-50 mt-1 rounded-full border-2 bg-black bg-opacity-50 p-2 text-white"
+            className="fixed top-4 right-8 z-50 mt-1 rounded-full border-2 bg-black bg-opacity-50 p-2 text-white"
             type="button"
             onClick={() => unselect()}
           >
@@ -108,6 +112,8 @@ export default function Movies({ artworks }: Props) {
                   width={media.width}
                   height={media.height}
                   style={{ objectFit: 'contain', maxHeight: '95vh' }}
+                  placeholder={media.placeholder ? 'blur' : undefined}
+                  blurDataURL={media.placeholder}
                 />
               </figure>
             ))}
@@ -134,6 +140,16 @@ export default function Movies({ artworks }: Props) {
   );
 }
 
+async function getBase64ImageUrl(imageId: string) {
+  if (process.env.NODE_ENV == 'development') return null;
+
+  const url = `${CLOUDINARY_BASE_URL}w_100/e_blur:1000,q_auto,f_webp/${imageId}`;
+  const response = await fetch(url);
+  const buffer = await response.arrayBuffer();
+  const data = Buffer.from(buffer).toString('base64');
+  return `data:image/webp;base64,${data}`;
+}
+
 export const getStaticProps = async () => {
   const artworks = await strapiFetchAll('artworks', {
     populate: 'media',
@@ -143,17 +159,24 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      artworks: artworks.map((art) => {
-        return {
-          ...art,
-          media: art.media.data.map((media) => {
-            return {
-              id: media.id,
-              ...media.attributes,
-            };
-          }),
-        };
-      }),
+      artworks: await Promise.all(
+        artworks.map(async (art) => {
+          return {
+            ...art,
+            media: await Promise.all(
+              art.media.data.map(async (media) => {
+                return {
+                  id: media.id,
+                  placeholder: await getBase64ImageUrl(
+                    media.attributes.provider_metadata.public_id,
+                  ),
+                  ...media.attributes,
+                };
+              }),
+            ),
+          };
+        }),
+      ),
     },
   };
 };
