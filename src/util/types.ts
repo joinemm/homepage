@@ -8,14 +8,19 @@ export type PostData = {
   draft: boolean;
 };
 
+export type Media = {
+  id: number;
+  url: string;
+  alternativeText: string;
+  width: number;
+  height: number;
+  formats: Record<string, any>;
+};
+
 export type Artwork = {
   id: number;
   title: string;
   description: string;
   date: string;
-  media: {
-    id: number;
-    url: string;
-    formats: Record<string, any>;
-  }[];
+  media: Media[];
 };
