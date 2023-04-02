@@ -63,7 +63,7 @@ export default function Movies({ artworks }: Props) {
             <figure
               key={artwork.id}
               onClick={() => select(artwork)}
-              className="cursor-pointer overflow-hidden border-[3px] border-transparent transition-all hover:border-white"
+              className="cursor-pointer overflow-hidden rounded-md border-[3px] border-transparent transition-all hover:border-white"
             >
               <div className="bg-black">{MediaImage(artwork.media[0])}</div>
             </figure>
