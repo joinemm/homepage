@@ -76,7 +76,6 @@ export default function Movies({ reviews }: Props) {
   const [sortingMethod, setSortingMethod] = useState<SortingMethod>('date');
 
   useEffect(() => {
-    console.log('sorting');
     setReviewSorted(sortReviews(reviews, ascending, sortingMethod));
   }, [ascending, sortingMethod, reviews]);
 

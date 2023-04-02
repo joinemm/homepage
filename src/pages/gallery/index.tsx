@@ -26,8 +26,15 @@ type Props = {
 };
 
 const MediaImage = (media) => {
+  const width = 300;
+  const url = `https://res.cloudinary.com/dlccpcflb/image/upload/w_300,c_scale/${media.provider_metadata.public_id}`;
   return (
-    <Image src={media.url} alt={media.alternativeText} width={media.width} height={media.height} />
+    <Image
+      src={url}
+      alt={media.alternativeText}
+      width={width}
+      height={Math.floor((width / media.width) * media.height)}
+    />
   );
 };
 

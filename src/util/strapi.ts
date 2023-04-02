@@ -5,7 +5,6 @@ export async function strapiFetchAll(
   const url =
     `https://strapi.joinemm.dev/api/${contentType}` +
     (params ? '?' + new URLSearchParams(params) : '');
-  console.log(url);
   return await fetch(url)
     .then((response) => {
       return response.json();
