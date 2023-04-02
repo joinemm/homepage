@@ -100,13 +100,13 @@ export default function Movies({ artworks }: Props) {
                   alt={media.alternativeText}
                   width={media.width}
                   height={media.height}
-                  style={{ objectFit: 'contain', maxHeight: '100vh' }}
+                  style={{ objectFit: 'contain', maxHeight: '95vh' }}
                 />
               </figure>
             ))}
             <div className="text-center text-white">
               <p className="italic">“{selected.title}”</p>
-              <DateFormatter dateString={selected.date} formatter="yyyy" />
+              <p>{selected.year}</p>
             </div>
           </div>
         </div>
@@ -128,7 +128,11 @@ export default function Movies({ artworks }: Props) {
 }
 
 export const getStaticProps = async () => {
-  const artworks = await strapiFetchAll('artworks', { populate: 'media' });
+  const artworks = await strapiFetchAll('artworks', {
+    populate: 'media',
+    sort: 'year:desc',
+    'pagination[pageSize]': '50',
+  });
 
   return {
     props: {

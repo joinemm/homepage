@@ -20,7 +20,6 @@ export type Media = {
 export type Artwork = {
   id: number;
   title: string;
-  description: string;
-  date: string;
+  year: number;
   media: Media[];
 };
