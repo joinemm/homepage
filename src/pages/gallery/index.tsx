@@ -3,7 +3,7 @@ import { useState } from 'react';
 import DateFormatter from '../../components/date-formatter';
 import { Media } from '../../util/media-context';
 import { NextSeo } from 'next-seo';
-import { DOMAIN } from '../../util/constants';
+import { DOMAIN, PAGE_WIDTH } from '../../util/constants';
 import MainContainer from '../../components/main-container';
 import { strapiFetchAll } from '../../util/strapi';
 import { Artwork } from '../../util/types';
@@ -28,8 +28,8 @@ type Props = {
 const CLOUDINARY_BASE_URL = 'https://res.cloudinary.com/dlccpcflb/image/upload/';
 
 const MediaImage = (media) => {
-  const width = 300;
-  const url = `${CLOUDINARY_BASE_URL}w_300,c_scale/${media.provider_metadata.public_id}`;
+  const width = PAGE_WIDTH / 2;
+  const url = `${CLOUDINARY_BASE_URL}w_360,c_scale/${media.provider_metadata.public_id}`;
   return (
     <Image
       src={url}
@@ -55,22 +55,45 @@ export default function Movies({ artworks }: Props) {
     allowScroll();
   };
 
-  const galleryColumns = (artworks, columns) => {
-    return Array.from(Array(columns).keys()).map((n) => (
-      <div key={n} className="flex flex-col">
-        {artworks.map((artwork, m) =>
-          m % columns == n ? (
-            <figure
-              key={artwork.id}
-              onClick={() => select(artwork)}
-              className="cursor-pointer overflow-hidden rounded-md border-[3px] border-transparent transition-all hover:border-white"
-            >
-              <div className="bg-black">{MediaImage(artwork.media[0])}</div>
-            </figure>
-          ) : null,
-        )}
-      </div>
-    ));
+  const galleryColumns = (artworks: Artwork[], column_count: number) => {
+    type Column = {
+      length: number;
+      figures: JSX.Element[];
+    };
+    var columns: Column[] = [...Array(column_count)].map(() => {
+      return { length: 0, figures: [] };
+    });
+    var prev_year = 0;
+    artworks.forEach((artwork) => {
+      var min = columns[0];
+      columns.forEach((x) => {
+        if (x.length < min.length) min = x;
+      });
+      min.figures.push(
+        <figure
+          key={artwork.id}
+          onClick={() => select(artwork)}
+          className="cursor-pointer overflow-hidden rounded-md border-[3px] border-transparent transition-all hover:border-white"
+        >
+          {artwork.year != prev_year ? (
+            <p className="absolute left-1/2 hidden -translate-x-[545px] -translate-y-1 extrawide:inline">
+              {artwork.year} ---
+            </p>
+          ) : null}
+          <div className="bg-black">{MediaImage(artwork.media[0])}</div>
+        </figure>,
+      );
+      prev_year = artwork.year;
+      min.length += Math.floor((PAGE_WIDTH / 2 / artwork.media[0].width) * artwork.media[0].height);
+    });
+
+    return columns.map((column, n) => {
+      return (
+        <div key={n} className="flex flex-col">
+          {column.figures}
+        </div>
+      );
+    });
   };
 
   return (

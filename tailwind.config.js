@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       screens: {
         fullgallery: '900px',
+        extrawide: '1100px',
       },
       colors: {
         light_text: '#374151',

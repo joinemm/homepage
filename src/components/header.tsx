@@ -7,7 +7,7 @@ const avatar = '/assets/avatar.jpg';
 
 const Header = () => {
   return (
-    <header className="muted-border m-auto mb-8 flex h-10 max-w-[768px] justify-between text-center">
+    <header className="muted-border m-auto mb-8 flex h-10 justify-between text-center">
       <Link href="/" className="flex items-center gap-4">
         <p className="text-xl tracking-widest md:-mb-[2px]">Joinemm.</p>
       </Link>
