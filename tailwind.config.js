@@ -9,6 +9,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
+        md: '720px',
         fullgallery: '900px',
         extrawide: '1100px',
       },
@@ -32,6 +33,9 @@ module.exports = {
             'blockquote p:first-of-type::after': {
               content: 'none',
             },
+            blockquote: {
+              marginLeft: '-1.1em',
+            },
           },
         },
         DEFAULT: {
@@ -46,7 +50,7 @@ module.exports = {
             '--tw-prose-bullets': theme('colors.light_text'),
             '--tw-prose-hr': theme('colors.light_text'),
             '--tw-prose-quotes': theme('colors.lightgrey'),
-            '--tw-prose-quote-borders': theme('colors.transparent'),
+            '--tw-prose-quote-borders': theme('colors.light_text'),
             '--tw-prose-captions': theme('colors.light_text'),
             '--tw-prose-code': theme('colors.white'),
             '--tw-prose-pre-code': theme('colors.white'),
@@ -62,7 +66,7 @@ module.exports = {
             '--tw-prose-invert-bullets': theme('colors.dark_text'),
             '--tw-prose-invert-hr': theme('colors.darkgrey'),
             '--tw-prose-invert-quotes': theme('colors.lightgrey'),
-            '--tw-prose-invert-quote-borders': theme('colors.transparent'),
+            '--tw-prose-invert-quote-borders': theme('colors.dark_text'),
             '--tw-prose-invert-captions': theme('colors.dark_text'),
             '--tw-prose-invert-code': theme('colors.white'),
             '--tw-prose-invert-pre-code': theme('colors.white'),

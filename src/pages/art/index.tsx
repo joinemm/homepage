@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import DateFormatter from '../../components/date-formatter';
 import { Media } from '../../util/media-context';
 import { NextSeo } from 'next-seo';
 import { DOMAIN, PAGE_WIDTH } from '../../util/constants';
@@ -9,8 +8,8 @@ import { strapiFetchAll } from '../../util/strapi';
 import { Artwork } from '../../util/types';
 import { MdClose } from 'react-icons/md';
 
-const TITLE = 'Art Gallery | Joinemm.dev';
-const DESCRIPTION = 'My digital art portfolio.';
+const TITLE = 'Art | Joinemm.dev';
+const DESCRIPTION = 'My digital art';
 
 const allowScroll = () => {
   document.body.style.overflow = '';
@@ -42,7 +41,7 @@ const MediaImage = (media) => {
   );
 };
 
-export default function Movies({ artworks }: Props) {
+export default function Art({ artworks }: Props) {
   const [selected, setSelected] = useState<Artwork | null>(null);
 
   const select = (artwork) => {
@@ -77,7 +76,7 @@ export default function Movies({ artworks }: Props) {
         >
           {artwork.year != prev_year ? (
             <p className="absolute left-1/2 hidden -translate-x-[545px] -translate-y-1 extrawide:inline">
-              {artwork.year} ---
+              {artwork.year} ———
             </p>
           ) : null}
           <div className="bg-black">{MediaImage(artwork.media[0])}</div>
@@ -101,11 +100,11 @@ export default function Movies({ artworks }: Props) {
       <NextSeo
         title={TITLE}
         description={DESCRIPTION}
-        canonical={DOMAIN + '/movies'}
+        canonical={DOMAIN + '/art'}
         openGraph={{
           title: TITLE,
           description: DESCRIPTION,
-          url: DOMAIN + '/movies',
+          url: DOMAIN + '/art',
           images: [
             {
               url: `${DOMAIN}/assets/content/lego-art.jpg`,
@@ -147,18 +146,16 @@ export default function Movies({ artworks }: Props) {
           </div>
         </div>
       )}
-      <MainContainer>
-        <h1 className="pb-4 text-3xl font-bold">Art Gallery.</h1>
+      <MainContainer width={900}>
+        <div className="m-auto fullgallery:max-w-[900px]">
+          <Media greaterThanOrEqual="fullwidth" className="mt-2 grid grid-cols-3">
+            {galleryColumns(artworks, 3)}
+          </Media>
+          <Media className="mt-2 grid grid-cols-2" lessThan="fullwidth">
+            {galleryColumns(artworks, 2)}
+          </Media>
+        </div>
       </MainContainer>
-
-      <div className="m-auto fullgallery:max-w-[900px]">
-        <Media greaterThanOrEqual="fullwidth" className="mt-2 grid grid-cols-3">
-          {galleryColumns(artworks, 3)}
-        </Media>
-        <Media className="mt-2 grid grid-cols-2" lessThan="fullwidth">
-          {galleryColumns(artworks, 2)}
-        </Media>
-      </div>
     </>
   );
 }

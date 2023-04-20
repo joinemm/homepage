@@ -8,7 +8,7 @@ const NavMenu = ({ className = '' }: Props) => {
   const links = [
     { label: 'blog', href: '/blog' },
     // { label: 'projects', href: '/projects' },
-    { label: 'gallery', href: '/gallery' },
+    { label: 'art', href: '/art' },
     { label: 'reviews', href: '/reviews' },
     { label: 'about', href: '/about' },
   ];

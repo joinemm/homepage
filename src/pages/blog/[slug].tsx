@@ -82,8 +82,10 @@ export default function Post({ metadata, mdxSerialized }: Props) {
               ></Image>
             </div>
           ) : null}
-          <h1 className="my-2 text-5xl font-bold">{metadata.title}</h1>
-          <div className="flex gap-4">
+          <h1 className="my-4 text-[2.75rem] font-bold leading-tight tracking-tight">
+            {metadata.title}
+          </h1>
+          <div className="flex flex-wrap gap-4">
             <DateFormatter className="fg-muted" dateString={metadata.date}></DateFormatter>{' '}
             <ul className="flex gap-2">
               {metadata.tags
@@ -99,16 +101,16 @@ export default function Post({ metadata, mdxSerialized }: Props) {
                   ))
                 : null}
             </ul>
-            <div className=" smr-0 ml-auto">
+            <div className="ml-auto hidden sm:block">
               <LikeButton storageKey={`liked-blog-post-${metadata.slug}`} />
             </div>
           </div>
         </div>
         <MdxRenderer source={mdxSerialized} />
+        <footer className="py-32 text-center">
+          <ScrollUpButton />
+        </footer>
       </MainContainer>
-      <footer className="py-32 text-center">
-        <ScrollUpButton />
-      </footer>
     </>
   );
 }
