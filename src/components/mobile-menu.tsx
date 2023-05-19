@@ -29,7 +29,7 @@ export default function MobileMenu() {
 
   return (
     <>
-      <button className="mt-1" type="button" onClick={openMenu}>
+      <button className="mt-1 mr-2" type="button" onClick={openMenu}>
         <MdMenu size={35} />
       </button>
       {isMenuOpen && (
