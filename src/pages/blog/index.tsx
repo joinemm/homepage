@@ -36,7 +36,8 @@ export default function Blog({ posts, tags }: Props) {
   const filterPosts = (posts: PostData[]) => {
     const results = posts.filter(
       (post) =>
-        activeTags.length == 0 || activeTags.every((t) => post.tags.includes(t))
+        activeTags.length == 0 ||
+        activeTags.every((t) => post.tags.includes(t)),
     );
     return results;
   };

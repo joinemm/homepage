@@ -81,11 +81,11 @@ export default function Art({ artworks }: Props) {
             </p>
           ) : null}
           <div className="bg-black">{MediaImage(artwork.media[0])}</div>
-        </figure>
+        </figure>,
       );
       prev_year = artwork.year;
       min.length += Math.floor(
-        (PAGE_WIDTH / 2 / artwork.media[0].width) * artwork.media[0].height
+        (PAGE_WIDTH / 2 / artwork.media[0].width) * artwork.media[0].height,
       );
     });
 
@@ -197,14 +197,14 @@ export const getStaticProps = async () => {
                 return {
                   id: media.id,
                   placeholder: await getBase64ImageUrl(
-                    media.attributes.provider_metadata.public_id
+                    media.attributes.provider_metadata.public_id,
                   ),
                   ...media.attributes,
                 };
-              })
+              }),
             ),
           };
-        })
+        }),
       ),
     },
   };

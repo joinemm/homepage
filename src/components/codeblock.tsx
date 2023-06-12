@@ -9,7 +9,7 @@ const CodeBlock = ({ language, prettyCode }) => {
   const copyCode = () => {
     navigator.clipboard.writeText(
       codeRef.current?.textContent ??
-        'You tried to copy something but it failed :('
+        'You tried to copy something but it failed :(',
     );
     // TODO: toast notification: Copied code to clipboard!
   };

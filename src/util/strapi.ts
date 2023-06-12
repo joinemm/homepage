@@ -1,6 +1,6 @@
 export async function strapiFetchAll(
   contentType: string,
-  params: Record<string, string> | null = null
+  params: Record<string, string> | null = null,
 ) {
   const url =
     `https://strapi.joinemm.dev/api/${contentType}` +

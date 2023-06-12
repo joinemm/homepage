@@ -56,7 +56,7 @@ const DESCRIPTION =
 const sortReviews = (
   reviews: ExtendedReview[],
   ascending: boolean,
-  sortingMethod: SortingMethod
+  sortingMethod: SortingMethod,
 ) => {
   const sorted = [...reviews].sort((a, b) =>
     (
@@ -65,7 +65,7 @@ const sortReviews = (
         : a[sortingMethod] > b[sortingMethod]
     )
       ? -1
-      : 1
+      : 1,
   );
   return sorted;
 };
@@ -188,7 +188,7 @@ export const getStaticProps = async () => {
   const extendedReviews = await Promise.all(
     rawReviews.map(async (review) => {
       return await imdbApiMovieDetails(review);
-    })
+    }),
   );
 
   return {
