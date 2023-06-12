@@ -19,8 +19,6 @@ type Props = {
 export default function Blog({ posts, tags }: Props) {
   const [activeTags, setActiveTags] = useState<string[]>([]);
 
-  const shrug = '¯\\_(ツ)_/¯';
-
   const router = useRouter();
   useEffect(() => {
     const query_tag = router.query.tag?.toString();
