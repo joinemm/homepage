@@ -1,6 +1,6 @@
 ---
 title: 'Optimizing CS:GO for Arch Linux and AMD GPU'
-excerpt: 'Get the best performance out of Counter-Strike Global Offensive on your linux pc.'
+excerpt: 'Get the best performance out of Counter-Strike Global Offensive on your Linux pc.'
 author: 'Joinemm'
 image: '/assets/content/csgo.jpg'
 date: '2023-06-12'
@@ -9,7 +9,7 @@ tags:
   - linux
 ---
 
-While csgo runs just fine out of the box on linux thanks to Valve providing a native linux build, more competitive players could be left disappointed with its performance and various graphical bugs. In this article I go through every tweak and change I made to optimize my csgo experience on Arch Linux running DWM window manager, and an AMD graphics card.
+While csgo runs just fine out of the box on Linux thanks to Valve providing a native Linux build, more competitive players could be left disappointed with its performance and various graphical bugs. In this article I go through every tweak and change I made to optimize my csgo experience on Arch Linux running DWM window manager, and an AMD graphics card.
 
 The finished result runs even better and smoother than the Windows counterpart, and with less input lag and latency.
 
@@ -25,7 +25,7 @@ gamemoderun %command%
 
 ## Vulkan
 
-CSGO on linux runs on OpenGL by default. This works on all platforms, but results in poor performance and numerous graphical bugs such as:
+CSGO on Linux runs on OpenGL by default. This works on all platforms, but results in poor performance and numerous graphical bugs such as:
 
 - [Textures on walls flickering](https://github.com/ValveSoftware/csgo-osx-linux/issues/3168)
 - [All glove skins rendering fully black](https://github.com/ValveSoftware/csgo-osx-linux/issues/2102)
@@ -52,7 +52,7 @@ vk_radv gamemoderun %command% -vulkan
 
 ### Fixing the stuttering
 
-The csgo linux build ships with an old version of dxvk-native (1.9.1), but what if I told you, you can actually update this binary in the game files to a newer version and the game still runs fine?
+The csgo Linux build ships with an old version of dxvk-native (1.9.1), but what if I told you, you can actually update this binary in the game files to a newer version and the game still runs fine?
 
 > "But why?" you ask.
 
@@ -96,11 +96,11 @@ wintypes:
 
 ## CSGO lauch options
 
-These are the csgo launch options I like to use that are not linux specific, but I'll list them here for completeness' sake.
+These are the csgo launch options I like to use that are not Linux specific, but I'll list them here for completeness' sake.
 
 - `-novid` Removes the intro video
-- `tickrate 128` Self explanatory. Enables 128 tick when available.
-- `fullscreen1` Force real fullscreen. Reduces latency.
+- `-tickrate 128` Self explanatory. Enables 128 tick when available.
+- `-fullscreen1` Force real fullscreen. Reduces latency.
 - `-nojoy` Disable controllers.
 
 Finally here is my full lauch options string, in all its glory:
