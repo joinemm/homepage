@@ -1,9 +1,9 @@
 ---
-title: "Optimizing CS:GO for Arch Linux and AMD GPU"
-excerpt: "Get the best performance out of Counter-Strike Global Offensive on your linux pc."
-author: "Joinemm"
-image: "/assets/content/csgo.jpg"
-date: "2023-06-12"
+title: 'Optimizing CS:GO for Arch Linux and AMD GPU'
+excerpt: 'Get the best performance out of Counter-Strike Global Offensive on your linux pc.'
+author: 'Joinemm'
+image: '/assets/content/csgo.jpg'
+date: '2023-06-12'
 tags:
   - games
   - linux
@@ -30,15 +30,16 @@ CSGO on linux runs on OpenGL by default. This works on all platforms, but result
 - [Textures on walls flickering](https://github.com/ValveSoftware/csgo-osx-linux/issues/3168)
 - [All glove skins rendering fully black](https://github.com/ValveSoftware/csgo-osx-linux/issues/2102)
 
-As someone who likes csgo skins, the glove issue was enough to push me away from OpenGL. 
+As someone who likes csgo skins, the glove issue was enough to push me away from OpenGL.
 
 The solution? Use Vulkan! Simply add `-vulkan` to your launch options and the game now runs on the Vulkan API.
 
-Unfortunately, just doing this results in unplayable levels of stuttering as the game compiles shaders during gameplay. This *might* go away after playing for some time and running all around every map but I found that no matter how long I played there would still be stutters, especially when people are shooting or peeking me (and if you play cs, you know this is the *worst* time to experience stuttering)
+Unfortunately, just doing this results in unplayable levels of stuttering as the game compiles shaders during gameplay. This _might_ go away after playing for some time and running all around every map but I found that no matter how long I played there would still be stutters, especially when people are shooting or peeking me (and if you play cs, you know this is the _worst_ time to experience stuttering)
 
 ### Drivers
 
-As per the vulkan page on [Arch Wiki](https://wiki.archlinux.org/title/Vulkan), There are three different implementations of the Vulkan driver for AMD: 
+As per the vulkan page on [Arch Wiki](https://wiki.archlinux.org/title/Vulkan), There are three different implementations of the Vulkan driver for AMD:
+
 - `vulkan-radeon` - RADV (part of Mesa project)
 - `amdvlk` - AMDVLK Open (maintained by AMD)
 - `vulkan-amdgpu-proAUR` - AMDVLK Closed (maintained by AMD)

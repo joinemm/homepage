@@ -16,7 +16,11 @@ export default function App({ Component, pageProps }: AppProps) {
         }
       `}</style>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" key="viewport" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+          key="viewport"
+        />
       </Head>
       <DefaultSeo {...config} />
       <Component {...pageProps} />

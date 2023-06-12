@@ -56,12 +56,16 @@ const DESCRIPTION =
 const sortReviews = (
   reviews: ExtendedReview[],
   ascending: boolean,
-  sortingMethod: SortingMethod,
+  sortingMethod: SortingMethod
 ) => {
   const sorted = [...reviews].sort((a, b) =>
-    (ascending ? a[sortingMethod] < b[sortingMethod] : a[sortingMethod] > b[sortingMethod])
+    (
+      ascending
+        ? a[sortingMethod] < b[sortingMethod]
+        : a[sortingMethod] > b[sortingMethod]
+    )
       ? -1
-      : 1,
+      : 1
   );
   return sorted;
 };
@@ -105,7 +109,11 @@ export default function Movies({ reviews }: Props) {
         <p className="mb-4">{DESCRIPTION}</p>
         <div className="flex items-center gap-4 overflow-scroll pb-4">
           <button onClick={() => setAscending(!ascending)}>
-            {ascending ? <TiArrowSortedUp size={26} /> : <TiArrowSortedDown size={26} />}
+            {ascending ? (
+              <TiArrowSortedUp size={26} />
+            ) : (
+              <TiArrowSortedDown size={26} />
+            )}
           </button>
           <div className="flex gap-6">
             {sortingMethods.map(({ key, label }) => {
@@ -129,13 +137,20 @@ export default function Movies({ reviews }: Props) {
         {reviewSorted.map((review) => (
           <article key={review.id} className="mb-6 flex">
             <div className="relative mr-4 mt-1 h-36 w-24 flex-shrink-0 overflow-hidden rounded-md">
-              <Image src={review.image} alt={review.title} fill={true} sizes="96px" />
+              <Image
+                src={review.image}
+                alt={review.title}
+                fill={true}
+                sizes="96px"
+              />
             </div>
             <div className="flex-grow">
               <div className="flex flex-wrap items-center gap-x-2">
                 <h3 className="fg-bright text-xl font-bold leading-5">
                   {review.title}{' '}
-                  <span className="fg-muted h-full text-[0.9rem]">({review.year})</span>
+                  <span className="fg-muted h-full text-[0.9rem]">
+                    ({review.year})
+                  </span>
                 </h3>
                 <div className=" flex w-full gap-1 text-yellow md:ml-auto md:w-auto">
                   {[0, 2, 4, 6, 8].map((n) => {
@@ -152,7 +167,11 @@ export default function Movies({ reviews }: Props) {
               <p className="leading-5">
                 {review.summary}{' '}
                 <span className="fg-muted">
-                  - <DateFormatter className="fg-muted ml-auto text-sm" dateString={review.date} />
+                  -{' '}
+                  <DateFormatter
+                    className="fg-muted ml-auto text-sm"
+                    dateString={review.date}
+                  />
                 </span>
               </p>
             </div>
@@ -169,7 +188,7 @@ export const getStaticProps = async () => {
   const extendedReviews = await Promise.all(
     rawReviews.map(async (review) => {
       return await imdbApiMovieDetails(review);
-    }),
+    })
   );
 
   return {

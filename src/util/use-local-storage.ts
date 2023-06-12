@@ -2,7 +2,7 @@ import React, { useDebugValue, useEffect, useState } from 'react';
 
 const useLocalStorage = <S>(
   key: string,
-  initialState?: S | (() => S),
+  initialState?: S | (() => S)
 ): [S, React.Dispatch<React.SetStateAction<S>>] => {
   const [state, setState] = useState<S>(initialState as S);
   useDebugValue(state);

@@ -24,7 +24,8 @@ type Props = {
   artworks: Artwork[];
 };
 
-const CLOUDINARY_BASE_URL = 'https://res.cloudinary.com/dlccpcflb/image/upload/';
+const CLOUDINARY_BASE_URL =
+  'https://res.cloudinary.com/dlccpcflb/image/upload/';
 
 const MediaImage = (media) => {
   const width = PAGE_WIDTH / 2;
@@ -80,10 +81,12 @@ export default function Art({ artworks }: Props) {
             </p>
           ) : null}
           <div className="bg-black">{MediaImage(artwork.media[0])}</div>
-        </figure>,
+        </figure>
       );
       prev_year = artwork.year;
-      min.length += Math.floor((PAGE_WIDTH / 2 / artwork.media[0].width) * artwork.media[0].height);
+      min.length += Math.floor(
+        (PAGE_WIDTH / 2 / artwork.media[0].width) * artwork.media[0].height
+      );
     });
 
     return columns.map((column, n) => {
@@ -127,7 +130,10 @@ export default function Art({ artworks }: Props) {
           </button>
           <div className="flex min-h-full flex-col items-center justify-center gap-2">
             {selected.media.map((media) => (
-              <figure key={media.id} className="relative max-h-screen max-w-screen-xl">
+              <figure
+                key={media.id}
+                className="relative max-h-screen max-w-screen-xl"
+              >
                 <Image
                   src={media.url}
                   alt={media.alternativeText}
@@ -148,7 +154,10 @@ export default function Art({ artworks }: Props) {
       )}
       <MainContainer width={900}>
         <div className="m-auto fullgallery:max-w-[900px]">
-          <Media greaterThanOrEqual="fullwidth" className="mt-2 grid grid-cols-3">
+          <Media
+            greaterThanOrEqual="fullwidth"
+            className="mt-2 grid grid-cols-3"
+          >
             {galleryColumns(artworks, 3)}
           </Media>
           <Media className="mt-2 grid grid-cols-2" lessThan="fullwidth">
@@ -188,14 +197,14 @@ export const getStaticProps = async () => {
                 return {
                   id: media.id,
                   placeholder: await getBase64ImageUrl(
-                    media.attributes.provider_metadata.public_id,
+                    media.attributes.provider_metadata.public_id
                   ),
                   ...media.attributes,
                 };
-              }),
+              })
             ),
           };
-        }),
+        })
       ),
     },
   };

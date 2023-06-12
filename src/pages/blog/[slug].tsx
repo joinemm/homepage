@@ -86,7 +86,10 @@ export default function Post({ metadata, mdxSerialized }: Props) {
             {metadata.title}
           </h1>
           <div className="flex flex-wrap gap-4">
-            <DateFormatter className="fg-muted" dateString={metadata.date}></DateFormatter>{' '}
+            <DateFormatter
+              className="fg-muted"
+              dateString={metadata.date}
+            ></DateFormatter>{' '}
             <ul className="flex gap-2">
               {metadata.tags
                 ? metadata.tags.map((tag) => (

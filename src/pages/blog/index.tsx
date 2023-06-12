@@ -23,7 +23,10 @@ export default function Blog({ posts, tags }: Props) {
   useEffect(() => {
     const query_tag = router.query.tag?.toString();
 
-    if (query_tag !== undefined && activeTags.toString() !== [query_tag].toString()) {
+    if (
+      query_tag !== undefined &&
+      activeTags.toString() !== [query_tag].toString()
+    ) {
       setActiveTags([query_tag]);
     }
     // have to disable this error because if I do as eslint wants this doesn't work
@@ -32,7 +35,8 @@ export default function Blog({ posts, tags }: Props) {
 
   const filterPosts = (posts: PostData[]) => {
     const results = posts.filter(
-      (post) => activeTags.length == 0 || activeTags.every((t) => post.tags.includes(t)),
+      (post) =>
+        activeTags.length == 0 || activeTags.every((t) => post.tags.includes(t))
     );
     return results;
   };
@@ -64,7 +68,11 @@ export default function Blog({ posts, tags }: Props) {
       />
       <MainContainer>
         <h1 className="text-3xl font-bold">Blog.</h1>
-        <TagFilter tags={tags} activeTags={activeTags} tagSetter={setActiveTags} />
+        <TagFilter
+          tags={tags}
+          activeTags={activeTags}
+          tagSetter={setActiveTags}
+        />
         {groupByYear(filterPosts(posts)).map(({ year, posts }) => {
           return (
             <div key={year} className="py-4">
@@ -86,7 +94,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       posts: allPosts.map((post) => post.metadata),
-      tags: allPosts.map((post) => post.metadata.tags).flat(1),
+      tags: [...new Set(allPosts.map((post) => post.metadata.tags).flat(1))],
     },
   };
 };

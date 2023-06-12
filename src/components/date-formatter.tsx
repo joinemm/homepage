@@ -6,7 +6,11 @@ type Props = {
   formatter?: string;
 };
 
-const DateFormatter = ({ dateString, className = '', formatter = 'LLL d, yyyy' }: Props) => {
+const DateFormatter = ({
+  dateString,
+  className = '',
+  formatter = 'LLL d, yyyy',
+}: Props) => {
   const date = parseISO(dateString);
   var formattedDate;
   try {

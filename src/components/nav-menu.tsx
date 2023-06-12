@@ -15,15 +15,22 @@ const NavMenu = ({ className = '', showHome = true }: Props) => {
   ];
   return (
     <ul className={'flex items-center gap-4 ' + className}>
-        {showHome && <li>
-          <Link className="hover:fg-bright underline underline-offset-4" href="/">
+      {showHome && (
+        <li>
+          <Link
+            className="hover:fg-bright underline underline-offset-4"
+            href="/"
+          >
             ~/
           </Link>
         </li>
-}
+      )}
       {links.map((link) => (
         <li key={link.label}>
-          <Link className="hover:fg-bright underline underline-offset-4" href={link.href}>
+          <Link
+            className="hover:fg-bright underline underline-offset-4"
+            href={link.href}
+          >
             {link.label}
           </Link>
         </li>

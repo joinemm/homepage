@@ -1,12 +1,12 @@
-import Header from "../../components/header";
-import Head from "next/head";
-import MdxRenderer from "../../components/mdx-renderer";
-import { getMdxContent } from "../../util/mdx";
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
-import Email from "../../components/encoded-email";
-import MainContainer from "../../components/main-container";
-import Image from "next/image";
-import avatar from "/public/assets/avatar.jpg";
+import Header from '../../components/header';
+import Head from 'next/head';
+import MdxRenderer from '../../components/mdx-renderer';
+import { getMdxContent } from '../../util/mdx';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import Email from '../../components/encoded-email';
+import MainContainer from '../../components/main-container';
+import Image from 'next/image';
+import avatar from '/public/assets/avatar.jpg';
 
 type Props = {
   mdxAbout: MDXRemoteSerializeResult;
@@ -55,7 +55,7 @@ export default function About({ mdxAbout }: Props) {
             and now has over 200 000 users in it&apos;s database.
           </p>
           <p>
-            Contact me: <Email encoded={"am9pbmVtbUBwbS5tZQ=="} />
+            Contact me: <Email encoded={'am9pbmVtbUBwbS5tZQ=='} />
           </p>
         </div>
       </MainContainer>
@@ -64,6 +64,6 @@ export default function About({ mdxAbout }: Props) {
 }
 
 export async function getStaticProps() {
-  const mdx = await getMdxContent("about.mdx");
+  const mdx = await getMdxContent('about.mdx');
   return { props: { mdxAbout: mdx } };
 }
