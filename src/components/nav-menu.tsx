@@ -3,9 +3,10 @@ import Link from 'next/link';
 type Props = {
   className?: string;
   showHome?: boolean;
+  currentPage?: string;
 };
 
-const NavMenu = ({ className = '', showHome = true }: Props) => {
+const NavMenu = ({ className = '', showHome = true, currentPage = "" }: Props) => {
   const links = [
     { label: './blog', href: '/blog' },
     // { label: 'projects', href: '/projects' },
@@ -28,7 +29,10 @@ const NavMenu = ({ className = '', showHome = true }: Props) => {
       {links.map((link) => (
         <li key={link.label}>
           <Link
-            className="hover:fg-bright underline underline-offset-4"
+            className={
+              'hover:fg-bright underline underline-offset-4' +
+              (currentPage == link.href ? ' font-bold no-underline' : '')
+            }
             href={link.href}
           >
             {link.label}

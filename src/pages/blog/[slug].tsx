@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import ErrorPage from 'next/error';
 import { getPostBySlug, getAllPosts } from '../../util/post-helpers';
 import { mdxSerialize } from '../../util/mdx';
 import DateFormatter from '../../components/date-formatter';
@@ -22,13 +21,8 @@ type Props = {
 
 export default function Post({ metadata, mdxSerialized }: Props) {
   const router = useRouter();
-  if (!router.isFallback && !metadata?.slug) {
-    return <ErrorPage statusCode={404} />;
-  }
 
-  return router.isFallback ? (
-    <h1>Loading…</h1>
-  ) : (
+  return (
     <>
       <Head>
         <link
@@ -82,7 +76,7 @@ export default function Post({ metadata, mdxSerialized }: Props) {
               ></Image>
             </div>
           ) : null}
-          <h1 className="my-4 text-[2.75rem] font-bold leading-tight tracking-tight">
+          <h1 className="my-4 text-3xl md:text-[2.75rem] font-bold leading-tight tracking-tight">
             {metadata.title}
           </h1>
           <div className="flex flex-wrap gap-4">

@@ -1,6 +1,4 @@
-import Header from '../../components/header';
 import { getAllPosts } from '../../util/post-helpers';
-import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { PostData } from '../../util/types';
@@ -60,15 +58,16 @@ export default function Blog({ posts, tags }: Props) {
       .reverse();
   };
 
+  const PAGE_TITLE = "BLOG"
+
   return (
     <>
       <NextSeo
-        title={`Blog | Joinemm.dev`}
+        title={`${PAGE_TITLE} | Joinemm.dev`}
         description="List of my blog posts"
         canonical={DOMAIN + router.asPath}
       />
       <MainContainer>
-        <h1 className="text-3xl font-bold">Blog.</h1>
         <TagFilter
           tags={tags}
           activeTags={activeTags}

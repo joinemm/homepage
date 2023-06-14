@@ -8,7 +8,7 @@ type Props = {
 };
 
 const MainContainer = (props: PropsWithChildren<Props>) => {
-  return (
+    return (
     <>
       <article
         className="m-auto flex min-h-screen flex-col px-2"
