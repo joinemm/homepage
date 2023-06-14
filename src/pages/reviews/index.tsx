@@ -33,25 +33,24 @@ type SortingMethod = 'date' | 'year' | 'rating' | 'title';
 const sortingMethods = [
   {
     key: 'dare',
-    label: 'Recent',
+    label: 'recent',
   },
   {
     key: 'year',
-    label: 'Year',
+    label: 'year',
   },
   {
     key: 'rating',
-    label: 'Rating',
+    label: 'rating',
   },
   {
     key: 'title',
-    label: 'Title',
+    label: 'title',
   },
 ] as { key: SortingMethod; label: string }[];
 
-const TITLE = 'Movie Reviews | Joinemm.dev';
-const DESCRIPTION =
-  "I'm not a professional movie critic but here are my personal thoughts about some movies.";
+const TITLE = 'REVIEWS | Joinemm.dev';
+const DESCRIPTION = "Reviewing some random movies i've seen.";
 
 const sortReviews = (
   reviews: ExtendedReview[],
@@ -105,8 +104,6 @@ export default function Movies({ reviews }: Props) {
         }}
       />
       <MainContainer>
-        <h1 className="pb-4 text-3xl font-bold">Movie reviews.</h1>
-        <p className="mb-4">{DESCRIPTION}</p>
         <div className="flex items-center gap-4 overflow-scroll pb-4">
           <button onClick={() => setAscending(!ascending)}>
             {ascending ? (

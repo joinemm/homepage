@@ -58,12 +58,10 @@ export default function Blog({ posts, tags }: Props) {
       .reverse();
   };
 
-  const PAGE_TITLE = "BLOG"
-
   return (
     <>
       <NextSeo
-        title={`${PAGE_TITLE} | Joinemm.dev`}
+        title="BLOG | Joinemm.dev"
         description="List of my blog posts"
         canonical={DOMAIN + router.asPath}
       />

@@ -8,8 +8,8 @@ import { strapiFetchAll } from '../../util/strapi';
 import { Artwork } from '../../util/types';
 import { MdClose } from 'react-icons/md';
 
-const TITLE = 'Art | Joinemm.dev';
-const DESCRIPTION = 'My digital art';
+const TITLE = 'ART | Joinemm.dev';
+const DESCRIPTION = 'My art portfolio.';
 
 const allowScroll = () => {
   document.body.style.overflow = '';
