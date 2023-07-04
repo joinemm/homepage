@@ -104,7 +104,7 @@ export default function Movies({ reviews }: Props) {
         }}
       />
       <MainContainer>
-        <div className="flex items-center gap-4 overflow-scroll pb-4">
+        <div className="flex items-center gap-4 overflow-scroll pb-4 mono">
           <button onClick={() => setAscending(!ascending)}>
             {ascending ? (
               <TiArrowSortedUp size={26} />

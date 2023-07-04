@@ -15,7 +15,7 @@ const CodeBlock = ({ language, prettyCode }) => {
   };
 
   return (
-    <pre className="dark:muted-border group relative my-4 mt-8 overflow-visible rounded-lg py-2 dark:border">
+    <pre className="dark:muted-border group relative my-4 mt-8 overflow-visible rounded-lg dark:border">
       {language && (
         <div className="dark:muted-border dark:fg-primary absolute top-0 right-4 z-20 -translate-y-full rounded-t-md bg-[var(--tw-prose-pre-bg)] px-2 lowercase text-white dark:border-x dark:border-t dark:bg-[#0d0d13]">
           {language}
@@ -27,7 +27,7 @@ const CodeBlock = ({ language, prettyCode }) => {
       >
         <MdContentCopy size={20} />
       </button>
-      <div className="overflow-scroll py-2 pl-6">
+      <div className="overflow-scroll py-3 pl-4">
         {cloneElement(prettyCode as ReactElement, { ref: codeRef })}
       </div>
     </pre>

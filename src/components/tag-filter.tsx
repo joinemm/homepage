@@ -8,7 +8,7 @@ type Props = {
 
 const TagFilter = ({ tags, activeTags, tagSetter }: Props) => {
   return (
-    <ul className="flex flex-wrap gap-x-2">
+    <ul className="flex flex-wrap gap-x-2 mono">
       <div className="my-auto">
         <FaTags />
       </div>

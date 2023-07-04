@@ -11,7 +11,7 @@ const Header = () => {
   pathElements.pop()
   const prevPath = "/" + pathElements.pop()
   return (
-    <header className="muted-border m-auto mt-4 mb-4 w-full max-w-[720px] border-b-4 pb-4">
+    <header className="muted-border m-auto mt-4 mb-4 w-full max-w-[720px] border-b-2 pb-4 mono">
       <Media lessThan="mobile" className="my-auto">
         <div className="ml-2 flex h-10 items-center justify-between gap-4">
           <Link
