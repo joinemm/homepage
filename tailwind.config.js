@@ -80,7 +80,6 @@ module.exports = {
               lineHeight: 1.5,
             },
             code: {
-              color: '#fff',
               backgroundColor: 'var(--tw-prose-pre-bg)',
               padding: '0.25rem',
               borderRadius: '0.25rem',
