@@ -37,7 +37,7 @@ const components = {
 
 const MdxRenderer = ({ source }: Props) => {
   return (
-    <div className="prose prose-quoteless max-w-none dark:prose-invert">
+    <div className="markdown">
       <MDXRemote {...source} components={components} />
     </div>
   );

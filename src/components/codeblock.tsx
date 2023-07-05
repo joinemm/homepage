@@ -3,6 +3,8 @@ import { MdContentCopy } from 'react-icons/md';
 import type { ReactElement } from 'react';
 import { useRef, cloneElement } from 'react';
 
+const SHOWLANG = false;
+
 const CodeBlock = ({ language, prettyCode }) => {
   const codeRef = useRef<HTMLElement>(null);
 
@@ -16,7 +18,7 @@ const CodeBlock = ({ language, prettyCode }) => {
 
   return (
     <pre className="dark:muted-border group relative my-4 mt-8 overflow-visible rounded-lg dark:border">
-      {language && (
+      {SHOWLANG && language && (
         <div className="dark:muted-border dark:fg-primary absolute top-0 right-4 z-20 -translate-y-full rounded-t-md bg-[var(--tw-prose-pre-bg)] px-2 lowercase text-white dark:border-x dark:border-t dark:bg-[#0d0d13]">
           {language}
         </div>

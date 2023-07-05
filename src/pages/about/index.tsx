@@ -34,7 +34,7 @@ export default function About({ mdxAbout }: Props) {
             src={me}
             width={135}
             alt="me"
-            className="float-left mr-4 mb-0 rounded-md"
+            className="float-left mr-6 mb-2 rounded-full"
           />
           <p>Hi, I&apos;m Joonas! Software Engineer from Finland 🇫🇮 </p>
           <p>

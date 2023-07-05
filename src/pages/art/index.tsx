@@ -76,9 +76,9 @@ export default function Art({ artworks }: Props) {
           className="cursor-pointer overflow-hidden rounded-md border-[3px] border-transparent transition-all hover:border-white"
         >
           {artwork.year != prev_year ? (
-            <p className="absolute left-1/2 hidden -translate-x-[545px] -translate-y-1 extrawide:inline">
+            <span className="absolute left-1/2 hidden -translate-x-[545px] -translate-y-1 extrawide:inline">
               {artwork.year} ———
-            </p>
+            </span>
           ) : null}
           <div className="bg-black">{MediaImage(artwork.media[0])}</div>
         </figure>,

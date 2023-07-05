@@ -2,33 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  h1 {
+    @apply text-3xl font-bold;
+  }
+  h2 {
+    @apply text-3xl font-bold mb-2 mt-10;
+  }
+  h3 {
+    @apply text-2xl font-bold mb-2 mt-6;
+  }
+  h4 {
+    @apply text-xl font-bold;
+  }
+  p {
+    @apply my-4;
+  }
+  blockquote {
+    @apply italic border-l-2 pl-4 fg-muted;
+  }
+  a {
+    @apply underline underline-offset-2 hover:accent;
+  }
+  pre {
+    @apply text-sm bg-[#1a1b26];
+  }
+  code {
+    @apply fg-code bg-[#1a1b26] font-bold px-1 rounded-sm;
+  }
+  pre code {
+    @apply font-normal p-0;
+  }
+  ol {
+    @apply list-decimal;
+  }
+}
+
 @layer utilities {
   .bg-primary {
-    @apply bg-[#ffffff] dark:bg-[#1a1b26];
+    @apply bg-[#ffffff] dark:bg-[#0e0e0e];
   }
 
   .bg-secondary {
-    @apply bg-gray-400 dark:bg-gray-800;
+    @apply bg-gray-400 dark:bg-[#1b1b1b];
   }
 
   .fg-bright {
-    @apply text-[#374151] dark:text-[#e5e5f8];
+    @apply text-[#000] dark:text-[#ffffff];
   }
 
   .fg-primary {
-    @apply text-[#374151] dark:text-[#c0caf5];
+    @apply text-[#333333] dark:text-[#e1e1e1];
   }
 
   .fg-muted {
-    @apply text-[#a9b1d6] dark:text-[#51597e];
+    @apply text-[#33333396] dark:text-[#e1e1e19c];
+  }
+
+  .fg-code {
+    @apply text-[#e5e5f8]
   }
 
   .accent {
-    @apply text-[#e0af68];
+    @apply text-[#1c59d1] dark:text-[#8ab1ff];
+  }
+
+  .highlight {
+    @apply text-[#8ab1ff] dark:text-white;
   }
 
   .muted-border {
-    @apply border-[#414868] dark:border-[#414868];
+    @apply border-[#414868] dark:border-[#e1e1e19c];
   }
 }
 
@@ -50,16 +94,27 @@
 /* Works on Firefox */
 pre {
   scrollbar-width: auto;
-  scrollbar-color: #c0caf5 var(--tw-prose-pre-bg);
+  scrollbar-color: #fff #00000000;
 }
 
-/* Works on Chrome, Edge, and Safari */
-pre::-webkit-scrollbar-track {
-  background: orange;
+.markdown ul {
+    list-style-type: "- ";
+    padding-left: 1.25rem;
+}
+.markdown li {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+ol {
+    padding-left: 1.75rem;
 }
 
-pre::-webkit-scrollbar-thumb {
-  background-color: blue;
-  border-radius: 20px;
-  border: 3px solid orange;
+h2 {
+    margin-left: -1.25rem;
+}
+
+h2:before {
+    position: relative;
+    content: '#';
+    left: -0.75rem;
 }

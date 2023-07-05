@@ -5,17 +5,22 @@ import { PropsWithChildren } from 'react';
 
 type Props = {
   width?: number;
+  classname?: string;
 };
 
 const MainContainer = (props: PropsWithChildren<Props>) => {
-    return (
+  return (
     <>
       <article
         className="m-auto flex min-h-screen flex-col px-2"
         style={{ maxWidth: props.width ?? PAGE_WIDTH }}
       >
         <Header />
-        <div className="flex-grow">{props.children}</div>
+        <div
+          className={'flex-grow ' + (props.classname ? props.classname : '')}
+        >
+          {props.children}
+        </div>
         <Footer />
       </article>
     </>

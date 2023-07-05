@@ -32,7 +32,7 @@ type SortingMethod = 'date' | 'year' | 'rating' | 'title';
 
 const sortingMethods = [
   {
-    key: 'dare',
+    key: 'date',
     label: 'recent',
   },
   {
@@ -103,8 +103,8 @@ export default function Movies({ reviews }: Props) {
           cardType: 'summary_large_image',
         }}
       />
-      <MainContainer>
-        <div className="flex items-center gap-4 overflow-scroll pb-4 mono">
+      <MainContainer classname="border-t-2 muted-border">
+        <div className="flex items-center gap-2 overflow-scroll">
           <button onClick={() => setAscending(!ascending)}>
             {ascending ? (
               <TiArrowSortedUp size={26} />
@@ -112,13 +112,13 @@ export default function Movies({ reviews }: Props) {
               <TiArrowSortedDown size={26} />
             )}
           </button>
-          <div className="flex gap-6">
+          <div className="flex gap-4">
             {sortingMethods.map(({ key, label }) => {
               return (
                 <button
                   key={key}
-                  className={`hover:fg-bright underline underline-offset-4 ${
-                    sortingMethod === key ? 'accent' : ''
+                  className={`hover:accent underline-offset-4 ${
+                    sortingMethod === key ? 'accent underline' : ''
                   }`}
                   onClick={() => setSortingMethod(key)}
                 >
@@ -132,7 +132,7 @@ export default function Movies({ reviews }: Props) {
           </Media>
         </div>
         {reviewSorted.map((review) => (
-          <article key={review.id} className="mb-6 flex">
+          <article key={review.id} className="mb-2 flex">
             <div className="relative mr-4 mt-1 h-36 w-24 flex-shrink-0 overflow-hidden rounded-md">
               <Image
                 src={review.image}
@@ -143,13 +143,13 @@ export default function Movies({ reviews }: Props) {
             </div>
             <div className="flex-grow">
               <div className="flex flex-wrap items-center gap-x-2">
-                <h3 className="fg-bright text-xl font-bold leading-5">
+                <h3 className="text-xl font-bold leading-5 m-0 mb-2">
                   {review.title}{' '}
                   <span className="fg-muted h-full text-[0.9rem]">
                     ({review.year})
                   </span>
                 </h3>
-                <div className=" flex w-full gap-1 text-yellow md:ml-auto md:w-auto">
+                <div className=" flex w-full gap-1 text-yellow-300 md:ml-auto md:w-auto">
                   {[0, 2, 4, 6, 8].map((n) => {
                     return review.rating - n >= 2 ? (
                       <ImStarFull key={n} />
@@ -161,7 +161,7 @@ export default function Movies({ reviews }: Props) {
                   })}
                 </div>
               </div>
-              <p className="leading-5">
+              <p className="leading-5 m-0 text-sm">
                 {review.summary}{' '}
                 <span className="fg-muted">
                   -{' '}

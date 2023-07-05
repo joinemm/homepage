@@ -1,5 +1,4 @@
 import { HiOutlineHeart, HiHeart } from 'react-icons/hi';
-import { useEffect, useState } from 'react';
 import useLocalStorage from '../util/use-local-storage';
 
 type Props = {
@@ -15,10 +14,9 @@ const LikeButton = ({ storageKey }: Props) => {
 
   return (
     <div>
-      {/* <p className="mr-2 inline-block text-sm">1</p> */}
       <button onClick={toggleLikeStatus}>
         {liked ? (
-          <HiHeart size={20} className="inline-block text-red" />
+          <HiHeart size={20} className="inline-block text-red-500" />
         ) : (
           <HiOutlineHeart size={20} className="inline-block" />
         )}
