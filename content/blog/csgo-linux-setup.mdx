@@ -1,5 +1,5 @@
 ---
-title: 'Optimizing CS:GO for Arch Linux and AMD GPU'
+title: 'Optimize CS:GO for Arch Linux and Vulkan'
 excerpt: 'Get the best performance out of Counter-Strike Global Offensive on your Linux pc.'
 author: 'Joinemm'
 image: '/assets/content/csgo.jpg'
@@ -80,17 +80,17 @@ If you run a compositor like most people (picom/compton) then you will have alwa
 
 Thankfully, picom includes a very nice config option to disable compositing when there is only one fullscreen application on the screen. Just add this into your `.config/picom.conf`:
 
-```conf
+```
 unredir-if-possible = true
 ```
 
 This works for the most part, but if you get a notification that draws over the game window, it is no longer considered fullscreen and your vsync will be turned back on. To remedy this, we can set the wintypes like this:
 
-```conf
+```
 wintypes:
 {
-  notification = { redir-ignore = true;}
-  notify = { redir-ignore = true;}
+  notification = { redir-ignore = true; }
+  notify = { redir-ignore = true; }
 };
 ```
 

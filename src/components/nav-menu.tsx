@@ -19,7 +19,7 @@ const NavMenu = ({ className = '', showHome = true, currentPage = "" }: Props) =
       {showHome && (
         <li>
           <Link
-            className="hover:fg-bright underline underline-offset-4"
+            className="hover:highlight underline-offset-4"
             href="/"
           >
             ~/
@@ -30,7 +30,7 @@ const NavMenu = ({ className = '', showHome = true, currentPage = "" }: Props) =
         <li key={link.label}>
           <Link
             className={
-              'hover:fg-bright underline underline-offset-4' +
+              'underline-offset-4 hover:highlight' +
               (currentPage == link.href ? ' font-bold no-underline' : '')
             }
             href={link.href}

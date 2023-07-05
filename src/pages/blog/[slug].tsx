@@ -24,12 +24,6 @@ export default function Post({ metadata, mdxSerialized }: Props) {
 
   return (
     <>
-      <Head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
-        />
-      </Head>
       <ArticleJsonLd
         type="BlogPosting"
         url={`${DOMAIN}/blog/${metadata.slug}`}
@@ -64,7 +58,7 @@ export default function Post({ metadata, mdxSerialized }: Props) {
         }}
       />
       <MainContainer>
-        <div className="pb-8">
+        <div className="pb-4">
           {metadata.image ? (
             <div className="">
               <Image
@@ -79,17 +73,15 @@ export default function Post({ metadata, mdxSerialized }: Props) {
           <h1 className="my-4 text-3xl md:text-[2.75rem] font-bold leading-tight tracking-tight">
             {metadata.title}
           </h1>
-          <div className="flex flex-wrap gap-4">
-            <DateFormatter
-              className="fg-muted"
-              dateString={metadata.date}
-            ></DateFormatter>{' '}
+          <div className="flex flex-wrap gap-2 fg-muted">
+            <DateFormatter dateString={metadata.date}></DateFormatter>
+            {'•'}
             <ul className="flex gap-2">
               {metadata.tags
                 ? metadata.tags.map((tag) => (
                     <li key={tag}>
                       <Link
-                        className="accent cursor-pointer hover:text-white"
+                        className="accent no-underline cursor-pointer hover:highlight"
                         href={`/blog?tag=${tag}`}
                       >
                         #{tag}

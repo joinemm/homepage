@@ -38,7 +38,7 @@ const Email = ({ encoded }: Props) => {
 
   return (
     <a
-      className="text-blue no-underline"
+      className="accent no-underline"
       onMouseOver={() => {
         email !== realEmail ? decrypt() : null;
       }}
