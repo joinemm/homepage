@@ -17,26 +17,14 @@ const PostPreview = ({ post }: Props) => {
           {post.title}
         </Link>
       </div>
-      <div className="flex items-baseline gap-2 fg-muted text-sm">
+      <div className="flex items-baseline gap-2 fg-muted mono">
         <DateFormatter
-          className="fg-secondary text-sm"
           dateString={post.date}
           formatter="LLL dd"
         />
         {'•'}
         <ul className="flex gap-2">
-          {post.tags
-            ? post.tags.map((tag) => (
-                <li key={tag}>
-                  <Link
-                    className="no-underline cursor-pointer hover:accent"
-                    href={`/blog?tag=${tag}`}
-                  >
-                    #{tag}
-                  </Link>
-                </li>
-              ))
-            : null}
+          {post.tags ? post.tags.map((tag) => <li key={tag}>#{tag}</li>) : null}
         </ul>
       </div>
     </article>

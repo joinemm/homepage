@@ -65,15 +65,10 @@ export default function Blog({ posts, tags }: Props) {
         description="List of my blog posts"
         canonical={DOMAIN + router.asPath}
       />
-      <MainContainer classname="border-t-2 muted-border pt-4">
-        <TagFilter
-          tags={tags}
-          activeTags={activeTags}
-          tagSetter={setActiveTags}
-        />
+      <MainContainer classname='border-t-2'>
         {groupByYear(filterPosts(posts)).map(({ year, posts }) => {
           return (
-            <div key={year} className="pt-4">
+            <div key={year} className="pb-4">
               <p className="fg-muted text-sm font-bold">{year}</p>
               {posts.map((post) => (
                 <PostPreview post={post} key={post.slug} />

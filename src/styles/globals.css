@@ -25,13 +25,13 @@
     @apply underline underline-offset-2 hover:accent;
   }
   pre {
-    @apply text-sm bg-[#1a1b26];
+    @apply text-sm bg-[#21222c];
   }
   code {
-    @apply fg-code bg-[#1a1b26] font-bold px-1 rounded-sm;
+    @apply fg-code bg-[#343648] px-1.5 py-0.5 rounded-sm;
   }
   pre code {
-    @apply font-normal p-0;
+    @apply font-normal p-0 bg-transparent;
   }
   ol {
     @apply list-decimal;
@@ -60,11 +60,11 @@
   }
 
   .fg-code {
-    @apply text-[#e5e5f8]
+    @apply text-[#ffffff]
   }
 
   .accent {
-    @apply text-[#1c59d1] dark:text-[#8ab1ff];
+    @apply text-[#dd1616] dark:text-[#ff5959];
   }
 
   .highlight {
@@ -77,24 +77,24 @@
 }
 
 * {
-  box-sizing: content-box;
+    box-sizing: content-box;
 }
 
 /* make math bigger */
 .katex {
-  font-size: 1.75em;
+    font-size: 1.75em;
 }
 
 .line.highlighted {
-  background-color: rgba(175, 175, 255, 0.15);
-  width: 100%;
-  display: inline-block;
+    background-color: rgba(175, 175, 255, 0.15);
+    width: 100%;
+    display: inline-block;
 }
 
 /* Works on Firefox */
 pre {
-  scrollbar-width: auto;
-  scrollbar-color: #fff #00000000;
+    scrollbar-width: auto;
+    scrollbar-color: #fff #00000000;
 }
 
 .markdown ul {
@@ -105,16 +105,45 @@ pre {
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
 }
-ol {
+.markdown > p:first-of-type::first-letter {
+    font-size: 3.9rem;
+    float: left;
+    padding-right: 0.2rem;
+    font-family: var(--font-serif);
+}
+.markdown ol {
     padding-left: 1.75rem;
 }
 
-h2 {
+.markdown h2, .markdown h3, .markdown h4 {
     margin-left: -1.25rem;
 }
+h2, h3, h4 {
+    font-family: var(--font-serif);
+}
 
-h2:before {
-    position: relative;
-    content: '#';
-    left: -0.75rem;
+h2:hover .icon-link::before,
+h3:hover .icon-link::before,
+h4:hover .icon-link::before {
+    visibility: visible;
+}
+
+h2 a, h3 a, h4 a {
+    text-decoration-line: none;
+}
+
+h2 a:hover, h3 a:hover, h4 a:hover {
+    color: inherit;
+}
+
+.icon-link::before {
+    visibility: hidden;
+    content: "§";
+    margin-right: 0.5rem;
+}
+
+.active-heading::before {
+    content: "━━";
+    position: absolute;
+    left: -0.7rem;
 }

@@ -4,6 +4,7 @@ import CodeBlock from './codeblock';
 import Aside from './aside';
 import Note from './note';
 import Email from './encoded-email';
+import Section from './section';
 
 type Props = {
   source: MDXRemoteSerializeResult;
@@ -29,6 +30,9 @@ const components = {
     } else {
       return <p {...props} />;
     }
+  },
+  section: (props) => {
+    return <Section {...props} />;
   },
   Aside: Aside,
   Note: Note,

@@ -18,7 +18,7 @@ const MdxImage = ({ src, alt, height, width, title }: Props) => {
           src={src ?? ''}
           width={width}
           height={height}
-          className="m-0 w-full rounded-lg"
+          className="m-0 w-full rounded-sm"
         />
       ) : (
         <img className="m-0" alt={alt ?? ''} src={src ?? ''} />

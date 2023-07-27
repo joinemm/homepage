@@ -8,4 +8,4 @@ export const DOMAIN = vercel_public_domain
   ? `https://${vercel_public_url}`
   : 'http://127.0.0.1:3000';
 
-export const PAGE_WIDTH = 720;
+export const PAGE_WIDTH = 40;

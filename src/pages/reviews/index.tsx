@@ -103,7 +103,7 @@ export default function Movies({ reviews }: Props) {
           cardType: 'summary_large_image',
         }}
       />
-      <MainContainer classname="border-t-2 muted-border">
+      <MainContainer classname="border-t-2">
         <div className="flex items-center gap-2 overflow-scroll">
           <button onClick={() => setAscending(!ascending)}>
             {ascending ? (
@@ -132,8 +132,8 @@ export default function Movies({ reviews }: Props) {
           </Media>
         </div>
         {reviewSorted.map((review) => (
-          <article key={review.id} className="mb-2 flex">
-            <div className="relative mr-4 mt-1 h-36 w-24 flex-shrink-0 overflow-hidden rounded-md">
+          <article key={review.id} className="mb-8 flex">
+            <div className="relative mr-4 h-36 w-24 flex-shrink-0 overflow-hidden rounded-md">
               <Image
                 src={review.image}
                 alt={review.title}
@@ -143,9 +143,9 @@ export default function Movies({ reviews }: Props) {
             </div>
             <div className="flex-grow">
               <div className="flex flex-wrap items-center gap-x-2">
-                <h3 className="text-xl font-bold leading-5 m-0 mb-2">
+                <h3 className="text-xl font-bold leading-5 m-0">
                   {review.title}{' '}
-                  <span className="fg-muted h-full text-[0.9rem]">
+                  <span className="fg-muted h-full text-[1rem] mono">
                     ({review.year})
                   </span>
                 </h3>

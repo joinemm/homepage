@@ -6,23 +6,27 @@ type Props = {
   currentPage?: string;
 };
 
-const NavMenu = ({ className = '', showHome = true, currentPage = "" }: Props) => {
+const NavMenu = ({
+  className = '',
+  showHome = true,
+  currentPage = '',
+}: Props) => {
   const links = [
-    { label: './blog', href: '/blog' },
+    { label: 'blog', href: '/blog' },
     // { label: 'projects', href: '/projects' },
-    { label: './art', href: '/art' },
-    { label: './reviews', href: '/reviews' },
-    { label: './about', href: '/about' },
+    { label: 'art', href: '/art' },
+    { label: 'reviews', href: '/reviews' },
+    { label: 'about', href: '/about' },
   ];
   return (
     <ul className={'flex items-center gap-4 ' + className}>
       {showHome && (
         <li>
           <Link
-            className="hover:highlight underline-offset-4"
+            className="hover:highlight hover:underline no-underline underline-offset-4"
             href="/"
           >
-            ~/
+            ~
           </Link>
         </li>
       )}
@@ -30,7 +34,7 @@ const NavMenu = ({ className = '', showHome = true, currentPage = "" }: Props) =
         <li key={link.label}>
           <Link
             className={
-              'underline-offset-4 hover:highlight' +
+              'underline-offset-4 hover:highlight hover:underline no-underline' +
               (currentPage == link.href ? ' font-bold no-underline' : '')
             }
             href={link.href}

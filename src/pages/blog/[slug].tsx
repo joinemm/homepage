@@ -6,20 +6,23 @@ import { PostData } from '../../util/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import LikeButton from '../../components/like-button';
-import { DOMAIN } from '../../util/constants';
+import { DOMAIN, PAGE_WIDTH } from '../../util/constants';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import MdxRenderer from '../../components/mdx-renderer';
 import ScrollUpButton from '../../components/scroll-up-button';
 import { ArticleJsonLd, NextSeo } from 'next-seo';
-import Head from 'next/head';
 import MainContainer from '../../components/main-container';
+import { Heading } from '../../util/extract-headings';
+import TOCLink from '../../components/toc-link';
+import { Media } from '../../util/media-context';
 
 type Props = {
   metadata: PostData;
   mdxSerialized: MDXRemoteSerializeResult;
+  toc: Heading[];
 };
 
-export default function Post({ metadata, mdxSerialized }: Props) {
+export default function Post({ metadata, mdxSerialized, toc }: Props) {
   const router = useRouter();
 
   return (
@@ -58,23 +61,27 @@ export default function Post({ metadata, mdxSerialized }: Props) {
         }}
       />
       <MainContainer>
-        <div className="pb-4">
-          {metadata.image ? (
-            <div className="">
-              <Image
-                // a little hack to make the nextjs Image height variable
-                className="!relative !h-[unset] !w-full rounded-lg object-contain"
-                src={metadata.image}
-                alt="cover image"
-                fill
-              ></Image>
-            </div>
-          ) : null}
-          <h1 className="my-4 text-3xl md:text-[2.75rem] font-bold leading-tight tracking-tight">
+        <Media greaterThanOrEqual="fullwidth">
+          <ul
+            className="fixed top-1/2 ml-14 border-l-2"
+            style={{
+              transform: `translateX(${PAGE_WIDTH}rem) translateY(-50%)`,
+            }}
+          >
+            {toc.map((heading) => (
+              <TOCLink node={heading} key={heading.id} />
+            ))}
+          </ul>
+        </Media>
+        <div>
+          <h1 className="my-2 text-4xl md:text-5xl font-bold leading-tight tracking-tight serif">
             {metadata.title}
           </h1>
-          <div className="flex flex-wrap gap-2 fg-muted">
-            <DateFormatter dateString={metadata.date}></DateFormatter>
+          <div className="flex flex-wrap gap-2 fg-muted mono pb-8">
+            <DateFormatter
+              dateString={metadata.date}
+              formatter="MMMM d, yyyy"
+            ></DateFormatter>
             {'•'}
             <ul className="flex gap-2">
               {metadata.tags
@@ -90,11 +97,22 @@ export default function Post({ metadata, mdxSerialized }: Props) {
                   ))
                 : null}
             </ul>
-            <div className="ml-auto hidden sm:block">
+            <div className="hidden sm:block">
               <LikeButton storageKey={`liked-blog-post-${metadata.slug}`} />
             </div>
           </div>
-        </div>
+          {metadata.image ? (
+            <div className="">
+              <Image
+                // a little hack to make the nextjs Image height variable
+                className="!relative !h-[unset] !w-full rounded-sm object-contain"
+                src={metadata.image}
+                alt="cover image"
+                fill
+              ></Image>
+            </div>
+          ) : null}
+        </div>{' '}
         <MdxRenderer source={mdxSerialized} />
         <footer className="py-32 text-center">
           <ScrollUpButton />
@@ -112,8 +130,14 @@ type PathParams = {
 
 export async function getStaticProps({ params: { slug } }: PathParams) {
   const post = getPostBySlug(slug);
-  const mdxSerialized = await mdxSerialize(post.content);
-  return { props: { metadata: post.metadata, mdxSerialized } };
+  const mdxResult = await mdxSerialize(post.content);
+  return {
+    props: {
+      metadata: post.metadata,
+      mdxSerialized: mdxResult.content,
+      toc: mdxResult.toc,
+    },
+  };
 }
 
 export async function getStaticPaths() {

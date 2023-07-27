@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { Media } from '../../util/media-context';
 import { NextSeo } from 'next-seo';
-import { DOMAIN, PAGE_WIDTH } from '../../util/constants';
+import { DOMAIN } from '../../util/constants';
 import MainContainer from '../../components/main-container';
 import { strapiFetchAll } from '../../util/strapi';
 import { Artwork } from '../../util/types';
@@ -10,6 +10,8 @@ import { MdClose } from 'react-icons/md';
 
 const TITLE = 'ART | Joinemm.dev';
 const DESCRIPTION = 'My art portfolio.';
+const PAGE_WIDTH = 50;
+const PAGE_WIDTH_PX = 918;
 
 const allowScroll = () => {
   document.body.style.overflow = '';
@@ -28,7 +30,7 @@ const CLOUDINARY_BASE_URL =
   'https://res.cloudinary.com/dlccpcflb/image/upload/';
 
 const MediaImage = (media) => {
-  const width = PAGE_WIDTH / 2;
+  const width = PAGE_WIDTH_PX / 2;
   const url = `${CLOUDINARY_BASE_URL}w_360,c_scale/${media.provider_metadata.public_id}`;
   return (
     <Image
@@ -76,8 +78,8 @@ export default function Art({ artworks }: Props) {
           className="cursor-pointer overflow-hidden rounded-md border-[3px] border-transparent transition-all hover:border-white"
         >
           {artwork.year != prev_year ? (
-            <span className="absolute left-1/2 hidden -translate-x-[545px] -translate-y-1 extrawide:inline">
-              {artwork.year} ———
+            <span className="absolute left-1/2 hidden -translate-x-[535px] -translate-y-2 extrawide:inline mono">
+              {artwork.year} ——
             </span>
           ) : null}
           <div className="bg-black">{MediaImage(artwork.media[0])}</div>
@@ -85,7 +87,7 @@ export default function Art({ artworks }: Props) {
       );
       prev_year = artwork.year;
       min.length += Math.floor(
-        (PAGE_WIDTH / 2 / artwork.media[0].width) * artwork.media[0].height,
+        (PAGE_WIDTH_PX / 2 / artwork.media[0].width) * artwork.media[0].height,
       );
     });
 
@@ -152,15 +154,15 @@ export default function Art({ artworks }: Props) {
           </div>
         </div>
       )}
-      <MainContainer width={900}>
+      <MainContainer width={PAGE_WIDTH}>
         <div className="m-auto fullgallery:max-w-[900px]">
           <Media
             greaterThanOrEqual="fullwidth"
-            className="mt-2 grid grid-cols-3"
+            className="grid grid-cols-3"
           >
             {galleryColumns(artworks, 3)}
           </Media>
-          <Media className="mt-2 grid grid-cols-2" lessThan="fullwidth">
+          <Media className="grid grid-cols-2" lessThan="fullwidth">
             {galleryColumns(artworks, 2)}
           </Media>
         </div>

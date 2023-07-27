@@ -5,6 +5,10 @@ import rehypeImgSize from 'rehype-img-size';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeExtractHeadings from './extract-headings';
+import sectionize from 'remark-sectionize';
 import { join } from 'path';
 import fs from 'fs';
 
@@ -26,19 +30,24 @@ const prettyCodeOptions = {
 };
 
 export async function mdxSerialize(content: string) {
-  return await serialize(content, {
+  let headings = [];
+  const result = await serialize(content, {
     mdxOptions: {
       development: false,
-      remarkPlugins: [remarkGfm, remarkMath],
+      remarkPlugins: [remarkGfm, remarkMath, sectionize],
       rehypePlugins: [
         [rehypePrettyCode, prettyCodeOptions],
         // idk why but ts likes to complain that this aint right even though it is
         // @ts-ignore
         [rehypeImgSize, { dir: 'public' }],
+        rehypeSlug,
+        rehypeAutolinkHeadings,
         rehypeKatex,
+        [rehypeExtractHeadings, { rank: 4, headings }],
       ],
     },
   });
+  return { content: result, toc: headings };
 }
 
 export async function getMdxContent(filename: string) {
