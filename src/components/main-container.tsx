@@ -32,7 +32,9 @@ const MainContainer = (props: PropsWithChildren<Props>) => {
           </p>
         </Media>
         <div
-          className={'flex-grow mt-2 ' + (props.classname ? props.classname : '')}
+          className={
+            'flex-grow mt-2 ' + (props.classname ? props.classname : '')
+          }
         >
           {props.children}
         </div>

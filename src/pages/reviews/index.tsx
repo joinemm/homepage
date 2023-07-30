@@ -7,18 +7,9 @@ import { Media } from '../../util/media-context';
 import { NextSeo } from 'next-seo';
 import { DOMAIN } from '../../util/constants';
 import MainContainer from '../../components/main-container';
-import { strapiFetchAll } from '../../util/strapi';
+import { getMovieReviews, MovieReview } from '../../util/content-manager';
 
-type Review = {
-  id: number;
-  title?: string;
-  rating: number;
-  summary?: string;
-  imdbID: string;
-  date: string;
-};
-
-interface ExtendedReview extends Review {
+interface ExtendedReview extends MovieReview {
   title: string;
   type: string;
   image: string;
@@ -28,11 +19,11 @@ interface ExtendedReview extends Review {
   imdbURL: string;
 }
 
-type SortingMethod = 'date' | 'year' | 'rating' | 'title';
+type SortingMethod = 'date_watched' | 'year' | 'rating' | 'title';
 
 const sortingMethods = [
   {
-    key: 'date',
+    key: 'date_watched',
     label: 'recent',
   },
   {
@@ -76,7 +67,7 @@ type Props = {
 export default function Movies({ reviews }: Props) {
   const [reviewSorted, setReviewSorted] = useState(reviews);
   const [ascending, setAscending] = useState(false);
-  const [sortingMethod, setSortingMethod] = useState<SortingMethod>('date');
+  const [sortingMethod, setSortingMethod] = useState<SortingMethod>('date_watched');
 
   useEffect(() => {
     setReviewSorted(sortReviews(reviews, ascending, sortingMethod));
@@ -163,11 +154,11 @@ export default function Movies({ reviews }: Props) {
               </div>
               <p className="leading-5 m-0 text-sm">
                 {review.summary}{' '}
-                <span className="fg-muted">
+                <span className="fg-muted whitespace-nowrap">
                   -{' '}
                   <DateFormatter
                     className="fg-muted ml-auto text-sm"
-                    dateString={review.date}
+                    dateString={review.date_watched}
                   />
                 </span>
               </p>
@@ -180,7 +171,7 @@ export default function Movies({ reviews }: Props) {
 }
 
 export const getStaticProps = async () => {
-  const rawReviews = await strapiFetchAll('movie-reviews');
+  const rawReviews = await getMovieReviews();
 
   const extendedReviews = await Promise.all(
     rawReviews.map(async (review) => {
@@ -195,9 +186,9 @@ export const getStaticProps = async () => {
   };
 };
 
-async function imdbApiMovieDetails(review: Review) {
+async function imdbApiMovieDetails(review: MovieReview) {
   const api_url = 'https://imdb-api.projects.thetuhin.com';
-  return await fetch(`${api_url}/title/${review.imdbID}`)
+  return await fetch(`${api_url}/title/${review.imdb_id}`)
     .then((response) => {
       return response.json();
     })

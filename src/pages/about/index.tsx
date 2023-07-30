@@ -13,7 +13,7 @@ export default function About() {
       </Head>
       <MainContainer classname='border-t-2'>
         <div className="mt-3">
-          <span className="overflow-hidden float-right w-[11rem] ml-2 rounded-lg">
+          <span className="overflow-hidden float-right w-32 md:w-[10rem] ml-2 rounded-lg">
             <Image src={me} alt="me" style={{ objectFit: 'cover' }} />
           </span>
           <h1 className="mt-0 serif text-4xl">Hello there,</h1>

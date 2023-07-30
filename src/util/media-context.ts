@@ -5,7 +5,8 @@ const ExampleAppMedia = createMedia({
     zero: 0,
     mobile: 550,
     fullwidth: 738,
-    gallerymax: 900,
+    gallerymax: 918,
+    widescreen: 1250,
   },
 });
 

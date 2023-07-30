@@ -1,8 +1,17 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import { join } from 'path';
-import { PostData } from './types';
 const postsDirectory = join(process.cwd(), 'content/blog');
+
+export type PostData = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  image: string;
+  date: string;
+  tags: [string];
+  draft: boolean;
+};
 
 /**
  * Gets all blog post slugs

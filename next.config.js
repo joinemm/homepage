@@ -4,7 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     loader: 'default',
-    domains: ['m.media-amazon.com', 'res.cloudinary.com'],
+    domains: ['m.media-amazon.com', 'directus.joinemm.dev'],
   },
 };
 

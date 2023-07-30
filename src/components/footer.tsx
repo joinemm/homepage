@@ -2,7 +2,7 @@ import { PAGE_WIDTH } from '../util/constants';
 
 const Header = () => {
   return (
-    <footer className="m-4 mt-8 text-center mono" style={{ maxWidth: PAGE_WIDTH + "rem"}}>
+    <footer className="m-4 mt-8 text-center mono w-full">
       <p className="fg-muted text-sm">
         © Joinemm 2023 •{' '}
         <a href="https://git.joinemm.dev/homepage" className="hover:fg-primary">

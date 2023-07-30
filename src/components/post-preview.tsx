@@ -1,4 +1,4 @@
-import { PostData } from '../util/types';
+import { PostData } from '../util/post-helpers';
 import Link from 'next/link';
 import DateFormatter from './date-formatter';
 

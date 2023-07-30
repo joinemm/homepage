@@ -1,9 +1,8 @@
 import { getAllPosts } from '../../util/post-helpers';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { PostData } from '../../util/types';
+import { PostData } from '../../util/post-helpers';
 import PostPreview from '../../components/post-preview';
-import TagFilter from '../../components/tag-filter';
 import MainContainer from '../../components/main-container';
 import { parseISO } from 'date-fns';
 import { NextSeo } from 'next-seo';

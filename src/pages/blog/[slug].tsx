@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { getPostBySlug, getAllPosts } from '../../util/post-helpers';
 import { mdxSerialize } from '../../util/mdx';
 import DateFormatter from '../../components/date-formatter';
-import { PostData } from '../../util/types';
+import { PostData } from '../../util/post-helpers';
 import Image from 'next/image';
 import Link from 'next/link';
 import LikeButton from '../../components/like-button';
@@ -61,7 +61,7 @@ export default function Post({ metadata, mdxSerialized, toc }: Props) {
         }}
       />
       <MainContainer>
-        <Media greaterThanOrEqual="fullwidth">
+        <Media greaterThanOrEqual="widescreen">
           <ul
             className="fixed top-1/2 ml-14 border-l-2"
             style={{

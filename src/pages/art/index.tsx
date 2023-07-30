@@ -4,14 +4,13 @@ import { Media } from '../../util/media-context';
 import { NextSeo } from 'next-seo';
 import { DOMAIN } from '../../util/constants';
 import MainContainer from '../../components/main-container';
-import { strapiFetchAll } from '../../util/strapi';
-import { Artwork } from '../../util/types';
 import { MdClose } from 'react-icons/md';
+import { getArt, getAssetUrl, CMSImage, Art } from '../../util/content-manager';
+import Shadowbox from '../../components/shadowbox';
 
 const TITLE = 'ART | Joinemm.dev';
 const DESCRIPTION = 'My art portfolio.';
 const PAGE_WIDTH = 50;
-const PAGE_WIDTH_PX = 918;
 
 const allowScroll = () => {
   document.body.style.overflow = '';
@@ -22,33 +21,28 @@ const lockSroll = () => {
   document.body.style.height = '100vh';
 };
 
-type Props = {
-  artworks: Artwork[];
-};
-
-const CLOUDINARY_BASE_URL =
-  'https://res.cloudinary.com/dlccpcflb/image/upload/';
-
-const MediaImage = (media) => {
-  const width = PAGE_WIDTH_PX / 2;
-  const url = `${CLOUDINARY_BASE_URL}w_360,c_scale/${media.provider_metadata.public_id}`;
+const MediaImage = (image: CMSImage) => {
   return (
     <Image
-      src={url}
-      alt={media.alternativeText}
-      width={width}
-      height={Math.floor((width / media.width) * media.height)}
-      placeholder={media.placeholder ? 'blur' : undefined}
-      blurDataURL={media.placeholder}
+      src={getAssetUrl(image.id, 'thumbnail')}
+      alt={image.title}
+      width={image.width}
+      height={image.height}
+      placeholder={image.placeholder ? 'blur' : undefined}
+      blurDataURL={image.placeholder}
     />
   );
 };
 
-export default function Art({ artworks }: Props) {
-  const [selected, setSelected] = useState<Artwork | null>(null);
+type Props = {
+  artwork: Art[];
+};
 
-  const select = (artwork) => {
-    setSelected(artwork);
+export default function Gallery({ artwork }: Props) {
+  const [selected, setSelected] = useState<Art | null>(null);
+
+  const select = (item: Art) => {
+    setSelected(item);
     lockSroll();
   };
 
@@ -57,38 +51,40 @@ export default function Art({ artworks }: Props) {
     allowScroll();
   };
 
-  const galleryColumns = (artworks: Artwork[], column_count: number) => {
+  const galleryColumns = (art: Art[], column_count: number) => {
     type Column = {
       length: number;
       figures: JSX.Element[];
     };
+
+    var prev_year = 0;
     var columns: Column[] = [...Array(column_count)].map(() => {
       return { length: 0, figures: [] };
     });
-    var prev_year = 0;
-    artworks.forEach((artwork) => {
+
+    art.forEach((item) => {
       var min = columns[0];
       columns.forEach((x) => {
         if (x.length < min.length) min = x;
       });
       min.figures.push(
         <figure
-          key={artwork.id}
-          onClick={() => select(artwork)}
-          className="cursor-pointer overflow-hidden rounded-md border-[3px] border-transparent transition-all hover:border-white"
+          key={item.id}
+          onClick={() => select(item)}
+          className="cursor-pointer overflow-hidden box-border border-[2px] border-transparent transition-all hover:border-white"
         >
-          {artwork.year != prev_year ? (
-            <span className="absolute left-1/2 hidden -translate-x-[535px] -translate-y-2 extrawide:inline mono">
-              {artwork.year} ——
+          {item.year != prev_year ? (
+            <span className="absolute left-1/2 hidden -translate-x-[525px] -translate-y-2 extrawide:inline mono text-sm font-bold">
+              {item.year} ——
             </span>
           ) : null}
-          <div className="bg-black">{MediaImage(artwork.media[0])}</div>
+          <div className="hovershine relative bg-black">
+            {MediaImage(item.file)}
+          </div>
         </figure>,
       );
-      prev_year = artwork.year;
-      min.length += Math.floor(
-        (PAGE_WIDTH_PX / 2 / artwork.media[0].width) * artwork.media[0].height,
-      );
+      prev_year = item.year;
+      min.length += item.file.height / item.file.width;
     });
 
     return columns.map((column, n) => {
@@ -122,92 +118,34 @@ export default function Art({ artworks }: Props) {
         }}
       />
       {selected && (
-        <div className="fixed top-0 left-0 z-40 h-full w-screen  overflow-y-scroll bg-black bg-opacity-80">
+        <div className="fixed top-0 left-0 z-40 w-screen h-screen overflow-y-scroll bg-black bg-opacity-80">
           <button
-            className="fixed top-4 right-8 z-50 mt-1 rounded-full border-2 bg-black bg-opacity-50 p-2 text-white"
+            className="fixed top-4 right-4 z-50 mt-1 rounded-full border-2 bg-black bg-opacity-30 p-1 text-white"
             type="button"
             onClick={() => unselect()}
           >
-            <MdClose size={35} />
+            <MdClose size={30} />
           </button>
-          <div className="flex min-h-full flex-col items-center justify-center gap-2">
-            {selected.media.map((media) => (
-              <figure
-                key={media.id}
-                className="relative max-h-screen max-w-screen-xl"
-              >
-                <Image
-                  src={media.url}
-                  alt={media.alternativeText}
-                  width={media.width}
-                  height={media.height}
-                  style={{ objectFit: 'contain', maxHeight: '95vh' }}
-                  placeholder={media.placeholder ? 'blur' : undefined}
-                  blurDataURL={media.placeholder}
-                />
-              </figure>
-            ))}
-            <div className="text-center text-white">
-              <p className="italic">“{selected.title}”</p>
-              <p>{selected.year}</p>
-            </div>
-          </div>
+          <Shadowbox art={selected} unselect={() => unselect()} />
         </div>
       )}
       <MainContainer width={PAGE_WIDTH}>
-        <div className="m-auto fullgallery:max-w-[900px]">
-          <Media
-            greaterThanOrEqual="fullwidth"
-            className="grid grid-cols-3"
-          >
-            {galleryColumns(artworks, 3)}
-          </Media>
-          <Media className="grid grid-cols-2" lessThan="fullwidth">
-            {galleryColumns(artworks, 2)}
-          </Media>
-        </div>
+        <Media greaterThanOrEqual="fullwidth" className="grid grid-cols-3">
+          {galleryColumns(artwork, 3)}
+        </Media>
+        <Media className="grid grid-cols-2" lessThan="fullwidth">
+          {galleryColumns(artwork, 2)}
+        </Media>
       </MainContainer>
     </>
   );
 }
 
-async function getBase64ImageUrl(imageId: string) {
-  if (process.env.NODE_ENV == 'development') return null;
-
-  const url = `${CLOUDINARY_BASE_URL}w_100/e_blur:1000,q_auto,f_webp/${imageId}`;
-  const response = await fetch(url);
-  const buffer = await response.arrayBuffer();
-  const data = Buffer.from(buffer).toString('base64');
-  return `data:image/webp;base64,${data}`;
-}
-
 export const getStaticProps = async () => {
-  const artworks = await strapiFetchAll('artworks', {
-    populate: 'media',
-    sort: 'year:desc',
-    'pagination[pageSize]': '50',
-  });
-
+  const art = await getArt();
   return {
     props: {
-      artworks: await Promise.all(
-        artworks.map(async (art) => {
-          return {
-            ...art,
-            media: await Promise.all(
-              art.media.data.map(async (media) => {
-                return {
-                  id: media.id,
-                  placeholder: await getBase64ImageUrl(
-                    media.attributes.provider_metadata.public_id,
-                  ),
-                  ...media.attributes,
-                };
-              }),
-            ),
-          };
-        }),
-      ),
+      artwork: art,
     },
   };
 };
