@@ -6,7 +6,7 @@ export type CMSImage = {
   width: number;
   height: number;
   title: string;
-  placeholder?: string;
+  placeholder?: string | null;
   directus_files_id?: string;
 };
 
@@ -34,8 +34,8 @@ async function getFileInfo(id: string): Promise<CMSImage> {
   return await apiRequest(`/files/${id}?fields=id,width,height,title`);
 }
 
-async function getBase64ImageUrl(id: string): Promise<string | undefined> {
-  if (process.env.NODE_ENV == 'development') return undefined;
+async function getBase64ImageUrl(id: string): Promise<string | null> {
+  if (process.env.NODE_ENV == 'development') return null
   const url = getAssetUrl(id, 'loading');
   const response = await fetch(url);
   const buffer = await response.arrayBuffer();
@@ -48,7 +48,8 @@ export function getAssetUrl(
   transform: 'loading' | 'thumbnail' | 'orig' | null = null,
 ): string {
   return (
-    `${CDN_DOMAIN}/assets/${assetUUID}` + (transform ? `?key=${transform}` : '')
+    `https://${CDN_DOMAIN}/assets/${assetUUID}` +
+    (transform ? `?key=${transform}` : '')
   );
 }
 
@@ -95,7 +96,7 @@ export async function getMovieReviews(): Promise<MovieReview[]> {
 }
 
 async function apiRequest(path: string) {
-  return await fetch(CDN_DOMAIN + path)
+  return await fetch('https://' + CDN_DOMAIN + path)
     .then((response) => {
       return response.json();
     })

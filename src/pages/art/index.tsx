@@ -29,7 +29,7 @@ const MediaImage = (image: CMSImage) => {
       width={image.width}
       height={image.height}
       placeholder={image.placeholder ? 'blur' : undefined}
-      blurDataURL={image.placeholder}
+      blurDataURL={image.placeholder || undefined}
     />
   );
 };

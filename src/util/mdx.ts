@@ -33,7 +33,7 @@ export async function mdxSerialize(content: string) {
   let headings = [];
   const result = await serialize(content, {
     mdxOptions: {
-      development: false,
+      development: process.env.NODE_ENV === 'development',
       remarkPlugins: [remarkGfm, remarkMath, sectionize],
       rehypePlugins: [
         [rehypePrettyCode, prettyCodeOptions],

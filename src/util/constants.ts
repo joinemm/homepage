@@ -9,4 +9,6 @@ export const DOMAIN = vercel_public_domain
   : 'http://127.0.0.1:3000';
 
 export const PAGE_WIDTH = 40;
-export const CDN_DOMAIN = "https://cdn.joinemm.dev";
+export const CDN_DOMAIN = 'cdn.joinemm.dev';
+export const ANALYTICS_DOMAIN = 'stats.joinemm.dev';
+export const SITE_NAME = 'joinemm.dev';

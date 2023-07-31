@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document';
+import { ANALYTICS_DOMAIN } from '../util/constants';
 import { mediaStyles } from '../util/media-context';
 
 export default function Document() {
@@ -15,8 +16,8 @@ export default function Document() {
         />
         <script
           defer
-          data-domain="joinemm.dev"
-          src="https://pls.joinemm.dev/pls.js"
+          data-domain={ANALYTICS_DOMAIN}
+          src={`https://${ANALYTICS_DOMAIN}/pls.js`}
         ></script>
       </Head>
       <body className="bg-primary fg-primary max-w-[100vw] overflow-x-hidden">

@@ -74,7 +74,7 @@ const Shadowbox = ({ art, unselect }: Props) => {
                   placeholder={
                     allFiles[carouselIndex].placeholder ? 'blur' : undefined
                   }
-                  blurDataURL={allFiles[carouselIndex].placeholder}
+                  blurDataURL={allFiles[carouselIndex].placeholder || undefined}
                   quality={100}
                   unoptimized={true}
                   priority={true}
