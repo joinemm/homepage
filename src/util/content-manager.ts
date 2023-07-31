@@ -35,7 +35,7 @@ async function getFileInfo(id: string): Promise<CMSImage> {
 }
 
 async function getBase64ImageUrl(id: string): Promise<string | null> {
-  if (process.env.NODE_ENV == 'development') return null
+  if (process.env.NODE_ENV == 'development') return null;
   const url = getAssetUrl(id, 'loading');
   const response = await fetch(url);
   const buffer = await response.arrayBuffer();
@@ -48,8 +48,7 @@ export function getAssetUrl(
   transform: 'loading' | 'thumbnail' | 'orig' | null = null,
 ): string {
   return (
-    `https://${CDN_DOMAIN}/assets/${assetUUID}` +
-    (transform ? `?key=${transform}` : '')
+    `https://${CDN_DOMAIN}/assets/${assetUUID}` + (transform ? `?key=${transform}` : '')
   );
 }
 
@@ -73,9 +72,7 @@ export async function getArt(): Promise<Art[]> {
         extra_files: await Promise.all(
           item.extra_files.map(async (extraFile) => {
             return {
-              ...(await getFileInfo(
-                extraFile.directus_files_id || extraFile.id,
-              )),
+              ...(await getFileInfo(extraFile.directus_files_id || extraFile.id)),
               placeholder: await getBase64ImageUrl(
                 extraFile.directus_files_id || extraFile.id,
               ),

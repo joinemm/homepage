@@ -37,9 +37,9 @@ const Shadowbox = ({ art, unselect }: Props) => {
   console.log(windowWidth);
 
   return (
-    <div className="fixed top-0 left-0 z-40 w-screen h-screen overflow-y-scroll bg-black bg-opacity-80">
+    <div className="fixed left-0 top-0 z-40 h-screen w-screen overflow-y-scroll bg-black bg-opacity-80">
       <button
-        className="fixed top-4 right-4 z-50 mt-1 rounded-full border-2 bg-black bg-opacity-30 p-1 text-white"
+        className="fixed right-4 top-4 z-50 mt-1 rounded-full border-2 bg-black bg-opacity-30 p-1 text-white"
         type="button"
         onClick={() => unselect()}
       >
@@ -51,8 +51,8 @@ const Shadowbox = ({ art, unselect }: Props) => {
         onClick={() => unselect()}
       >
         <TransformWrapper key={art.id} centerOnInit={true}>
-          <figure className="relative flex items-center w-screen min-h-screen">
-            <div className="absolute w-screen h-screen mx-auto my-0">
+          <figure className="relative flex min-h-screen w-screen items-center">
+            <div className="absolute mx-auto my-0 h-screen w-screen">
               <TransformComponent>
                 <Image
                   ref={imageRef}
@@ -71,9 +71,7 @@ const Shadowbox = ({ art, unselect }: Props) => {
                     bottom: 0,
                     pointerEvents: 'auto',
                   }}
-                  placeholder={
-                    allFiles[carouselIndex].placeholder ? 'blur' : undefined
-                  }
+                  placeholder={allFiles[carouselIndex].placeholder ? 'blur' : undefined}
                   blurDataURL={allFiles[carouselIndex].placeholder || undefined}
                   quality={100}
                   unoptimized={true}
@@ -92,13 +90,13 @@ const Shadowbox = ({ art, unselect }: Props) => {
               >
                 <div className="ml-4">
                   <div
-                    className=" relative border-2 p-3 mono drop-shadow-md drop bg-black bg-opacity-30"
+                    className=" mono drop relative border-2 bg-black bg-opacity-30 p-3 drop-shadow-md"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <p className="my-0 font-bold italic text-lg">{art.title}</p>
+                    <p className="my-0 text-lg font-bold italic">{art.title}</p>
                     <p className="my-0">{art.year}</p>
                     <p className="my-1">{art.medium}</p>
-                    <p className="m-0 italic text-sm">{art.description}</p>
+                    <p className="m-0 text-sm italic">{art.description}</p>
                   </div>
                   {allFiles.length > 1 && (
                     <div className="flex items-center justify-center">
@@ -113,9 +111,7 @@ const Shadowbox = ({ art, unselect }: Props) => {
                         <GoDotFill
                           key={i}
                           size={18}
-                          className={
-                            i === carouselIndex ? 'opacity-100' : 'opacity-70'
-                          }
+                          className={i === carouselIndex ? 'opacity-100' : 'opacity-70'}
                         />
                       ))}
                       <button
@@ -131,8 +127,8 @@ const Shadowbox = ({ art, unselect }: Props) => {
               </div>
             ) : (
               <>
-                <div className="absolute left-2 top-2 mono">
-                  <p className="font-bold m-0">{art.title}</p>
+                <div className="mono absolute left-2 top-2">
+                  <p className="m-0 font-bold">{art.title}</p>
                   <p className="m-0">{art.year}</p>
                 </div>
                 {allFiles.length > 1 ? (
@@ -140,18 +136,16 @@ const Shadowbox = ({ art, unselect }: Props) => {
                     <button
                       onClick={prevImage}
                       type="button"
-                      className="absolute text-white opacity-80 hover:opacity-100 drop-shadow-lg"
+                      className="absolute text-white opacity-80 drop-shadow-lg hover:opacity-100"
                     >
                       <MdChevronLeft size={40} />
                     </button>
-                    <div className="absolute flex left-1/2 bottom-14 -translate-x-1/2">
+                    <div className="absolute bottom-14 left-1/2 flex -translate-x-1/2">
                       {[...Array(allFiles.length)].map((_, i) => (
                         <GoDotFill
                           key={i}
                           size={15}
-                          className={
-                            i === carouselIndex ? 'opacity-100' : 'opacity-70'
-                          }
+                          className={i === carouselIndex ? 'opacity-100' : 'opacity-70'}
                         />
                       ))}
                     </div>
@@ -159,7 +153,7 @@ const Shadowbox = ({ art, unselect }: Props) => {
                     <button
                       onClick={nextImage}
                       type="button"
-                      className="absolute text-white opacity-80 hover:opacity-100 right-0 drop-shadow-lg"
+                      className="absolute right-0 text-white opacity-80 drop-shadow-lg hover:opacity-100"
                     >
                       <MdChevronRight size={40} />
                     </button>

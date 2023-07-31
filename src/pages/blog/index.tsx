@@ -20,10 +20,7 @@ export default function Blog({ posts, tags }: Props) {
   useEffect(() => {
     const query_tag = router.query.tag?.toString();
 
-    if (
-      query_tag !== undefined &&
-      activeTags.toString() !== [query_tag].toString()
-    ) {
+    if (query_tag !== undefined && activeTags.toString() !== [query_tag].toString()) {
       setActiveTags([query_tag]);
     }
     // have to disable this error because if I do as eslint wants this doesn't work
@@ -33,8 +30,7 @@ export default function Blog({ posts, tags }: Props) {
   const filterPosts = (posts: PostData[]) => {
     const results = posts.filter(
       (post) =>
-        activeTags.length == 0 ||
-        activeTags.every((t) => post.tags.includes(t)),
+        activeTags.length == 0 || activeTags.every((t) => post.tags.includes(t)),
     );
     return results;
   };

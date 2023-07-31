@@ -17,8 +17,6 @@ const DisplayViews = ({ slug }: Props) => {
   );
 };
 
-export default DisplayViews;
-
 async function getPlausibleViews(slug: string) {
   const now = new Date();
   const [nowDate] = now.toISOString().split('T');
@@ -37,3 +35,5 @@ async function getPlausibleViews(slug: string) {
       return data;
     });
 }
+
+export default DisplayViews;

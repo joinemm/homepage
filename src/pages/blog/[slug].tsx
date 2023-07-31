@@ -74,22 +74,22 @@ export default function Post({ metadata, mdxSerialized, toc }: Props) {
           </ul>
         </Media>
         <div>
-          <h1 className="my-2 text-4xl md:text-5xl font-bold leading-tight tracking-tight serif">
+          <h1 className="serif my-2 text-4xl font-bold leading-tight tracking-tight md:text-5xl">
             {metadata.title}
           </h1>
-          <div className="flex flex-wrap gap-2 fg-muted mono pb-8 text-[0.95rem]">
+          <div className="fg-muted mono flex flex-wrap gap-2 pb-8 text-[0.95rem]">
             <DateFormatter
               dateString={metadata.date}
               formatter="MMMM d, yyyy"
             ></DateFormatter>
-            <DisplayViews slug={metadata.slug}/>
+            <DisplayViews slug={metadata.slug} />
             {'•'}
             <ul className="flex gap-2">
               {metadata.tags
                 ? metadata.tags.map((tag) => (
                     <li key={tag}>
                       <Link
-                        className="accent no-underline cursor-pointer hover:highlight"
+                        className="accent hover:highlight cursor-pointer no-underline"
                         href={`/blog?tag=${tag}`}
                       >
                         #{tag}

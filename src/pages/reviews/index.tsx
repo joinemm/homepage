@@ -67,8 +67,7 @@ type Props = {
 export default function Movies({ reviews }: Props) {
   const [reviewSorted, setReviewSorted] = useState(reviews);
   const [ascending, setAscending] = useState(false);
-  const [sortingMethod, setSortingMethod] =
-    useState<SortingMethod>('date_watched');
+  const [sortingMethod, setSortingMethod] = useState<SortingMethod>('date_watched');
 
   useEffect(() => {
     setReviewSorted(sortReviews(reviews, ascending, sortingMethod));
@@ -126,18 +125,13 @@ export default function Movies({ reviews }: Props) {
         {reviewSorted.map((review) => (
           <article key={review.id} className="mb-8 flex">
             <div className="relative mr-4 h-36 w-24 flex-shrink-0 overflow-hidden rounded-md">
-              <Image
-                src={review.image}
-                alt={review.title}
-                fill={true}
-                sizes="96px"
-              />
+              <Image src={review.image} alt={review.title} fill={true} sizes="96px" />
             </div>
             <div className="flex-grow">
               <div className="flex flex-wrap items-center gap-x-2">
-                <h3 className="text-xl font-bold leading-5 m-0">
+                <h3 className="m-0 text-xl font-bold leading-5">
                   {review.title}{' '}
-                  <span className="fg-muted h-full text-[1rem] mono">
+                  <span className="fg-muted mono h-full text-[1rem]">
                     ({review.year})
                   </span>
                 </h3>
@@ -153,7 +147,7 @@ export default function Movies({ reviews }: Props) {
                   })}
                 </div>
               </div>
-              <p className="leading-5 m-0 text-sm">
+              <p className="m-0 text-sm leading-5">
                 {review.summary}{' '}
                 <span className="fg-muted whitespace-nowrap">
                   -{' '}

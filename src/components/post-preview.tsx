@@ -12,12 +12,12 @@ const PostPreview = ({ post }: Props) => {
       <div className="flex-grow">
         <Link
           href={`/blog/${post.slug}`}
-          className="hover:highlight underline underline-offset-4 font-bold"
+          className="hover:highlight font-bold underline underline-offset-4"
         >
           {post.title}
         </Link>
       </div>
-      <div className="flex items-baseline gap-2 fg-muted mono">
+      <div className="fg-muted mono flex items-baseline gap-2">
         <DateFormatter dateString={post.date} formatter="LLL dd" />
         {'•'}
         <ul className="flex gap-2">

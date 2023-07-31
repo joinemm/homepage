@@ -51,10 +51,7 @@ export async function mdxSerialize(content: string) {
 }
 
 export async function getMdxContent(filename: string) {
-  const file = fs.readFileSync(
-    join(process.cwd(), 'content/', filename),
-    'utf8',
-  );
+  const file = fs.readFileSync(join(process.cwd(), 'content/', filename), 'utf8');
   const mdx = await mdxSerialize(file);
   return mdx;
 }

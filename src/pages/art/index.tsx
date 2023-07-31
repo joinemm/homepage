@@ -71,16 +71,14 @@ export default function Gallery({ artwork }: Props) {
         <figure
           key={item.id}
           onClick={() => select(item)}
-          className="cursor-pointer overflow-hidden box-border border-[2px] border-transparent transition-all hover:border-white"
+          className="box-border cursor-pointer overflow-hidden border-[2px] border-transparent transition-all hover:border-white"
         >
           {item.year != prev_year ? (
-            <span className="absolute left-1/2 hidden -translate-x-[525px] -translate-y-2 extrawide:inline mono text-sm font-bold">
+            <span className="mono absolute left-1/2 hidden -translate-x-[525px] -translate-y-2 text-sm font-bold extrawide:inline">
               {item.year} ——
             </span>
           ) : null}
-          <div className="hovershine relative bg-black">
-            {MediaImage(item.file)}
-          </div>
+          <div className="hovershine relative bg-black">{MediaImage(item.file)}</div>
         </figure>,
       );
       prev_year = item.year;
@@ -118,9 +116,9 @@ export default function Gallery({ artwork }: Props) {
         }}
       />
       {selected && (
-        <div className="fixed top-0 left-0 z-40 w-screen h-screen overflow-y-scroll bg-black bg-opacity-80">
+        <div className="fixed left-0 top-0 z-40 h-screen w-screen overflow-y-scroll bg-black bg-opacity-80">
           <button
-            className="fixed top-4 right-4 z-50 mt-1 rounded-full border-2 bg-black bg-opacity-30 p-1 text-white"
+            className="fixed right-4 top-4 z-50 mt-1 rounded-full border-2 bg-black bg-opacity-30 p-1 text-white"
             type="button"
             onClick={() => unselect()}
           >

@@ -5,8 +5,8 @@ export default function Home() {
   return (
     <>
       <MediaContextProvider disableDynamicMediaQueries>
-        <div className="flex h-screen w-screen flex-col items-center justify-center text-center mono">
-          <h2 className="pb-4 absolute top-20">Joinemm.dev</h2>
+        <div className="mono flex h-screen w-screen flex-col items-center justify-center text-center">
+          <h2 className="absolute top-20 pb-4">Joinemm.dev</h2>
           <NavMenu className="flex-col" showHome={false} />
         </div>
       </MediaContextProvider>

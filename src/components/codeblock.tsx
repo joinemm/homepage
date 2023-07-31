@@ -10,8 +10,7 @@ const CodeBlock = ({ language, prettyCode }) => {
 
   const copyCode = () => {
     navigator.clipboard.writeText(
-      codeRef.current?.textContent ??
-        'You tried to copy something but it failed :(',
+      codeRef.current?.textContent ?? 'You tried to copy something but it failed :(',
     );
     // TODO: toast notification: Copied code to clipboard!
   };
@@ -19,7 +18,7 @@ const CodeBlock = ({ language, prettyCode }) => {
   return (
     <pre className="dark:muted-border group relative my-4 mt-8 overflow-visible rounded-lg dark:border">
       {SHOWLANG && language && (
-        <div className="dark:muted-border dark:fg-primary absolute top-0 right-4 z-20 -translate-y-full rounded-t-md bg-[var(--tw-prose-pre-bg)] px-2 lowercase text-white dark:border-x dark:border-t dark:bg-[#0d0d13]">
+        <div className="dark:muted-border dark:fg-primary absolute right-4 top-0 z-20 -translate-y-full rounded-t-md bg-[var(--tw-prose-pre-bg)] px-2 lowercase text-white dark:border-x dark:border-t dark:bg-[#0d0d13]">
           {language}
         </div>
       )}

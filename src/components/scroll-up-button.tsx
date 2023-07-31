@@ -11,7 +11,7 @@ const ScrollUpButton = () => {
       }}
     >
       <HiOutlineArrowNarrowUp className="m-auto" size={30} />
-      <p className="fg-secondary italic serif text-xl">fin</p>
+      <p className="fg-secondary serif text-xl italic">fin</p>
     </button>
   );
 };

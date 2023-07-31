@@ -11,10 +11,10 @@ const Header = () => {
   pathElements.pop();
   const prevPath = '/' + pathElements.pop();
   return (
-    <header className="muted-border m-auto mt-4 mb-2 w-full max-w-[40rem] h-10 flex mono">
+    <header className="muted-border mono m-auto mb-2 mt-4 flex h-10 w-full max-w-[40rem]">
       <Media lessThan="mobile" className="my-auto w-full">
         <div className="ml-2 flex items-center justify-between gap-4">
-          <Link className="no-underline min-w-0" href={prevPath}>
+          <Link className="min-w-0 no-underline" href={prevPath}>
             {prevPath === '/' ? (
               <div className="flex items-center">
                 <p className="serif m-0 text-2xl tracking-widest">JOINEMM</p>

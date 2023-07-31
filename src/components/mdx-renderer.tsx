@@ -14,10 +14,7 @@ const components = {
   pre: (props) => {
     if (props.children?.type === 'code') {
       return (
-        <CodeBlock
-          language={props['data-language']}
-          prettyCode={props.children}
-        />
+        <CodeBlock language={props['data-language']} prettyCode={props.children} />
       );
     } else {
       return <pre {...props} />;

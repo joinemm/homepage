@@ -10,10 +10,7 @@ export default function Document() {
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
         />
-        <style
-          type="text/css"
-          dangerouslySetInnerHTML={{ __html: mediaStyles }}
-        />
+        <style type="text/css" dangerouslySetInnerHTML={{ __html: mediaStyles }} />
         <script
           defer
           data-domain={ANALYTICS_DOMAIN}

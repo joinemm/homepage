@@ -6,11 +6,7 @@ type Props = {
   currentPage?: string;
 };
 
-const NavMenu = ({
-  className = '',
-  showHome = true,
-  currentPage = '',
-}: Props) => {
+const NavMenu = ({ className = '', showHome = true, currentPage = '' }: Props) => {
   const links = [
     { label: 'blog', href: '/blog' },
     // { label: 'projects', href: '/projects' },
@@ -23,7 +19,7 @@ const NavMenu = ({
       {showHome && (
         <li>
           <Link
-            className="hover:highlight hover:underline no-underline underline-offset-4"
+            className="hover:highlight no-underline underline-offset-4 hover:underline"
             href="/"
           >
             ~
@@ -34,7 +30,7 @@ const NavMenu = ({
         <li key={link.label}>
           <Link
             className={
-              'underline-offset-4 hover:highlight hover:underline no-underline' +
+              'hover:highlight no-underline underline-offset-4 hover:underline' +
               (currentPage == link.href ? ' font-bold no-underline' : '')
             }
             href={link.href}

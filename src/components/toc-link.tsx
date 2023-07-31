@@ -16,9 +16,7 @@ const styles = [
 const TOCLink = ({ node }: Props) => {
   const { ref, inView } = useInView({});
   useEffect(() => {
-    const trackedSection = document.querySelector(
-      `.toc-tracker[data-id=${node.id}]`,
-    );
+    const trackedSection = document.querySelector(`.toc-tracker[data-id=${node.id}]`);
     ref(trackedSection);
   }, [ref, node.id]);
   return (
@@ -26,7 +24,7 @@ const TOCLink = ({ node }: Props) => {
       <Link
         href={'#' + node.id}
         className={
-          'toc-heading no-underline ml-3 fg-muted mono' +
+          'toc-heading fg-muted mono ml-3 no-underline' +
           (inView ? ' active-heading highlight' : '')
         }
       >

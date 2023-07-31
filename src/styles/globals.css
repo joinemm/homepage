@@ -7,10 +7,10 @@
     @apply text-3xl font-bold;
   }
   h2 {
-    @apply text-3xl font-bold mb-2 mt-10;
+    @apply mb-2 mt-10 text-3xl font-bold;
   }
   h3 {
-    @apply text-2xl font-bold mb-2 mt-6;
+    @apply mb-2 mt-6 text-2xl font-bold;
   }
   h4 {
     @apply text-xl font-bold;
@@ -19,19 +19,19 @@
     @apply my-4;
   }
   blockquote {
-    @apply italic border-l-2 pl-4 fg-muted;
+    @apply fg-muted border-l-2 pl-4 italic;
   }
   a {
-    @apply underline underline-offset-2 hover:accent;
+    @apply hover:accent underline underline-offset-2;
   }
   pre {
-    @apply text-sm bg-[#21222c];
+    @apply bg-[#21222c] text-sm;
   }
   code {
-    @apply fg-code bg-[#343648] px-1.5 py-0.5 rounded-sm;
+    @apply fg-code rounded-sm bg-[#343648] px-1.5 py-0.5;
   }
   pre code {
-    @apply font-normal p-0 bg-transparent;
+    @apply bg-transparent p-0 font-normal;
   }
   ol {
     @apply list-decimal;

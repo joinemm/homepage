@@ -21,7 +21,7 @@ const MainContainer = (props: PropsWithChildren<Props>) => {
 
         <Media greaterThanOrEqual="fullwidth" className="my-auto">
           <p
-            className="sticky top-0 serif text-5xl mx-auto my-0 h-0 w-4 tracking-wide"
+            className="serif sticky top-0 mx-auto my-0 h-0 w-4 text-5xl tracking-wide"
             style={{
               transform: `translateX(${
                 width / 2 + 3.5
@@ -31,11 +31,7 @@ const MainContainer = (props: PropsWithChildren<Props>) => {
             JOINEMM
           </p>
         </Media>
-        <div
-          className={
-            'flex-grow mt-2 ' + (props.classname ? props.classname : '')
-          }
-        >
+        <div className={'mt-2 flex-grow ' + (props.classname ? props.classname : '')}>
           {props.children}
         </div>
         <Footer />
