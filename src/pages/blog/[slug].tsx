@@ -5,7 +5,6 @@ import DateFormatter from '../../components/date-formatter';
 import { PostData } from '../../util/post-helpers';
 import Image from 'next/image';
 import Link from 'next/link';
-import LikeButton from '../../components/like-button';
 import { DOMAIN, PAGE_WIDTH } from '../../util/constants';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import MdxRenderer from '../../components/mdx-renderer';
@@ -15,6 +14,7 @@ import MainContainer from '../../components/main-container';
 import { Heading } from '../../util/extract-headings';
 import TOCLink from '../../components/toc-link';
 import { Media } from '../../util/media-context';
+import DisplayViews from '../../components/page-views';
 
 type Props = {
   metadata: PostData;
@@ -77,11 +77,12 @@ export default function Post({ metadata, mdxSerialized, toc }: Props) {
           <h1 className="my-2 text-4xl md:text-5xl font-bold leading-tight tracking-tight serif">
             {metadata.title}
           </h1>
-          <div className="flex flex-wrap gap-2 fg-muted mono pb-8">
+          <div className="flex flex-wrap gap-2 fg-muted mono pb-8 text-[0.95rem]">
             <DateFormatter
               dateString={metadata.date}
               formatter="MMMM d, yyyy"
             ></DateFormatter>
+            <DisplayViews slug={metadata.slug}/>
             {'•'}
             <ul className="flex gap-2">
               {metadata.tags
@@ -97,9 +98,6 @@ export default function Post({ metadata, mdxSerialized, toc }: Props) {
                   ))
                 : null}
             </ul>
-            <div className="hidden sm:block">
-              <LikeButton storageKey={`liked-blog-post-${metadata.slug}`} />
-            </div>
           </div>
           {metadata.image ? (
             <div className="">
