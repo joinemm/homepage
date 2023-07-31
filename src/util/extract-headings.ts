@@ -25,7 +25,7 @@ const rehypeExtractHeadings = ({
           rank: rank,
           title: toString(node),
           id: node.properties.id.toString(),
-          children: []
+          children: [],
         };
         if (rank == 2) {
           headings.push(thisHeading);

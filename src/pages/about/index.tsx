@@ -11,7 +11,7 @@ export default function About() {
       <Head>
         <title>ABOUT | joinemm.dev</title>
       </Head>
-      <MainContainer classname='border-t-2'>
+      <MainContainer classname="border-t-2">
         <div className="mt-3">
           <span className="overflow-hidden float-right w-32 md:w-[10rem] ml-2 rounded-lg">
             <Image src={me} alt="me" style={{ objectFit: 'cover' }} />

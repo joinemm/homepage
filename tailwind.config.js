@@ -12,5 +12,5 @@ module.exports = {
         extrawide: '1100px',
       },
     },
-  }
+  },
 };

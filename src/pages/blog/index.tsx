@@ -64,7 +64,7 @@ export default function Blog({ posts, tags }: Props) {
         description="List of my blog posts"
         canonical={DOMAIN + router.asPath}
       />
-      <MainContainer classname='border-t-2'>
+      <MainContainer classname="border-t-2">
         {groupByYear(filterPosts(posts)).map(({ year, posts }) => {
           return (
             <div key={year} className="pb-4">

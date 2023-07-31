@@ -18,10 +18,7 @@ const PostPreview = ({ post }: Props) => {
         </Link>
       </div>
       <div className="flex items-baseline gap-2 fg-muted mono">
-        <DateFormatter
-          dateString={post.date}
-          formatter="LLL dd"
-        />
+        <DateFormatter dateString={post.date} formatter="LLL dd" />
         {'•'}
         <ul className="flex gap-2">
           {post.tags ? post.tags.map((tag) => <li key={tag}>#{tag}</li>) : null}

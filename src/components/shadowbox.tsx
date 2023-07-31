@@ -133,7 +133,7 @@ const Shadowbox = ({ art, unselect }: Props) => {
               <>
                 <div className="absolute left-2 top-2 mono">
                   <p className="font-bold m-0">{art.title}</p>
-                  <p className='m-0'>{art.year}</p>
+                  <p className="m-0">{art.year}</p>
                 </div>
                 {allFiles.length > 1 ? (
                   <>

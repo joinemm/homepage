@@ -16,7 +16,9 @@ const styles = [
 const TOCLink = ({ node }: Props) => {
   const { ref, inView } = useInView({});
   useEffect(() => {
-    const trackedSection = document.querySelector(`.toc-tracker[data-id=${node.id}]`);
+    const trackedSection = document.querySelector(
+      `.toc-tracker[data-id=${node.id}]`,
+    );
     ref(trackedSection);
   }, [ref, node.id]);
   return (

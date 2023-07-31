@@ -45,7 +45,7 @@ async function getBase64ImageUrl(id: string): Promise<string | undefined> {
 
 export function getAssetUrl(
   assetUUID: string,
-  transform: 'loading' | 'thumbnail' | "orig" | null = null,
+  transform: 'loading' | 'thumbnail' | 'orig' | null = null,
 ): string {
   return (
     `${CDN_DOMAIN}/assets/${assetUUID}` + (transform ? `?key=${transform}` : '')
@@ -91,7 +91,7 @@ export async function getMovieReviews(): Promise<MovieReview[]> {
   const fields = 'id,imdb_id,title,summary,date_watched,rating';
   const path = `/items/movie_review?filter${filter}&fields=${fields}&sort=-date_watched`;
   const reviews: MovieReview[] = await apiRequest(path);
-  return reviews
+  return reviews;
 }
 
 async function apiRequest(path: string) {
