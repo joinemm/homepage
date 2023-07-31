@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { getMdxContent } from '../../util/mdx';
 import Email from '../../components/encoded-email';
 import MainContainer from '../../components/main-container';
 import Image from 'next/image';

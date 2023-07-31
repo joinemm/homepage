@@ -4,6 +4,7 @@ import { Art, getAssetUrl } from '../util/content-manager';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import { MdChevronLeft, MdChevronRight, MdClose } from 'react-icons/md';
 import { GoDotFill } from 'react-icons/go';
+import { MouseEvent } from 'react';
 
 type Props = { art: Art; unselect: Function };
 
@@ -17,12 +18,12 @@ const Shadowbox = ({ art, unselect }: Props) => {
 
   useEffect(() => setWindowWidth(window.innerWidth), []);
 
-  const nextImage = (e: React.MouseEvent) => {
+  const nextImage = (e: MouseEvent) => {
     e.stopPropagation();
     setCarouselIndex((carouselIndex + 1) % allFiles.length);
   };
 
-  const prevImage = (e: React.MouseEvent) => {
+  const prevImage = (e: MouseEvent) => {
     e.stopPropagation();
     setCarouselIndex(Math.abs(carouselIndex - 1) % allFiles.length);
   };

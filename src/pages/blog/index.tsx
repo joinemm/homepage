@@ -10,10 +10,9 @@ import { DOMAIN } from '../../util/constants';
 
 type Props = {
   posts: [PostData];
-  tags: [string];
 };
 
-export default function Blog({ posts, tags }: Props) {
+export default function Blog({ posts }: Props) {
   const [activeTags, setActiveTags] = useState<string[]>([]);
 
   const router = useRouter();
@@ -82,7 +81,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       posts: allPosts.map((post) => post.metadata),
-      tags: [...new Set(allPosts.map((post) => post.metadata.tags).flat(1))],
+      // tags: [...new Set(allPosts.map((post) => post.metadata.tags).flat(1))],
     },
   };
 };

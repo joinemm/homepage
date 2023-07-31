@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import { Media } from '../../util/media-context';
 import { NextSeo } from 'next-seo';
 import { DOMAIN } from '../../util/constants';
@@ -54,7 +54,7 @@ export default function Gallery({ artwork }: Props) {
   const galleryColumns = (art: Art[], column_count: number) => {
     type Column = {
       length: number;
-      figures: JSX.Element[];
+      figures: ReactElement[];
     };
 
     var prev_year = 0;

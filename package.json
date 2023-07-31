@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier -w ."
+    "format": "prettier -w .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@artsy/fresnel": "^6.1.0",
@@ -48,6 +49,8 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.3",
     "postcss": "^8.4.27",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.2.8",
@@ -59,5 +62,12 @@
     "semi": true,
     "singleQuote": true,
     "printWidth": 88
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.json": "prettier --write"
   }
 }

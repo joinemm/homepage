@@ -1,5 +1,3 @@
-import { PAGE_WIDTH } from '../util/constants';
-
 const Header = () => {
   return (
     <footer className="mono m-4 mt-8 w-full text-center">
