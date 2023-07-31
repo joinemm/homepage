@@ -10,9 +10,6 @@ const nextConfig = {
       { hostname: 'm.media-amazon.com', pathname: '/images/**' },
     ],
   },
-  env: {
-    PLAUSIBLE_API_KEY: process.env.PLAUSIBLE_API_KEY,
-  },
 };
 
 module.exports = nextConfig;
