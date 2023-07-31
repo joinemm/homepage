@@ -181,3 +181,7 @@ h2 a:hover, h3 a:hover, h4 a:hover {
     height: 100% !important;
     width: 100% !important;
 }
+
+.text-shadow {
+    text-shadow: 5px 5px 10px black;
+}

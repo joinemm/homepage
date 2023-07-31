@@ -57,7 +57,7 @@ const Shadowbox = ({ art, unselect }: Props) => {
                 <Image
                   ref={imageRef}
                   key={allFiles[carouselIndex].id}
-                  src={getAssetUrl(allFiles[carouselIndex].id)}
+                  src={getAssetUrl(allFiles[carouselIndex].id, 'orig')}
                   alt={allFiles[carouselIndex].title}
                   width={allFiles[carouselIndex].width}
                   height={allFiles[carouselIndex].height}
@@ -77,6 +77,7 @@ const Shadowbox = ({ art, unselect }: Props) => {
                   blurDataURL={allFiles[carouselIndex].placeholder}
                   quality={100}
                   unoptimized={true}
+                  priority={true}
                   onClick={(e) => e.stopPropagation()}
                 />
               </TransformComponent>
@@ -128,35 +129,44 @@ const Shadowbox = ({ art, unselect }: Props) => {
                   )}
                 </div>
               </div>
-            ) : allFiles.length > 1 ? (
+            ) : (
               <>
-                <button
-                  onClick={prevImage}
-                  type="button"
-                  className="absolute text-white opacity-80 hover:opacity-100"
-                >
-                  <MdChevronLeft size={40} />
-                </button>
-                <div className="absolute flex left-1/2 bottom-14 -translate-x-1/2">
-                  {[...Array(allFiles.length)].map((_, i) => (
-                    <GoDotFill
-                      key={i}
-                      size={15}
-                      className={
-                        i === carouselIndex ? 'opacity-100' : 'opacity-70'
-                      }
-                    />
-                  ))}
+                <div className="absolute left-2 top-2 mono">
+                  <p className="font-bold m-0">{art.title}</p>
+                  <p className='m-0'>{art.year}</p>
                 </div>
-                <button
-                  onClick={nextImage}
-                  type="button"
-                  className="absolute text-white opacity-80 hover:opacity-100 right-0"
-                >
-                  <MdChevronRight size={40} />
-                </button>
+                {allFiles.length > 1 ? (
+                  <>
+                    <button
+                      onClick={prevImage}
+                      type="button"
+                      className="absolute text-white opacity-80 hover:opacity-100 drop-shadow-lg"
+                    >
+                      <MdChevronLeft size={40} />
+                    </button>
+                    <div className="absolute flex left-1/2 bottom-14 -translate-x-1/2">
+                      {[...Array(allFiles.length)].map((_, i) => (
+                        <GoDotFill
+                          key={i}
+                          size={15}
+                          className={
+                            i === carouselIndex ? 'opacity-100' : 'opacity-70'
+                          }
+                        />
+                      ))}
+                    </div>
+
+                    <button
+                      onClick={nextImage}
+                      type="button"
+                      className="absolute text-white opacity-80 hover:opacity-100 right-0 drop-shadow-lg"
+                    >
+                      <MdChevronRight size={40} />
+                    </button>
+                  </>
+                ) : null}
               </>
-            ) : null}
+            )}
           </figure>
         </TransformWrapper>
       </div>

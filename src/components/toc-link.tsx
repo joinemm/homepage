@@ -14,11 +14,11 @@ const styles = [
 ];
 
 const TOCLink = ({ node }: Props) => {
-  const { ref, inView, entry } = useInView({});
+  const { ref, inView } = useInView({});
   useEffect(() => {
     const trackedSection = document.querySelector(`.toc-tracker[data-id=${node.id}]`);
     ref(trackedSection);
-  }, [ref]);
+  }, [ref, node.id]);
   return (
     <li className="py-1" style={styles[node.rank]}>
       <Link

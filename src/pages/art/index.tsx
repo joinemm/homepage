@@ -108,7 +108,7 @@ export default function Gallery({ artwork }: Props) {
           url: DOMAIN + '/art',
           images: [
             {
-              url: `${DOMAIN}/assets/content/lego-art.jpg`,
+              url: getAssetUrl('4f5c5426-1049-490a-8290-0d60ff2a6fe0', 'orig'),
               alt: TITLE,
             },
           ],

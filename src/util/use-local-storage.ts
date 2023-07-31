@@ -10,13 +10,13 @@ const useLocalStorage = <S>(
   useEffect(() => {
     const item = localStorage.getItem(key);
     if (item) setState(parse(item));
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (state !== initialState) {
       localStorage.setItem(key, JSON.stringify(state));
     }
-  }, [state]);
+  }, [state]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return [state, setState];
 };

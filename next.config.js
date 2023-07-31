@@ -4,7 +4,11 @@ const nextConfig = {
   swcMinify: true,
   images: {
     loader: 'default',
-    domains: ['m.media-amazon.com', 'directus.joinemm.dev'],
+    remotePatterns: [
+      { hostname: '**.joinemm.dev' },
+      // for movie cover images
+      { hostname: 'm.media-amazon.com', pathname: '/images/**' },
+    ],
   },
 };
 

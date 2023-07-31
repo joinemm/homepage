@@ -1,5 +1,5 @@
-const DIRECTUS = 'https://directus.joinemm.dev';
 import { parse } from 'date-fns';
+import { CDN_DOMAIN } from './constants';
 
 export type CMSImage = {
   id: string;
@@ -35,9 +35,8 @@ async function getFileInfo(id: string): Promise<CMSImage> {
 }
 
 async function getBase64ImageUrl(id: string): Promise<string | undefined> {
-  // if (process.env.NODE_ENV == 'development') return undefined;
+  if (process.env.NODE_ENV == 'development') return undefined;
   const url = getAssetUrl(id, 'loading');
-  console.log(url);
   const response = await fetch(url);
   const buffer = await response.arrayBuffer();
   const data = Buffer.from(buffer).toString('base64');
@@ -46,10 +45,10 @@ async function getBase64ImageUrl(id: string): Promise<string | undefined> {
 
 export function getAssetUrl(
   assetUUID: string,
-  transform: 'loading' | 'thumbnail' | null = null,
+  transform: 'loading' | 'thumbnail' | "orig" | null = null,
 ): string {
   return (
-    `${DIRECTUS}/assets/${assetUUID}` + (transform ? `?key=${transform}` : '')
+    `${CDN_DOMAIN}/assets/${assetUUID}` + (transform ? `?key=${transform}` : '')
   );
 }
 
@@ -92,12 +91,11 @@ export async function getMovieReviews(): Promise<MovieReview[]> {
   const fields = 'id,imdb_id,title,summary,date_watched,rating';
   const path = `/items/movie_review?filter${filter}&fields=${fields}&sort=-date_watched`;
   const reviews: MovieReview[] = await apiRequest(path);
-  console.log(reviews)
   return reviews
 }
 
 async function apiRequest(path: string) {
-  return await fetch(DIRECTUS + path)
+  return await fetch(CDN_DOMAIN + path)
     .then((response) => {
       return response.json();
     })
