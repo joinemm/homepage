@@ -15,6 +15,7 @@ import { Heading } from '../../util/extract-headings';
 import TOCLink from '../../components/toc-link';
 import { Media } from '../../util/media-context';
 import DisplayViews from '../../components/page-views';
+import TOC from '../../components/toc';
 
 type Props = {
   metadata: PostData;
@@ -62,16 +63,7 @@ export default function Post({ metadata, mdxSerialized, toc }: Props) {
       />
       <MainContainer>
         <Media greaterThanOrEqual="widescreen">
-          <ul
-            className="fixed top-1/2 ml-14 border-l-2"
-            style={{
-              transform: `translateX(${PAGE_WIDTH}rem) translateY(-50%)`,
-            }}
-          >
-            {toc.map((heading) => (
-              <TOCLink node={heading} key={heading.id} />
-            ))}
-          </ul>
+          <TOC headings={toc} />
         </Media>
         <div>
           <h1 className="serif my-2 text-4xl font-bold leading-tight tracking-tight md:text-5xl">

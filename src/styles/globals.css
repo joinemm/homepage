@@ -150,11 +150,11 @@ h4 a:hover {
   margin-right: 0.5rem;
 }
 
-.active-heading::before {
-  content: '━━';
-  position: absolute;
-  left: -0.7rem;
-}
+/* .active-heading::before { */
+/*   content: '━━'; */
+/*   position: absolute; */
+/*   left: -0.7rem; */
+/* } */
 
 .hovershine::before {
   position: absolute;
@@ -198,3 +198,7 @@ h4 a:hover {
   height: 100% !important;
   width: 100% !important;
 }
+
+.toc-line path {
+    transition: all 0.3s ease;
+  }
