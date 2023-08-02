@@ -1,31 +1,25 @@
 import Link from 'next/link';
 import { Heading } from '../util/extract-headings';
-import { useInView } from 'react-intersection-observer';
-import { useEffect } from 'react';
 
-type Props = { node: Heading };
+type Props = { node: Heading; visibleHeadings: Set<string> };
 
 const styles = [
   {},
   {},
   {},
-  { marginLeft: '1rem', fontSize: '0.875rem' },
-  { marginLeft: '2rem', fontSize: '0.75rem' },
+  { marginLeft: '38.5px' }, //, fontSize: '0.875rem' },
+  { marginLeft: '77px' }, //, fontSize: '0.75rem' },
 ];
 
-const TOCLink = ({ node }: Props) => {
-  const { ref, inView } = useInView({});
-  useEffect(() => {
-    const trackedSection = document.querySelector(`.toc-tracker[data-id=${node.id}]`);
-    ref(trackedSection);
-  }, [ref, node.id]);
+const TOCLink = ({ node, visibleHeadings }: Props) => {
+  const inView = visibleHeadings.has(node.id);
   return (
-    <li className="py-1" style={styles[node.rank]}>
+    <li className="py-1 " style={styles[node.rank]}>
       <Link
         href={'#' + node.id}
         className={
-          'toc-heading fg-muted mono ml-3 no-underline' +
-          (inView ? ' active-heading highlight' : '')
+          'toc-heading fg-muted mono ml-3 no-underline transition-all' +
+          (inView ? ' active-heading highlight pl-1' : '')
         }
       >
         {node.title}
@@ -33,7 +27,7 @@ const TOCLink = ({ node }: Props) => {
       {node.children && (
         <ul>
           {node.children.map((child) => (
-            <TOCLink node={child} key={child.id} />
+            <TOCLink node={child} key={child.id} visibleHeadings={visibleHeadings} />
           ))}
         </ul>
       )}
