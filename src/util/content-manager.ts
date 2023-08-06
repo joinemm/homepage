@@ -54,7 +54,7 @@ async function getBase64ImageUrl(id: string): Promise<string | null> {
 
 export function getAssetUrl(
   assetUUID: string,
-  transform: 'loading' | 'thumbnail' | 'orig' | null = null,
+  transform: 'loading' | 'thumbnail' | 'orig' | 'header' | null = null,
 ): string {
   return (
     `https://${CDN_DOMAIN}/assets/${assetUUID}` + (transform ? `?key=${transform}` : '')

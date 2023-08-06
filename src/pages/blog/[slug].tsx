@@ -35,7 +35,7 @@ export default function Post({ post, mdxSerialized, toc }: Props) {
         type="BlogPosting"
         url={`${DOMAIN}/blog/${post.slug}`}
         title="Joinemm's Blog"
-        images={post.image ? [getAssetUrl(post.image.id, 'orig')] : []}
+        images={post.image ? [getAssetUrl(post.image.id, 'header')] : []}
         datePublished={post.date_created}
         authorName="Joinemm"
         description="Welcome to my blog where I dump things from my brain."
@@ -56,7 +56,7 @@ export default function Post({ post, mdxSerialized, toc }: Props) {
           images: post.image
             ? [
                 {
-                  url: getAssetUrl(post.image.id, 'orig'),
+                  url: getAssetUrl(post.image.id, 'header'),
                   alt: post.title,
                 },
               ]
@@ -99,7 +99,7 @@ export default function Post({ post, mdxSerialized, toc }: Props) {
           {post.image ? (
             <Image
               className="rounded-sm"
-              src={getAssetUrl(post.image.id, 'orig')}
+              src={getAssetUrl(post.image.id, 'header')}
               alt={post.image.title}
               placeholder={post.image.placeholder ? 'blur' : undefined}
               blurDataURL={post.image.placeholder || undefined}
