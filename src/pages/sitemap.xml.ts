@@ -1,5 +1,5 @@
 import { DOMAIN } from '../util/constants';
-import { getPostSlugs } from '../util/post-helpers';
+import { getBlogPosts } from '../util/content-manager';
 
 function location(path: string) {
   return `
@@ -25,10 +25,11 @@ function SiteMap() {
 }
 
 export async function getServerSideProps({ res }) {
-  const blogPosts = getPostSlugs().map((slug) => `/blog/${slug}`);
+  const posts = await getBlogPosts();
+  const postPaths = posts.map((post) => `/blog/${post.slug}`);
   const staticPaths = ['/about', '/blog', '/reviews', '/art'];
 
-  const sitemap = generateSiteMap(blogPosts.concat(staticPaths));
+  const sitemap = generateSiteMap(postPaths.concat(staticPaths));
 
   res.setHeader('Content-Type', 'text/xml');
   // we send the XML to the browser
