@@ -1,3 +1,4 @@
+import '../styles/tailwind.css';
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { Roboto_Mono, Bodoni_Moda, Overpass_Mono } from '@next/font/google';
@@ -5,12 +6,23 @@ import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
 import config from '../../next-seo.config';
 
-const mono = Roboto_Mono({ subsets: ['latin'], weight: ['400', '600'] });
+const mono = Roboto_Mono({
+  subsets: ['latin'],
+  weight: ['400', '600'],
+  display: 'swap',
+  variable: '--font-body',
+});
 const serif = Bodoni_Moda({
   subsets: ['latin'],
   weight: ['400', '700'],
+  display: 'swap',
+  variable: '--font-serif',
 });
-const overpass = Overpass_Mono({ subsets: ['latin'] });
+const overpass = Overpass_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono',
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
