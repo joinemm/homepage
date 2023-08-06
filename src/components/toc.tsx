@@ -11,7 +11,7 @@ const TOC = ({ headings }: Props) => {
   const [visibleHeadings, setVisibleHeadings] = useState(new Set<string>());
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
+    const updateVisibleHeadings = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((e) => {
         const id = (e.target as HTMLElement).dataset.id;
         if (id !== undefined) {
@@ -19,11 +19,13 @@ const TOC = ({ headings }: Props) => {
         }
       });
       setVisibleHeadings(new Set(visibleHeadings));
-    });
+    };
+
+    const observer = new IntersectionObserver(updateVisibleHeadings);
     document.querySelectorAll('.toc-tracker').forEach((el) => {
       observer.observe(el);
     });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const itemSize = 35;
   const xOffSet = 5;
