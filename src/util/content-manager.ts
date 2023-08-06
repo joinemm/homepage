@@ -30,12 +30,21 @@ export type MovieReview = {
   date_watched: string;
 };
 
-async function getFileInfo(id: string): Promise<CMSImage> {
+export type BlogPost = {
+  slug: string;
+  title: string;
+  excerpt?: string;
+  tags: [string];
+  date_created: string;
+  image?: CMSImage | null;
+  content: string;
+};
+
+export async function getFileInfo(id: string): Promise<CMSImage> {
   return await apiRequest(`/files/${id}?fields=id,width,height,title`);
 }
 
 async function getBase64ImageUrl(id: string): Promise<string | null> {
-  if (process.env.NODE_ENV == 'development') return null;
   const url = getAssetUrl(id, 'loading');
   const response = await fetch(url);
   const buffer = await response.arrayBuffer();
@@ -90,6 +99,27 @@ export async function getMovieReviews(): Promise<MovieReview[]> {
   const path = `/items/movie_review?filter${filter}&fields=${fields}&sort=-date_watched`;
   const reviews: MovieReview[] = await apiRequest(path);
   return reviews;
+}
+
+export async function getBlogPosts(draft: boolean = false): Promise<BlogPost[]> {
+  const filter = draft ? null : '[status][_eq]=published';
+  const fields = 'slug,title,excerpt,tags,date_created';
+  const path = `/items/blog_post?filter${filter}&fields=${fields}&sort=-date_created`;
+  const posts: BlogPost[] = await apiRequest(path);
+  return posts;
+}
+
+export async function getPostBySlug(slug: string): Promise<BlogPost> {
+  const fields =
+    'slug,title,excerpt,tags,date_created,content,image,image.id,image.width,image.height,image.title';
+  const path = `/items/blog_post/${slug}?fields=${fields}&sort=-date_created`;
+  const post: BlogPost = await apiRequest(path);
+  return {
+    ...post,
+    image: post.image
+      ? { ...post.image, placeholder: await getBase64ImageUrl(post.image.id) }
+      : null,
+  };
 }
 
 async function apiRequest(path: string) {

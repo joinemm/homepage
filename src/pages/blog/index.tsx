@@ -1,15 +1,14 @@
-import { getAllPosts } from '../../util/post-helpers';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { PostData } from '../../util/post-helpers';
 import PostPreview from '../../components/post-preview';
 import MainContainer from '../../components/main-container';
 import { parseISO } from 'date-fns';
 import { NextSeo } from 'next-seo';
 import { DOMAIN } from '../../util/constants';
+import { BlogPost, getBlogPosts } from '../../util/content-manager';
 
 type Props = {
-  posts: [PostData];
+  posts: BlogPost[];
 };
 
 export default function Blog({ posts }: Props) {
@@ -26,7 +25,7 @@ export default function Blog({ posts }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
-  const filterPosts = (posts: PostData[]) => {
+  const filterPosts = (posts: BlogPost[]) => {
     const results = posts.filter(
       (post) =>
         activeTags.length == 0 || activeTags.every((t) => post.tags.includes(t)),
@@ -34,9 +33,9 @@ export default function Blog({ posts }: Props) {
     return results;
   };
 
-  const groupByYear = (posts: PostData[]) => {
+  const groupByYear = (posts: BlogPost[]) => {
     const years = posts.reduce((group, post) => {
-      const year = parseISO(post.date).getFullYear().toString();
+      const year = parseISO(post.date_created).getFullYear().toString();
       group[year] = group[year] ?? [];
       group[year].push(post);
       return group;
@@ -46,7 +45,7 @@ export default function Blog({ posts }: Props) {
       .map((year) => {
         return {
           year: year,
-          posts: years[year] as PostData[],
+          posts: years[year] as BlogPost[],
         };
       })
       .reverse();
@@ -76,12 +75,11 @@ export default function Blog({ posts }: Props) {
 }
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts().filter((post) => !post.metadata.draft);
+  const posts = await getBlogPosts();
 
   return {
     props: {
-      posts: allPosts.map((post) => post.metadata),
-      // tags: [...new Set(allPosts.map((post) => post.metadata.tags).flat(1))],
+      posts: posts,
     },
   };
 };

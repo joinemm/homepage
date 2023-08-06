@@ -22,24 +22,13 @@ const rehypeExtractHeadings = ({
     visit(tree, 'element', function (node) {
       const rank = headingRank(node);
       if (rank !== null && rank <= depth && hasProperty(node, 'id')) {
-        const thisHeading = {
+        headings.push({
           rank: rank,
           title: toString(node),
           totalLength: 1,
           id: node.properties.id.toString(),
           children: [],
-        };
-        // if (rank == 2) {
-          headings.push(thisHeading);
-        // } else {
-        //   // we must find the parent
-        //   // just assume it's the most recent heading with higher rank
-        //   const parent = headings.filter((h) => h.rank < rank).at(-1);
-        //   if (parent !== undefined) {
-        //     parent.children = [...parent.children, thisHeading];
-        //     parent.totalLength += 1;
-        //   }
-        // }
+        });
       }
     });
   };

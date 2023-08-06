@@ -35,8 +35,6 @@ const Shadowbox = ({ art, unselect }: Props) => {
     setImageWidth(imageRef?.current?.clientWidth);
   }, [imageRef?.current?.clientWidth]);
 
-  console.log(windowWidth);
-
   return (
     <div className="fixed left-0 top-0 z-40 h-screen w-screen overflow-y-scroll bg-black bg-opacity-80">
       <button

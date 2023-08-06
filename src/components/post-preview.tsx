@@ -1,9 +1,9 @@
-import { PostData } from '../util/post-helpers';
 import Link from 'next/link';
 import DateFormatter from './date-formatter';
+import { BlogPost } from '../util/content-manager';
 
 type Props = {
-  post: PostData;
+  post: BlogPost;
 };
 
 const PostPreview = ({ post }: Props) => {
@@ -12,13 +12,13 @@ const PostPreview = ({ post }: Props) => {
       <div className="flex-grow">
         <Link
           href={`/blog/${post.slug}`}
-          className="hover:highlight font-bold underline underline-offset-4"
+          className="hover:highlight font-bold no-underline underline-offset-4 hover:underline"
         >
           {post.title}
         </Link>
       </div>
-      <div className="fg-muted mono flex items-baseline gap-2">
-        <DateFormatter dateString={post.date} formatter="LLL dd" />
+      <div className="fg-muted mono flex items-baseline gap-2 text-sm">
+        <DateFormatter dateString={post.date_created} formatter="LLL dd" />
         {'•'}
         <ul className="flex gap-2">
           {post.tags ? post.tags.map((tag) => <li key={tag}>#{tag}</li>) : null}

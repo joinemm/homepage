@@ -1,29 +1,27 @@
-/* eslint-disable @next/next/no-img-element */
 import Image from 'next/image';
+import { CDN_DOMAIN } from '../util/constants';
+import { getAssetUrl } from '../util/content-manager';
 
 type Props = {
-  src?: string;
-  alt?: string;
-  height?: number;
-  width?: number;
-  title?: string;
+  src: string;
+  alt: string;
 };
 
-const MdxImage = ({ src, alt, height, width, title }: Props) => {
+const MdxImage = ({ src, alt }: Props) => {
+  if (src.startsWith('https://' + CDN_DOMAIN)) {
+    const id = src.split('/').pop();
+    if (id) src = getAssetUrl(id, 'orig');
+  }
+
   return (
-    <div>
-      {width !== undefined && height !== undefined ? (
-        <Image
-          alt={alt ?? ''}
-          src={src ?? ''}
-          width={width}
-          height={height}
-          className="m-0 w-full rounded-sm"
-        />
-      ) : (
-        <img className="m-0" alt={alt ?? ''} src={src ?? ''} />
-      )}
-      <p className="fg-muted m-0 italic">{title ?? alt}</p>
+    <div className="relative">
+      <Image
+        alt={alt}
+        src={src}
+        fill
+        className="!relative !h-[unset] !w-full rounded-sm object-contain"
+      />
+      <p className="fg-muted m-0 italic">{alt}</p>
     </div>
   );
 };

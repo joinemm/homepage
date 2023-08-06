@@ -5,6 +5,7 @@ import Aside from './aside';
 import Note from './note';
 import Email from './encoded-email';
 import Section from './section';
+import Checkbox from './checkbox';
 
 type Props = {
   source: MDXRemoteSerializeResult;
@@ -31,6 +32,7 @@ const components = {
   section: (props) => {
     return <Section {...props} />;
   },
+  input: Checkbox,
   Aside: Aside,
   Note: Note,
   Email: Email,

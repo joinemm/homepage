@@ -52,7 +52,7 @@
   }
 
   .fg-primary {
-    @apply text-[#333333] dark:text-[#e1e1e1];
+    @apply border-[#333333] text-[#333333] dark:border-[#e1e1e1] dark:text-[#e1e1e1];
   }
 
   .fg-muted {
