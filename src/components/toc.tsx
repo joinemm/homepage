@@ -1,86 +1,74 @@
 import { PAGE_WIDTH } from '../util/constants';
 import { Heading } from '../util/extract-headings';
 import TOCLink from './toc-link';
-import { Line } from 'react-svg-path';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+
+type PathCommand = [string, number, number];
 
 type Props = { headings: Heading[] };
 
 const TOC = ({ headings }: Props) => {
-  const tocContainerRef = useRef<HTMLDivElement>(null);
-  const itemHeight = (tocContainerRef.current?.clientHeight || 0) / headings.length;
-  // console.log(itemCount, itemHeight, tocRef);
   const [visibleHeadings, setVisibleHeadings] = useState(new Set<string>());
 
   useEffect(() => {
-    const observer = new IntersectionObserver(callback);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        const id = (e.target as HTMLElement).dataset.id;
+        if (id !== undefined) {
+          e.isIntersecting ? visibleHeadings.add(id) : visibleHeadings.delete(id);
+        }
+      });
+      setVisibleHeadings(new Set(visibleHeadings));
+    });
     document.querySelectorAll('.toc-tracker').forEach((el) => {
       observer.observe(el);
     });
   }, []);
 
-  const callback = (entries) => {
-    const nowVisible = entries
-      .filter((e) => e.isIntersecting)
-      .map((e) => e.target.dataset.id);
-    const nowHidden = entries
-      .filter((e) => !e.isIntersecting)
-      .map((e) => e.target.dataset.id);
+  const itemSize = 35;
+  const xOffSet = 5;
 
-    console.log('new visibles:', nowVisible);
-    console.log('new hiddens:', nowHidden);
+  // begin path
+  let path: PathCommand[] = [['M', xOffSet, 0]];
 
-    nowVisible.forEach((id) => {
-      visibleHeadings.add(id);
-    });
-    nowHidden.forEach((id) => {
-      visibleHeadings.delete(id);
-    });
+  let visiblePathStart: null | number = null;
+  let visiblePathEnd: null | number = null;
+  let pathTotalLength = 0;
+  let currentIndent = xOffSet;
 
-    setVisibleHeadings(new Set(visibleHeadings));
-  };
-
-  let path: (string | number)[] = [];
-  const indentAmount = itemHeight;
-  let pathIndent = 0;
-  let pathStart: null | number = null;
-  let pathEnd: null | number = null;
-  let pathLength = 0;
-  let pathAddedHeadings = 0;
   headings.forEach((item, i) => {
-    const x = (item.rank - 2) * indentAmount + 5;
-    const y = i * itemHeight;
+    const x = (item.rank - 2) * itemSize + xOffSet;
+    const y = i * itemSize;
+    let itemPathLength = 0;
 
-    let thisPathLength = 0;
-
-    if (i == 0) {
-      path.push('M', x, y, 'L', x, y + itemHeight);
-      thisPathLength += itemHeight;
-    } else {
-      if (pathIndent != x) {
-        path.push('L', pathIndent, y);
-        thisPathLength += itemHeight;
-      }
-      path.push('L', x, y);
-      path.push('L', x, y + itemHeight);
-      thisPathLength += itemHeight;
+    // if going down an indent level, draw horizontal line
+    if (currentIndent !== x) {
+      path.push(['L', currentIndent, y]);
+      itemPathLength += itemSize;
     }
-    if (pathStart === null && visibleHeadings.has(item.id)) pathStart = pathLength;
-    if (
-      pathEnd === null &&
-      !visibleHeadings.has(item.id) &&
-      pathAddedHeadings === visibleHeadings.size
-    )
-      pathEnd = pathLength;
-    pathLength += thisPathLength;
-    pathIndent = x;
-    if (visibleHeadings.has(item.id)) pathAddedHeadings += 1;
+    // draw line from top to bottom of item
+    path.push(['L', x, y], ['L', x, y + itemSize]);
+    itemPathLength += itemSize;
+
+    // start or end visible path portion
+    if (visibleHeadings.size > 0) {
+      if (visibleHeadings.has(item.id)) {
+        if (visiblePathStart === null) visiblePathStart = pathTotalLength;
+      } else if (visiblePathEnd === null && visiblePathStart !== null) {
+        visiblePathEnd = pathTotalLength;
+      }
+    }
+
+    pathTotalLength += itemPathLength;
+    currentIndent = x;
   });
 
-  if (pathStart === null) pathStart = 0;
-  if (pathEnd === null) pathEnd = pathLength;
-
-  console.log(pathStart, pathEnd);
+  // fix top and bottom of the list
+  if (visiblePathStart !== null && visiblePathEnd === null) {
+    visiblePathEnd = pathTotalLength;
+  } else if (visiblePathEnd !== null && visiblePathStart === null) {
+    visiblePathStart = 0;
+  }
 
   return (
     <div
@@ -88,24 +76,32 @@ const TOC = ({ headings }: Props) => {
       style={{
         transform: `translateX(${PAGE_WIDTH}rem) translateY(-50%)`,
       }}
-      ref={tocContainerRef}
     >
       <svg
-        className="absolute h-full toc-line"
+        className="toc-line pointer-events-none absolute h-full"
         stroke="#ffffff"
         fill="#00000000"
         strokeWidth={4}
       >
-        <path
-          d={path.join(' ')}
-          opacity={visibleHeadings.size > 0 ? '1' : '0'}
-          strokeDashoffset="1"
-          strokeDasharray={`1, ${pathStart}, ${pathEnd - pathStart}, ${pathLength}`}
-        />
+        {visiblePathStart !== null && visiblePathEnd !== null && (
+          <path
+            d={path.flat().join(' ')}
+            opacity={visibleHeadings.size > 0 ? '1' : '0'}
+            strokeDashoffset="1"
+            strokeDasharray={`1, ${visiblePathStart}, ${
+              visiblePathEnd - visiblePathStart
+            }, ${pathTotalLength}`}
+          />
+        )}
       </svg>
       <ul>
-        {headings.map((heading, i) => (
-          <TOCLink node={heading} key={heading.id} visibleHeadings={visibleHeadings} />
+        {headings.map((heading) => (
+          <TOCLink
+            node={heading}
+            key={heading.id}
+            itemSize={itemSize}
+            visibleHeadings={visibleHeadings}
+          />
         ))}
       </ul>
     </div>
