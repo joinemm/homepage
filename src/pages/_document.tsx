@@ -14,7 +14,7 @@ export default function Document() {
         <script
           defer
           data-domain={SITE_NAME}
-          src={`https://${ANALYTICS_DOMAIN}/pls.js`}
+          src={`https://${ANALYTICS_DOMAIN}/visit.js`}
         ></script>
       </Head>
       <body className="bg-primary fg-primary max-w-[100vw] overflow-x-hidden">
