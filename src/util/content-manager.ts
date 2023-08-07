@@ -123,7 +123,10 @@ export async function getPostBySlug(slug: string): Promise<BlogPost> {
 }
 
 async function apiRequest(path: string) {
-  return await fetch('https://' + CDN_DOMAIN + path)
+  return await fetch('https://' + CDN_DOMAIN + path, {
+    cache: 'no-store',
+    next: { revalidate: 0 },
+  })
     .then((response) => {
       return response.json();
     })
