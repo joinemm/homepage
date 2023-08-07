@@ -27,7 +27,7 @@ const Header = () => {
           <MobileMenu />
         </div>
       </Media>
-      <Media greaterThanOrEqual="mobile" className="my-auto">
+      <Media greaterThanOrEqual="mobile" className="my-auto w-full">
         <NavMenu currentPage={'/' + basePath} />
       </Media>
     </header>

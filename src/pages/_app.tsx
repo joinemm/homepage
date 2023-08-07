@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import { Roboto_Mono, Bodoni_Moda, Overpass_Mono } from '@next/font/google';
 import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
+import { ThemeProvider } from 'next-themes';
 import config from '../../next-seo.config';
 
 const mono = Roboto_Mono({
@@ -51,7 +52,9 @@ export default function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <DefaultSeo {...config} />
-      <Component {...pageProps} />
+      <ThemeProvider attribute="class">
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   );
 }

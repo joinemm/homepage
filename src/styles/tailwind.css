@@ -52,7 +52,7 @@
   }
 
   .fg-primary {
-    @apply border-[#333333] text-[#333333] dark:border-[#e1e1e1] dark:text-[#e1e1e1];
+    @apply text-[#333333] dark:text-[#e1e1e1];
   }
 
   .fg-muted {
@@ -64,11 +64,11 @@
   }
 
   .accent {
-    @apply text-[#dd1616] dark:text-[#ff5959];
+    @apply text-[#ec551a] dark:text-[#ff6497];
   }
 
   .highlight {
-    @apply text-[#8ab1ff] dark:text-white;
+    @apply text-black dark:text-white;
   }
 
   .muted-border {

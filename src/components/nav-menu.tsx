@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ThemeToggler from './theme-toggle';
 
 type Props = {
   className?: string;
@@ -15,7 +16,7 @@ const NavMenu = ({ className = '', showHome = true, currentPage = '' }: Props) =
     { label: 'about', href: '/about' },
   ];
   return (
-    <ul className={'flex items-center gap-4 ' + className}>
+    <ul className={'flex w-full items-center gap-4 ' + className}>
       {showHome && (
         <li>
           <Link
@@ -39,6 +40,9 @@ const NavMenu = ({ className = '', showHome = true, currentPage = '' }: Props) =
           </Link>
         </li>
       ))}
+      <li className="sm:ml-auto">
+        <ThemeToggler />
+      </li>
     </ul>
   );
 };

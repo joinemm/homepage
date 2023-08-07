@@ -80,8 +80,7 @@ const TOC = ({ headings }: Props) => {
       }}
     >
       <svg
-        className="toc-line pointer-events-none absolute h-full"
-        stroke="#ffffff"
+        className="toc-line pointer-events-none absolute h-full stroke-black dark:stroke-white"
         fill="#00000000"
         strokeWidth={4}
       >

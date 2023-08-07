@@ -4,7 +4,7 @@ import { mediaStyles } from '../util/media-context';
 
 export default function Document() {
   return (
-    <Html lang="en" className="fg-primary text-[18px]">
+    <Html lang="en" className="text-[18px]">
       <Head>
         <link
           rel="stylesheet"
