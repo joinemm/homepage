@@ -95,7 +95,7 @@ export default function Movies({ reviews }: Props) {
         }}
       />
       <MainContainer classname="border-t-2">
-        <div className="flex items-center gap-2 overflow-scroll">
+        <div className="flex items-center gap-2 overflow-scroll py-2">
           <button onClick={() => setAscending(!ascending)}>
             {ascending ? (
               <TiArrowSortedUp size={26} />
@@ -111,7 +111,13 @@ export default function Movies({ reviews }: Props) {
                   className={`hover:accent underline-offset-4 ${
                     sortingMethod === key ? 'accent underline' : ''
                   }`}
-                  onClick={() => setSortingMethod(key)}
+                  onClick={() => {
+                    if (sortingMethod === key) {
+                      setAscending(!ascending);
+                    } else {
+                      setSortingMethod(key);
+                    }
+                  }}
                 >
                   {label}
                 </button>

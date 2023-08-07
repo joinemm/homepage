@@ -41,7 +41,7 @@ export default function MobileMenu() {
           >
             <MdClose size={35} />
           </button>
-          <NavMenu className="flex-col" />
+          <NavMenu vertical />
         </div>
       )}
     </>

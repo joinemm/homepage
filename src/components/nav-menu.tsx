@@ -2,12 +2,12 @@ import Link from 'next/link';
 import ThemeToggler from './theme-toggle';
 
 type Props = {
-  className?: string;
+  vertical?: boolean;
   showHome?: boolean;
   currentPage?: string;
 };
 
-const NavMenu = ({ className = '', showHome = true, currentPage = '' }: Props) => {
+const NavMenu = ({ vertical = false, showHome = true, currentPage = '' }: Props) => {
   const links = [
     { label: 'blog', href: '/blog' },
     // { label: 'projects', href: '/projects' },
@@ -16,7 +16,7 @@ const NavMenu = ({ className = '', showHome = true, currentPage = '' }: Props) =
     { label: 'about', href: '/about' },
   ];
   return (
-    <ul className={'flex w-full items-center gap-4 ' + className}>
+    <ul className={'flex w-full items-center gap-4' + (vertical ? ' flex-col' : '')}>
       {showHome && (
         <li>
           <Link
@@ -40,7 +40,7 @@ const NavMenu = ({ className = '', showHome = true, currentPage = '' }: Props) =
           </Link>
         </li>
       ))}
-      <li className="sm:ml-auto">
+      <li className={vertical ? '' : 'ml-auto'}>
         <ThemeToggler />
       </li>
     </ul>
