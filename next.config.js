@@ -10,6 +10,11 @@ const nextConfig = {
       { hostname: 'm.media-amazon.com', pathname: '/images/**' },
     ],
   },
+  experimental: {
+    outputFileTracingIncludes: {
+      '/blog/[slug]': ['node_modules/shiki/**/*'],
+    },
+  },
 };
 
 module.exports = nextConfig;

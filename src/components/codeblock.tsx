@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import { MdContentCopy } from 'react-icons/md';
 import type { ReactElement } from 'react';
 import { useRef, cloneElement } from 'react';

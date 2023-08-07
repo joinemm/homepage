@@ -8,9 +8,11 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExtractHeadings from './extract-headings';
 import sectionize from 'remark-sectionize';
+import { Theme } from 'shiki';
 
+const theme: Theme = 'one-dark-pro';
 const prettyCodeOptions = {
-  theme: 'one-dark-pro',
+  theme: theme,
   onVisitLine(node: any) {
     // Prevent lines from collapsing in `display: grid` mode, and
     // allow empty lines to be copy/pasted
