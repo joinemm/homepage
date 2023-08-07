@@ -10,5 +10,5 @@ export const DOMAIN = vercel_public_domain
 
 export const PAGE_WIDTH = 40;
 export const CDN_DOMAIN = 'cdn.joinemm.dev';
-export const ANALYTICS_DOMAIN = 'stats.joinemm.dev';
+export const ANALYTICS_DOMAIN = 'pls.joinemm.dev';
 export const SITE_NAME = 'joinemm.dev';
