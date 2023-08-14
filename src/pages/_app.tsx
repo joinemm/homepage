@@ -1,7 +1,7 @@
 import '../styles/tailwind.css';
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { Roboto_Mono, Bodoni_Moda, Overpass_Mono } from '@next/font/google';
+import { Roboto_Mono, Bodoni_Moda, Overpass_Mono } from 'next/font/google';
 import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
