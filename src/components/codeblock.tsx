@@ -24,6 +24,7 @@ const CodeBlock = ({ language, prettyCode }) => {
       <button
         className="absolute right-3 top-3 opacity-0 transition-opacity hover:!opacity-100 group-hover:opacity-70"
         onClick={copyCode}
+        aria-label="copy to clipboard"
       >
         <MdContentCopy size={20} />
       </button>

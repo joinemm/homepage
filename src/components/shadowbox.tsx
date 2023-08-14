@@ -39,8 +39,8 @@ const Shadowbox = ({ art, unselect }: Props) => {
     <div className="fixed left-0 top-0 z-40 h-screen w-screen overflow-y-scroll bg-black bg-opacity-80">
       <button
         className="fixed right-4 top-4 z-50 mt-1 rounded-full border-2 bg-black bg-opacity-30 p-1 text-white"
-        type="button"
         onClick={() => unselect()}
+        aria-label="close shadowbox"
       >
         <MdClose size={30} />
       </button>
@@ -103,6 +103,7 @@ const Shadowbox = ({ art, unselect }: Props) => {
                         onClick={prevImage}
                         type="button"
                         className="opacity-70 hover:opacity-100"
+                        aria-label="previous image"
                       >
                         <MdChevronLeft size={30} />
                       </button>
@@ -117,6 +118,7 @@ const Shadowbox = ({ art, unselect }: Props) => {
                         onClick={nextImage}
                         type="button"
                         className="opacity-70 hover:opacity-100"
+                        aria-label="next image"
                       >
                         <MdChevronRight size={30} />
                       </button>
@@ -136,6 +138,7 @@ const Shadowbox = ({ art, unselect }: Props) => {
                       onClick={prevImage}
                       type="button"
                       className="absolute text-white opacity-80 drop-shadow-lg hover:opacity-100"
+                      aria-label="previous image"
                     >
                       <MdChevronLeft size={40} />
                     </button>
@@ -153,6 +156,7 @@ const Shadowbox = ({ art, unselect }: Props) => {
                       onClick={nextImage}
                       type="button"
                       className="absolute right-0 text-white opacity-80 drop-shadow-lg hover:opacity-100"
+                      aria-label="next image"
                     >
                       <MdChevronRight size={40} />
                     </button>

@@ -14,7 +14,7 @@ const LikeButton = ({ storageKey }: Props) => {
 
   return (
     <div>
-      <button onClick={toggleLikeStatus}>
+      <button onClick={toggleLikeStatus} aria-label="like">
         {liked ? (
           <HiHeart size={20} className="inline-block text-red-500" />
         ) : (

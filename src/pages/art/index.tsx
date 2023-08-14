@@ -4,7 +4,6 @@ import { Media } from '../../util/media-context';
 import { NextSeo } from 'next-seo';
 import { DOMAIN } from '../../util/constants';
 import MainContainer from '../../components/main-container';
-import { MdClose } from 'react-icons/md';
 import { getArt, getAssetUrl, CMSImage, Art } from '../../util/content-manager';
 import Shadowbox from '../../components/shadowbox';
 
@@ -117,13 +116,6 @@ export default function Gallery({ artwork }: Props) {
       />
       {selected && (
         <div className="fixed left-0 top-0 z-40 h-screen w-screen overflow-y-scroll bg-black bg-opacity-80">
-          <button
-            className="fixed right-4 top-4 z-50 mt-1 rounded-full border-2 bg-black bg-opacity-30 p-1 text-white"
-            type="button"
-            onClick={() => unselect()}
-          >
-            <MdClose size={30} />
-          </button>
           <Shadowbox art={selected} unselect={() => unselect()} />
         </div>
       )}

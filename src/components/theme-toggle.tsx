@@ -11,6 +11,7 @@ const ThemeToggler = () => {
     <button
       onClick={() => (currentTheme == 'dark' ? setTheme('light') : setTheme('dark'))}
       className="mt-1"
+      aria-label="toggle theme"
     >
       {currentTheme == 'dark' ? <MdDarkMode size={25} /> : <MdLightMode size={25} />}
     </button>

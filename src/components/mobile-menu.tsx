@@ -29,15 +29,15 @@ export default function MobileMenu() {
 
   return (
     <>
-      <button className="mr-2" type="button" onClick={openMenu}>
+      <button className="mr-2" onClick={openMenu} aria-label="open menu">
         <MdMenu size={35} />
       </button>
       {isMenuOpen && (
         <div className="bg-primary absolute left-0 top-0 z-40 flex h-screen w-screen items-center justify-center">
           <button
             className="absolute right-4 top-4 z-50 mt-1"
-            type="button"
             onClick={closeMenu}
+            aria-label="close menu"
           >
             <MdClose size={35} />
           </button>

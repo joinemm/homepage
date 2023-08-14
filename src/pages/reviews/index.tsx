@@ -96,7 +96,10 @@ export default function Movies({ reviews }: Props) {
       />
       <MainContainer classname="border-t-2">
         <div className="flex items-center gap-2 overflow-scroll py-2">
-          <button onClick={() => setAscending(!ascending)}>
+          <button
+            onClick={() => setAscending(!ascending)}
+            alia-label="change sort direction"
+          >
             {ascending ? (
               <TiArrowSortedUp size={26} />
             ) : (

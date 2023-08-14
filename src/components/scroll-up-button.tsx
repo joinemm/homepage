@@ -9,6 +9,7 @@ const ScrollUpButton = () => {
           behavior: 'smooth',
         });
       }}
+      aria-label="scroll to top"
     >
       <HiOutlineArrowNarrowUp className="m-auto" size={30} />
       <p className="fg-secondary serif text-xl italic">fin</p>
