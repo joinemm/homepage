@@ -19,6 +19,7 @@ import {
   getPostBySlug,
 } from '../../util/content-manager';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import 'katex/dist/katex.min.css';
 
 type Props = {
   post: BlogPost;
