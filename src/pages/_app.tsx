@@ -52,7 +52,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <DefaultSeo {...config} />
-      <ThemeProvider attribute="class">
+      <ThemeProvider defaultTheme="dark" enableSystem={false} attribute="class">
         <Component {...pageProps} />
       </ThemeProvider>
     </>

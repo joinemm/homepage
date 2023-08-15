@@ -4,8 +4,7 @@ import { MdLightMode, MdDarkMode } from 'react-icons/md';
 
 const ThemeToggler = () => {
   const { theme, setTheme } = useTheme();
-  const defaultTheme = 'dark';
-  const currentTheme = theme === 'system' ? defaultTheme : theme;
+  const currentTheme = theme === 'system' ? 'dark' : theme;
 
   return (
     <button
