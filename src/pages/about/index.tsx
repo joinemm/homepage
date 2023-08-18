@@ -3,6 +3,58 @@ import Email from '../../components/encoded-email';
 import MainContainer from '../../components/main-container';
 
 export default function About() {
+  const gpgKey = `-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+feKEkOSfWHP421Qc
+=ogrK
+-----END PGP PUBLIC KEY BLOCK-----`;
   return (
     <>
       <Head>
@@ -35,6 +87,9 @@ export default function About() {
           <p>
             Contact me: <Email encoded={'am9pbmVtbUBwbS5tZQ=='} />
           </p>
+          <pre className="mt-10 bg-transparent text-center">
+            <code className="fg-primary">{gpgKey}</code>
+          </pre>
         </div>
       </MainContainer>
     </>
