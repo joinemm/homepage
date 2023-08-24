@@ -37,15 +37,18 @@ const Email = ({ encoded }: Props) => {
   }, [emailName, emailDomain]);
 
   return (
-    <a
-      className="accent no-underline"
-      onMouseOver={() => {
-        email !== realEmail ? decrypt() : null;
-      }}
-      href={mailto}
-    >
-      {email}
-    </a>
+    <>
+      <a
+        className="accent no-underline hover:underline"
+        onMouseOver={() => {
+          email !== realEmail ? decrypt() : null;
+        }}
+        href={mailto}
+      >
+        {email}
+      </a>
+      <span className="fg-muted ml-1 text-xs">(hover me)</span>
+    </>
   );
 };
 
