@@ -24,7 +24,7 @@ export default function About() {
     {
       icon: BsTwitter,
       label: 'Twitter',
-      href: 'https:/twitter.com/joinemm',
+      href: 'https://twitter.com/joinemm',
       linkText: 'joinemm',
     },
     {
