@@ -2,7 +2,14 @@ import Head from 'next/head';
 import Email from '../../components/encoded-email';
 import MainContainer from '../../components/main-container';
 import { MdEmail } from 'react-icons/md';
-import { BsDiscord, BsGithub, BsSteam, BsSpotify, BsTwitter } from 'react-icons/bs';
+import {
+  BsDiscord,
+  BsGithub,
+  BsSteam,
+  BsSpotify,
+  BsTwitter,
+  BsInstagram,
+} from 'react-icons/bs';
 import { FaLastfm, FaKey } from 'react-icons/fa';
 import { createElement } from 'react';
 
@@ -25,6 +32,12 @@ export default function About() {
       icon: BsTwitter,
       label: 'Twitter',
       href: 'https://twitter.com/joinemm',
+      linkText: 'joinemm',
+    },
+    {
+      icon: BsInstagram,
+      label: 'Instagram',
+      href: 'https://instagram.com/joinemm',
       linkText: 'joinemm',
     },
     {
