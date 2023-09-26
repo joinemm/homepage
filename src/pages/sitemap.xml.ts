@@ -27,7 +27,7 @@ function SiteMap() {
 export async function getServerSideProps({ res }) {
   const posts = await getBlogPosts();
   const postPaths = posts.map((post) => `/blog/${post.slug}`);
-  const staticPaths = ['/about', '/blog', '/reviews', '/art'];
+  const staticPaths = ['/about', '/blog', '/reviews', '/art', '/uses'];
 
   const sitemap = generateSiteMap(postPaths.concat(staticPaths));
 

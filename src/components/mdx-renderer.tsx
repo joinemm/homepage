@@ -9,6 +9,7 @@ import Checkbox from './checkbox';
 
 type Props = {
   source: MDXRemoteSerializeResult;
+  className?: string;
 };
 
 const components = {
@@ -38,9 +39,9 @@ const components = {
   Email: Email,
 };
 
-const MdxRenderer = ({ source }: Props) => {
+const MdxRenderer = ({ source, className }: Props) => {
   return (
-    <div className="markdown">
+    <div className={'markdown ' + (className ? className : '')}>
       <MDXRemote {...source} components={components} />
     </div>
   );

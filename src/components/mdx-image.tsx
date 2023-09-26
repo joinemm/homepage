@@ -14,7 +14,7 @@ const MdxImage = ({ src, alt }: Props) => {
   }
 
   return (
-    <div className="relative">
+    <div className="relative my-4">
       <Image
         alt={alt}
         src={src}

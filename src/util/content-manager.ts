@@ -40,6 +40,13 @@ export type BlogPost = {
   content: string;
 };
 
+export type Page = {
+  slug: string;
+  title: string;
+  excerpt?: string;
+  content: string;
+};
+
 export async function getFileInfo(id: string): Promise<CMSImage> {
   return await apiRequest(`/files/${id}?fields=id,width,height,title`);
 }
@@ -120,6 +127,12 @@ export async function getPostBySlug(slug: string): Promise<BlogPost> {
       ? { ...post.image, placeholder: await getBase64ImageUrl(post.image.id) }
       : null,
   };
+}
+
+export async function getPage(slug: string): Promise<Page> {
+  const path = `/items/page/${slug}`;
+  const page: Page = await apiRequest(path);
+  return page;
 }
 
 async function apiRequest(path: string) {

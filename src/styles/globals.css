@@ -27,7 +27,7 @@ pre {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
 }
-.markdown > p:first-of-type::first-letter {
+.markdown.dropcap > p:first-of-type::first-letter {
   font-size: 3.9rem;
   float: left;
   padding-right: 0.2rem;
@@ -40,10 +40,13 @@ pre {
 .markdown h2 {
   margin-left: -1.5rem;
 }
-.markdown h3,
-.markdown h4 {
+.markdown h3 {
   margin-left: -1.3rem;
 }
+.markdown h4 {
+  margin-left: -1.1rem;
+}
+
 h2,
 h3,
 h4 {
@@ -151,4 +154,20 @@ input[type='checkbox']::before {
 
 input[type='checkbox']:checked::before {
   opacity: 1;
+}
+
+td {
+  padding: 0.2rem 0.6rem 0.2rem 0.6rem;
+}
+
+table {
+  border-collapse: separate;
+}
+
+thead {
+  display: none;
+}
+
+th, td {
+  border: 1px solid;
 }

@@ -109,7 +109,7 @@ export default function Post({ post, mdxSerialized, toc }: Props) {
             ></Image>
           ) : null}
         </div>
-        <MdxRenderer source={mdxSerialized} />
+        <MdxRenderer source={mdxSerialized} className="dropcap" />
         <footer className="py-32 text-center">
           <ScrollUpButton />
         </footer>

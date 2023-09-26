@@ -39,7 +39,7 @@ export async function mdxSerialize(content: string) {
         rehypeSlug,
         rehypeAutolinkHeadings,
         rehypeKatex,
-        [rehypeExtractHeadings, { rank: 4, headings }],
+        [rehypeExtractHeadings, { rank: 3, headings }],
       ],
     },
   });

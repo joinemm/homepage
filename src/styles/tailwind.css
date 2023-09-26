@@ -13,7 +13,7 @@
     @apply mb-2 mt-6 text-2xl font-bold;
   }
   h4 {
-    @apply text-xl font-bold;
+    @apply mb-2 mt-4 text-xl font-bold;
   }
   p {
     @apply my-4;
