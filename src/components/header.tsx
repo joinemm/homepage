@@ -11,7 +11,10 @@ const Header = () => {
   pathElements.pop();
   const prevPath = '/' + pathElements.pop();
   return (
-    <header className="muted-border mono m-auto mb-2 mt-4 flex h-10 w-full max-w-[40rem]">
+    <header
+      className="muted-border mono toc-tracker m-auto mb-2 mt-4 flex h-10 w-full max-w-[40rem]"
+      data-id="top"
+    >
       <Media lessThan="mobile" className="my-auto w-full">
         <div className="ml-2 flex items-center justify-between gap-4">
           <Link className="min-w-0 no-underline" href={prevPath}>

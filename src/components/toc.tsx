@@ -8,6 +8,17 @@ type PathCommand = [string, number, number];
 type Props = { headings: Heading[] };
 
 const TOC = ({ headings }: Props) => {
+  headings = [
+    {
+      rank: 2,
+      title: '<>',
+      totalLength: 1,
+      id: 'top',
+      children: [],
+    },
+    ...headings,
+  ];
+
   const [visibleHeadings, setVisibleHeadings] = useState(new Set<string>());
 
   useEffect(() => {
@@ -74,9 +85,9 @@ const TOC = ({ headings }: Props) => {
 
   return (
     <div
-      className="fixed top-1/2 ml-14"
+      className="fixed top-0 ml-4 mt-20"
       style={{
-        transform: `translateX(${PAGE_WIDTH}rem) translateY(-50%)`,
+        transform: `translateX(${PAGE_WIDTH}rem)`,
       }}
     >
       <svg

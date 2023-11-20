@@ -12,7 +12,6 @@ const NavMenu = ({ vertical = false, showHome = true, currentPage = '' }: Props)
     { label: 'blog', href: '/blog' },
     // { label: 'projects', href: '/projects' },
     { label: 'art', href: '/art' },
-    { label: 'reviews', href: '/reviews' },
     { label: 'uses', href: '/uses' },
     { label: 'about', href: '/about' },
   ];

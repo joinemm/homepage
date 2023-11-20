@@ -72,10 +72,10 @@ export default function Post({ post, mdxSerialized, toc }: Props) {
           <TOC headings={toc} />
         </Media>
         <div>
-          <h1 className="serif my-2 text-4xl font-bold leading-tight tracking-tight md:text-5xl">
+          <h1 className="serif text-4xl font-bold !leading-tight md:text-5xl">
             {post.title}
           </h1>
-          <div className="fg-muted mono flex flex-wrap gap-2 pb-8 text-[0.95rem]">
+          <div className="fg-muted mono flex flex-wrap gap-2 pb-4 text-[0.95rem]">
             <DateFormatter
               dateString={post.date_created}
               formatter="MMMM d, yyyy"
@@ -99,7 +99,7 @@ export default function Post({ post, mdxSerialized, toc }: Props) {
           </div>
           {post.image ? (
             <Image
-              className="rounded-sm"
+              className="rounded-xl"
               src={getAssetUrl(post.image.id, 'header')}
               alt={post.image.title}
               placeholder={post.image.placeholder ? 'blur' : undefined}

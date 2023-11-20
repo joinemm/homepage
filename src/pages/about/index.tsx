@@ -10,6 +10,7 @@ import {
   BsTwitter,
   BsInstagram,
 } from 'react-icons/bs';
+import { SiLetterboxd } from 'react-icons/si';
 import { FaLastfm, FaKey } from 'react-icons/fa';
 import { createElement } from 'react';
 
@@ -59,6 +60,12 @@ export default function About() {
       linkText: 'joinemm',
     },
     {
+      icon: SiLetterboxd,
+      label: 'Letterboxd',
+      href: 'https://letterboxd.com/joinemm',
+      linkText: 'joinemm',
+    },
+    {
       icon: FaKey,
       label: 'GPG Key',
       href: '/gpg.txt',
@@ -70,25 +77,26 @@ export default function About() {
       <Head>
         <title>ABOUT | joinemm.dev</title>
       </Head>
-      <MainContainer classname="border-t-2">
+      <MainContainer>
         <h1 className="serif mt-3 text-4xl">
           Hi, I&apos;m <span className="accent">Joonas</span>
         </h1>
         <p>
           I&apos;m a Software Engineer from Finland and very passionate about Linux,
-          open source software and privacy.
+          free open source software and privacy.
         </p>
+        <p>Currently working as a DevOps engineer on an open source project!</p>
         <p>Favourite languages: Python, Bash, Rust and Typescript.</p>
         <p>Favourite Linux distributions: Arch Linux and NixOS.</p>
         <p>
-          Aside from programming, I&apos;m an enjoyer of death metal, coffee,
-          photography, cooking and custom mechanical keyboards.
+          Aside from programming, I&apos;m an enjoyer of death metal, coffee, wine,
+          photography, italian food and custom mechanical keyboards.
         </p>
         <h3>Links</h3>
         <ul className="flex-col">
           {links.map(({ icon, label, href, linkText }) => (
             <li className="my-1 flex" key={label}>
-              <div className="flex w-[7rem] items-center gap-2">
+              <div className="mr-4 flex w-[8rem] items-center gap-2">
                 {createElement(icon, { size: 22 })}
                 {label}
               </div>
@@ -96,7 +104,7 @@ export default function About() {
             </li>
           ))}
           <li className="my-1 flex">
-            <div className="flex w-[7rem] items-center gap-2">
+            <div className="mr-4 flex w-[8rem] items-center gap-2">
               <MdEmail size={22} />
               Email
             </div>
