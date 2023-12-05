@@ -127,9 +127,10 @@ type PathParams = {
 export async function getStaticProps({ params: { slug } }: PathParams) {
   const post = await getPostBySlug(slug);
   const mdxResult = await mdxSerialize(post.content);
+  const { content: _content, ...postStub } = post;
   return {
     props: {
-      post: post,
+      post: postStub,
       mdxSerialized: mdxResult.content,
       toc: mdxResult.toc,
     },

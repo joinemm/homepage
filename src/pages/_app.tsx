@@ -1,19 +1,19 @@
 import '../styles/tailwind.css';
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { Roboto_Mono, Bodoni_Moda, Overpass_Mono } from 'next/font/google';
+import { Fira_Mono, Overpass_Mono, Roboto_Slab } from 'next/font/google';
 import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
 import config from '../../next-seo.config';
 
-const mono = Roboto_Mono({
+const mono = Fira_Mono({
   subsets: ['latin'],
-  weight: ['400', '600'],
+  weight: ['400', '500', '700'],
   display: 'swap',
   variable: '--font-body',
 });
-const serif = Bodoni_Moda({
+const serif = Roboto_Slab({
   subsets: ['latin'],
   weight: ['400', '700'],
   display: 'swap',

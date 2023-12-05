@@ -17,8 +17,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const data: Data = req.body;
 
-  switch (data.collection) {
-    case 'blog_post': {
+  switch (data.event) {
+    case 'blog_post.items.create': {
+      await res.revalidate('/blog');
+      return res.status(200).json({ revalidated: '/blog' });
+    }
+    case 'blog_post.items.update': {
       for (const slug of data.keys) {
         await res.revalidate(`/blog/${slug}`);
       }
@@ -27,13 +31,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         .status(200)
         .json({ revalidated: ['/blog', ...data.keys.map((slug) => `/blog/${slug}`)] });
     }
-    case 'art': {
+    case 'art.items.update': {
       await res.revalidate('/art');
       return res.status(200).json({ revalidated: '/art' });
-    }
-    case 'movie_review': {
-      await res.revalidate('/reviews');
-      return res.status(200).json({ revalidated: '/reviews' });
     }
     default: {
       return res.status(501).json({ error: 'this collection is not implemented yet!' });
