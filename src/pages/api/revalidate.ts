@@ -4,6 +4,7 @@ type Data = {
   event: string;
   payload: any;
   keys: string[];
+  key: string;
   collection: string;
 };
 
@@ -20,7 +21,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   switch (data.event) {
     case 'blog_post.items.create': {
       await res.revalidate('/blog');
-      return res.status(200).json({ revalidated: '/blog' });
+      await res.revalidate(`/blog/${data.key}`);
+      return res.status(200).json({ revalidated: ['/blog', `/blog${data.key}`] });
     }
     case 'blog_post.items.update': {
       for (const slug of data.keys) {
