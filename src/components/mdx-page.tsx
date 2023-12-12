@@ -21,7 +21,7 @@ const MdxPage = ({ page, mdxSerialized, toc, embedImageId, scrollUp }: Props) =>
   return (
     <>
       <NextSeo
-        title={`${page.title.toUpperCase()} | joinemm.dev`}
+        title={`${page.title.toLowerCase()} ~ Joinemm.dev`}
         description={page.excerpt}
         canonical={DOMAIN + '/' + page.slug}
         openGraph={{
@@ -39,7 +39,7 @@ const MdxPage = ({ page, mdxSerialized, toc, embedImageId, scrollUp }: Props) =>
           cardType: 'summary_large_image',
         }}
       />
-      <MainContainer classname="border-t-2">
+      <MainContainer>
         {toc && (
           <Media greaterThanOrEqual="widescreen">
             <TOC headings={toc} />

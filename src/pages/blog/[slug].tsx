@@ -46,7 +46,7 @@ export default function Post({ post, mdxSerialized, toc }: Props) {
         description="Welcome to my blog where I dump things from my brain."
       />
       <NextSeo
-        title={`${post.title} | Joinemm.dev`}
+        title={`${post.title} ~ Joinemm.dev`}
         description={post.excerpt}
         canonical={DOMAIN + router.asPath}
         openGraph={{

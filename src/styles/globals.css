@@ -38,10 +38,10 @@ pre {
 }
 
 .markdown h2 {
-  margin-left: -1.5rem;
+  margin-left: -1.7rem;
 }
 .markdown h3 {
-  margin-left: -1.3rem;
+  margin-left: -1.4rem;
 }
 .markdown h4 {
   margin-left: -1.1rem;
@@ -75,6 +75,8 @@ h4 a:hover {
   visibility: hidden;
   content: '§';
   margin-right: 0.5rem;
+  position: relative;
+  top: -3px
 }
 
 /* .active-heading::before { */

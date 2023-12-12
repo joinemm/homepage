@@ -54,11 +54,11 @@ export default function Blog({ posts }: Props) {
   return (
     <>
       <NextSeo
-        title="BLOG | Joinemm.dev"
+        title="blog ~ Joinemm.dev"
         description="List of my blog posts"
         canonical={DOMAIN + router.asPath}
       />
-      <MainContainer classname="border-t-2">
+      <MainContainer>
         {groupByYear(filterPosts(posts)).map(({ year, posts }) => {
           return (
             <div key={year} className="pb-4">

@@ -75,7 +75,7 @@ export default function About() {
   return (
     <>
       <Head>
-        <title>ABOUT | joinemm.dev</title>
+        <title>about ~ Joinemm.dev</title>
       </Head>
       <MainContainer>
         <h1 className="serif mt-3 text-4xl">

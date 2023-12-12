@@ -7,7 +7,7 @@ import MainContainer from '../../components/main-container';
 import { getArt, getAssetUrl, CMSImage, Art } from '../../util/content-manager';
 import Shadowbox from '../../components/shadowbox';
 
-const TITLE = 'ART | Joinemm.dev';
+const TITLE = 'art ~ Joinemm.dev';
 const DESCRIPTION = 'My art portfolio.';
 const PAGE_WIDTH = 50;
 
