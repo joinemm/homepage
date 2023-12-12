@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next/types';
+import { revalidatePath } from 'next/cache';
 
 type Data = {
   event: string;
@@ -21,8 +22,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   switch (data.event) {
     case 'blog_post.items.create': {
       await res.revalidate('/blog');
-      await res.revalidate(`/blog/${data.key}`);
-      return res.status(200).json({ revalidated: ['/blog', `/blog${data.key}`] });
+      revalidatePath('/blog/[slug]');
+      return res.status(200).json({ revalidated: ['/blog', `/blog/[slug]`] });
     }
     case 'blog_post.items.update': {
       for (const slug of data.keys) {
