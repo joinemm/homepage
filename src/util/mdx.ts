@@ -37,7 +37,7 @@ export async function mdxSerialize(content: string) {
       rehypePlugins: [
         [rehypePrettyCode, prettyCodeOptions],
         rehypeSlug,
-        rehypeAutolinkHeadings,
+        [rehypeAutolinkHeadings, { behavior: 'wrap' }],
         rehypeKatex,
         [rehypeExtractHeadings, { rank: 3, headings }],
       ],

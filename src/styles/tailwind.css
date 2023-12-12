@@ -25,7 +25,7 @@
     @apply hover:accent underline underline-offset-2;
   }
   pre {
-    @apply bg-[#21222c] text-sm;
+    @apply bg-[#21222c];
   }
   code {
     @apply fg-code rounded-sm bg-[#312e3f] px-1.5 py-0.5;

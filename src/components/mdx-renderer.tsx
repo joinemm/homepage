@@ -45,7 +45,9 @@ const components = {
 
 const MdxRenderer = ({ source, className }: Props) => {
   return (
-    <div className={'markdown ' + (className ? className : '')}>
+    <div
+      className={'markdown text-[16px] md:text-[18px] ' + (className ? className : '')}
+    >
       <MDXRemote {...source} components={components} />
     </div>
   );

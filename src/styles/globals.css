@@ -28,27 +28,14 @@ pre {
   margin-bottom: 0.25rem;
 }
 .markdown.dropcap > p:first-of-type::first-letter {
-  font-size: 3.9rem;
+  font-size: 3.8rem;
   float: left;
+  padding-top: 0.2rem;
   padding-right: 0.2rem;
   font-family: var(--font-serif);
 }
 .markdown ol {
   padding-left: 1.75rem;
-}
-
-.markdown h1 {
-  margin-left: -1.9rem;
-}
-
-.markdown h2 {
-  margin-left: -1.7rem;
-}
-.markdown h3 {
-  margin-left: -1.4rem;
-}
-.markdown h4 {
-  margin-left: -1.1rem;
 }
 
 h1,
@@ -58,12 +45,7 @@ h4 {
   font-family: var(--font-serif);
 }
 
-h2:hover .icon-link::before,
-h3:hover .icon-link::before,
-h4:hover .icon-link::before {
-  visibility: visible;
-}
-
+h1 a,
 h2 a,
 h3 a,
 h4 a {
@@ -74,14 +56,6 @@ h2 a:hover,
 h3 a:hover,
 h4 a:hover {
   color: inherit;
-}
-
-.icon-link::before {
-  visibility: hidden;
-  content: '§';
-  margin-right: 0.5rem;
-  position: relative;
-  top: -3px
 }
 
 .hovershine::before {
