@@ -134,6 +134,7 @@ export async function getStaticProps({ params: { slug } }: PathParams) {
   if (!post) {
     return {
       notFound: true,
+      revalidate: 5,
     };
   }
 
