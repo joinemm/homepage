@@ -45,6 +45,7 @@ export type Page = {
   title: string;
   excerpt?: string;
   content: string;
+  embed_image: string | null;
 };
 
 export async function getFileInfo(id: string): Promise<CMSImage> {

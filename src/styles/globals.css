@@ -37,6 +37,10 @@ pre {
   padding-left: 1.75rem;
 }
 
+.markdown h1 {
+  margin-left: -1.9rem;
+}
+
 .markdown h2 {
   margin-left: -1.7rem;
 }
@@ -47,6 +51,7 @@ pre {
   margin-left: -1.1rem;
 }
 
+h1,
 h2,
 h3,
 h4 {
@@ -78,12 +83,6 @@ h4 a:hover {
   position: relative;
   top: -3px
 }
-
-/* .active-heading::before { */
-/*   content: '━━'; */
-/*   position: absolute; */
-/*   left: -0.7rem; */
-/* } */
 
 .hovershine::before {
   position: absolute;

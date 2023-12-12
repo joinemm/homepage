@@ -6,6 +6,8 @@ import Note from './note';
 import Email from './encoded-email';
 import Section from './section';
 import Checkbox from './checkbox';
+import Socials from './socials';
+import Accented from './accented';
 
 type Props = {
   source: MDXRemoteSerializeResult;
@@ -37,6 +39,8 @@ const components = {
   Aside: Aside,
   Note: Note,
   Email: Email,
+  Socials: Socials,
+  Accented: Accented,
 };
 
 const MdxRenderer = ({ source, className }: Props) => {

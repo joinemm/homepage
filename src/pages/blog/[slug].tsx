@@ -76,9 +76,7 @@ export default function Post({ post, mdxSerialized, toc }: Props) {
           <TOC headings={toc} />
         </Media>
         <div>
-          <h1 className="serif text-4xl font-bold !leading-tight md:text-5xl">
-            {post.title}
-          </h1>
+          <h1 className="serif text-4xl !leading-tight">{post.title}</h1>
           <div className="fg-muted mono flex flex-wrap gap-2 pb-4 text-[0.95rem]">
             <DateFormatter
               dateString={post.date_created}

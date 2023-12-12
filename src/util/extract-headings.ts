@@ -12,16 +12,18 @@ export type Heading = {
 };
 
 const rehypeExtractHeadings = ({
+  biggest = 2,
   depth = 4,
   headings,
 }: {
+  biggest: number;
   depth: number;
   headings: Heading[];
 }) => {
   return (tree) => {
     visit(tree, 'element', function (node) {
       const rank = headingRank(node);
-      if (rank !== null && rank < depth && hasProperty(node, 'id')) {
+      if (rank !== null && biggest <= rank && rank < depth && hasProperty(node, 'id')) {
         headings.push({
           rank: rank,
           title: toString(node),

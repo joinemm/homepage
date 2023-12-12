@@ -10,13 +10,13 @@ type Props = {
   toc?: Heading[];
 };
 
-export default function Post({ page, mdxSerialized, toc }: Props) {
+export default function Uses({ page, mdxSerialized, toc }: Props) {
   return (
     <MdxPage
       page={page}
       mdxSerialized={mdxSerialized}
       toc={toc}
-      embedImageId="4f5c5426-1049-490a-8290-0d60ff2a6fe0"
+      embedImageId={page.embed_image}
       scrollUp={true}
     />
   );

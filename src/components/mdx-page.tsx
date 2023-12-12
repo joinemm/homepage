@@ -13,7 +13,7 @@ type Props = {
   page: Page;
   mdxSerialized: MDXRemoteSerializeResult;
   toc?: Heading[];
-  embedImageId: string;
+  embedImageId?: string | null;
   scrollUp?: boolean;
 };
 
@@ -28,12 +28,14 @@ const MdxPage = ({ page, mdxSerialized, toc, embedImageId, scrollUp }: Props) =>
           title: page.title,
           description: page.excerpt,
           url: DOMAIN + '/' + page.slug,
-          images: [
-            {
-              url: getAssetUrl(embedImageId, 'orig'),
-              alt: page.title,
-            },
-          ],
+          images: embedImageId
+            ? [
+                {
+                  url: getAssetUrl(embedImageId, 'orig'),
+                  alt: page.title,
+                },
+              ]
+            : [],
         }}
         twitter={{
           cardType: 'summary_large_image',
@@ -45,7 +47,6 @@ const MdxPage = ({ page, mdxSerialized, toc, embedImageId, scrollUp }: Props) =>
             <TOC headings={toc} />
           </Media>
         )}
-        <h1 className="serif mt-3 text-4xl">{page.title}</h1>
         <MdxRenderer source={mdxSerialized} />
         {scrollUp && (
           <footer className="py-32 text-center">
