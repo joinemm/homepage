@@ -6,6 +6,7 @@ export default function Document() {
   return (
     <Html lang="en" className="text-[18px]">
       <Head>
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <style type="text/css" dangerouslySetInnerHTML={{ __html: mediaStyles }} />
         <script
           defer

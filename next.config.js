@@ -6,14 +6,15 @@ const nextConfig = {
     loader: 'default',
     remotePatterns: [
       { hostname: '**.joinemm.dev' },
-      // for movie cover images
-      { hostname: 'm.media-amazon.com', pathname: '/images/**' },
     ],
   },
   experimental: {
     outputFileTracingIncludes: {
       '/blog/[slug]': ['node_modules/shiki/**/*'],
     },
+  },
+  compiler: {
+    removeConsole: false,
   },
 };
 

@@ -30,6 +30,10 @@ type Props = {
 export default function Post({ post, mdxSerialized, toc }: Props) {
   const router = useRouter();
 
+  if (router.isFallback) {
+    return <></>;
+  }
+
   return (
     <>
       <ArticleJsonLd
@@ -126,6 +130,13 @@ type PathParams = {
 
 export async function getStaticProps({ params: { slug } }: PathParams) {
   const post = await getPostBySlug(slug);
+
+  if (!post) {
+    return {
+      notFound: true,
+    };
+  }
+
   const mdxResult = await mdxSerialize(post.content);
   const { content: _content, ...postStub } = post;
   return {
@@ -146,6 +157,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }

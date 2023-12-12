@@ -6,6 +6,7 @@ const config: DefaultSeoProps = {
   description: 'Personal website and blog',
   canonical: DOMAIN,
   openGraph: {
+    siteName: 'Joinemm.dev',
     title: 'Joinemm.dev',
     description: 'Personal website and blog',
     type: 'website',

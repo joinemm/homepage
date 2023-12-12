@@ -116,11 +116,14 @@ export async function getBlogPosts(draft: boolean = false): Promise<BlogPost[]> 
   return posts;
 }
 
-export async function getPostBySlug(slug: string): Promise<BlogPost> {
+export async function getPostBySlug(slug: string): Promise<BlogPost | undefined> {
   const fields =
     'slug,title,excerpt,tags,date_created,content,image,image.id,image.width,image.height,image.title';
   const path = `/items/blog_post/${slug}?fields=${fields}&sort=-date_created`;
   const post: BlogPost = await apiRequest(path);
+
+  if (!post) return undefined;
+
   return {
     ...post,
     image: post.image
