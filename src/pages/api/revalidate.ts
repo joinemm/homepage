@@ -17,29 +17,49 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const data: Data = req.body;
+  let paths: string[] = [];
+  const [collection, event] = data.event.split('.', 1);
 
-  switch (data.event) {
-    case 'blog_post.items.create': {
-      await res.revalidate('/blog');
-      return res.status(200).json({ revalidated: ['/blog'] });
-    }
-    case 'blog_post.items.update' || 'blog_post.items.delete': {
-      for (const slug of data.keys) {
-        await res.revalidate(`/blog/${slug}`);
+  switch (collection) {
+    case 'blog_post': {
+      await refresh(res, '/blog', paths);
+
+      switch (event) {
+        case 'items.create':
+        case 'items.update':
+        case 'items.delete': {
+          for (const slug of data.keys) {
+            await res.revalidate(`/blog/${slug}`);
+          }
+          break;
+        }
+        default: {
+          return res
+            .status(501)
+            .json({ error: `'${event}' for '${collection}' is not implemented yet!` });
+        }
       }
-      await res.revalidate('/blog');
-      return res
-        .status(200)
-        .json({ revalidated: ['/blog', ...data.keys.map((slug) => `/blog/${slug}`)] });
+      break;
     }
-    case 'art.items.update': {
-      await res.revalidate('/art');
-      return res.status(200).json({ revalidated: '/art' });
+
+    case 'art': {
+      await refresh(res, '/art', paths);
+      break;
     }
+
     default: {
       return res.status(501).json({ error: 'this collection is not implemented yet!' });
     }
   }
+
+  return res.status(200).json({
+    revalidated: paths,
+  });
+};
+
+const refresh = async (res: NextApiResponse, path: string, paths: string[]) => {
+  await res.revalidate(path);
+  paths.push(path);
 };
 
 export default handler;
