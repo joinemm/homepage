@@ -18,7 +18,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const data: Data = req.body;
   let paths: string[] = [];
-  const [collection, event] = data.event.split('.', 1);
+  const [collection, ...rest] = data.event.split('.');
+  const event = rest.join('.');
 
   switch (collection) {
     case 'blog_post': {
