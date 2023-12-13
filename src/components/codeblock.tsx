@@ -15,7 +15,7 @@ const CodeBlock = ({ language, prettyCode }) => {
   };
 
   return (
-    <pre className="muted-border group relative my-4 mt-8 overflow-visible rounded-lg dark:border">
+    <pre className="muted-border group relative my-4 mt-8 overflow-visible rounded-lg text-sm dark:border">
       {SHOWLANG && language && (
         <div className="muted-border fg-primary absolute right-4 top-0 z-20 -translate-y-full rounded-t-md bg-[var(--tw-prose-pre-bg)] px-2 lowercase text-white dark:border-x dark:border-t dark:bg-[#0d0d13]">
           {language}
