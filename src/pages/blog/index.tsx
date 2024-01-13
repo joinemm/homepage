@@ -6,6 +6,7 @@ import { parseISO } from 'date-fns';
 import { NextSeo } from 'next-seo';
 import { DOMAIN } from '../../util/constants';
 import { BlogPost, getBlogPosts } from '../../util/content-manager';
+import { MdRssFeed } from 'react-icons/md';
 
 type Props = {
   posts: BlogPost[];
@@ -58,11 +59,19 @@ export default function Blog({ posts }: Props) {
         description="List of my blog posts"
         canonical={DOMAIN + router.asPath}
       />
-      <MainContainer>
+      <MainContainer classname="mt-0">
+        <a
+          href={DOMAIN + '/rss.xml'}
+          rel="noreferrer"
+          target="_blank"
+          className="hover:text-[#ee802f] dark:hover:text-[#ee802f] "
+        >
+          <MdRssFeed size="30" className="-ml-[4px]" />
+        </a>
         {groupByYear(filterPosts(posts)).map(({ year, posts }) => {
           return (
             <div key={year} className="pb-4">
-              <p className="fg-muted text-sm font-bold">{year}</p>
+              <p className="fg-muted my-3 text-sm font-bold">{year}</p>
               {posts.map((post) => (
                 <PostPreview post={post} key={post.slug} />
               ))}

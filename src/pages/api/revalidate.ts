@@ -24,13 +24,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   switch (collection) {
     case 'blog_post': {
       await refresh(res, '/blog', paths);
+      await refresh(res, '/rss.xml', paths);
 
       switch (event) {
         case 'items.create':
         case 'items.update':
         case 'items.delete': {
           for (const slug of data.keys) {
-            await res.revalidate(`/blog/${slug}`);
+            await refresh(res, `/blog/${slug}`, paths);
           }
           break;
         }
