@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document';
-import { ANALYTICS_DOMAIN, SITE_NAME } from '../util/constants';
+import { ANALYTICS_DOMAIN, SITE_NAME, DOMAIN } from '../util/constants';
 import { mediaStyles } from '../util/media-context';
 
 export default function Document() {
@@ -7,6 +7,12 @@ export default function Document() {
     <Html lang="en" className="text-[18px]">
       <Head>
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Joinemm.dev RSS"
+          href={DOMAIN + '/rss.xml'}
+        />
         <style type="text/css" dangerouslySetInnerHTML={{ __html: mediaStyles }} />
         <script
           defer
