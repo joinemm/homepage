@@ -24,7 +24,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   switch (collection) {
     case 'blog_post': {
       await refresh(res, '/blog', paths);
-      await refresh(res, '/rss.xml', paths);
 
       switch (event) {
         case 'items.create':
