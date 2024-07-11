@@ -8,9 +8,8 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExtractHeadings from './extract-headings';
 import sectionize from 'remark-sectionize';
-import { Theme } from 'shiki';
 
-const theme: Theme = 'one-dark-pro';
+const theme = 'one-dark-pro';
 const prettyCodeOptions = {
   theme: theme,
   onVisitLine(node: any) {
