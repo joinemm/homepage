@@ -17,7 +17,7 @@ Today we are taking a look at [Day 6](https://adventofcode.com/2023/day/6)
 
 We need to find the amount of time to charge our boat to beat the best time. As soon as I read this puzzle, it was clear this was going to be a "solve x" math question.
 
-The distance our boat travels can be expressed as a function of $$x$$, where $$x$$ is the amount of time we hold the button, and $$t$$ is the duration of the race.
+The distance our boat travels can be expressed as a function of $x$, where $x$ is the amount of time we hold the button, and $t$ is the duration of the race.
 
 $$
 \begin{align*}
@@ -43,7 +43,7 @@ $$
 \end{align*}
 $$
 
-Plugging our values in, we get two points for $$x$$, which are the bounds of our winning area. Now, these are floats, so they must be `ceil()` and `floor()`:ed. There is one edge case where the bounds have no fractions, which would give us the answer to *match* the current record. The goal is to beat the record, so `+1` is added to fix this.
+Plugging our values in, we get two points for $x$, which are the bounds of our winning area. Now, these are floats, so they must be `ceil()` and `floor()`:ed. There is one edge case where the bounds have no fractions, which would give us the answer to *match* the current record. The goal is to beat the record, so `+1` is added to fix this.
 
 ## Python
 
