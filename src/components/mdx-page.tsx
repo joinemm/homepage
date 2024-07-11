@@ -6,32 +6,31 @@ import MainContainer from './main-container';
 import { Heading } from '../util/extract-headings';
 import { Media } from '../util/media-context';
 import TOC from './toc';
-import { Page, getAssetUrl } from '../util/content-manager';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { MetaDataStub } from '../util/posts';
 
 type Props = {
-  page: Page;
+  page: MetaDataStub;
   mdxSerialized: MDXRemoteSerializeResult;
   toc?: Heading[];
-  embedImageId?: string | null;
   scrollUp?: boolean;
 };
 
-const MdxPage = ({ page, mdxSerialized, toc, embedImageId, scrollUp }: Props) => {
+const MdxPage = ({ page, mdxSerialized, toc, scrollUp }: Props) => {
   return (
     <>
       <NextSeo
         title={`${page.title.toLowerCase()} ~ Joinemm.dev`}
-        description={page.excerpt}
+        description={page.abstract}
         canonical={DOMAIN + '/' + page.slug}
         openGraph={{
           title: page.title,
-          description: page.excerpt,
+          description: page.abstract,
           url: DOMAIN + '/' + page.slug,
-          images: embedImageId
+          images: page.image
             ? [
                 {
-                  url: getAssetUrl(embedImageId, 'orig'),
+                  url: '/img/' + page.image,
                   alt: page.title,
                 },
               ]

@@ -1,15 +1,16 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import { Art, getAssetUrl } from '../util/content-manager';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import { MdChevronLeft, MdChevronRight, MdClose } from 'react-icons/md';
 import { GoDotFill } from 'react-icons/go';
 import { MouseEvent } from 'react';
+import { ArtMeta } from '../util/art';
+import { parseJSON } from 'date-fns';
 
-type Props = { art: Art; unselect: Function };
+type Props = { art: ArtMeta; unselect: Function };
 
 const Shadowbox = ({ art, unselect }: Props) => {
-  const allFiles = [art.file, ...art.extra_files];
+  const allFiles = art.files;
 
   const [carouselIndex, setCarouselIndex] = useState(0);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -49,20 +50,20 @@ const Shadowbox = ({ art, unselect }: Props) => {
         className="flex flex-col items-center justify-center gap-2"
         onClick={() => unselect()}
       >
-        <TransformWrapper key={art.id} centerOnInit={true}>
+        <TransformWrapper key={art.files[0]} centerOnInit={true}>
           <figure className="relative flex min-h-screen w-screen items-center">
             <div className="absolute mx-auto my-0 h-screen w-screen">
               <TransformComponent>
                 <Image
                   ref={imageRef}
-                  key={allFiles[carouselIndex].id}
-                  src={getAssetUrl(allFiles[carouselIndex].id, 'orig')}
-                  alt={allFiles[carouselIndex].title}
-                  width={allFiles[carouselIndex].width}
-                  height={allFiles[carouselIndex].height}
+                  key={allFiles[carouselIndex]}
+                  src={'/img/art/' + allFiles[carouselIndex]}
+                  alt={allFiles[carouselIndex]}
+                  width={2000}
+                  height={2000}
                   style={{
                     width: 'auto',
-                    maxHeight: `min(100dvh, ${allFiles[carouselIndex].height}px)`,
+                    maxHeight: `min(100dvh, ${2000}px)`,
                     maxWidth: `100vw`,
                     objectFit: 'contain',
                     margin: 'auto',
@@ -70,8 +71,6 @@ const Shadowbox = ({ art, unselect }: Props) => {
                     bottom: 0,
                     pointerEvents: 'auto',
                   }}
-                  placeholder={allFiles[carouselIndex].placeholder ? 'blur' : undefined}
-                  blurDataURL={allFiles[carouselIndex].placeholder || undefined}
                   quality={100}
                   unoptimized={true}
                   priority={true}

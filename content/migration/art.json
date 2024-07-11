@@ -1,0 +1,779 @@
+[
+  {
+    "status": "published",
+    "title": "Hatsune Miku",
+    "date_created": "2013-07-27",
+    "description": null,
+    "medium": "Micron marker, Inktense colored pencil on paper",
+    "file": {
+      "filename_disk": "c527e789-35c0-44b4-b9e6-6b50c261f699.jpg",
+      "filename_download": "d6etuzv-422fb0c6-5783-4977-911f-ea677e65e74c.jpg"
+    },
+    "extra_files": [
+      {
+        "directus_files_id": {
+          "filename_disk": "ac2af871-ddd7-4163-8a13-1142f7ed71de.jpg",
+          "filename_download": "hatsune_miku_drawing_by_joinemm_d6etw1e-fullview.jpg"
+        }
+      },
+      {
+        "directus_files_id": {
+          "filename_disk": "7e281749-472d-4331-8d3b-a7782a6e0e55.jpg",
+          "filename_download": "hatsune_miku_drawing_by_joinemm_d6etv92-375w-2x.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "status": "published",
+    "title": "Sakura Chan",
+    "date_created": "2013-07-31",
+    "description": null,
+    "medium": "Promarker on paper",
+    "file": {
+      "filename_disk": "5c28260a-5bfa-4d53-8b92-45a8a5bedab7.jpg",
+      "filename_download": "sakura_chan_by_joinemm_d6g07jf-fullview.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Hatsune Miku",
+    "date_created": "2013-10-20",
+    "description": "Redraw of an older piece",
+    "medium": "Micron, Promarker on A4 paper",
+    "file": {
+      "filename_disk": "03b4aed3-ccd1-4e3d-9d69-e95b623e1306.jpg",
+      "filename_download": "hatsune_miku_remake_by_joinemm_d6r6esi-pre.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Defeated Jedi",
+    "date_created": "2015-12-27",
+    "description": null,
+    "medium": "Paint Tool SAI",
+    "file": {
+      "filename_disk": "74730409-0ce5-45c1-8f26-81a9d119849d.jpg",
+      "filename_download": "defeated.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Tentacool",
+    "date_created": "2016-01-01",
+    "description": null,
+    "medium": "Mouse cursor on paint.net",
+    "file": {
+      "filename_disk": "e4680165-acdf-45bc-89c5-3d3b29e2706f.jpeg",
+      "filename_download": "Tentacool.jpeg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "archived",
+    "title": "Ranko Kanzaki",
+    "date_created": "2016-02-01",
+    "description": "Beach queen",
+    "medium": "Photoshop",
+    "file": {
+      "filename_disk": "3c844f2c-0293-4861-acbe-b6075b21ef56.png",
+      "filename_download": "Ranko Kanzaki beach queen.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Stormtrooper",
+    "date_created": "2017-01-01",
+    "description": "*a female stormtrooper obviously",
+    "medium": "Photoshop",
+    "file": {
+      "filename_disk": "4f85bc66-8e7b-4cdd-9482-983fea9e650f.png",
+      "filename_download": "stormtrooper.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Audrey Hepburn",
+    "date_created": "2017-01-28",
+    "description": null,
+    "medium": "Graphite, black Prismacolor on A4 paper",
+    "file": {
+      "filename_disk": "1ef829c2-2e86-4abc-a878-d2170aa2a603.jpg",
+      "filename_download": "audrey-hepburn.jpg"
+    },
+    "extra_files": [
+      {
+        "directus_files_id": {
+          "filename_disk": "c12b4865-707f-4758-b7a3-b471eeebaf29.png",
+          "filename_download": "audrey-hepburn-progress.png"
+        }
+      }
+    ]
+  },
+  {
+    "status": "published",
+    "title": "Courtney Gears",
+    "date_created": "2017-04-19",
+    "description": "Death to all squishies!",
+    "medium": "SAI + Photoshop",
+    "file": {
+      "filename_disk": "27456fd7-c92b-4fb9-992b-baef7f409e83.png",
+      "filename_download": "courtney-gears.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Hoodie Girl",
+    "date_created": "2017-08-09",
+    "description": null,
+    "medium": "Photoshop",
+    "file": {
+      "filename_disk": "17128818-6208-4c57-8f9f-3c43d999bd25.png",
+      "filename_download": "hoodie girl.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Cin D.Rella",
+    "date_created": "2017-08-30",
+    "description": null,
+    "medium": "Photoshop",
+    "file": {
+      "filename_disk": "ef460b15-147f-4c61-a6c6-eaeccd4db48b.png",
+      "filename_download": "cinDrella.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Lisa",
+    "date_created": "2017-08-30",
+    "description": null,
+    "medium": "Graphite on A5 paper",
+    "file": {
+      "filename_disk": "5703ba89-a216-457e-9854-f040b49bc793.jpg",
+      "filename_download": "lisa.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Stern",
+    "date_created": "2017-09-15",
+    "description": null,
+    "medium": "Graphite, black prismacolor, gouache on bristol A4 paper",
+    "file": {
+      "filename_disk": "6cfb6614-2f4c-49df-a951-f545d06f9f88.jpg",
+      "filename_download": "graphite_drawing_by_joinemm_dbnwd4f-414w-2x.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Moon Lady",
+    "date_created": "2017-09-16",
+    "description": null,
+    "medium": "Graphite, Promarker on A5 paper",
+    "file": {
+      "filename_disk": "00f264a1-3fa4-4338-ae45-01a9bbd43571.jpg",
+      "filename_download": "dreadlocks_and_moon_by_joinemm_dceotkd-pre.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Evelynn",
+    "date_created": "2017-09-24",
+    "description": null,
+    "medium": "Photoshop",
+    "file": {
+      "filename_disk": "3957cd3f-9caa-4751-856f-bf74b805de0b.png",
+      "filename_download": "evelynn.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Swift",
+    "date_created": "2017-10-01",
+    "description": "Inktober #1",
+    "medium": "Promarker on A4 Paper",
+    "file": {
+      "filename_disk": "f081d48e-63ea-4874-bde4-aa037a8eb2aa.jpg",
+      "filename_download": "ink_drawing_6_taylor_swift_by_joinemm_dceotzm-pre.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Divided",
+    "date_created": "2017-10-02",
+    "description": "Inktober #2",
+    "medium": "Ink on paper",
+    "file": {
+      "filename_disk": "cfc8ac31-6bfa-40b2-bebf-72bda2b8967b.jpg",
+      "filename_download": "171003-joinemm-BZy6FApjDWC-1.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Poison",
+    "date_created": "2017-10-03",
+    "description": "Inktober #3",
+    "medium": "Ink, Promarker on paper",
+    "file": {
+      "filename_disk": "da2be3d8-d0d3-4731-9ed1-648aa677767b.jpg",
+      "filename_download": "ink_drawing_1_by_joinemm_dceoshf-pre.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Underwater",
+    "date_created": "2017-10-04",
+    "description": "Inktober #4",
+    "medium": "Promarker on paper",
+    "file": {
+      "filename_disk": "d4115c39-760d-46b2-a8e4-df2b1605d9bf.jpg",
+      "filename_download": "ink_drawing_2_mermaid_by_joinemm_dceosqm-pre.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Long",
+    "date_created": "2017-10-05",
+    "description": "Inktober #5",
+    "medium": "Black Ink on paper",
+    "file": {
+      "filename_disk": "ba918764-e6ec-4568-9e19-479b2eea095a.jpg",
+      "filename_download": "ink_drawing_3_coat_by_joinemm_dceot43-pre.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Shy",
+    "date_created": "2017-10-07",
+    "description": "Inktober #7",
+    "medium": "Black ink on paper",
+    "file": {
+      "filename_disk": "865f88c0-e34b-44f6-a23b-b412a01fa822.jpg",
+      "filename_download": "ink_drawing_4_by_joinemm_dceot61-pre.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Screech",
+    "date_created": "2017-10-09",
+    "description": "Inktober #9",
+    "medium": "Ballpoint pen on paper",
+    "file": {
+      "filename_disk": "412a549b-b9af-4123-a357-8f0f658a339e.jpg",
+      "filename_download": "owl_by_joinemm_dceotbp-pre.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Shattered",
+    "date_created": "2017-10-12",
+    "description": "Inktober #12",
+    "medium": "Marker on paper",
+    "file": {
+      "filename_disk": "0687f3b1-79ee-4054-9e4d-282775778363.jpg",
+      "filename_download": "mirror_by_joinemm_dceou2v-pre.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Jinsoul",
+    "date_created": "2018-06-18",
+    "description": null,
+    "medium": "Photoshop",
+    "file": {
+      "filename_disk": "b4c70312-b57e-4910-b04a-94c3223df461.jpg",
+      "filename_download": "Jinsoul.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Soyeon",
+    "date_created": "2018-06-18",
+    "description": null,
+    "medium": "Photoshop",
+    "file": {
+      "filename_disk": "1904bb7a-9aaf-4552-ba74-2892deaf60a4.jpg",
+      "filename_download": "soyeon.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Gahyeon",
+    "date_created": "2018-07-03",
+    "description": null,
+    "medium": "Photoshop",
+    "file": {
+      "filename_disk": "1bfaecdc-b341-4cdd-927c-af658f62db48.jpg",
+      "filename_download": "gahyeon.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Yeji",
+    "date_created": "2019-01-01",
+    "description": null,
+    "medium": "Photoshop",
+    "file": {
+      "filename_disk": "897457ff-961c-48ca-a577-a798e425571e.png",
+      "filename_download": "yeji.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Jinsoul Cop",
+    "date_created": "2019-03-31",
+    "description": "190330 Loona Fansign",
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "d7456a20-edad-4564-b5a8-5b9a7be3b358.jpg",
+      "filename_download": "jinsoul-cop.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "LE",
+    "date_created": "2019-05-19",
+    "description": "Stop, boy and let's get naked",
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "40382763-53a7-4afc-8b5a-35bf646ca103.jpg",
+      "filename_download": "le.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "5 Minute Figures",
+    "date_created": "2019-11-27",
+    "description": "http://reference.sketchdaily.net",
+    "medium": "Corel Painter",
+    "file": {
+      "filename_disk": "a37ccd7c-a0a9-4eaf-9a91-2ea61e62295d.png",
+      "filename_download": "sketch1.png"
+    },
+    "extra_files": [
+      {
+        "directus_files_id": {
+          "filename_disk": "13737b47-58c3-4f7c-97a4-1629c591a84f.png",
+          "filename_download": "sketch2.png"
+        }
+      },
+      {
+        "directus_files_id": {
+          "filename_disk": "4f5c5426-1049-490a-8290-0d60ff2a6fe0.png",
+          "filename_download": "sketch3.png"
+        }
+      }
+    ]
+  },
+  {
+    "status": "published",
+    "title": "Shadow of an Eye",
+    "date_created": "2019-12-30",
+    "description": null,
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "457e6dab-da45-43d4-a53e-f59f7d80da53.png",
+      "filename_download": "closed-eye.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Samurai Yeji",
+    "date_created": "2020-01-11",
+    "description": "https://twitter.com/joinemm/status/1215967594588573697",
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "a80532a4-5c1c-4b73-99d4-143b58d0d7f8.jpg",
+      "filename_download": "samurai-yeji.jpg"
+    },
+    "extra_files": [
+      {
+        "directus_files_id": {
+          "filename_disk": "1b338d0d-911f-4902-b09d-fb405abe0775.png",
+          "filename_download": "samurai-yeji.png"
+        }
+      }
+    ]
+  },
+  {
+    "status": "published",
+    "title": "Umbrella",
+    "date_created": "2020-01-15",
+    "description": null,
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "bb8c468e-2063-480e-ba7f-a2fd679aee09.jpg",
+      "filename_download": "umbrella_blue.jpg"
+    },
+    "extra_files": [
+      {
+        "directus_files_id": {
+          "filename_disk": "bc6bc777-1065-4dd4-a4a3-190c97dc62b0.jpg",
+          "filename_download": "umbrella_color.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "status": "published",
+    "title": "Yeojin",
+    "date_created": "2020-01-16",
+    "description": null,
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "dda0bee3-67cc-4ec7-9dfa-2f7eec23de8e.png",
+      "filename_download": "yeojin.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Miso",
+    "date_created": "2020-02-04",
+    "description": "Created for Miso's birthday and ended up becoming the icon of Miso Bot",
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "5c958f89-0594-4d49-9a43-7104fe767cb6.png",
+      "filename_download": "miso.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Buried Civilization",
+    "date_created": "2020-02-06",
+    "description": null,
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "9646cd6a-01ae-4d21-a16d-0ca26c884e5a.png",
+      "filename_download": "desert.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Underwear",
+    "date_created": "2020-05-10",
+    "description": null,
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "465e0732-de33-4a8f-ba27-30e79f1b11f0.png",
+      "filename_download": "underwear.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Cup",
+    "date_created": "2020-06-03",
+    "description": "I am obviously talking about the coffee",
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "1c86c4bf-efea-4af2-9612-be89055c143d.png",
+      "filename_download": "coffee-cup.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Blue Jeans",
+    "date_created": "2020-06-11",
+    "description": null,
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "f162cb2c-1701-452b-9ac4-3505b95898b5.jpg",
+      "filename_download": "blue-jeans-original.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Yeji Sitting",
+    "date_created": "2020-11-19",
+    "description": null,
+    "medium": "Krita",
+    "file": {
+      "filename_disk": "a90031a5-01dd-4768-b28a-13a946f98ec4.jpg",
+      "filename_download": "yeji-sitting.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Miso",
+    "date_created": "2021-01-01",
+    "description": "Left at the lineart stage",
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "ce610c80-81fe-48b2-b485-1d2f334c7bbd.jpg",
+      "filename_download": "miso-new-lineart.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Idol Hands",
+    "date_created": "2021-01-01",
+    "description": null,
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "989f0b6f-5eb8-456a-8112-96cdda088362.jpg",
+      "filename_download": "nov12-hands.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Bath",
+    "date_created": "2021-03-07",
+    "description": null,
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "e4ff9b1a-121a-4413-93fc-4651e5df01ce.png",
+      "filename_download": "bath.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Glad",
+    "date_created": "2021-03-07",
+    "description": null,
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "476e4225-0fdc-41a3-ae25-64cfe036b625.png",
+      "filename_download": "glad.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Fire Mage",
+    "date_created": "2021-03-14",
+    "description": "Traditional Chinese dress inspired attire",
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "ba50acdc-f6f4-4feb-ac5c-54da8a871c4c.png",
+      "filename_download": "fire-mage.png"
+    },
+    "extra_files": [
+      {
+        "directus_files_id": {
+          "filename_disk": "a82cd188-0f3f-4d15-b060-03dcd366da49.png",
+          "filename_download": "fire-mage-sketch.png"
+        }
+      }
+    ]
+  },
+  {
+    "status": "published",
+    "title": "Thinking",
+    "date_created": "2021-03-15",
+    "description": null,
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "8e331033-2bca-41e8-8465-00134c24001c.png",
+      "filename_download": "thinking.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Crosshatch",
+    "date_created": "2021-03-18",
+    "description": "I got a little carried away",
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "4f7e0541-c139-40d7-b5af-2fb2cf664639.png",
+      "filename_download": "crosshatching.png"
+    },
+    "extra_files": [
+      {
+        "directus_files_id": {
+          "filename_disk": "1d38d9cc-3a50-4368-8e82-513a7b41a5d1.png",
+          "filename_download": "crosshatching-sketch.png"
+        }
+      },
+      {
+        "directus_files_id": {
+          "filename_disk": "3819098e-2267-4329-9ff3-c99dac466a13.png",
+          "filename_download": "crosshatching-sketch-initial.png"
+        }
+      }
+    ]
+  },
+  {
+    "status": "published",
+    "title": "The Bodom",
+    "date_created": "2021-03-21",
+    "description": "The guitar in question is the ESP LTD ALEXI-600 Greeny - Alexi Laiho Signature",
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "a0e75d3a-8d2f-4f51-aa93-c9f70ab86f09.png",
+      "filename_download": "guitar.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Green Eyes",
+    "date_created": "2021-03-26",
+    "description": "Tried a more painterly look",
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "8b9e4acf-6095-4583-9a0f-4c5dd3b97f0c.png",
+      "filename_download": "green-eyes.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Robe",
+    "date_created": "2021-03-29",
+    "description": null,
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "0d5881e5-6fab-4e92-83d8-e43fae0d09ac.png",
+      "filename_download": "robe.png"
+    },
+    "extra_files": [
+      {
+        "directus_files_id": {
+          "filename_disk": "c542899c-7a37-415c-bee8-72f5a363b89a.png",
+          "filename_download": "robe-sketch.png"
+        }
+      }
+    ]
+  },
+  {
+    "status": "published",
+    "title": "Overalls",
+    "date_created": "2021-04-09",
+    "description": null,
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "485f47db-8c5c-405a-b1c0-0b84540983a7.png",
+      "filename_download": "overalls.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Elven Archer",
+    "date_created": "2021-04-10",
+    "description": null,
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "b19d0af4-74f0-44db-a3ad-0823323cfa17.png",
+      "filename_download": "archer-lineart.png"
+    },
+    "extra_files": [
+      {
+        "directus_files_id": {
+          "filename_disk": "365a4169-d180-4f8c-90e3-ecedb3860e81.png",
+          "filename_download": "archer-sketch.png"
+        }
+      }
+    ]
+  },
+  {
+    "status": "archived",
+    "title": "Scared",
+    "date_created": "2021-12-14",
+    "description": null,
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "ac4f9c8e-0f3e-4c7e-8674-430b7e490cd7.jpg",
+      "filename_download": "pinup-right.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Queen Chaeryeong",
+    "date_created": "2022-03-29",
+    "description": "As she deserves",
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "db802755-43bb-44ba-a08e-ce92d324e610.jpg",
+      "filename_download": "queen-chaeryeong.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Ryujin's Pants",
+    "date_created": "2022-03-29",
+    "description": "Studying shiny leather",
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "ad9e783e-e978-4340-a3a1-cf84544fed45.jpg",
+      "filename_download": "Ryujin-shorts.jpg"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Yeji",
+    "date_created": "2022-04-01",
+    "description": "In her black turtleneck",
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "12b49b85-9d8d-46eb-8f2a-7cc1521a8053.png",
+      "filename_download": "yeji.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Miss Pirate",
+    "date_created": "2022-05-01",
+    "description": "Reference: Sua of Dreamcatcher",
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "0a767800-5967-4e02-b32f-d7c703afadec.png",
+      "filename_download": "miss-pirate.png"
+    },
+    "extra_files": []
+  },
+  {
+    "status": "published",
+    "title": "Miss Pirate",
+    "date_created": "2022-05-01",
+    "description": null,
+    "medium": "Clip Studio Paint",
+    "file": {
+      "filename_disk": "70c0a7f9-2fda-46f9-bb67-5db3f4e24901.png",
+      "filename_download": "miss-pirate-wine.png"
+    },
+    "extra_files": []
+  }
+]

@@ -4,8 +4,8 @@ import { Media } from '../../util/media-context';
 import { NextSeo } from 'next-seo';
 import { DOMAIN } from '../../util/constants';
 import MainContainer from '../../components/main-container';
-import { getArt, getAssetUrl, CMSImage, Art } from '../../util/content-manager';
 import Shadowbox from '../../components/shadowbox';
+import { ArtMeta, getSortedArtworks } from '../../util/art';
 
 const TITLE = 'art ~ Joinemm.dev';
 const DESCRIPTION = 'My art portfolio.';
@@ -20,27 +20,27 @@ const lockSroll = () => {
   document.body.style.height = '100vh';
 };
 
-const MediaImage = (image: CMSImage) => {
+const MediaImage = (image: string, prio: boolean) => {
   return (
     <Image
-      src={getAssetUrl(image.id, 'thumbnail')}
-      alt={image.title}
-      width={image.width}
-      height={image.height}
-      placeholder={image.placeholder ? 'blur' : undefined}
-      blurDataURL={image.placeholder || undefined}
+      src={'/img/art/' + image}
+      alt={image}
+      width={300}
+      height={0}
+      loading={prio ? 'eager' : 'lazy'}
+      priority={prio}
     />
   );
 };
 
 type Props = {
-  artwork: Art[];
+  artwork: ArtMeta[];
 };
 
 export default function Gallery({ artwork }: Props) {
-  const [selected, setSelected] = useState<Art | null>(null);
+  const [selected, setSelected] = useState<ArtMeta | null>(null);
 
-  const select = (item: Art) => {
+  const select = (item: ArtMeta) => {
     setSelected(item);
     lockSroll();
   };
@@ -50,7 +50,7 @@ export default function Gallery({ artwork }: Props) {
     allowScroll();
   };
 
-  const galleryColumns = (art: Art[], column_count: number) => {
+  const galleryColumns = (art: ArtMeta[], column_count: number) => {
     type Column = {
       length: number;
       figures: ReactElement[];
@@ -68,7 +68,7 @@ export default function Gallery({ artwork }: Props) {
       });
       min.figures.push(
         <figure
-          key={item.id}
+          key={item.files[0]}
           onClick={() => select(item)}
           className="box-border cursor-pointer overflow-hidden border-[2px] border-transparent transition-all hover:border-white"
         >
@@ -77,11 +77,13 @@ export default function Gallery({ artwork }: Props) {
               {item.year} ——
             </span>
           ) : null}
-          <div className="hovershine relative bg-black">{MediaImage(item.file)}</div>
+          <div className="hovershine relative bg-black">
+            {MediaImage(item.files[0], min.length == 0)}
+          </div>
         </figure>,
       );
       prev_year = item.year;
-      min.length += item.file.height / item.file.width;
+      min.length += 300;
     });
 
     return columns.map((column, n) => {
@@ -105,7 +107,7 @@ export default function Gallery({ artwork }: Props) {
           url: DOMAIN + '/art',
           images: [
             {
-              url: getAssetUrl('4f5c5426-1049-490a-8290-0d60ff2a6fe0', 'orig'),
+              url: DOMAIN + '/img/art/4f5c5426-1049-490a-8290-0d60ff2a6fe0.jpg',
               alt: TITLE,
             },
           ],
@@ -132,7 +134,7 @@ export default function Gallery({ artwork }: Props) {
 }
 
 export const getStaticProps = async () => {
-  const art = await getArt();
+  const art = getSortedArtworks();
   return {
     props: {
       artwork: art,

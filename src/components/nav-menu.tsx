@@ -16,7 +16,7 @@ const NavMenu = ({ vertical = false, showHome = true, currentPage = '' }: Props)
     { label: 'about', href: '/about' },
   ];
   return (
-    <ul className={'flex w-full items-center gap-4' + (vertical ? ' flex-col' : '')}>
+    <ul className={'flex w-full items-center gap-3' + (vertical ? ' flex-col' : '')}>
       {showHome && (
         <li>
           <Link
@@ -32,7 +32,7 @@ const NavMenu = ({ vertical = false, showHome = true, currentPage = '' }: Props)
           <Link
             className={
               'hover:highlight no-underline underline-offset-4 hover:underline' +
-              (currentPage == link.href ? ' font-bold no-underline' : '')
+              (currentPage == link.href ? ' selected font-bold no-underline' : '')
             }
             href={link.href}
           >

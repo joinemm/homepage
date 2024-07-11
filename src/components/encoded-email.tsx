@@ -11,7 +11,7 @@ const Email = ({ encoded }: Props) => {
   const [email, setEmail] = useState(randomized);
   const [mailto, setMailto] = useState('');
 
-  const decryptOne = (progress) => {
+  const decryptOne = (progress: number) => {
     setTimeout(() => {
       setEmail(realEmail.slice(0, progress + 1) + randomized.slice(progress));
     }, 50 * progress);

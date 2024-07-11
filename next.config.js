@@ -2,12 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  images: {
-    loader: 'default',
-    remotePatterns: [
-      { hostname: '**.joinemm.dev' },
-    ],
-  },
   experimental: {
     outputFileTracingIncludes: {
       '/blog/[slug]': ['node_modules/shiki/**/*'],

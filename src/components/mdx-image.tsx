@@ -1,6 +1,4 @@
 import Image from 'next/image';
-import { CDN_DOMAIN } from '../util/constants';
-import { getAssetUrl } from '../util/content-manager';
 
 type Props = {
   src: string;
@@ -8,11 +6,6 @@ type Props = {
 };
 
 const MdxImage = ({ src, alt }: Props) => {
-  if (src.startsWith('https://' + CDN_DOMAIN)) {
-    const id = src.split('/').pop();
-    if (id) src = getAssetUrl(id, 'orig');
-  }
-
   return (
     <div className="relative my-4">
       <Image

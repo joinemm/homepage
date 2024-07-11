@@ -12,22 +12,18 @@ import { Heading } from '../../util/extract-headings';
 import { Media } from '../../util/media-context';
 import DisplayViews from '../../components/page-views';
 import TOC from '../../components/toc';
-import {
-  BlogPost,
-  getAssetUrl,
-  getBlogPosts,
-  getPostBySlug,
-} from '../../util/content-manager';
+
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import 'katex/dist/katex.min.css';
+import { getPostContent, getSortedPostsData, MetaData } from '../../util/posts';
 
 type Props = {
-  post: BlogPost;
-  mdxSerialized: MDXRemoteSerializeResult;
+  post: MetaData;
+  mdx: MDXRemoteSerializeResult;
   toc: Heading[];
 };
 
-export default function Post({ post, mdxSerialized, toc }: Props) {
+export default function Post({ mdx, toc, post }: Props) {
   const router = useRouter();
 
   if (router.isFallback) {
@@ -40,29 +36,29 @@ export default function Post({ post, mdxSerialized, toc }: Props) {
         type="BlogPosting"
         url={`${DOMAIN}/blog/${post.slug}`}
         title="Joinemm's Blog"
-        images={post.image ? [getAssetUrl(post.image.id, 'header')] : []}
-        datePublished={post.date_created}
+        images={post.image ? [post.image] : []}
+        datePublished={post.date}
         authorName="Joinemm"
-        description="Welcome to my blog where I dump things from my brain."
+        description="My blog for various interesting topics."
       />
       <NextSeo
         title={`${post.title} ~ Joinemm.dev`}
-        description={post.excerpt}
+        description={post.abstract}
         canonical={DOMAIN + router.asPath}
         openGraph={{
           title: post.title,
-          description: post.excerpt,
+          description: post.abstract,
           url: DOMAIN + router.asPath,
           type: 'article',
           article: {
-            publishedTime: post.date_created,
+            publishedTime: post.date,
             tags: post.tags,
           },
           images: post.image
             ? [
                 {
-                  url: getAssetUrl(post.image.id, 'header'),
-                  alt: post.title,
+                  url: '/img/blog/' + post.image,
+                  alt: post.image,
                 },
               ]
             : [],
@@ -79,7 +75,7 @@ export default function Post({ post, mdxSerialized, toc }: Props) {
           <h1 className="serif text-4xl !leading-tight">{post.title}</h1>
           <div className="fg-muted mono flex flex-wrap gap-2 pb-4 text-[0.95rem]">
             <DateFormatter
-              dateString={post.date_created}
+              dateString={post.date}
               formatter="MMMM d, yyyy"
             ></DateFormatter>
             <DisplayViews slug={post.slug} />
@@ -102,16 +98,15 @@ export default function Post({ post, mdxSerialized, toc }: Props) {
           {post.image ? (
             <Image
               className="rounded-xl"
-              src={getAssetUrl(post.image.id, 'header')}
-              alt={post.image.title}
-              placeholder={post.image.placeholder ? 'blur' : undefined}
-              blurDataURL={post.image.placeholder || undefined}
-              width={post.image.width}
-              height={post.image.height}
+              src={'/img/blog/' + post.image}
+              alt={post.image}
+              width={720}
+              height={0}
+              priority
             ></Image>
           ) : null}
         </div>
-        <MdxRenderer source={mdxSerialized} className="dropcap" />
+        <MdxRenderer source={mdx} />
         <footer className="py-32 text-center">
           <ScrollUpButton />
         </footer>
@@ -127,28 +122,20 @@ type PathParams = {
 };
 
 export async function getStaticProps({ params: { slug } }: PathParams) {
-  const post = await getPostBySlug(slug);
+  const { content, metadata } = getPostContent(slug);
 
-  if (!post) {
-    return {
-      notFound: true,
-      revalidate: 5,
-    };
-  }
-
-  const mdxResult = await mdxSerialize(post.content);
-  const { content: _content, ...postStub } = post;
+  const mdxResult = await mdxSerialize(content);
   return {
     props: {
-      post: postStub,
-      mdxSerialized: mdxResult.content,
+      mdx: mdxResult.content,
       toc: mdxResult.toc,
+      post: metadata,
     },
   };
 }
 
 export async function getStaticPaths() {
-  const posts = await getBlogPosts(true);
+  const posts = getSortedPostsData();
 
   const paths = posts.map((post) => ({
     params: { slug: post.slug },
@@ -156,6 +143,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }

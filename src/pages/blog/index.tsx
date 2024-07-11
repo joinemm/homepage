@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PostPreview from '../../components/post-preview';
 import MainContainer from '../../components/main-container';
-import { parseISO } from 'date-fns';
+import { parseJSON } from 'date-fns';
 import { NextSeo } from 'next-seo';
 import { DOMAIN } from '../../util/constants';
-import { BlogPost, getBlogPosts } from '../../util/content-manager';
 import { MdRssFeed } from 'react-icons/md';
+import { getSortedPostsData, MetaData } from '../../util/posts';
 
 type Props = {
-  posts: BlogPost[];
+  posts: MetaData[];
 };
 
 export default function Blog({ posts }: Props) {
@@ -26,7 +26,7 @@ export default function Blog({ posts }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
-  const filterPosts = (posts: BlogPost[]) => {
+  const filterPosts = (posts: MetaData[]) => {
     const results = posts.filter(
       (post) =>
         activeTags.length == 0 || activeTags.every((t) => post.tags.includes(t)),
@@ -34,9 +34,9 @@ export default function Blog({ posts }: Props) {
     return results;
   };
 
-  const groupByYear = (posts: BlogPost[]) => {
+  const groupByYear = (posts: MetaData[]) => {
     const years = posts.reduce((group, post) => {
-      const year = parseISO(post.date_created).getFullYear().toString();
+      const year = parseJSON(post.date).getFullYear().toString();
       group[year] = group[year] ?? [];
       group[year].push(post);
       return group;
@@ -46,7 +46,7 @@ export default function Blog({ posts }: Props) {
       .map((year) => {
         return {
           year: year,
-          posts: years[year] as BlogPost[],
+          posts: years[year] as MetaData[],
         };
       })
       .reverse();
@@ -84,11 +84,11 @@ export default function Blog({ posts }: Props) {
 }
 
 export const getStaticProps = async () => {
-  const posts = await getBlogPosts();
+  const posts = getSortedPostsData();
 
   return {
     props: {
-      posts: posts,
+      posts: posts.filter((post) => post.published),
     },
   };
 };

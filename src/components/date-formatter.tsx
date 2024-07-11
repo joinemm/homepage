@@ -1,4 +1,4 @@
-import { parseISO, format } from 'date-fns';
+import { parseJSON, format } from 'date-fns';
 
 type Props = {
   dateString: string;
@@ -11,8 +11,8 @@ const DateFormatter = ({
   className = '',
   formatter = 'LLL d, yyyy',
 }: Props) => {
-  const date = parseISO(dateString);
-  var formattedDate;
+  const date = parseJSON(dateString);
+  var formattedDate: string;
   try {
     formattedDate = format(date, formatter);
   } catch (err) {

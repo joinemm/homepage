@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import DateFormatter from './date-formatter';
-import { BlogPost } from '../util/content-manager';
+import { MetaData } from '../util/posts';
 
 type Props = {
-  post: BlogPost;
+  post: MetaData;
 };
 
 const PostPreview = ({ post }: Props) => {
@@ -18,7 +18,7 @@ const PostPreview = ({ post }: Props) => {
         </Link>
       </div>
       <div className="fg-muted mono flex items-baseline gap-2 text-sm">
-        <DateFormatter dateString={post.date_created} formatter="LLL dd" />
+        <DateFormatter dateString={post.date} formatter="LLL dd" />
         {'•'}
         <ul className="flex gap-2">
           {post.tags ? post.tags.map((tag) => <li key={tag}>#{tag}</li>) : null}

@@ -1,5 +1,6 @@
 import { DefaultSeoProps } from 'next-seo';
 import { DOMAIN } from './src/util/constants';
+import legoWorkers from './public/img/lego-workers.jpg';
 
 const config: DefaultSeoProps = {
   title: 'Joinemm.dev',
@@ -14,7 +15,7 @@ const config: DefaultSeoProps = {
     url: DOMAIN,
     images: [
       {
-        url: `${DOMAIN}/assets/content/lego-workers.jpg`,
+        url: `${legoWorkers}`,
         alt: 'Joinemm.dev',
       },
     ],

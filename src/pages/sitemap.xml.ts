@@ -1,5 +1,5 @@
 import { DOMAIN } from '../util/constants';
-import { getBlogPosts } from '../util/content-manager';
+import { getSortedPostsData } from '../util/posts';
 
 function location(path: string) {
   return `
@@ -25,7 +25,7 @@ function SiteMap() {
 }
 
 export async function getServerSideProps({ res }) {
-  const posts = await getBlogPosts();
+  const posts = getSortedPostsData();
   const postPaths = posts.map((post) => `/blog/${post.slug}`);
   const staticPaths = ['/about', '/blog', '/art', '/uses'];
 

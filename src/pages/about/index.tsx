@@ -1,31 +1,25 @@
 import { mdxSerialize } from '../../util/mdx';
-import { Page, getPage } from '../../util/content-manager';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import MdxPage from '../../components/mdx-page';
+import { getPageContent, MetaDataStub } from '../../util/posts';
 
 type Props = {
-  page: Page;
-  mdxSerialized: MDXRemoteSerializeResult;
+  page: MetaDataStub;
+  mdx: MDXRemoteSerializeResult;
 };
 
-export default function About({ page, mdxSerialized }: Props) {
-  return (
-    <MdxPage
-      page={page}
-      mdxSerialized={mdxSerialized}
-      embedImageId={page.embed_image}
-      scrollUp={true}
-    />
-  );
+export default function About({ page, mdx }: Props) {
+  return <MdxPage page={page} mdxSerialized={mdx} scrollUp={true} />;
 }
 
 export async function getStaticProps() {
-  const page = await getPage('about');
+  const page = getPageContent('about');
   const mdxResult = await mdxSerialize(page.content);
   return {
     props: {
-      page,
-      mdxSerialized: mdxResult.content,
+      page: page.metadata,
+      mdx: mdxResult.content,
+      toc: mdxResult.toc,
     },
   };
 }

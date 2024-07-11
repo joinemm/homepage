@@ -1,8 +1,8 @@
 import RSS from 'rss';
 import { DOMAIN } from '../util/constants';
-import { BlogPost, getAssetUrl, getBlogPosts } from '../util/content-manager';
+import { getSortedPostsData, MetaData } from '../util/posts';
 
-function generateRssFeed(posts: BlogPost[]): RSS {
+function generateRssFeed(posts: MetaData[]): RSS {
   const feed = new RSS({
     title: 'Joinemm.dev',
     DOMAIN: DOMAIN,
@@ -12,18 +12,18 @@ function generateRssFeed(posts: BlogPost[]): RSS {
     copyright: `${new Date().getFullYear()}, Joinemm`,
   });
 
-  posts.map((post: BlogPost) => {
+  posts.map((post: MetaData) => {
     feed.item({
       guid: post.slug,
       title: post.title,
-      description: post.excerpt,
-      date: post.date_created,
+      description: post.abstract,
+      date: post.date,
       categories: post.tags,
       author: 'Joinemm',
       url: `${DOMAIN}/blog/${post.slug}`,
       enclosure: post.image
         ? {
-            url: getAssetUrl(post.image.id, 'header'),
+            url: '/img/blog/' + post.image,
           }
         : null,
     });
@@ -37,7 +37,7 @@ function RssFeed() {
 }
 
 export async function getServerSideProps({ res }) {
-  const posts = await getBlogPosts();
+  const posts = getSortedPostsData();
   const feed = generateRssFeed(posts);
 
   res.setHeader('Content-Type', 'text/xml');
