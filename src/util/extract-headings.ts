@@ -23,7 +23,12 @@ const rehypeExtractHeadings = ({
   return (tree) => {
     visit(tree, 'element', function (node) {
       const rank = headingRank(node);
-      if (rank !== null && biggest <= rank && rank < depth && hasProperty(node, 'id')) {
+      if (
+        rank !== undefined &&
+        biggest <= rank &&
+        rank < depth &&
+        hasProperty(node, 'id')
+      ) {
         headings.push({
           rank: rank,
           title: toString(node),
