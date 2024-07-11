@@ -63,7 +63,7 @@ Aside from programming, I&apos;m an enjoyer of death metal, coffee, wine, photog
     },
     {
       label: 'GPG Key',
-      href: '',
+      href: 'https://keyserver.ubuntu.com/pks/lookup?search=0x090EB48A4669AA54',
       linkText: '0x090EB48A4669AA54',
     },
  ]}

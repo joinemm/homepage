@@ -56,12 +56,12 @@ export default function Blog({ posts }: Props) {
     <>
       <NextSeo
         title="blog ~ Joinemm.dev"
-        description="List of my blog posts"
+        description="My blog for various interesting topics."
         canonical={DOMAIN + router.asPath}
       />
       <MainContainer classname="mt-0">
         <a
-          href={DOMAIN + '/rss.xml'}
+          href="/rss.xml"
           rel="noreferrer"
           target="_blank"
           className="hover:text-[#ee802f] dark:hover:text-[#ee802f] "
