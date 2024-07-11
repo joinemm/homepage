@@ -137,7 +137,7 @@ export const getStaticProps = async () => {
   const art = getSortedArtworks();
   return {
     props: {
-      artwork: art,
+      artwork: art.filter((artwork) => artwork.published),
     },
   };
 };
