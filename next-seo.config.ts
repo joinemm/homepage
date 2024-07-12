@@ -1,21 +1,20 @@
 import { DefaultSeoProps } from 'next-seo';
 import { DOMAIN } from './src/util/constants';
-import legoWorkers from './public/img/lego-workers.jpg';
 
 const config: DefaultSeoProps = {
   title: 'Joinemm.dev',
-  description: 'Personal website and blog',
+  description: '$HOME',
   canonical: DOMAIN,
   openGraph: {
     siteName: 'Joinemm.dev',
     title: 'Joinemm.dev',
-    description: 'Personal website and blog',
+    description: '$HOME',
     type: 'website',
     locale: 'en_US',
     url: DOMAIN,
     images: [
       {
-        url: `${legoWorkers}`,
+        url: DOMAIN + '/img/lego-workers.jpg',
         alt: 'Joinemm.dev',
       },
     ],

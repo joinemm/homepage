@@ -25,7 +25,7 @@ function SiteMap() {
 }
 
 export async function getServerSideProps({ res }) {
-  const posts = getSortedPostsData();
+  const posts = getSortedPostsData(true);
   const postPaths = posts.map((post) => `/blog/${post.slug}`);
   const staticPaths = ['/about', '/blog', '/art', '/uses'];
 

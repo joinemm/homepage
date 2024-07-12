@@ -7,7 +7,7 @@ import MainContainer from '../../components/main-container';
 import Shadowbox from '../../components/shadowbox';
 import { ArtMeta, getSortedArtworks } from '../../util/art';
 
-const TITLE = 'art ~ Joinemm.dev';
+const TITLE = 'ART';
 const DESCRIPTION = 'My art portfolio.';
 const PAGE_WIDTH = 50;
 
@@ -107,7 +107,7 @@ export default function Gallery({ artwork }: Props) {
           url: DOMAIN + '/art',
           images: [
             {
-              url: DOMAIN + '/img/art/4f5c5426-1049-490a-8290-0d60ff2a6fe0.jpg',
+              url: DOMAIN + '/img/lego-art.jpg',
               alt: TITLE,
             },
           ],

@@ -1,5 +1,5 @@
 ---
-title: About
+title: ABOUT
 abstract: About me
 image: lego-minifig.jpg
 ---

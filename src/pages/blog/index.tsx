@@ -55,7 +55,7 @@ export default function Blog({ posts }: Props) {
   return (
     <>
       <NextSeo
-        title="blog ~ Joinemm.dev"
+        title="BLOG"
         description="My blog for various interesting topics."
         canonical={DOMAIN + router.asPath}
       />
@@ -84,11 +84,11 @@ export default function Blog({ posts }: Props) {
 }
 
 export const getStaticProps = async () => {
-  const posts = getSortedPostsData();
+  const posts = getSortedPostsData(true);
 
   return {
     props: {
-      posts: posts.filter((post) => post.published),
+      posts,
     },
   };
 };

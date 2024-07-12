@@ -36,7 +36,7 @@ export default function Post({ mdx, toc, post }: Props) {
         type="BlogPosting"
         url={`${DOMAIN}/blog/${post.slug}`}
         title="Joinemm's Blog"
-        images={post.image ? [post.image] : []}
+        images={post.image ? [DOMAIN + '/img/blog/' + post.image] : []}
         datePublished={post.date}
         authorName="Joinemm"
         description="My blog for various interesting topics."
@@ -57,7 +57,7 @@ export default function Post({ mdx, toc, post }: Props) {
           images: post.image
             ? [
                 {
-                  url: '/img/blog/' + post.image,
+                  url: DOMAIN + '/img/blog/' + post.image,
                   alt: post.image,
                 },
               ]

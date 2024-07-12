@@ -1,5 +1,5 @@
 ---
-title: Uses
+title: USES
 abstract: Describing what hardware and software I use
 image: lego-desk.jpg
 ---

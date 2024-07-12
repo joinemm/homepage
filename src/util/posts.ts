@@ -22,7 +22,7 @@ export type MetaDataStub = {
 
 const contentDirectory = path.join(process.cwd(), 'content');
 
-export function getSortedPostsData(): MetaData[] {
+export function getSortedPostsData(published?: boolean): MetaData[] {
   // Get file names
   const fileNames = fs.readdirSync(contentDirectory);
   const allPostsData = fileNames
@@ -47,13 +47,19 @@ export function getSortedPostsData(): MetaData[] {
     });
 
   // Sort posts by date
-  return allPostsData.sort((a, b) => {
+  const sorted = allPostsData.sort((a, b) => {
     if (a.date < b.date) {
       return 1;
     } else {
       return -1;
     }
   });
+
+  if (published !== undefined) {
+    return sorted.filter((post) => post.published == published);
+  }
+
+  return sorted;
 }
 
 export function getPostContent(slug: string): { content: string; metadata: MetaData } {

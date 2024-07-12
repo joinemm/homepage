@@ -37,7 +37,7 @@ function RssFeed() {
 }
 
 export async function getServerSideProps({ res }) {
-  const posts = getSortedPostsData();
+  const posts = getSortedPostsData(true);
   const feed = generateRssFeed(posts);
 
   res.setHeader('Content-Type', 'text/xml');
