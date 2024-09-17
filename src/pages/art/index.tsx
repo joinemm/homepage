@@ -7,7 +7,7 @@ import MainContainer from '../../components/main-container';
 import Shadowbox from '../../components/shadowbox';
 import { ArtMeta, getSortedArtworks } from '../../util/art';
 
-const TITLE = 'ART';
+const TITLE = 'Joinemm :: Art';
 const DESCRIPTION = 'My art portfolio.';
 const PAGE_WIDTH = 50;
 

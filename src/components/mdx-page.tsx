@@ -20,7 +20,7 @@ const MdxPage = ({ page, mdxSerialized, toc, scrollUp }: Props) => {
   return (
     <>
       <NextSeo
-        title={`${page.title.toLowerCase()} ~ Joinemm.dev`}
+        title={`Joinemm :: ${page.title}`}
         description={page.abstract}
         canonical={DOMAIN + '/' + page.slug}
         openGraph={{

@@ -2,12 +2,12 @@ import { DefaultSeoProps } from 'next-seo';
 import { DOMAIN } from './src/util/constants';
 
 const config: DefaultSeoProps = {
-  title: 'Joinemm.dev',
+  title: 'Joinemm',
   description: '$HOME',
   canonical: DOMAIN,
   openGraph: {
     siteName: 'Joinemm.dev',
-    title: 'Joinemm.dev',
+    title: 'Joinemm',
     description: '$HOME',
     type: 'website',
     locale: 'en_US',

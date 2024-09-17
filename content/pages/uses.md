@@ -1,6 +1,6 @@
 ---
-title: USES
-abstract: Describing what hardware and software I use
+title: Uses
+abstract: What hardware and software I use
 image: lego-desk.jpg
 ---
 

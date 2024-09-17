@@ -55,7 +55,7 @@ export default function Blog({ posts }: Props) {
   return (
     <>
       <NextSeo
-        title="BLOG"
+        title="Joinemm :: Blog"
         description="My blog for various interesting topics."
         canonical={DOMAIN + router.asPath}
       />
@@ -64,7 +64,7 @@ export default function Blog({ posts }: Props) {
           href="/rss.xml"
           rel="noreferrer"
           target="_blank"
-          className="hover:text-[#ee802f] dark:hover:text-[#ee802f] "
+          className="hover:text-[#ee802f] dark:hover:text-[#ee802f]"
         >
           <MdRssFeed size="30" className="-ml-[4px]" />
         </a>

@@ -42,7 +42,7 @@ export default function Post({ mdx, toc, post }: Props) {
         description="My blog for various interesting topics."
       />
       <NextSeo
-        title={`${post.title} ~ Joinemm.dev`}
+        title={`Joinemm :: ${post.title}`}
         description={post.abstract}
         canonical={DOMAIN + router.asPath}
         openGraph={{
