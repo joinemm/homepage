@@ -6,15 +6,15 @@ image: lego-minifig.jpg
 
 # Hi, I'm <Accented text="Joonas" />
 
-I'm a Software Engineer from Finland and very passionate about Linux, free open source software and privacy.
+Software Engineer from Finland who is very passionate about Linux, open source software and privacy.
 
-Currently working as a DevOps engineering consultant.
+Currently I am working as a DevOps Engineering consultant.
 
-Favourite languages: Python, Bash, Rust, Go and Nix.
+My favourite and most used languages are Python, Bash, Rust, Go and Nix.
 
-Favourite Linux distributions: Arch Linux and NixOS.
+I was a longtime user of Arch Linux but recently I have seen the light and transitioned all of my machines to NixOS.
 
-Aside from programming, I&apos;m an enjoyer of death metal, coffee, wine, photography, italian food and custom mechanical keyboards.
+Aside from programming, I enjoy death metal, coffee, wine, photography, cooking and DIY projects with small electronics.
 
 ### Links
 
