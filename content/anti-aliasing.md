@@ -1,10 +1,12 @@
 ---
-title: Anti-aliasing
+title: Anti-aliasing in videogames
 abstract: "Anti-Aliasing in video games and rendering applications set out to solve a problem inherent with our displays: pixels."
 published: true
 date: 2023-03-27
 image: anti-aliasing.jpg
-tags: [gaming,  graphics]
+tags:
+  - gaming
+  - graphics
 ---
 
 Anti-Aliasing in video games and rendering applications set out to solve a problem inherent with our displays: **pixels**. The very things that compose the images we see on our screens are simultaneously what cause a lot of issues and break immersion. Pixels are aligned in perfectly straight lines, which means that unless you have equally perfectly straight vertical or horizontal lines being displayed on your screen, you will encounter a form of artifacting known as aliasing. In layman's terms, these are also referred to as “stairstepping” or “jaggies”.

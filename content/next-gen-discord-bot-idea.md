@@ -1,10 +1,12 @@
 ---
 title: Next-gen Discord bot architecture idea
 abstract: None
-published: true
+published: false
 date: 2024-03-23
 image: clouds.jpg
-tags: [discord-bot, programming]
+tags:
+  - discord-bot
+  - programming
 ---
 
 *I wrote this during my 3 hour flight to Italy as I was really bored. It describes a hypothetical overengineered microservices based system for Miso Bot, my discord bot.*

@@ -15,15 +15,15 @@ For in-depth details on all of the functionality of the Yubikey, refer to this e
 
 ## Use cases
 
-There are many different use cases I found for the Yubikeys. I have marked the ones I have succesfully gotten working. Note that I don't necessarily want or endorse the ones I have left undone.
+There are many different use cases I found for the Yubikeys. I have marked the ones I have succesfully gotten working. Note that I don't necessarily want or endorse the ones I have left undone. This blog post will get updated as I find more use cases.
 
-- `pam` auth (sudo/login) ✅
 - 2fa for websites (works out of the box) ✅
+- `pam` auth (sudo/login) ✅
 - GPG keys ✅
-- SSH keys ❓
 - Git commit signing ✅
+- Encrypting/Decrypting sops secrets ✅
+- SSH keys ❓
 - Yubikey based full disk encryption ([guide](https://nixos.wiki/wiki/Yubikey_based_Full_Disk_Encryption_(FDE)_on_NixOS)) ❓
-- sops secret encryption (waiting for [PR](https://github.com/getsops/sops/pull/1465)) ❌
 
 ## Pam module
 
@@ -182,7 +182,7 @@ The Yubikey can now be used as your GPG keypair!
 
 ## Git commit signing
 
-Configure git to use your newly created GPG key to sign commits. Using home-manager:
+We can configure git to use our newly created GPG key to sign commits. Using home-manager: (This can of course be defined in the regular git config file as well)
 
 ```nix
 programs.git = {
@@ -192,8 +192,31 @@ programs.git = {
 };
 ```
 
-Now whenever you `git commit` it will sign with your Yubikey, asking for the pin for the first signing after boot.
+Now whenever I `git commit`, the GPG key is pulled from my Yubikey, and the commit is signed. If my Yubikey is not plugged in, the commit will fail to sign.
 
+## Decrypting secrets
+
+The Yubikey can be used to decrypt secrets. This again uses the GPG key. I am using `sops-nix` to manage the secrets of my NixOS hosts, and `sops` accepts GPG keys in place of the age keys. Simply, in `.sops.yaml`:
+
+```
+keys:
+  - &user 87ECDD306614E5105299F0D4090EB48A4669AA54
+  - &host age123456x
+
+creation_rules:
+  - path_regex: hosts/host/secrets.yaml$
+    key_groups:
+      - pgp:
+        - *user
+        age:
+        - *host
+```
+
+What's happening here? I have two keys defined. One is for my user, and it's my GPG key fingerprint (Can be found with `gpg --list-secret-keys`), and the age key is derived from the SSH key of a remote host.
+
+I have defined both of the keys as possible decryption keys to decrypt `hosts/host/secrets.yaml` with, in their corresponding groups (`pgp` and `age`).
+
+Now when I try to open `secrets.yaml`, my GPG key is read from the Yubikey, and the file is decrypted. If my Yubikey is not plugged in, I cannot decrypt the file.
 ## Sources
 
 [https://nixos.wiki/wiki/Yubikey](https://nixos.wiki/wiki/Yubikey)

@@ -1,11 +1,16 @@
 ---
-title: Optimize CS:GO for Arch Linux and Vulkan
+title: Optimize CS:GO for Linux and Vulkan
 abstract: Get the best performance out of Counter-Strike Global Offensive on your Linux pc.
 published: true
 date: 2023-06-12
 image: csgo.jpg
-tags: [gaming, linux]
+tags:
+  - gaming
+  - linux
 ---
+
+> **2024 Update**
+> As CS2 is out and CSGO is no longer playable, the Vulkan and DXVK sections of this guide is now obsolete. CS2 runs pretty well on Linux out of the box, but the some of the tinkering steps here still apply, such as gamemode and compositor latency.
 
 While csgo runs just fine out of the box on Linux thanks to Valve providing a native Linux build, more competitive players could be left disappointed with its performance and various graphical bugs. In this article I go through every tweak and change I made to optimize my csgo experience on Arch Linux running DWM window manager, and an AMD graphics card.
 
@@ -50,7 +55,7 @@ vk_radv gamemoderun %command% -vulkan
 
 ### Fixing the stuttering
 
-The csgo Linux build ships with an old version of dxvk-native (1.9.1), but what if I told you, you can actually update this binary in the game files to a newer version and the game still runs fine?
+The CS:GO Linux build ships with an old version of dxvk-native (1.9.1), but what if I told you, you can actually update this binary in the game files to a newer version and the game still runs fine?
 
 > "But why?" you ask.
 
