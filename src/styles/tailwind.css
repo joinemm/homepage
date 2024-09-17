@@ -16,7 +16,7 @@
     @apply mb-2 mt-4 text-xl font-bold;
   }
   p {
-    @apply my-4;
+    @apply my-4 leading-7;
   }
   blockquote {
     @apply fg-muted border-l-2 pl-4 italic;

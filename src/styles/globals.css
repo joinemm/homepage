@@ -28,11 +28,12 @@ pre {
   margin-bottom: 0.25rem;
 }
 .markdown.dropcap > p:first-of-type::first-letter {
-  font-size: 3.8rem;
+  font-size: 6.5rem;
   float: left;
-  padding-top: 0.2rem;
-  padding-right: 0.2rem;
-  font-family: var(--font-serif);
+  padding: 7px 5px 0 0;
+  font-weight: 700;
+  font-style: normal;
+  font-family: var(--font-sans);
 }
 .markdown ol {
   padding-left: 1.75rem;

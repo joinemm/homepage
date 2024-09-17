@@ -106,7 +106,7 @@ export default function Post({ mdx, toc, post }: Props) {
             ></Image>
           ) : null}
         </div>
-        <MdxRenderer source={mdx} />
+        <MdxRenderer source={mdx} className="dropcap" />
         <footer className="py-32 text-center">
           <ScrollUpButton />
         </footer>

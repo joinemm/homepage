@@ -1,7 +1,7 @@
 import '../styles/tailwind.css';
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { Fira_Code, Overpass_Mono, Roboto_Slab } from 'next/font/google';
+import { Fira_Code, Overpass_Mono, Roboto_Slab, Inria_Sans } from 'next/font/google';
 import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
@@ -24,6 +24,11 @@ const overpass = Overpass_Mono({
   display: 'swap',
   variable: '--font-mono',
 });
+const sans = Inria_Sans({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-mono',
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -33,6 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
           --font-body: ${mono.style.fontFamily};
           --font-serif: ${serif.style.fontFamily};
           --font-mono: ${overpass.style.fontFamily};
+          --font-sans: ${sans.style.fontFamily};
         }
         body {
           font-family: var(--font-body);
@@ -42,6 +48,9 @@ export default function App({ Component, pageProps }: AppProps) {
         }
         .mono {
           font-family: var(--font-mono);
+        }
+        .sans {
+          font-family: var(--font-sans);
         }
       `}</style>
       <Head>
