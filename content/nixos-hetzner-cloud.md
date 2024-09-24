@@ -1,7 +1,7 @@
 ---
 title: NixOS on Hetzner cloud VPS
 abstract: Installing and configuring NixOS on a Hetzner cloud server
-published: false
+published: true
 date: 2024-09-24
 image: nixos-cloud.jpg
 tags:
@@ -25,6 +25,7 @@ First, you have to set up a new Hetzner server by following the steps in the clo
 ```sh
 ssh root@1.2.3.4
 ```
+
 ## Disks
 
 For formatting the disks, we are going to use disko. This integrates with nixos-anywhere and runs the required `fdisk` commands during the installation process.
@@ -182,6 +183,7 @@ security.sudo = {
   wheelNeedsPassword = false;
 };
 ```
+
 ## Installation
 
 Now we are ready to proceed with the installation. `nixos-anywhere` can be easily used with `nix run`. This command builds the flake attribute `#hetzner` and installs it on the server. More information is available in the [nixos-anywhere docs](https://github.com/nix-community/nixos-anywhere/blob/main/docs/quickstart.md).
