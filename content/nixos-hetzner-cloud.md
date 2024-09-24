@@ -12,31 +12,31 @@ tags:
 
 > This guide assumes you have basic knowledge of NixOS and nix flakes.
 
-Hetzner is a great cloud server provider. It's very cheap and has servers in Germany, Finland and the US. As I'm located in Finland, that datacenter is very useful to me. I can have very low latency VPS in the same country, for very cheap price.
+Hetzner is a great cloud server provider. It's very affordable and has servers in Germany, Finland, and the US. As I'm located in Finland, the Finnish datacenter is particularly useful to me. I can have a very low-latency VPS in the same country for a very cheap price.
 
-As a NixOS enthusiast, I like to run NixOS on everything. This includes my cloud servers and even my Raspberry Pi 4. Unfortunately, Hetzner does not offer NixOS as one of their OS options when setting up a server. This is where nixos-anywhere comes in.
+As a NixOS enthusiast, I like to run NixOS on everything, including my cloud servers and even my Raspberry Pi 4. Unfortunately, Hetzner does not offer NixOS as one of its OS options when setting up a server. This is where nixos-anywhere comes in.
 
-By using [nixos-anywhere](https://github.com/nix-community/nixos-anywhere), it's possible to replace the operating system of the server while it's running, through an ssh connection.
+By using [nixos-anywhere](https://github.com/nix-community/nixos-anywhere), it's possible to replace the operating system of the server while it's running, through an SSH connection. In this blog post, I will go into detail on what I had to configure to make NixOS work smoothly in a Hetzner VM. This process involved a lot of trial and error, resulting in several unbootable servers.
 
 ## Hetzner setup
 
-First you have to set up a new Hetzner server by following the steps on the cloud dashboard. Simply choose Ubuntu as the OS and install your SSH keys as normal. If you are able to SSH as root now, you're good to go.
+First, you have to set up a new Hetzner server by following the steps in the cloud dashboard. Simply choose Ubuntu as the OS and install your SSH keys as usual. If you are able to SSH as root now, you're good to go.
 
 ```sh
 ssh root@1.2.3.4
 ```
 ## Disks
 
-For formatting the disks, we are going to use disko. This integrates with nixos-anywhere, and it runs the required `fdisk` commands during the installation process.
+For formatting the disks, we are going to use disko. This integrates with nixos-anywhere and runs the required `fdisk` commands during the installation process.
 
-First we need the device names for the block devices we are going to format. You *could* simply use `/dev/sda`,`/dev/nvme` etc. but it's not very reliable, especially if your server has additional block devices attached (For example Hetzner volumes). Those volume labels can switch around during reboot and cause the system to try to boot from the wrong disk. For this reason, we will use `/dev/disk/by-id`. You could also use UUID, or something else that doesn't change. By running these commands, you should be able to determine the devices you need:
+First, we need the device names for the block devices we are going to format. You _could_ simply use `/dev/sda`, `/dev/nvme`, etc., but it's not very reliable, especially if your server has additional block devices attached (for example, Hetzner volumes). Those volume labels can switch around during reboot and cause the system to try to boot from the wrong disk. For this reason, we will use `/dev/disk/by-id`. You could also use UUID or something else that doesn't change. By running these commands, you should be able to determine the devices you need:
 
 ```sh
 lsblk
 ls -la /dev/disk/by-id
 ```
 
-Now let's create the  `disk-config.nix` file. Here is an example that defines a single GPT disk with three partitions: `boot`, `ESP` and `root`. The first two are used by the UEFI bootloader, and the rest of the disk is used as the root storage of the server. Note the device string: This should be the one you got from the previous step.
+Now let's create the `disk-config.nix` file. Here is an example that defines a single GPT disk with three partitions: `boot`, `ESP`, and `root`. The first two are used by the UEFI bootloader, and the rest of the disk is used as the root storage of the server. Note the device string: This should be the one you got from the previous step.
 
 ```nix
 {
@@ -111,7 +111,7 @@ nixosConfigurations = {
 };
 ```
 
-We will start building our `configuration.nix` with the following skeleton, importing some things that we will need - including our disk configuration - and setting some basic variables. The [qemu-guest.nix](https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/profiles/qemu-guest.nix) is imported from nixpkgs modules, and is responsible for loading the necessary kernel modules to make the VM bootable. Hetzner uses qemu under the hood for their cloud VMs.
+We will start building our `configuration.nix` with the following skeleton, importing some things we will need — including our disk configuration — and setting some basic variables. The [qemu-guest.nix](https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/profiles/qemu-guest.nix) is imported from nixpkgs modules and is responsible for loading the necessary kernel modules to make the VM bootable. Hetzner uses qemu under the hood for their cloud VMs.
 
 ```nix
 {
@@ -136,7 +136,7 @@ We will start building our `configuration.nix` with the following skeleton, impo
 }
 ```
 
-For the networking, I've found using DHCP to be sufficient. The `net.ifnames=0` kernel parameter makes the network interfaces use more familiar names (`eth0`).
+For networking, I've found using DHCP to be sufficient. The `net.ifnames=0` kernel parameter makes the network interfaces use more familiar names (`eth0`).
 
 ```nix
 networking.useDHCP = true;
@@ -153,7 +153,7 @@ boot.loader.grub = {
 };
 ```
 
-Next we need to add our user and enable SSH login. Don't forget this step or you will be locked out of the system. It's also a good idea to add some essential packages and enable bash completion.
+Next, we need to add our user and enable SSH login. Don't forget this step, or you will be locked out of the system. It's also a good idea to add some essential packages and enable bash completion.
 
 ```nix
 users.users.admin = {
@@ -174,7 +174,7 @@ environment.systemPackages = with pkgs; [
 programs.bash.enableCompletion = true;
 ```
 
-Finally, enable the user to use `sudo` without password. This makes it easier to update the server remotely.
+Finally, enable the user to use `sudo` without a password. This makes it easier to update the server remotely.
 
 ```nix
 security.sudo = {
@@ -184,20 +184,20 @@ security.sudo = {
 ```
 ## Installation
 
-Now we are ready to proceed with the installation. `nixos-anywhere` can be easily used with `nix run`. This command builds the flake attribute `#hetzner`, and installs it into the server. More information is available in the [nixos-anywhere docs](https://github.com/nix-community/nixos-anywhere/blob/main/docs/quickstart.md)
+Now we are ready to proceed with the installation. `nixos-anywhere` can be easily used with `nix run`. This command builds the flake attribute `#hetzner` and installs it on the server. More information is available in the [nixos-anywhere docs](https://github.com/nix-community/nixos-anywhere/blob/main/docs/quickstart.md).
 
 ```sh
 nix run github:nix-community/nixos-anywhere -- --flake .#hetzner root@1.2.3.4
 ```
 
-Once the installation completes, your server is running NixOS! You can now try doing a reboot and see that everything boots up fine and there are no errors in journalctl.
+Once the installation completes, your server will be running NixOS! You can now try rebooting to ensure everything boots up fine and check for errors in `journalctl`.
 
 ## Updating
 
-You might have a NixOS server now, but it's not doing anything yet. After you have added more services to your configuration, you need to deploy this new configuration to the server. The simplest way to accomplish this is to use the built flags of`nixos-rebuild`:
+You might have a NixOS server now, but it's not doing anything yet. After you have added more services to your configuration, you will need to deploy this new configuration to the server. The simplest way to accomplish this is to use the built-in flags of `nixos-rebuild`:
 
 ```sh
 nixos-rebuild switch --target-host admin@1.2.3.4 --use-remote-sudo --flake .#hetzner
 ```
 
-For more advanced setups with multiple servers, I would recommend using [deploy-rs](https://github.com/serokell/deploy-rs).
+For more advanced setups with multiple servers, I recommend using [deploy-rs](https://github.com/serokell/deploy-rs).
