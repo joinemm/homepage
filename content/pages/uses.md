@@ -103,7 +103,7 @@ My old main keyboard, feels like typing on a cloud thanks to the lubed silenced 
 
 ### Audio
 
-I would cal myself an audiophile and care deeply about the quality of my sound.
+I would call myself an audiophile and care deeply about the quality of my sound.
 
 |                  |                                                  |
 | ---------------- | ------------------------------------------------ |
