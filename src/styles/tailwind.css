@@ -56,7 +56,7 @@
   }
 
   .fg-muted {
-    @apply text-[#33333396] dark:text-[#5a5766];
+    @apply text-[#33333396] dark:text-[#8B8C9B];
   }
 
   .fg-code {
