@@ -16,6 +16,7 @@ import TOC from '../../components/toc';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import 'katex/dist/katex.min.css';
 import { getPostContent, getSortedPostsData, MetaData } from '../../util/posts';
+import Comments from '../../components/comments';
 
 type Props = {
   post: MetaData;
@@ -56,11 +57,11 @@ export default function Post({ mdx, toc, post }: Props) {
           },
           images: post.image
             ? [
-                {
-                  url: DOMAIN + '/img/blog/' + post.image,
-                  alt: post.image,
-                },
-              ]
+              {
+                url: DOMAIN + '/img/blog/' + post.image,
+                alt: post.image,
+              },
+            ]
             : [],
         }}
         twitter={{
@@ -83,15 +84,15 @@ export default function Post({ mdx, toc, post }: Props) {
             <ul className="flex gap-2">
               {post.tags
                 ? post.tags.map((tag) => (
-                    <li key={tag}>
-                      <Link
-                        className="accent hover:highlight cursor-pointer no-underline"
-                        href={`/blog?tag=${tag}`}
-                      >
-                        #{tag}
-                      </Link>
-                    </li>
-                  ))
+                  <li key={tag}>
+                    <Link
+                      className="accent hover:highlight cursor-pointer no-underline"
+                      href={`/blog?tag=${tag}`}
+                    >
+                      #{tag}
+                    </Link>
+                  </li>
+                ))
                 : null}
             </ul>
           </div>
@@ -107,9 +108,15 @@ export default function Post({ mdx, toc, post }: Props) {
           ) : null}
         </div>
         <MdxRenderer source={mdx} className="dropcap" />
-        <footer className="py-32 text-center">
+        <footer className="py-16 text-center">
           <ScrollUpButton />
         </footer>
+        <Comments
+          repo="joinemm/homepage"
+          repoId="R_kgDOIp8GkQ"
+          category="Announcements"
+          categoryId="DIC_kwDOIp8Gkc4CjuE4"
+        />
       </MainContainer>
     </>
   );
