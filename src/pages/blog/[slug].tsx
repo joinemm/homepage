@@ -17,7 +17,7 @@ import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import 'katex/dist/katex.min.css';
 import { getPostContent, getSortedPostsData, MetaData } from '../../util/posts';
 import Comments from '../../components/comments';
-import { Head } from 'next/document';
+import Head from 'next/head';
 
 type Props = {
   post: MetaData;
