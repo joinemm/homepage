@@ -17,6 +17,7 @@ import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import 'katex/dist/katex.min.css';
 import { getPostContent, getSortedPostsData, MetaData } from '../../util/posts';
 import Comments from '../../components/comments';
+import { Head } from 'next/document';
 
 type Props = {
   post: MetaData;
@@ -33,6 +34,9 @@ export default function Post({ mdx, toc, post }: Props) {
 
   return (
     <>
+      <Head>
+        <meta name="fediverse:creator" content="@joinemm@defcon.social" />
+      </Head>
       <ArticleJsonLd
         type="BlogPosting"
         url={`${DOMAIN}/blog/${post.slug}`}

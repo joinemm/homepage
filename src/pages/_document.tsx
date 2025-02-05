@@ -13,6 +13,7 @@ export default function Document() {
           title="Joinemm.dev RSS"
           href={DOMAIN + '/rss.xml'}
         />
+        <link rel="me" href="https://defcon.social/@joinemm">Mastodon</link>
         <style type="text/css" dangerouslySetInnerHTML={{ __html: mediaStyles }} />
         <script
           defer
