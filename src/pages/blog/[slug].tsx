@@ -3,7 +3,7 @@ import { mdxSerialize } from '../../util/mdx';
 import DateFormatter from '../../components/date-formatter';
 import Image from 'next/image';
 import Link from 'next/link';
-import { DOMAIN } from '../../util/constants';
+import { DOMAIN, MASTODON } from '../../util/constants';
 import MdxRenderer from '../../components/mdx-renderer';
 import ScrollUpButton from '../../components/scroll-up-button';
 import { ArticleJsonLd, NextSeo } from 'next-seo';
@@ -35,7 +35,7 @@ export default function Post({ mdx, toc, post }: Props) {
   return (
     <>
       <Head>
-        <meta name="fediverse:creator" content="@joinemm@defcon.social" />
+        <meta name="fediverse:creator" content={`@joinemm@${MASTODON}`} />
       </Head>
       <ArticleJsonLd
         type="BlogPosting"

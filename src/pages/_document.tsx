@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document';
-import { ANALYTICS_DOMAIN, SITE_NAME, DOMAIN } from '../util/constants';
+import { ANALYTICS_DOMAIN, SITE_NAME, DOMAIN, MASTODON } from '../util/constants';
 import { mediaStyles } from '../util/media-context';
 
 export default function Document() {
@@ -13,7 +13,7 @@ export default function Document() {
           title="Joinemm.dev RSS"
           href={DOMAIN + '/rss.xml'}
         />
-        <link rel="me" href="https://defcon.social/@joinemm">Mastodon</link>
+        <link rel="me" href={`https://${MASTODON}/@joinemm`} />
         <style type="text/css" dangerouslySetInnerHTML={{ __html: mediaStyles }} />
         <script
           defer
