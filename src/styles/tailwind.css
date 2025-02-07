@@ -16,13 +16,16 @@
     @apply mb-2 mt-4 text-xl font-bold;
   }
   p {
-    @apply my-4 leading-7;
+    @apply my-4;
   }
   blockquote {
     @apply fg-muted border-l-2 pl-4 italic;
   }
   a {
     @apply hover:accent underline underline-offset-2;
+  }
+  .markdown a {
+    @apply hover:inverted hover:no-underline;
   }
   pre {
     @apply bg-[#21222c];
@@ -61,6 +64,10 @@
 
   .fg-code {
     @apply text-[#ffffff];
+  }
+
+  .inverted {
+    @apply text-[#ffffff] bg-[#333333] dark:text-[#15131d] dark:bg-[#e1e1e1]
   }
 
   .accent {
