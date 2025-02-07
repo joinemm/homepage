@@ -1,6 +1,6 @@
 ---
 title: Adding Github login to your Grafana instance
-abstract: Oauth2 for the win
+abstract: OAuth2 for the win
 date: 2025-02-07
 published: true
 image: grafana-login.png
@@ -9,7 +9,7 @@ tags:
   - grafana
   - nix
 ---
-Managing Grafana users and password manually is so `currentYear - 1`. Why not delegate this to Github? Assuming you keep the permissions of your Github organization up to date, the Grafana access will sync with it.
+Managing Grafana users and password manually is so `$currentYear - 1`. Why not delegate this to Github? Assuming you keep the permissions of your Github organization up to date, the Grafana access will sync with it.
 
 Grafana does have [documentation](https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/github/) for this, but it's not up to date, and only describes how to use the legacy OAuth App for the process. Github now recommends using the new Github Apps instead when possible. The difference between these two is subtle, but very important:
 
@@ -18,14 +18,13 @@ Grafana does have [documentation](https://grafana.com/docs/grafana/latest/setup-
 
 ## Create the Github App
 
-1. Navigate to <https://github.com/settings/apps/new>
+1. Navigate to [https://github.com/settings/apps/new](https://github.com/settings/apps/new)
 2. Fill in the required fields:
-
-- App name and homepage can be whatever you want.
-- Callback URL is the important part, enter the following: `https://<YOUR-GRAFANA-URL>/login/github` and substitute with the domain of your Grafana instance.
-- Disable the webhook, we don't need it.
-- Allow the app to be installed to orgs.
-- Rest can be left default.
+    - App name and homepage can be whatever you want.
+    - Callback URL is the important part, enter the following: `https://<YOUR-GRAFANA-URL>/login/github` and substitute with the domain of your Grafana instance.
+    - Disable the webhook, we don't need it.
+    - Allow the app to be installed to orgs.
+    - Rest can be left default.
 
 3. Once created, generate a private key and client secret. You will need the client secret and client id so save these somewhere.
 4. Go to advanced tab and make the app public. Without this you cannot install it into any org.
@@ -65,9 +64,9 @@ I have my Grafana instance configured in nix, but anything under the `settings` 
 };
 ```
 
-In the `server` section, it's important to set a domain name and change the `root_url` if you are running Grafana behind a reverse proxy, as by default tries using http with port 3000 as the redirect url for auth <https://github.com/grafana/grafana/issues/11817#issuecomment-387131608>
+In the `server` section, it's important to set a domain name and change the `root_url` if you are running Grafana behind a reverse proxy, as by default tries using http with port 3000 as the redirect url for auth. Read more [here](https://github.com/grafana/grafana/issues/11817#issuecomment-387131608)
 
-`"auth.github"` this is where we configure the Github auth. You can fill in your `client_id` and `client_secret` that you saved earlier. I have defined them as [sops](https://github.com/Mic92/sops-nix?tab=readme-ov-file#templates) secrets, and Grafana can read them from the files at `/run/secrets` by using `$__file{/path/to/file}`.
+`"auth.github"` this is where we configure the Github auth. You can fill in your `client_id` and `client_secret` that you saved earlier. I have defined them as [sops](https://github.com/Mic92/sops-nix) secrets, and Grafana can read them from the files at `/run/secrets` by using `$__file{}`.
 
 The access control comes next. The Github organization where I've installed this app is called `miso-bot`, and I'm only allowing people within this org to log in. `role_attribute_path` defines what Grafana roles the users should get. Here I have created a simple check to give myself the `GrafanaAdmin` role. For a more granular permission check, you could use something like:
 
