@@ -23,7 +23,8 @@ Grafana does have [documentation](https://grafana.com/docs/grafana/latest/setup-
     - App name and homepage can be whatever you want.
     - Callback URL is the important part, enter the following: `https://<YOUR-GRAFANA-URL>/login/github` and substitute with the domain of your Grafana instance.
     - Disable the webhook, we don't need it.
-    - Allow the app to be installed to orgs.
+    - In organization permissions, allow read-only access to "Members".
+    - Allow the app to be installed to any account.
     - Rest can be left default.
 
 3. Once created, generate a private key and client secret. You will need the client secret and client id so save these somewhere.
