@@ -1,15 +1,7 @@
 import { MdEmail } from 'react-icons/md';
 import Email from './encoded-email';
 import SocialLink from './social-link';
-import {
-  BsDiscord,
-  BsGithub,
-  BsSteam,
-  BsSpotify,
-  BsTwitter,
-  BsInstagram,
-} from 'react-icons/bs';
-import { SiLetterboxd } from 'react-icons/si';
+import { BsDiscord, BsGithub, BsSteam, BsMastodon } from 'react-icons/bs';
 import { FaLastfm, FaKey } from 'react-icons/fa';
 
 type Social = {
@@ -27,12 +19,9 @@ type Props = {
 const iconMap = {
   Github: BsGithub,
   Discord: BsDiscord,
-  Twitter: BsTwitter,
-  Instagram: BsInstagram,
+  Mastodon: BsMastodon,
   Steam: BsSteam,
   'Last.fm': FaLastfm,
-  Spotify: BsSpotify,
-  Letterboxd: SiLetterboxd,
   'GPG Key': FaKey,
 };
 

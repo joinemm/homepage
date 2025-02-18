@@ -14,7 +14,7 @@ My favourite and most used languages are Python, Bash, Rust, Go and Nix.
 
 I was a longtime user of Arch Linux but recently I have seen the light and transitioned all of my machines to NixOS.
 
-Aside from programming, I enjoy death metal, coffee, wine, photography, cooking and DIY projects with small electronics.
+Aside from programming, I enjoy death metal, coffee, wine, photography, cooking and small electronics.
 
 ### Links
 
@@ -32,13 +32,8 @@ Aside from programming, I enjoy death metal, coffee, wine, photography, cooking 
       linkText: 'joinemm',
     },
     {
-      label: 'Twitter',
-      href: 'https://twitter.com/joinemm',
-      linkText: 'joinemm',
-    },
-    {
-      label: 'Instagram',
-      href: 'https://instagram.com/joinemm',
+      label: 'Mastodon',
+      href: 'https://ieji.de/@joinemm',
       linkText: 'joinemm',
     },
     {
@@ -49,16 +44,6 @@ Aside from programming, I enjoy death metal, coffee, wine, photography, cooking 
     {
       label: 'Last.fm',
       href: 'https://www.last.fm/user/joinemm',
-      linkText: 'joinemm',
-    },
-    {
-      label: 'Spotify',
-      href: 'https://open.spotify.com/user/1140852238',
-      linkText: 'joinemm',
-    },
-    {
-      label: 'Letterboxd',
-      href: 'https://letterboxd.com/joinemm',
       linkText: 'joinemm',
     },
     {
