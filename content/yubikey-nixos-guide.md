@@ -16,6 +16,7 @@ For in-depth details on all of the functionality of the Yubikey, refer to this e
 ## Use cases
 
 There are many different use cases I found for the Yubikeys. I have marked the ones I have succesfully gotten working. Note that I don't necessarily want or endorse the ones I have left undone. This blog post will get updated as I find more use cases.
+I may not remember to update it though, so you can find the latest in my NixOS config [here](https://github.com/joinemm/nix-infra/blob/master/modules/yubikey.nix).
 
 - 2fa for websites (works out of the box) ✅
 - `pam` auth (sudo/login) ✅
@@ -49,8 +50,10 @@ Enable `u2f` in your nixos configuration:
 ```nix
 security.pam.u2f = {
   enable = true;
-  interactive = true;
-  cue = true;
+  settings = {
+    interactive = true;
+    cue = true;
+  };
 };
 ```
 
@@ -72,9 +75,9 @@ If you run `pamu2fcfg` with the default arguments, the origin will be `pam://$HO
 Now that the keys are usable anywhere, they can be embedded into the nixos configuration:
 
 ```nix
-security.pam.u2f = {
+security.pam.u2f.settings = {
   origin = "pam://yubi";
-  authFile = pkgs.writeText "u2f-mappings" (lib.concatStrings [
+  authfile = pkgs.writeText "u2f-mappings" (lib.concatStrings [
     username
     ":<KeyHandle1>,<UserKey1>,<CoseType1>,<Options1>"
     ":<KeyHandle2>,<UserKey2>,<CoseType2>,<Options2>"
@@ -217,6 +220,7 @@ What's happening here? I have two keys defined. One is for my user, and it's my 
 I have defined both of the keys as possible decryption keys to decrypt `hosts/host/secrets.yaml` with, in their corresponding groups (`pgp` and `age`).
 
 Now when I try to open `secrets.yaml`, my GPG key is read from the Yubikey, and the file is decrypted. If my Yubikey is not plugged in, I cannot decrypt the file.
+
 ## Sources
 
 [https://nixos.wiki/wiki/Yubikey](https://nixos.wiki/wiki/Yubikey)
