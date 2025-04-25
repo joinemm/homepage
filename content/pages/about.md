@@ -19,7 +19,7 @@ Aside from programming, I enjoy death metal, coffee, wine, photography, cooking 
 ### Links
 
 <Socials
- emailEncoded="am9pbmVtbUBwbS5tZQ"
+ emailEncoded="bWFpbEBqb2luZW1tLmRldg=="
  socials={[
     {
       label: 'Github',
