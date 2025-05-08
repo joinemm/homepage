@@ -13,7 +13,7 @@ I finally decided to join Mastodon. Made an account on the biggest instance, `ma
 
 ## The censorship
 
-I do not like censorship or some central authority choosing what I can and can't see. It turns out mastodon.social blocks quite a few instances and silencing many more. It would be nice if I could still see everything I want to see, and block what I don't want to see *myself*. On the user level. Not by the instance admins. 
+I do not like censorship or some central authority choosing what I can and can't see. It turns out mastodon.social blocks quite a few instances and silencing many more. It would be nice if I could still see everything I want to see, and block what I don't want to see *myself*. On the user level. Not by the instance admins.
 
 I want to be able to follow Japanese artists that moved from twitter to `misskey.io`, but every profile from Misskey is silenced/hidden on `mastodon.social` for some reason. I *can* still follow them but I have to accept a warning every time and I'm not sure what implications this has on seeing their boosts (retweets) and so on.
 
@@ -39,7 +39,7 @@ Then - you might ask - if there are no public instances that I like, why don't I
 
 ## The compromise
 
-And so we arrive at where I've finally got my account set up on: `ieji.dev`. 
+And so we arrive at where I've finally got my account set up on: `ieji.de`.
 
 It's not ideal - it's still blocking some instances - but they seem to be mostly spam and harassment, which I don't really mind being blocked. The member count is not huge, but at ~12k it's larger than the other instances I tried. Some replies to posts are still missing. The benefits outweigh these cons though. This is how the admins describe their instance:
 
