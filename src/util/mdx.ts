@@ -8,6 +8,15 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExtractHeadings from './extract-headings';
 import sectionize from 'remark-sectionize';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+
+type TocEntry = {
+  rank: number;
+  title: string;
+  totalLength: number;
+  id: string;
+  children: TocEntry[];
+};
 
 const theme = 'one-dark-pro';
 const prettyCodeOptions = {
@@ -27,7 +36,9 @@ const prettyCodeOptions = {
   },
 };
 
-export async function mdxSerialize(content: string) {
+export async function mdxSerialize(
+  content: string,
+): Promise<{ content: MDXRemoteSerializeResult; toc: TocEntry[] }> {
   let headings = [];
   const result = await serialize(content, {
     mdxOptions: {

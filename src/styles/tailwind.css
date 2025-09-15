@@ -28,10 +28,10 @@
     @apply hover:inverted hover:no-underline;
   }
   pre {
-    @apply bg-[#21222c];
+    @apply bg-[#212121];
   }
   code {
-    @apply fg-code rounded-sm bg-[#312e3f] px-1.5 py-0.5;
+    @apply fg-code rounded-sm bg-[#2B2B2B] px-1.5 py-0.5;
   }
   pre code {
     @apply bg-transparent p-0 font-normal;
@@ -43,11 +43,11 @@
 
 @layer utilities {
   .bg-primary {
-    @apply bg-[#ffffff] dark:bg-[#15131d];
+    @apply bg-[#ffffff] dark:bg-[#181818];
   }
 
   .bg-secondary {
-    @apply bg-gray-400 dark:bg-[#1c1a27];
+    @apply bg-gray-400 dark:bg-[#2b2b2b];
   }
 
   .fg-bright {
@@ -55,11 +55,11 @@
   }
 
   .fg-primary {
-    @apply text-[#333333] dark:text-[#e1e1e1];
+    @apply text-[#333333] dark:text-[#EAEEE4];
   }
 
   .fg-muted {
-    @apply text-[#33333396] dark:text-[#8B8C9B];
+    @apply text-[#33333396] dark:text-[#91938d];
   }
 
   .fg-code {
@@ -67,11 +67,11 @@
   }
 
   .inverted {
-    @apply text-[#ffffff] bg-[#333333] dark:text-[#15131d] dark:bg-[#e1e1e1]
+    @apply text-[#ffffff] bg-[#333333] dark:text-[#0f0f0f] dark:bg-[#EAEEE4];
   }
 
   .accent {
-    @apply text-[#ec551a] dark:text-[#ff6497];
+    @apply text-[#FF8531];
   }
 
   .highlight {

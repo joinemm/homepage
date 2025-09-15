@@ -47,11 +47,6 @@ const MdxPage = ({ page, mdxSerialized, toc, scrollUp }: Props) => {
           </Media>
         )}
         <MdxRenderer source={mdxSerialized} />
-        {scrollUp && (
-          <footer className="py-32 text-center">
-            <ScrollUpButton />
-          </footer>
-        )}
       </MainContainer>
     </>
   );

@@ -61,11 +61,11 @@ export default function Post({ mdx, toc, post }: Props) {
           },
           images: post.image
             ? [
-              {
-                url: DOMAIN + '/img/blog/' + post.image,
-                alt: post.image,
-              },
-            ]
+                {
+                  url: DOMAIN + '/img/blog/' + post.image,
+                  alt: post.image,
+                },
+              ]
             : [],
         }}
         twitter={{
@@ -88,15 +88,15 @@ export default function Post({ mdx, toc, post }: Props) {
             <ul className="flex gap-2">
               {post.tags
                 ? post.tags.map((tag) => (
-                  <li key={tag}>
-                    <Link
-                      className="accent hover:highlight cursor-pointer no-underline"
-                      href={`/blog?tag=${tag}`}
-                    >
-                      #{tag}
-                    </Link>
-                  </li>
-                ))
+                    <li key={tag}>
+                      <Link
+                        className="accent hover:highlight cursor-pointer no-underline"
+                        href={`/blog?tag=${tag}`}
+                      >
+                        #{tag}
+                      </Link>
+                    </li>
+                  ))
                 : null}
             </ul>
           </div>
@@ -112,15 +112,16 @@ export default function Post({ mdx, toc, post }: Props) {
           ) : null}
         </div>
         <MdxRenderer source={mdx} className="dropcap" />
-        <footer className="py-16 text-center">
-          <ScrollUpButton />
-        </footer>
+        <h2 id="comments">Comments</h2>
         <Comments
           repo="joinemm/homepage"
           repoId="R_kgDOIp8GkQ"
           category="Announcements"
           categoryId="DIC_kwDOIp8Gkc4CjuE4"
         />
+        <footer className="py-16 text-center">
+          <ScrollUpButton />
+        </footer>
       </MainContainer>
     </>
   );
@@ -136,6 +137,15 @@ export async function getStaticProps({ params: { slug } }: PathParams) {
   const { content, metadata } = getPostContent(slug);
 
   const mdxResult = await mdxSerialize(content);
+
+  mdxResult.toc.push({
+    rank: 2,
+    title: 'Comments',
+    totalLength: 1,
+    id: 'comments',
+    children: [],
+  });
+
   return {
     props: {
       mdx: mdxResult.content,

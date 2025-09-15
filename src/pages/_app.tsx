@@ -1,7 +1,7 @@
 import '../styles/tailwind.css';
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { Fira_Code, Overpass_Mono, Roboto_Slab, Inria_Sans } from 'next/font/google';
+import { Fira_Code, Overpass_Mono, Inria_Sans, Manrope } from 'next/font/google';
 import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
@@ -13,9 +13,8 @@ const mono = Fira_Code({
   display: 'swap',
   variable: '--font-body',
 });
-const serif = Roboto_Slab({
+const serif = Manrope({
   subsets: ['latin'],
-  weight: ['400', '700'],
   display: 'swap',
   variable: '--font-serif',
 });
@@ -45,6 +44,7 @@ export default function App({ Component, pageProps }: AppProps) {
         }
         .serif {
           font-family: var(--font-serif);
+          font-weight: 800;
         }
         .mono {
           font-family: var(--font-mono);

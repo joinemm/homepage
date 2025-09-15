@@ -28,12 +28,12 @@ pre {
   margin-bottom: 0.25rem;
 }
 .markdown.dropcap > p:first-of-type::first-letter {
-  font-size: 6.5rem;
+  font-size: 3.3rem;
   float: left;
-  padding: 7px 5px 0 0;
-  font-weight: 700;
-  font-style: normal;
-  font-family: var(--font-sans);
+  padding: 5px 5px 0 0;
+  margin-left: -3px;
+  font-weight: 800;
+  font-family: var(--font-serif);
 }
 .markdown ol {
   padding-left: 1.75rem;
@@ -144,7 +144,8 @@ thead {
   display: none;
 }
 
-th, td {
+th,
+td {
   border: 1px solid;
   border-color: #322e40;
 }
