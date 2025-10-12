@@ -1,5 +1,10 @@
 import { Html, Head, Main, NextScript } from 'next/document';
-import { ANALYTICS_DOMAIN, SITE_NAME, DOMAIN, MASTODON } from '../util/constants';
+import {
+  ANALYTICS_DOMAIN,
+  ANALYTICS_SITE_ID,
+  DOMAIN,
+  MASTODON,
+} from '../util/constants';
 import { mediaStyles } from '../util/media-context';
 
 export default function Document() {
@@ -17,8 +22,8 @@ export default function Document() {
         <style type="text/css" dangerouslySetInnerHTML={{ __html: mediaStyles }} />
         <script
           defer
-          data-domain={SITE_NAME}
-          src={`https://${ANALYTICS_DOMAIN}/visit.js`}
+          data-website-id={`${ANALYTICS_SITE_ID}`}
+          src={`https://${ANALYTICS_DOMAIN}/script.js`}
         ></script>
       </Head>
       <body className="bg-primary fg-primary max-w-[100vw] overflow-x-hidden">
