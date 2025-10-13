@@ -20,11 +20,13 @@ export default function Document() {
         />
         <link rel="me" href={`https://${MASTODON}/@joinemm`} />
         <style type="text/css" dangerouslySetInnerHTML={{ __html: mediaStyles }} />
-        <script
-          defer
-          data-website-id={`${ANALYTICS_SITE_ID}`}
-          src={`https://${ANALYTICS_DOMAIN}/script.js`}
-        ></script>
+        {process.env.NODE_ENV != 'development' && (
+          <script
+            defer
+            data-website-id={`${ANALYTICS_SITE_ID}`}
+            src={`https://${ANALYTICS_DOMAIN}/script.js`}
+          ></script>
+        )}
       </Head>
       <body className="bg-primary fg-primary max-w-[100vw] overflow-x-hidden">
         <Main />
