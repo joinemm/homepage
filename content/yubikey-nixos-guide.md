@@ -24,7 +24,7 @@ I may not remember to update it though, so you can find the latest in my NixOS c
 - Git commit signing ✅
 - Encrypting/Decrypting sops secrets ✅
 - SSH keys ❓
-- Yubikey based full disk encryption ([guide](https://nixos.wiki/wiki/Yubikey_based_Full_Disk_Encryption_(FDE)_on_NixOS)) ❓
+- Yubikey based full disk encryption ([guide](<https://nixos.wiki/wiki/Yubikey_based_Full_Disk_Encryption_(FDE)_on_NixOS>)) ❓
 
 ## Pam module
 
@@ -64,7 +64,7 @@ security.pam.u2f = {
 
 The guides for `pam_u2f` tell you to save the key mappings in `~/.config/u2f_keys`. I would advice you don't do that as I find it a security risk. Somehow I didn't find anyone talking about this flaw online:
 
-Say a bad actor has physical access to your machine (ok this is already a pretty bad situation but it gets worse). They could plug in their Yubikey, run the above commands, and append their keys to your mapping file. Doing so would give them instant escalation to sudo privileges *without knowing your password*. Sounds pretty bad doesn't it!
+Say a bad actor has physical access to your machine (ok this is already a pretty bad situation but it gets worse). They could plug in their Yubikey, run the above commands, and append their keys to your mapping file. Doing so would give them instant escalation to sudo privileges _without knowing your password_. Sounds pretty bad doesn't it!
 
 How to mitigate this? Don't store the key mappings in user writable location. A better place is `/etc/u2f-mapping`. My configuration creates a file in the read-only `/nix/store`.
 
@@ -167,7 +167,20 @@ You can create a shell with all the packages you need to follow the guide (assum
 nix-shell -p yubikey-manager cryptsetup
 ```
 
-If you added the public key URL onto the Yubikey, on any computer you plug the key in, you can now fetch the public key like this:
+### Add public key URL to the key
+
+```sh
+# send your key to keys.openpgp.org
+gpg --send-key
+
+# set the URL field on the yubikey to the URL of the public key
+gpg --edit-card
+gpg/card> admin
+gpg/card> url
+URL to retrieve public key: https://keys.openpgp.org/vks/v1/by-fingerprint/YOUR_FINGERPRINT
+```
+
+Now on any computer you plug the key in, you can now fetch the public key like this:
 
 ```sh
 gpg --edit-card
@@ -182,6 +195,14 @@ gpg> quit
 ```
 
 The Yubikey can now be used as your GPG keypair!
+
+### Renewing your keys
+
+Eventually you will find that your key has expired. Oh no!
+
+The guide has you covered https://github.com/drduh/YubiKey-Guide?tab=readme-ov-file#updating-keys
+
+Note that this requires no changes to the yubikey itself. It is merely a GPG update. After updating, you should do the fetching steps on your other computers so that the public key is renewed.
 
 ## Git commit signing
 
@@ -220,6 +241,8 @@ What's happening here? I have two keys defined. One is for my user, and it's my 
 I have defined both of the keys as possible decryption keys to decrypt `hosts/host/secrets.yaml` with, in their corresponding groups (`pgp` and `age`).
 
 Now when I try to open `secrets.yaml`, my GPG key is read from the Yubikey, and the file is decrypted. If my Yubikey is not plugged in, I cannot decrypt the file.
+
+Note that this doesn't work at system activation time, only when editing the files. For system activation you still need an age or ssh key present.
 
 ## Sources
 

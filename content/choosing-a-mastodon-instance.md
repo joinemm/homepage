@@ -3,19 +3,20 @@ title: Choosing a Mastodon instance
 abstract: It's not as simple as you'd think
 date: 2025-02-06
 published: true
-image: 
+image:
 tags:
   - mastodon
   - fediverse
   - social-media
 ---
+
 I finally decided to join Mastodon. Made an account on the biggest instance, `mastodon.social`. No big deal right? It's all federated... or so I thought.
 
 ## The censorship
 
-I do not like censorship or some central authority choosing what I can and can't see. It turns out mastodon.social blocks quite a few instances and silencing many more. It would be nice if I could still see everything I want to see, and block what I don't want to see *myself*. On the user level. Not by the instance admins.
+I do not like censorship or some central authority choosing what I can and can't see. It turns out mastodon.social blocks quite a few instances and silencing many more. It would be nice if I could still see everything I want to see, and block what I don't want to see _myself_. On the user level. Not by the instance admins.
 
-I want to be able to follow Japanese artists that moved from twitter to `misskey.io`, but every profile from Misskey is silenced/hidden on `mastodon.social` for some reason. I *can* still follow them but I have to accept a warning every time and I'm not sure what implications this has on seeing their boosts (retweets) and so on.
+I want to be able to follow Japanese artists that moved from twitter to `misskey.io`, but every profile from Misskey is silenced/hidden on `mastodon.social` for some reason. I _can_ still follow them but I have to accept a warning every time and I'm not sure what implications this has on seeing their boosts (retweets) and so on.
 
 > I will not be diving into what misskey is, but tldr: alternative to mastodon that implements the same protocol with additions, mostly used in japan.
 

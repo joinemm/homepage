@@ -4,7 +4,7 @@ const Section = (props) => {
   let sectionId = undefined;
   let subSections: ReactElement[] = [];
   let children: ReactElement[] = [];
-  props.children.forEach((el: ReactElement) => {
+  props.children.forEach((el: ReactElement<any>) => {
     const myType = typeof el.type === 'string' ? el.type : el.type.name;
     if (myType == 'section') {
       subSections.push(el);

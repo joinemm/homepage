@@ -124,7 +124,7 @@ For personal projects it's nice though.
 
 Here I am adding `isort`, `black` and `ruff` as pre-commit hooks for my project, and adding extra args for ruff to ignore `E501` (line too long) errors.
 
-> Note that these tools do *not* have to be installed separately as packages to use them in pre-commit hook. I am just doing it so I can run them manually.
+> Note that these tools do _not_ have to be installed separately as packages to use them in pre-commit hook. I am just doing it so I can run them manually.
 
 ### Bringing it together
 
@@ -219,7 +219,7 @@ alias dev="nix develop --impure -c $SHELL"
 
 Allowing me to simply write "dev" once I'm in my project folder.
 
-> It is possible to use `direnv` and `.envrc` to change into the devshell automatically, but I tried that and did not like it. I don't *always* need the devshell if I'm simply browsing files and it's easy enough to do manually.
+> It is possible to use `direnv` and `.envrc` to change into the devshell automatically, but I tried that and did not like it. I don't _always_ need the devshell if I'm simply browsing files and it's easy enough to do manually.
 
 ## Caching
 

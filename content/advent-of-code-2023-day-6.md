@@ -43,7 +43,7 @@ $$
 \end{align*}
 $$
 
-Plugging our values in, we get two points for $x$, which are the bounds of our winning area. Now, these are floats, so they must be `ceil()` and `floor()`:ed. There is one edge case where the bounds have no fractions, which would give us the answer to *match* the current record. The goal is to beat the record, so `+1` is added to fix this.
+Plugging our values in, we get two points for $x$, which are the bounds of our winning area. Now, these are floats, so they must be `ceil()` and `floor()`:ed. There is one edge case where the bounds have no fractions, which would give us the answer to _match_ the current record. The goal is to beat the record, so `+1` is added to fix this.
 
 ## Python
 

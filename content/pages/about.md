@@ -19,39 +19,39 @@ Aside from programming, I enjoy death metal, coffee, wine, photography, cooking 
 ### Links
 
 <Socials
- emailEncoded="bWFpbEBqb2luZW1tLmRldg=="
- socials={[
-    {
-      label: 'Github',
-      href: 'https://git.joinemm.dev',
-      linkText: 'joinemm',
-    },
-    {
-      label: 'Discord',
-      href: 'https://discord.com/users/133311691852218378',
-      linkText: 'joinemm',
-    },
-    {
-      label: 'Mastodon',
-      href: 'https://ieji.de/@joinemm',
-      linkText: 'joinemm',
-    },
-    {
-      label: 'Steam',
-      href: 'https://steamcommunity.com/id/joinemm',
-      linkText: 'joinemm',
-    },
-    {
-      label: 'Last.fm',
-      href: 'https://www.last.fm/user/joinemm',
-      linkText: 'joinemm',
-    },
-    {
-      label: 'GPG Key',
-      href: 'https://keyserver.ubuntu.com/pks/lookup?search=0x090EB48A4669AA54&fingerprint=on&hash=on&exact=on&op=vindex',
-      linkText: '0x090EB48A4669AA54',
-    },
- ]}
- />
+emailEncoded="bWFpbEBqb2luZW1tLmRldg=="
+socials={[
+{
+label: 'Github',
+href: 'https://git.joinemm.dev',
+linkText: 'joinemm',
+},
+{
+label: 'Discord',
+href: 'https://discord.com/users/133311691852218378',
+linkText: 'joinemm',
+},
+{
+label: 'Mastodon',
+href: 'https://ieji.de/@joinemm',
+linkText: 'joinemm',
+},
+{
+label: 'Steam',
+href: 'https://steamcommunity.com/id/joinemm',
+linkText: 'joinemm',
+},
+{
+label: 'Last.fm',
+href: 'https://www.last.fm/user/joinemm',
+linkText: 'joinemm',
+},
+{
+label: 'GPG Key',
+href: 'https://keyserver.ubuntu.com/pks/lookup?search=0x090EB48A4669AA54&fingerprint=on&hash=on&exact=on&op=vindex',
+linkText: '0x090EB48A4669AA54',
+},
+]}
+/>
 
- > Yes I know, my username is awfully consistent.
+> Yes I know, my username is awfully consistent.

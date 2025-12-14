@@ -9,7 +9,7 @@ tags:
   - programming
 ---
 
-*I wrote this during my 3 hour flight to Italy as I was really bored. It describes a hypothetical overengineered microservices based system for Miso Bot, my discord bot.*
+_I wrote this during my 3 hour flight to Italy as I was really bored. It describes a hypothetical overengineered microservices based system for Miso Bot, my discord bot._
 
 ## Gateway
 

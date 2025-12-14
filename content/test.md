@@ -3,8 +3,8 @@ title: Test document for markdown syntax
 abstract: Verifies that all markdown elements render properly. Not meant for public consumption.
 published: false
 date: 2022-01-01
-image: 
-tags: 
+image:
+tags:
 ---
 
 ## math is cool
@@ -175,12 +175,12 @@ paragraph in a list item must be indented by either 4 spaces
 or one tab:
 
 1. This is a list item with two paragraphs. Lorem ipsum dolor
-    sit amet, consectetuer adipiscing elit. Aliquam hendrerit
-    mi posuere lectus.
+   sit amet, consectetuer adipiscing elit. Aliquam hendrerit
+   mi posuere lectus.
 
-    Vestibulum enim wisi, viverra nec, fringilla in, laoreet
-    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum
-    sit amet velit.
+   Vestibulum enim wisi, viverra nec, fringilla in, laoreet
+   vitae, risus. Donec sit amet nisl. Aliquam semper ipsum
+   sit amet velit.
 
 2. Suspendisse id sem consectetuer libero luctus adipiscing.
 

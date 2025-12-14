@@ -16,7 +16,7 @@ I don't run any deskop environment, but instead login to the tty console and lau
 
 Xmonad is a tiling window manager, meaning all windows automatically arrange themselves to fill the screen. This is much more efficient workflow than manually moving windows around and over one another with the mouse. I also prefer using the terminal as much as possible, and favor software that has support for vim keybindings (`hjkl`).
 
-Due to not having a desktop environment, everything has to be configured manually. I like that. I know *exactly* what my system is doing at all times and nothing is "magic".
+Due to not having a desktop environment, everything has to be configured manually. I like that. I know _exactly_ what my system is doing at all times and nothing is "magic".
 
 [Arch linux dotfiles](https://git.joinemm.dev/dotfiles) | [NixOS config](https://git.joinemm.dev/empire)
 
@@ -83,23 +83,23 @@ My cute little SFF machine. This is what I use when I'm home to do all my work a
 
 My main workhorse keyboard. Weighs around 2kg so it never leaves my desk. Lubed with [Krytox 205g0](https://divinikey.com/collections/lubricant/products/205-grade-0-switch-lubricant). Cable by [Keycables](https://www.keycables.de)
 
-|  |  |
-| ------ | ------ |
-| **Switches**  | Gateron Oil Kings |
+|                 |                                                                                              |
+| --------------- | -------------------------------------------------------------------------------------------- |
+| **Switches**    | Gateron Oil Kings                                                                            |
 | **Stabilizers** | [C3 Equalz screw-in](https://thekey.company/products/c-equalz-screw-in-stabilizers-v3-white) |
-| **Plate**  | Polycarbonate  |
-| **Keycaps**  | GMK Dracula  |
+| **Plate**       | Polycarbonate                                                                                |
+| **Keycaps**     | GMK Dracula                                                                                  |
 
 #### E-white Chiwi60
 
 My old main keyboard, feels like typing on a cloud thanks to the lubed silenced switches. I just miss arrow keys whenever I type on this.
 
-|  |  |
-| ------ | ------ |
-| **Switches**  | [Zeal Healios](https://zealpc.net/products/healio) |
+|                 |                                                                          |
+| --------------- | ------------------------------------------------------------------------ |
+| **Switches**    | [Zeal Healios](https://zealpc.net/products/healio)                       |
 | **Stabilizers** | [Zeal Gold plated screw-in](https://zealpc.net/products/zealstabilizers) |
-| **Plate**  | Brass  |
-| **Keycaps** | EPBT x Gok Kuro/Shiro |
+| **Plate**       | Brass                                                                    |
+| **Keycaps**     | EPBT x Gok Kuro/Shiro                                                    |
 
 ### Audio
 

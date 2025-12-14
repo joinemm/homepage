@@ -9,6 +9,7 @@ tags:
   - grafana
   - nix
 ---
+
 Managing Grafana users and password manually is so `$currentYear - 1`. Why not delegate this to Github? Assuming you keep the permissions of your Github organization up to date, the Grafana access will sync with it.
 
 Grafana does have [documentation](https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/github/) for this, but it's not up to date, and only describes how to use the legacy OAuth App for the process. Github now recommends using the new Github Apps instead when possible. The difference between these two is subtle, but very important:
@@ -20,12 +21,12 @@ Grafana does have [documentation](https://grafana.com/docs/grafana/latest/setup-
 
 1. Navigate to [https://github.com/settings/apps/new](https://github.com/settings/apps/new)
 2. Fill in the required fields:
-    - App name and homepage can be whatever you want.
-    - Callback URL is the important part, enter the following: `https://<YOUR-GRAFANA-URL>/login/github` and substitute with the domain of your Grafana instance.
-    - Disable the webhook, we don't need it.
-    - In organization permissions, allow read-only access to "Members".
-    - Allow the app to be installed to any account.
-    - Rest can be left default.
+   - App name and homepage can be whatever you want.
+   - Callback URL is the important part, enter the following: `https://<YOUR-GRAFANA-URL>/login/github` and substitute with the domain of your Grafana instance.
+   - Disable the webhook, we don't need it.
+   - In organization permissions, allow read-only access to "Members".
+   - Allow the app to be installed to any account.
+   - Rest can be left default.
 
 3. Once created, generate a private key and client secret. You will need the client secret and client id so save these somewhere.
 4. Go to advanced tab and make the app public. Without this you cannot install it into any org.
@@ -43,7 +44,7 @@ I have my Grafana instance configured in nix, but anything under the `settings` 
       server = {
         http_port = 3300;
         http_addr = "127.0.0.1";
-        
+
         enforce_domain = true;
         domain = "monitoring.misobot.xyz";
         root_url = "https://%(domain)s/";
@@ -51,10 +52,10 @@ I have my Grafana instance configured in nix, but anything under the `settings` 
 
       "auth.github" = {
         enabled = true;
-        
+
         client_id = "$__file{${config.sops.secrets.github_client_id.path}}";
         client_secret = "$__file{${config.sops.secrets.github_client_secret.path}}";
-        
+
         allowed_organizations = [ "miso-bot" ];
         allow_assign_grafana_admin = true;
         role_attribute_path = "login == joinemm && 'GrafanaAdmin'";

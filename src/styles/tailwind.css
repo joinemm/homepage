@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
 @layer base {
   h1 {
@@ -19,19 +17,19 @@
     @apply my-4;
   }
   blockquote {
-    @apply fg-muted border-l-2 pl-4 italic;
+    @apply text-[#33333396] dark:text-[#91938d] border-l-2 pl-4 italic;
   }
   a {
-    @apply hover:accent underline underline-offset-2;
+    @apply hover:text-[#FF8531] underline underline-offset-2;
   }
   .markdown a {
-    @apply hover:inverted hover:no-underline;
+    @apply hover:no-underline hover:text-[#ffffff] hover:bg-[#333333] hover:dark:text-[#0f0f0f] hover:dark:bg-[#EAEEE4];
   }
   pre {
     @apply bg-[#212121];
   }
   code {
-    @apply fg-code rounded-sm bg-[#2B2B2B] px-1.5 py-0.5;
+    @apply text-[#ffffff] rounded-sm bg-[#2B2B2B] px-1.5 py-0.5;
   }
   pre code {
     @apply bg-transparent p-0 font-normal;

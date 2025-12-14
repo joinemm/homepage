@@ -1,5 +1,5 @@
 ---
-title: "Recipe: Pasta Bolognese"
+title: 'Recipe: Pasta Bolognese'
 abstract: Italian meat sauce for pasta with ground meat and tomatoes
 published: false
 date: 2023-08-05

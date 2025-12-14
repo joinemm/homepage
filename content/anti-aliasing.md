@@ -1,6 +1,6 @@
 ---
 title: Anti-aliasing in videogames
-abstract: "Anti-Aliasing in video games and rendering applications set out to solve a problem inherent with our displays: pixels."
+abstract: 'Anti-Aliasing in video games and rendering applications set out to solve a problem inherent with our displays: pixels.'
 published: true
 date: 2023-03-27
 image: anti-aliasing.jpg
