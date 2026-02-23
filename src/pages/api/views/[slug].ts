@@ -64,7 +64,7 @@ async function getStats(slug: string) {
 
   const res = await fetch(
     endpoint +
-      `/websites/${ANALYTICS_SITE_ID}/stats?startAt=${startAt}&endAt=${now}&url=/blog/${slug}`,
+      `/websites/${ANALYTICS_SITE_ID}/stats?startAt=${startAt}&endAt=${now}&path=/blog/${slug}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -72,7 +72,7 @@ async function getStats(slug: string) {
     },
   );
   const data = await res.json();
-  return data?.pageviews?.value;
+  return data?.pageviews;
 }
 
 export default viewsHandler;
