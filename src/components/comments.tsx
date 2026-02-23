@@ -17,7 +17,7 @@ const Comments = ({ repo, repoId, category, categoryId }) => {
           inputPosition="top"
           theme="transparent_dark"
           lang="en"
-          loading="lazy"
+          loading="eager"
         />
       </div>
     </section>
