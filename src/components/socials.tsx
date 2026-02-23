@@ -10,11 +10,6 @@ type Social = {
   linkText: string;
 };
 
-type Props = {
-  emailEncoded: string;
-  socials: Social[];
-};
-
 // Because we can't use the icon objects in the mdx
 const iconMap = {
   Github: BsGithub,
@@ -25,7 +20,41 @@ const iconMap = {
   'GPG Key': FaKey,
 };
 
-const Socials = ({ emailEncoded, socials }: Props) => {
+const emailEncoded = 'bWFpbEBqb2luZW1tLmRldg==';
+const socials: Social[] = [
+  {
+    label: 'Github',
+    href: 'https://git.joinemm.dev',
+    linkText: 'joinemm',
+  },
+  {
+    label: 'Discord',
+    href: 'https://discord.com/users/133311691852218378',
+    linkText: 'joinemm',
+  },
+  {
+    label: 'Mastodon',
+    href: 'https://ieji.de/@joinemm',
+    linkText: 'joinemm',
+  },
+  {
+    label: 'Steam',
+    href: 'https://steamcommunity.com/id/joinemm',
+    linkText: 'joinemm',
+  },
+  {
+    label: 'Last.fm',
+    href: 'https://www.last.fm/user/joinemm',
+    linkText: 'joinemm',
+  },
+  {
+    label: 'GPG Key',
+    href: 'https://keyserver.ubuntu.com/pks/lookup?search=0x090EB48A4669AA54&fingerprint=on&hash=on&exact=on&op=vindex',
+    linkText: '0x090EB48A4669AA54',
+  },
+];
+
+const Socials = () => {
   return (
     <ul className="flex-col !p-0">
       {socials.map((row) => (
