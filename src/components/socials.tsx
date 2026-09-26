@@ -50,7 +50,7 @@ const socials: Social[] = [
   },
   {
     label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/joonasrautiol',
+    href: 'https://www.linkedin.com/in/joonasrautiola',
     linkText: 'Joonas Rautiola',
   },
   {
