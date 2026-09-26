@@ -1,7 +1,7 @@
 import { MdEmail } from 'react-icons/md';
 import Email from './encoded-email';
 import SocialLink from './social-link';
-import { BsDiscord, BsGithub, BsSteam, BsMastodon } from 'react-icons/bs';
+import { BsDiscord, BsGithub, BsSteam, BsMastodon, BsLinkedin } from 'react-icons/bs';
 import { FaLastfm, FaKey } from 'react-icons/fa';
 
 type Social = {
@@ -12,6 +12,7 @@ type Social = {
 
 // Because we can't use the icon objects in the mdx
 const iconMap = {
+  LinkedIn: BsLinkedin,
   Github: BsGithub,
   Discord: BsDiscord,
   Mastodon: BsMastodon,
@@ -46,6 +47,11 @@ const socials: Social[] = [
     label: 'Last.fm',
     href: 'https://www.last.fm/user/joinemm',
     linkText: 'joinemm',
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/joonasrautiol',
+    linkText: 'Joonas Rautiola',
   },
   {
     label: 'GPG Key',
