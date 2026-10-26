@@ -7,6 +7,8 @@ image: yubikey.jpg
 tags: [nix, security]
 ---
 
+> 2026 update: renamed nixos options to match current nixpkgs module
+
 I recently got myself two [Yubikey 5](https://www.yubico.com/us/product/yubikey-5-series/yubikey-5-nfc/) devices. One of them will live on my keychain, while the second one is a backup that doesn't leave my house.
 
 Firefox works out of the box with the Yubikeys and I can add them to various accounts. In addition to using them as 2fa through the browser, I wanted to use them on the OS level as well.
@@ -35,9 +37,9 @@ There are two pam modules that implement Yubikey functionality: `yubico-pam` and
 I ended up using the `pam_u2f` module. This allows the Yubikey to work as a replacement for sudo/login password. The configuration is also completely declarative and I'm able to enroll my Yubikeys, including the backup key, to another device without actually having all of the keys with me. How is this possible?
 
 1. Connect your Yubikey.
-2. Create authorization mappings for your keys. This file works similarly to `ssh/known_hosts` and is not a secret.
+2. Create authorization mappings for your keys. This file works similarly to `.ssh/known_hosts` and is not a secret.
 
-```
+```sh
 nix-shell -p pam_u2f
 pamu2fcfg -n -o pam://yubi
 ```
@@ -50,6 +52,7 @@ Enable `u2f` in your nixos configuration:
 ```nix
 security.pam.u2f = {
   enable = true;
+  control = "sufficient";
   settings = {
     interactive = true;
     cue = true;
@@ -59,6 +62,8 @@ security.pam.u2f = {
 
 - `interactive`: will prompt you with `Insert your U2F device, then press ENTER.`
 - `cue`: will print `Please touch the device.` when your action is required.
+
+`control = "sufficient"` makes the Yubikey an alternative to your password. This is the default; use `"required"` if you want the key as a second factor alongside your password.
 
 ### Hardening
 
@@ -89,14 +94,16 @@ I am using the `lib.concatStrings` function to split the keys onto multiple line
 
 ### Enable for sudo and login
 
-There is only one thing left to do, enable the U2F module for any services you wish. I have enabled it for sudo and login:
+The global `security.pam.u2f.enable = true` above enables U2F by default for PAM services. You can override this for individual services using `u2f.enable`. For example, to enable it for sudo and login:
 
 ```nix
 security.pam.services = {
-  login.u2fAuth = true;
-  sudo.u2fAuth = true;
+  login.u2f.enable = true;
+  sudo.u2f.enable = true;
 };
 ```
+
+To enable U2F only for explicitly selected services, leave `security.pam.u2f.enable` at its default of `false` and use the per-service settings above.
 
 ## GPG keypair
 
@@ -222,7 +229,7 @@ Now whenever I `git commit`, the GPG key is pulled from my Yubikey, and the comm
 
 The Yubikey can be used to decrypt secrets. This again uses the GPG key. I am using `sops-nix` to manage the secrets of my NixOS hosts, and `sops` accepts GPG keys in place of the age keys. Simply, in `.sops.yaml`:
 
-```
+```yaml
 keys:
   - &user 87ECDD306614E5105299F0D4090EB48A4669AA54
   - &host age123456x
