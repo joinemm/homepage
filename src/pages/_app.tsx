@@ -52,6 +52,9 @@ export default function App({ Component, pageProps }: AppProps) {
         .sans {
           font-family: var(--font-sans);
         }
+        code {
+          font-family: var(--font-body);
+        }
       `}</style>
       <Head>
         <meta
